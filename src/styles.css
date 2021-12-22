@@ -1,3 +1,101 @@
+
+.container {
+  margin: auto;
+  width: 90%;
+}
+
+.pd {
+  margin: 20px;
+  padding-left: 80px;
+  padding-right: 80px;
+  color: rgb(97, 97, 97);
+}
+
+.pd__style-icon {
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  filter: saturate(10%);
+  border: none;
+}
+
+.pd__description {
+  border-right: thin solid  rgb(97, 97, 97);
+}
+
+.sectionTitle {
+  font-weight: 300;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+.reviews {
+  display: flex;
+  width: 100%;
+}
+
+.reviews-left {
+  width: 30%;
+  height: 500px;
+  margin-right: 5%;
+}
+
+.reviews-right {
+  width: 65%;
+}
+
+.reviewRating {
+  font-size: 60px;
+  font-weight: bold;
+  margin-top: -15px;
+  padding-right: 10px;
+}
+
+.ratingAmount {
+  display: flex;
+  justify-content: start;
+}
+
+.reviewTop {
+  display: flex;
+  align-items: center;
+}
+
+.reviewAuthor {
+  margin-left: auto;
+  color: rgb(150, 150, 150);
+  font-size: 11px;
+  font-weight: 400;
+  align-items: flex-end;
+}
+
+.reviewTitle {
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+.reviewBody {
+  font-weight: 400;
+  font-size: 14px;
+  color:rgb(100, 100, 100);
+  padding-top: 10px;
+}
+
+.reviewRecommended {
+  font-weight: 400;
+  font-size: 14px;
+  color:rgb(100, 100, 100);
+  padding-top: 10px;
+}
+
+.reviewDivider {
+  width: 100%;
+  height: 1px;
+  background-color: black;
+  margin-block: 15px;
+}
+
 .related-products-list {
   display: flex;
   flex-direction: row;
@@ -20,4 +118,7 @@
 
 .related-product-image-contain img {
   object-fit: contain;
+body {
+  margin: 0;
+  color:rgb(80, 80, 80)
 }

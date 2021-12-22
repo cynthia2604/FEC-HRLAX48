@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function Catalogue(props) {
+export default function Detail(props) {
 
   function handleClick(product){
     props.setSelected(product)
