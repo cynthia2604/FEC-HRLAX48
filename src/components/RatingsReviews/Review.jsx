@@ -2,7 +2,6 @@ import React from "react"
 import moment from "moment"
 
 export default function Review(props) {
-  console.log(props.review)
 
   function recommended() {
     if (props.review.recommend) {

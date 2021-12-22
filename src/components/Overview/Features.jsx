@@ -5,8 +5,8 @@ export default function Features({ productDetail }) {
     <div>
       <p className="d-flex flex-column">
         {productDetail.features &&
-          productDetail.features.map((feature) => (
-            <span>{`-${feature.feature}: ${feature.value}`}</span>
+          productDetail.features.map((feature, i) => (
+            <span key={i}>{`-${feature.feature}: ${feature.value}`}</span>
           ))}
       </p>
       <p className="pd__share">
