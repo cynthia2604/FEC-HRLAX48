@@ -103,6 +103,13 @@ body {
   margin-block: 15px;
 }
 
+.reviewButtons {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+
+}
+
 .related-products-list {
   display: flex;
   flex-direction: row;
