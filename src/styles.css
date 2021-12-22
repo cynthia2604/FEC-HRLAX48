@@ -88,6 +88,8 @@ body {
 }
 
 .reviewRecommended {
+  display: flex;
+  align-items: center;
   font-weight: 400;
   font-size: 14px;
   color:rgb(100, 100, 100);
