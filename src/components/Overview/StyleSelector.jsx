@@ -12,7 +12,6 @@ export default function StyleSelector({ productStyles }) {
 
   return (
     <div>
-      {console.log(productStyles)}
       <span>{"Style: " + selectedStyle}</span>
       <div className="d-flex flex-row justify-content-between">
         {productStyles.results &&

@@ -8,6 +8,13 @@ body {
   width: 90%;
 }
 
+.sectionTitle {
+  font-weight: 300;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
 .pd {
   margin: 20px;
   padding-left: 80px;
@@ -27,12 +34,6 @@ body {
   border-right: thin solid  rgb(97, 97, 97);
 }
 
-.sectionTitle {
-  font-weight: 300;
-  font-size: 16px;
-  margin: 0;
-  padding: 0;
-}
 
 .reviews {
   display: flex;

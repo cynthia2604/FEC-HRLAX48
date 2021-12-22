@@ -3,6 +3,7 @@ import axios from 'axios'
 import Options from '../../config'
 import StarColumn from './StarColumn'
 import ReviewColumn from './ReviewColumn'
+import utils from '../utils'
 
 export default function RatingsAndReviews(props) {
 
@@ -15,10 +16,9 @@ export default function RatingsAndReviews(props) {
         Authorization: Options.TOKEN
       }
     })
-      .then(res => {
-        setProductInfo(res.data)
-      })
+      .then(res => setProductInfo(res.data))
   }, [props.selected])
+
 
   return (
     <>
@@ -28,10 +28,10 @@ export default function RatingsAndReviews(props) {
       {productInfo &&
       <div className='reviews'>
         <div className='reviews-left'>
-          <StarColumn rating={rating} productInfo={productInfo} starRating={starRating}/>
+          <StarColumn rating={props.rating} productInfo={productInfo} starRating={utils.starRating}/>
         </div>
         <div className='reviews-right'>
-          <ReviewColumn rating={rating} productInfo={productInfo} starRating={starRating}/>
+          <ReviewColumn rating={props.rating} productInfo={productInfo} starRating={utils.starRating}/>
         </div>
       </div>
       }

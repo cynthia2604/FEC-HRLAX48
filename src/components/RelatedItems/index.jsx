@@ -13,7 +13,6 @@ export default function RelatedItems(props) {
           Authorization: Options.TOKEN
         }
       }).then((res) => {
-        console.log(res.data)
         let related = props.products.filter(item => res.data.includes(item.id))
         setRelatedItems(related)
       })
@@ -27,7 +26,7 @@ export default function RelatedItems(props) {
 
   return (
     <div className="related-products">
-      <h8 className="sectionTitle"> Related Items </h8>
+      <div className="sectionTitle">RELATED ITEMS</div>
         <div className="related-products-list" >
           {entry}
         </div>
