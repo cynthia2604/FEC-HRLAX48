@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+  color:rgb(80, 80, 80)
+}
 
 .container {
   margin: auto;
@@ -118,7 +122,4 @@
 
 .related-product-image-contain img {
   object-fit: contain;
-body {
-  margin: 0;
-  color:rgb(80, 80, 80)
 }

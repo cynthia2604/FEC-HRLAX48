@@ -27,7 +27,7 @@ export default function RelatedItems(props) {
 
   return (
     <div className="related-products">
-      <h8 className="related-product-title"> Related Items</h8>
+      <h8 className="sectionTitle"> Related Items </h8>
         <div className="related-products-list" >
           {entry}
         </div>
