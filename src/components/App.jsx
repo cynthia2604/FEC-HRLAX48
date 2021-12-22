@@ -23,7 +23,6 @@ export default function App(props) {
       .then(res => setProducts(res.data))
   }, [])
 
-
   return (
       <>
         {view === 'catalogue' &&

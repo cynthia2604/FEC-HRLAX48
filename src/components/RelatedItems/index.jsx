@@ -6,7 +6,6 @@ import Options from '../../configEXAMPLE.js';
 export default function RelatedItems(props) {
 
   const [relatedItems, setRelatedItems] = React.useState([])
-  // const [currentItem, setCurrentItem] = React.useState({})
 
   React.useEffect(() => {
       axios.get(`${Options.URL}/products/${props.selected.id}/related`, {
