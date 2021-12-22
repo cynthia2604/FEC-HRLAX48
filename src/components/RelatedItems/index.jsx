@@ -1,10 +1,28 @@
 import React from "react";
 import RelatedProductEntry from './RelatedProductEntry'
+import axios from 'axios';
+import Options from '../../configEXAMPLE.js';
 
 export default function RelatedItems(props) {
-  const entry = props.products.map(product => (
+
+  const [relatedItems, setRelatedItems] = React.useState([])
+  // const [currentItem, setCurrentItem] = React.useState({})
+
+  React.useEffect(() => {
+      axios.get(`${Options.URL}/products/${props.selected.id}/related`, {
+        headers: {
+          Authorization: Options.TOKEN
+        }
+      }).then((res) => {
+        console.log(res.data)
+        let related = props.products.filter(item => res.data.includes(item.id))
+        setRelatedItems(related)
+      })
+   }, [])
+
+  const entry = relatedItems.map(product => (
     <div className="related-products-card" key={product.id}>
-      <RelatedProductEntry product={product} />
+      <RelatedProductEntry related={product}/>
     </div>
   ))
 

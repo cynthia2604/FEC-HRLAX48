@@ -15,7 +15,7 @@ export default function App(props) {
   const [selected, setSelected] = React.useState({})
 
   React.useEffect(() => {
-    axios.get(`${Options.URL}/products/`, {
+    axios.get(`${Options.URL}/products/?count=20`, {
       headers: {
         Authorization: Options.TOKEN
       }
@@ -33,10 +33,9 @@ export default function App(props) {
         }
         {view === 'detail' &&
         <div>
-          {console.log(selected)}
           <div onClick={() => setView('catalogue')}>GO TO CATALOGUE</div>
           <Overview />
-          <RelatedItems products={products}/>
+          <RelatedItems products={products} selected ={selected}/>
           <RatingsAndReviews />
         </div>
         }

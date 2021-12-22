@@ -1,12 +1,30 @@
 import React from 'react';
+import axios from 'axios';
+import Options from '../../configEXAMPLE.js';
+import ProductImage from './ProductImage'
 
 export default function RelatedProductEntry(props) {
+
+  const [ current, setCurrent ] = React.useState({results: [{photos: [{ url: ''}]}]})
+
+  React.useEffect(()=>{
+    const params = {
+      product_id: props.related.id
+    }
+    axios.get(`${Options.URL}/products/${params.product_id}/styles/?count=20`, {
+      headers: {
+        Authorization: Options.TOKEN
+      }
+    }).then(res => setCurrent(res.data))
+  }, [])
+
+
   return (
     <div className="related-product-card-entry">
-      <img src="http://placecorgi.com/250" />
-      <div className="related-product-category"> {props.product.category}</div>
-      <div className="related-product-name">{props.product.name}</div>
-      <div className="related-product-price">{props.product.default_price}</div>
+      <ProductImage currentItem={current} />
+      <div className="related-product-category"> {props.related.category}</div>
+      <div className="related-product-name">{props.related.name}</div>
+      <div className="related-product-price">{props.related.default_price}</div>
     </div>
   )
 }

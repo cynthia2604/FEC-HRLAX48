@@ -3,3 +3,21 @@
   flex-direction: row;
   justify-content: flex-start;
 }
+
+.related-product-image {
+  margin: 1em 0;
+  text-align: center;
+}
+
+.related-product-image img {
+  width: 15vw;
+  height: 15vw;
+}
+
+.related-product-image-cover img {
+  object-fit: cover;
+}
+
+.related-product-image-contain img {
+  object-fit: contain;
+}
