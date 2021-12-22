@@ -2,11 +2,11 @@ import React from "react";
 
 export default function Description({ productDetail }) {
   return (
-    <div>
-      <p className="pd__slogan">
+    <div className="pd__description">
+      <p>
         <b>{productDetail.slogan}</b>
       </p>
-      <p className="pd__description">{productDetail.description}</p>
+      <p>{productDetail.description}</p>
     </div>
   );
 }

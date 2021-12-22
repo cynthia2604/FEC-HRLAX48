@@ -31,25 +31,23 @@ export default function Overview({ selected }) {
   return (
     <div>
       Overview Component
-      {console.log(productDetail)}
-      {console.log(productStyles)}
       <div className="pd">
-        <div class="d-flex flex-row">
-          <span class="p-2">
+        <div className="d-flex flex-row">
+          <span className="w-75 p-3">
             <ImageGallery productStyles={productStyles} />
           </span>
-          <span class="p-2">
+          <span className="w-25 p-3">
             <ProductInfo
               productDetail={productDetail}
               productStyles={productStyles}
             />
           </span>
         </div>
-        <div class="d-flex flex-row">
-          <span class="p-2">
+        <div className="d-flex flex-row">
+          <span className="w-75 p-3">
             <Description productDetail={productDetail} />
           </span>
-          <span class="p-2">
+          <span className="w-25 p-3">
             <Features productDetail={productDetail} />
           </span>
         </div>

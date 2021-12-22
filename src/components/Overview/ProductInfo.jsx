@@ -6,11 +6,12 @@ import AddToBag from "./AddToBag";
 export default function ProductInfo({ productDetail, productStyles }) {
   return (
     <div>
-      <div>⭐⭐⭐⭐⭐</div>
+      <span>☆☆☆☆☆</span>
+      <span>Read All Reviews</span>
       <p className="pd__category">{productDetail.category}</p>
-      <h1 className="pd__name">{productDetail.name}</h1>
+      <h2 className="pd__name">{productDetail.name}</h2>
       <p className="pd__price">{"$" + productDetail.default_price}</p>
-      <StyleSelector productStyle={productStyles} />
+      <StyleSelector productStyles={productStyles} />
       <AddToBag />
     </div>
   );

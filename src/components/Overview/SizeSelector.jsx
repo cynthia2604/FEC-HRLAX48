@@ -2,7 +2,7 @@ import React from "react";
 
 export default function SizeSelector(props) {
   return (
-    <span>
+    <span className="p-2">
       <div className="dropdown show">
         <a
           className="btn btn-light btn-secondary dropdown-toggle"
