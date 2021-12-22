@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import Options from '../../configEXAMPLE.js';
+import Options from '../../config.js';
 import ProductImage from './ProductImage'
 
 export default function RelatedProductEntry(props) {

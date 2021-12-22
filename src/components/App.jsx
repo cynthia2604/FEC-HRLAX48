@@ -1,11 +1,11 @@
 import React from "react";
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import RatingsAndReviews from './RatingsReviews'
-import Overview from './Overview'
-import RelatedItems from './RelatedItems'
-import Catalogue from './Catalogue'
-import Options from '../configEXAMPLE'
+import "bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import RatingsAndReviews from "./RatingsReviews"
+import Overview from "./Overview"
+import RelatedItems from "./RelatedItems"
+import Catalogue from "./Catalogue"
+import Options from "../config"
 import axios from "axios";
 
 export default function App(props) {

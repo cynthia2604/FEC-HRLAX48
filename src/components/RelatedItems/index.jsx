@@ -1,7 +1,7 @@
 import React from "react";
 import RelatedProductEntry from './RelatedProductEntry'
 import axios from 'axios';
-import Options from '../../configEXAMPLE.js';
+import Options from '../../config.js';
 
 export default function RelatedItems(props) {
 
