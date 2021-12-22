@@ -76,21 +76,21 @@ body {
 
 .reviewTitle {
   font-weight: bold;
-  padding-top: 5px;
+  padding-top: 10px;
 }
 
 .reviewBody {
   font-weight: 400;
   font-size: 14px;
   color:rgb(100, 100, 100);
-  padding-top: 5px;
+  padding-top: 10px;
 }
 
 .reviewRecommended {
   font-weight: 400;
   font-size: 14px;
   color:rgb(100, 100, 100);
-  padding-top: 5px;
+  padding-top: 10px;
 }
 
 .reviewDivider {
