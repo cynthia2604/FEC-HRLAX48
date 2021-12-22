@@ -8,8 +8,6 @@ import Options from "../config"
 export default function Detail(props) {
   const [rating, setRating] = React.useState(5)
 
-  const [rating, setRating] = React.useState(5)
-
   React.useEffect(() => {
     axios.get(`${Options.URL}/reviews/?product_id=${props.selected.id}&count=99`, {
       headers: {

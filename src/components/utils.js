@@ -85,8 +85,4 @@ const utils = {
   }
 }
 
-<<<<<<< HEAD
-module.exports = utils
-=======
 export default utils;
->>>>>>> 3a44e21596d9819214a7d2b9401897489a9e3f1e
