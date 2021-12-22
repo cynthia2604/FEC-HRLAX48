@@ -7,7 +7,7 @@ import Description from "./Description";
 import Features from "./Features";
 import "../../styles.css";
 
-export default function Overview({ selected }) {
+export default function Overview({ selected, rating }) {
   const [productDetail, setProductDetail] = React.useState({});
   const [productStyles, setProductStyles] = React.useState({});
 
@@ -40,6 +40,7 @@ export default function Overview({ selected }) {
             <ProductInfo
               productDetail={productDetail}
               productStyles={productStyles}
+              rating={rating}
             />
           </span>
         </div>
