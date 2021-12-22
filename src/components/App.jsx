@@ -14,14 +14,14 @@ export default function App(props) {
   const [selected, setSelected] = React.useState({});
 
   React.useEffect(() => {
-    axios
-      .get(`${Options.URL}/products/`, {
-        headers: {
-          Authorization: Options.TOKEN,
-        },
-      })
-      .then((res) => setProducts(res.data));
-  }, []);
+    axios.get(`${Options.URL}/products/?count=20`, {
+      headers: {
+        Authorization: Options.TOKEN
+      }
+    })
+      .then(res => setProducts(res.data))
+  }, [])
+
 
   return (
     <>
@@ -39,7 +39,7 @@ export default function App(props) {
           <div onClick={() => setView("catalogue")}>GO TO CATALOGUE</div>
           <Overview selected={selected} />
           <RelatedItems />
-          <RatingsAndReviews />
+          <RatingsAndReviews selected={selected}/>
         </div>
       )}
     </>
