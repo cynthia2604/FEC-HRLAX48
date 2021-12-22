@@ -22,11 +22,11 @@ export default function RatingsAndReviews(props) {
 
   return (
     <>
-      <div className='sectionTitle'>
+      <div className='sectionTitle pt-5'>
         {`RATINGS & REVIEWS`}
       </div>
       {productInfo &&
-      <div className='reviews'>
+      <div className='reviews pt-3'>
         <div className='reviews-left'>
           <StarColumn rating={props.rating} productInfo={productInfo} starRating={utils.starRating}/>
         </div>
