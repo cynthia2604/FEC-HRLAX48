@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+}
+
+.container {
+  margin: auto;
+  width: 90%;
+}
+
+.sectionTitle {
+  font-weight: 300;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+.reviews {
+  display: flex;
+  width: 100%;
+}
+
+.reviews-left {
+  width: 30%;
+  height: 500px;
+  margin-right: 5%;
+  background-color: bisque;
+}
+
+.reviews-right {
+  width: 65%;
+  background-color: blanchedalmond;
+}
+
+.reviewRating {
+  font-size: 60px;
+  font-weight: bold;
+  margin-top: -15px;
+  padding-right: 10px;
+}
+
+.ratingAmount {
+  display: flex;
+  justify-content: start;
+}
+
+.reviewTop {
+  display: flex;
+  align-items: center;
+}
