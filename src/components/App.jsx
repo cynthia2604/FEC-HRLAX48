@@ -1,11 +1,12 @@
 import React from "react";
-import "bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import RatingsAndReviews from "./RatingsReviews"
-import Overview from "./Overview"
-import RelatedItems from "./RelatedItems"
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
+import $ from 'jquery';
+import Popper from 'popper.js';
 import Catalogue from "./Catalogue"
 import Options from "../config"
+import Detail from "./Detail";
 import axios from "axios";
 
 export default function App(props) {
@@ -34,15 +35,12 @@ export default function App(props) {
         </div>
       )}
       {view === "detail" && (
-        <div>
-          <div onClick={() => setView('catalogue')}>GO TO CATALOGUE</div>
-          <Overview />
-          <RelatedItems products={products} selected ={selected}/>
-          <RatingsAndReviews />
-          <div onClick={() => setView("catalogue")}>GO TO CATALOGUE</div>
-          <Overview selected={selected} />
-          <RelatedItems />
-          <RatingsAndReviews selected={selected}/>
+        <div className="container">
+          <Detail
+          selected={selected}
+          products={products}
+          setView={setView}
+          setSelected={setSelected} />
         </div>
       )}
     </>
