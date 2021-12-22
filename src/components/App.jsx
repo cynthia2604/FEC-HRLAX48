@@ -5,7 +5,7 @@ import RatingsAndReviews from './RatingsReviews'
 import Overview from './Overview'
 import RelatedItems from './RelatedItems'
 import Catalogue from './Catalogue'
-import Options from '../config'
+import Options from '../configEXAMPLE'
 import axios from "axios";
 
 export default function App(props) {
@@ -36,7 +36,7 @@ export default function App(props) {
           {console.log(selected)}
           <div onClick={() => setView('catalogue')}>GO TO CATALOGUE</div>
           <Overview />
-          <RelatedItems />
+          <RelatedItems products={products}/>
           <RatingsAndReviews />
         </div>
         }
