@@ -7,11 +7,55 @@ export default function ReviewColumn(props) {
   const [reviewCount, setReviewCount] = React.useState(2)
   const [moreReviews, setMoreReviews] = React.useState(true)
   const [addReview, setAddReview] = React.useState(false)
+  const [sort, setSort] = React.useState('relevance')
 
-  const reviews = props.productInfo.results.slice(0, reviewCount).map(review => (
+  let compare
+  let reviews = []
+
+  if (sort === 'relevance') {
+    compare = function(a, b) {
+      if (a.helpful < b.helpful) {
+        return -1;
+      }
+      if (a.helpful > b.helpful) {
+        return 1;
+      }
+      return 0;
+    }
+  }
+  if (sort === 'helpful') {
+    compare = function(a, b) {
+      if (a.helpful < b.helpful) {
+        return -1;
+      }
+      if (a.helpful > b.helpful) {
+        return 1;
+      }
+      return 0;
+    }
+  }
+  if (sort === 'newest') {
+    compare = function(a, b) {
+      if (a.date < b.date) {
+        return 1;
+      }
+      if (a.date > b.date) {
+        return -1;
+      }
+      return 0;
+    }
+  }
+
+  if (compare) {
+    reviews = props.productInfo.results.sort(compare).slice(0, reviewCount)
+  } else {
+    reviews = props.productInfo.results.slice(0, reviewCount)
+  }
+
+  const sorted = reviews.map(review => (
     <Review
-      review={review}
-      key={review.review_id}
+    review={review}
+    key={review.review_id}
       starRating={props.starRating}
       reviewCount={reviewCount}
       setReviewCount={setReviewCount}
@@ -41,10 +85,23 @@ export default function ReviewColumn(props) {
     }
   }
 
+  function handleChange(e) {
+    setSort(e.target.value)
+    props.refresh()
+  }
+
   return (
     <div>
+      <div className="h4">
+      {props.productInfo.results.length} Reviews, sorted by
+      <select value={sort} onChange={handleChange} className="ms-1 px-1">
+        <option>newest</option>
+        <option>relevance</option>
+        <option>helpful</option>
+      </select>
+      </div>
       <div className="reviewColumn" onScroll={scrollCheck}>
-        {reviews}
+        {sorted}
       </div>
       <div className="reviewButtons pt-3 container">
         {moreReviews &&

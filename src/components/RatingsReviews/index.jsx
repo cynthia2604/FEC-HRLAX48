@@ -17,7 +17,7 @@ export default function RatingsAndReviews(props) {
   }, [props.selected])
 
   function fetchReviews() {
-    axios.get(`${Options.URL}/reviews/?product_id=${props.selected.id}&count=10`, {
+    axios.get(`${Options.URL}/reviews/?product_id=${props.selected.id}&count=999`, {
       headers: {
         Authorization: Options.TOKEN
       }
