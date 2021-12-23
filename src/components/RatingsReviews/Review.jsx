@@ -3,14 +3,18 @@ import moment from "moment"
 
 export default function Review(props) {
 
+  const [showMore, setShowMore] = React.useState(250)
+
   function recommended() {
     if (props.review.recommend) {
       return (
         <div className="reviewRecommended">
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black" className="bi bi-check2" viewBox="0 0 16 16">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="black" className="bi bi-check2" viewBox="0 0 16 16">
             <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
           </svg>
-          I recommend this product
+          <span className="ps-2">
+            I recommend this product
+          </span>
         </div>
       )
     }
@@ -30,9 +34,21 @@ export default function Review(props) {
         {props.review.summary}
       </div>
       <div className="reviewBody">
-        {props.review.body}
+        {props.review.body.slice(0, showMore)}
+        {showMore === 250 && props.review.body.length > 250 &&
+        <p className="cP reviewBodyShowMore" onClick={() => setShowMore(999)}>Show More...</p>
+        }
       </div>
-        {recommended()}
+      {recommended()}
+      <div className="w-100">
+        Response Block
+      </div>
+      <div>
+        Photos
+      </div>
+      <div>
+        Helpful?
+      </div>
       <div className='reviewDivider'></div>
     </div>
   )
