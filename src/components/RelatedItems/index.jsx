@@ -5,7 +5,8 @@ import OutfitList from './OutfitList'
 import Options from '../../config.js';
 
 export default function RelatedItems(props) {
-  const [relatedItems, setRelatedItems] = React.useState([])
+  const [relatedItems, setRelatedItems] = React.useState([]);
+  const [whoRender, setWhoRender] = React.useState('related')
 
   React.useEffect(() => {
       axios.get(`${Options.URL}/products/${props.selected.id}/related`, {
@@ -20,7 +21,7 @@ export default function RelatedItems(props) {
 
   const entry = relatedItems.map(product => (
     <div className="related-products-card" key={product.id}>
-      <ProductCardEntry currentItem={product}/>
+      <ProductCardEntry currentItem={product} render={whoRender}/>
     </div>
   ))
 
@@ -36,7 +37,7 @@ export default function RelatedItems(props) {
             currentView={props.selected}
             setSaved={props.setSaved}
             outfits={props.outfits}
-            rating={props.rating}
+            whoRender={setWhoRender}
           />
         </div>
     </div>
