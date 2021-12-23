@@ -24,7 +24,7 @@ export default function RelatedProductEntry(props) {
     <div className="related-product-card-entry">
       {current &&
       <div>
-        <ProductImage currentItem={current} />
+        <ProductImage currentItem={current} render={props.render}/>
         <div className="related-product-category"> {props.currentItem.category}</div>
         <div className="related-product-name">{props.currentItem.name}</div>
         <div className="related-product-price">{props.currentItem.default_price}</div>
