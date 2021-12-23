@@ -1,9 +1,13 @@
 import React from "react"
 import moment from "moment"
+import axios from "axios"
+import Options from "../../config"
 
 export default function Review(props) {
 
   const [showMore, setShowMore] = React.useState(250)
+  const [marked, setMarked] = React.useState(false)
+  const [helpful, setHelpful] = React.useState(props.review.helpfulness)
 
   function recommended() {
     if (props.review.recommend) {
@@ -20,11 +24,37 @@ export default function Review(props) {
     }
   }
 
+  function markHelpful() {
+    if (!marked) {
+      axios.put(`${Options.URL}/reviews/${props.review.review_id}/helpful`, null, {
+        headers: {
+          Authorization: Options.TOKEN
+        }
+      })
+        .then(() => {
+          setMarked(true)
+          setHelpful(helpful + 1)
+        })
+    }
+  }
+
+  function reportReview() {
+    axios.put(`${Options.URL}/reviews/${props.review.review_id}/report`, null, {
+      headers: {
+        Authorization: Options.TOKEN
+      }
+    })
+      .then(() => {
+        props.refresh()
+        alert('Thank you for your report. You shouldn\'t see this review anymore')
+      })
+  }
+
+
   function imageModal(imageURL) {
     // Doesnt do anything yet because we don't actually have images in reviews...
   }
 
-  console.log(props.review)
 
   return (
     <div className='review'>
@@ -69,16 +99,16 @@ export default function Review(props) {
         <div>
           Was this review helpful?
         </div>
-        <div className="cP reviewBodyShowMore ps-2 pe-1">
+        <div className="cP reviewBodyShowMore ps-2 pe-1" onClick={markHelpful}>
           Yes
         </div>
         <div>
-          ({props.review.helpfulness})
+          ({helpful})
         </div>
         <div className="px-2">
           |
         </div>
-        <div className="cP reviewBodyShowMore">
+        <div className="cP reviewBodyShowMore" onClick={reportReview}>
           Report
         </div>
       </div>
