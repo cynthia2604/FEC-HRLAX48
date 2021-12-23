@@ -11,7 +11,7 @@ export default function AddReview(props) {
   const [comfort, setComfort] = React.useState()
   const [quality, setQuality] = React.useState()
   const [length, setLength] = React.useState()
-  const [fit, setfit] = React.useState()
+  const [fit, setFit] = React.useState()
 
 
   function textRating(rating) {
@@ -68,139 +68,151 @@ export default function AddReview(props) {
                   </div>
                 </div>
                 <div className="form-group">
-                  <label htmlFor="recommend" className="col-form-label pe-2">Product Characteristics*</label><br/>
-                  <div>
+                  <label htmlFor="recommend" className="col-form-label pe-2">Product Characteristics*</label>
+                  {props.productMeta.characteristics.Size &&
+                  <div className="pt-3 d-flex justify-content-between">
                     <label className="radio-label-vertical">
-                      <input type="radio" name="size" value="1" required onClick={() => setSize(1)}></input>
+                      <input type="radio" name="size" value="1" onClick={() => setSize(1)}></input>
                       A size too small
                     </label>
                     <label className="radio-label-vertical">
-                      <input type="radio" name="size" value="2" required onClick={() => setSize(2)}></input>
+                      <input type="radio" name="size" value="2" onClick={() => setSize(2)}></input>
                       1/2 size too small
                     </label>
                     <label className="radio-label-vertical">
-                      <input type="radio" name="size" value="3" required onClick={() => setSize(3)}></input>
+                      <input type="radio" name="size" value="3" onClick={() => setSize(3)}></input>
                       Perfect
                     </label>
                     <label className="radio-label-vertical">
-                      <input type="radio" name="size" value="4" required onClick={() => setSize(4)}></input>
+                      <input type="radio" name="size" value="4" onClick={() => setSize(4)}></input>
                       1/2 size too big
                     </label>
                     <label className="radio-label-vertical">
-                      <input type="radio" name="size" value="5" required onClick={() => setSize(5)}></input>
+                      <input type="radio" name="size" value="5" onClick={() => setSize(5)}></input>
                       A size too big
                     </label>
                   </div>
-                  <div className="pt-3">
+                  }
+                  {props.productMeta.characteristics.Width &&
+                    <div className="pt-3 d-flex justify-content-between">
                     <label className="radio-label-vertical">
-                      <input type="radio" name="width" value="1" required onClick={() => setWidth(1)}></input>
+                      <input type="radio" name="width" value="1" onClick={() => setWidth(1)}></input>
                       Too narrow
                     </label>
                     <label className="radio-label-vertical">
-                      <input type="radio" name="width" value="2" required onClick={() => setWidth(2)}></input>
+                      <input type="radio" name="width" value="2" onClick={() => setWidth(2)}></input>
                       Slightly narrow
                     </label>
                     <label className="radio-label-vertical">
-                      <input type="radio" name="width" value="3" required onClick={() => setWidth(3)}></input>
+                      <input type="radio" name="width" value="3" onClick={() => setWidth(3)}></input>
                       Perfect
                     </label>
                     <label className="radio-label-vertical">
-                      <input type="radio" name="width" value="4" required onClick={() => setWidth(4)}></input>
+                      <input type="radio" name="width" value="4" onClick={() => setWidth(4)}></input>
                       Slightly wide
                     </label>
                     <label className="radio-label-vertical">
-                      <input type="radio" name="width" value="5" required onClick={() => setWidth(5)}></input>
+                      <input type="radio" name="width" value="5" onClick={() => setWidth(5)}></input>
                       Too wide
                     </label>
                   </div>
-                  <div className="pt-3">
+                  }
+                  {props.productMeta.characteristics.Comfort &&
+                    <div className="pt-3 d-flex justify-content-between">
                     <label className="radio-label-vertical">
-                      <input type="radio" name="comfort" value="1" required onClick={() => setComfort(1)}></input>
+                      <input type="radio" name="comfort" value="1" onClick={() => setComfort(1)}></input>
                       Uncomfortable
                     </label>
                     <label className="radio-label-vertical">
-                      <input type="radio" name="comfort" value="2" required onClick={() => setComfort(2)}></input>
+                      <input type="radio" name="comfort" value="2" onClick={() => setComfort(2)}></input>
                       Slightly uncomfortable
                     </label>
                     <label className="radio-label-vertical">
-                      <input type="radio" name="comfort" value="3" required onClick={() => setComfort(3)}></input>
+                      <input type="radio" name="comfort" value="3" onClick={() => setComfort(3)}></input>
                       Ok
                     </label>
                     <label className="radio-label-vertical">
-                      <input type="radio" name="comfort" value="4" required onClick={() => setComfort(4)}></input>
+                      <input type="radio" name="comfort" value="4" onClick={() => setComfort(4)}></input>
                       Comfortable
                     </label>
                     <label className="radio-label-vertical">
-                      <input type="radio" name="comfort" value="5" required onClick={() => setComfort(5)}></input>
+                      <input type="radio" name="comfort" value="5" onClick={() => setComfort(5)}></input>
                       Perfect
                     </label>
                   </div>
-                  <div className="pt-3">
+                  }
+                  {props.productMeta.characteristics.Quality &&
+                    <div className="pt-3 d-flex justify-content-between">
                     <label className="radio-label-vertical">
-                      <input type="radio" name="quality" value="1" required onClick={() => setQuality(1)}></input>
+                      <input type="radio" name="quality" value="1" onClick={() => setQuality(1)}></input>
                       Poor
                     </label>
                     <label className="radio-label-vertical">
-                      <input type="radio" name="quality" value="2" required onClick={() => setQuality(2)}></input>
+                      <input type="radio" name="quality" value="2" onClick={() => setQuality(2)}></input>
                       Below Average
                     </label>
                     <label className="radio-label-vertical">
-                      <input type="radio" name="quality" value="3" required onClick={() => setQuality(3)}></input>
+                      <input type="radio" name="quality" value="3" onClick={() => setQuality(3)}></input>
                       What I Expected
                     </label>
                     <label className="radio-label-vertical">
-                      <input type="radio" name="quality" value="4" required onClick={() => setQuality(4)}></input>
+                      <input type="radio" name="quality" value="4" onClick={() => setQuality(4)}></input>
                       Pretty Great
                     </label>
                     <label className="radio-label-vertical">
-                      <input type="radio" name="quality" value="5" required onClick={() => setQuality(5)}></input>
+                      <input type="radio" name="quality" value="5" onClick={() => setQuality(5)}></input>
                       Perfect
                     </label>
                   </div>
-                  <div className="pt-3">
+                  }
+                  {props.productMeta.characteristics.Length &&
+                    <div className="pt-3 d-flex justify-content-between">
                     <label className="radio-label-vertical">
-                      <input type="radio" name="length" value="1" required onClick={() => setLength(1)}></input>
+                      <input type="radio" name="length" value="1" onClick={() => setLength(1)}></input>
                       Runs Short
                     </label>
                     <label className="radio-label-vertical">
-                      <input type="radio" name="length" value="2" required onClick={() => setLength(2)}></input>
+                      <input type="radio" name="length" value="2" onClick={() => setLength(2)}></input>
                       Runs Slightly Short
                     </label>
                     <label className="radio-label-vertical">
-                      <input type="radio" name="length" value="3" required onClick={() => setLength(3)}></input>
+                      <input type="radio" name="length" value="3" onClick={() => setLength(3)}></input>
                       Perfect
                     </label>
                     <label className="radio-label-vertical">
-                      <input type="radio" name="length" value="4" required onClick={() => setLength(4)}></input>
+                      <input type="radio" name="length" value="4" onClick={() => setLength(4)}></input>
                       Runs Slightly Long
                     </label>
                     <label className="radio-label-vertical">
-                      <input type="radio" name="length" value="5" required onClick={() => setLength(5)}></input>
+                      <input type="radio" name="length" value="5" onClick={() => setLength(5)}></input>
                       Runs Long
                     </label>
                   </div>
-                  <div className="pt-3">
+                  }
+                  {props.productMeta.characteristics.Fit &&
+                    <div className="pt-3 d-flex justify-content-between">
                     <label className="radio-label-vertical">
-                      <input type="radio" name="fit" value="1" required onClick={() => setFit(1)}></input>
+                      <input type="radio" name="fit" value="1" onClick={() => setFit(1)}></input>
                       Runs Tight
                     </label>
                     <label className="radio-label-vertical">
-                      <input type="radio" name="fit" value="2" required onClick={() => setFit(2)}></input>
+                      <input type="radio" name="fit" value="2" onClick={() => setFit(2)}></input>
                       Runs Slightly Tight
                     </label>
                     <label className="radio-label-vertical">
-                      <input type="radio" name="fit" value="3" required onClick={() => setFit(3)}></input>
+                      <input type="radio" name="fit" value="3" onClick={() => setFit(3)}></input>
                       Perfect
                     </label>
                     <label className="radio-label-vertical">
-                      <input type="radio" name="fit" value="4" required onClick={() => setFit(4)}></input>
+                      <input type="radio" name="fit" value="4" onClick={() => setFit(4)}></input>
                       Runs Slightly Long
                     </label>
                     <label className="radio-label-vertical">
-                      <input type="radio" name="fit" value="5" required onClick={() => setFit(5)}></input>
+                      <input type="radio" name="fit" value="5" onClick={() => setFit(5)}></input>
                       Runs Long
                     </label>
                   </div>
+                }
                 </div><br/>
                 <div className="form-group">
                   <label htmlFor="message-text" className="col-form-label">Message:</label>
