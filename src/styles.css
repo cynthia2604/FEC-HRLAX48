@@ -157,7 +157,7 @@ body {
   padding-bottom: 13px;
   position: relative;
   display: inline-block;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .radio-label-vertical-wrapper:before {

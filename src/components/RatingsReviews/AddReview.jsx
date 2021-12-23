@@ -12,6 +12,8 @@ export default function AddReview(props) {
   const [quality, setQuality] = React.useState()
   const [length, setLength] = React.useState()
   const [fit, setFit] = React.useState()
+  const [summary, setSummary] = React.useState('')
+  const [body, setBody] = React.useState('')
 
 
   function textRating(rating) {
@@ -68,7 +70,7 @@ export default function AddReview(props) {
                   </div>
                 </div>
                 <div className="form-group">
-                  <label htmlFor="recommend" className="col-form-label pe-2">Product Characteristics*</label>
+                  <label htmlFor="recommend" className="col-form-label">Product Characteristics*</label>
                   {props.productMeta.characteristics.Size &&
                   <div className="pt-3 d-flex justify-content-between">
                     <label className="radio-label-vertical">
@@ -213,16 +215,20 @@ export default function AddReview(props) {
                     </label>
                   </div>
                 }
-                </div><br/>
+                </div>
+                <div className="form-group pt-4">
+                  <label htmlFor="summary-text" className="col-form-label">Review Summary:</label>
+                  <textarea className="form-control" id="summary-text" maxLength={60} onChange={(e) => setSummary(e.target.value)} placeholder="Example: Best Purchase Ever!"></textarea>
+                </div>
                 <div className="form-group">
-                  <label htmlFor="message-text" className="col-form-label">Message:</label>
-                  <textarea className="form-control" id="message-text"></textarea>
+                  <label htmlFor="Body-text" className="col-form-label">Review Body*:</label>
+                  <textarea className="form-control" id="Body-text" minLength={50} onChange={(e) => setBody(e.target.value)} placeholder="Why did you like the product or not?"></textarea>
                 </div>
               </form>
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" className="btn btn-primary">Send message</button>
+              <button type="button" className="btn btn-primary">Submit Review</button>
             </div>
           </div>
         </div>
