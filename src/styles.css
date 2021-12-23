@@ -88,6 +88,10 @@ body {
   font-size: 14px;
 }
 
+.review {
+  font-size: 14px;
+}
+
 .reviewTop {
   display: flex;
   align-items: center;
