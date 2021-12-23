@@ -21,6 +21,8 @@ export default function AddReview(props) {
   const [nickname, setNickname] = React.useState('')
   const [email, setEmail] = React.useState('')
 
+  console.log(props)
+
   function handleSubmit() {
     let error = ['Errors:']
     if (!rating) {
@@ -61,22 +63,22 @@ export default function AddReview(props) {
     } else {
       let characteristics = {}
       if (props.productMeta.characteristics.Size) {
-        characteristics['14'] = size
+        characteristics[props.productMeta.characteristics.Size.id] = size
       }
       if (props.productMeta.characteristics.Width) {
-        characteristics['15'] = width
+        characteristics[props.productMeta.characteristics.Width.id] = width
       }
       if (props.productMeta.characteristics.Comfort) {
-        characteristics['16'] = comfort
+        characteristics[props.productMeta.characteristics.Comfort.id] = comfort
       }
       if (props.productMeta.characteristics.Quality) {
-        characteristics['17'] = quality
+        characteristics[props.productMeta.characteristics.Quality.id] = quality
       }
       if (props.productMeta.characteristics.Length) {
-        characteristics['18'] = length
+        characteristics[props.productMeta.characteristics.Length.id] = length
       }
       if (props.productMeta.characteristics.Fit) {
-        characteristics['19'] = fit
+        characteristics[props.productMeta.characteristics.Fit.id] = fit
       }
 
       axios.post(`${Options.URL}/reviews`, {
@@ -342,7 +344,7 @@ export default function AddReview(props) {
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" className="btn btn-primary" onClick={handleSubmit}>Submit Review</button>
+              <button type="button" className="btn btn-primary" onClick={handleSubmit} data-dismiss="modal">Submit Review</button>
             </div>
           </div>
         </div>
