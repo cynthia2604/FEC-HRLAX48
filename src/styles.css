@@ -8,6 +8,10 @@ body {
   width: 90%;
 }
 
+.cP {
+  cursor: pointer;
+}
+
 .sectionTitle {
   font-weight: 300;
   font-size: 16px;
@@ -60,6 +64,27 @@ body {
   justify-content: start;
 }
 
+.reviewColumn {
+  max-height: 400px;
+  overflow-y: scroll;
+  padding-right: 5px;
+  /* -ms-overflow-style: none;
+  scrollbar-width: 1em; */
+}
+
+.reviewColumn::-webkit-scrollbar {
+  width: 2px;
+}
+
+.reviewColumn::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);
+}
+
+.reviewColumn::-webkit-scrollbar-thumb {
+  background-color: rgb(80, 80, 80);
+  /* outline: 1px solid slategrey; */
+}
+
 .reviewTop {
   display: flex;
   align-items: center;
@@ -85,7 +110,15 @@ body {
   padding-top: 10px;
 }
 
+.reviewBodyShowMore {
+  padding-top: 5px;
+  font-size: 11px;
+  text-decoration-line: underline;
+}
+
 .reviewRecommended {
+  display: flex;
+  align-items: center;
   font-weight: 400;
   font-size: 14px;
   color:rgb(100, 100, 100);
@@ -99,26 +132,59 @@ body {
   margin-block: 15px;
 }
 
-.related-products-list {
+.reviewButtons {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.card-products-list {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
 }
 
-.related-product-image {
+.card-product-image {
   margin: 1em 0;
   text-align: center;
+  position: relative;
 }
 
-.related-product-image img {
+.card-product-image img {
   width: 15vw;
   height: 15vw;
 }
 
-.related-product-image-cover img {
+.card-product-image-cover img {
   object-fit: cover;
 }
 
-.related-product-image-contain img {
+.card-product-image-contain img {
   object-fit: contain;
+}
+
+/* .btn-square.btn-xl { */
+  /* width: 15vw;
+  height: 15vw; */
+  /* padding: 10px 16px; */
+  /* border-radius: 35px; */
+  /* font-size: 50px;
+  text-align: center; */
+  /* color:lightgrey; */
+/* } */
+
+.card-product-image .remove-card-entry {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border:black;
+  font: black;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  border-radius:5px;
+  border: solid 2px black;
+  border-radius: 50%;
+  overflow: hidden;
 }
