@@ -1,10 +1,12 @@
 import React from "react"
 import Review from "./Review"
+import AddReview from "./AddReview"
 
 export default function ReviewColumn(props) {
 
   const [reviewCount, setReviewCount] = React.useState(2)
   const [moreReviews, setMoreReviews] = React.useState(true)
+  const [addReview, setAddReview] = React.useState(false)
 
   const reviews = props.productInfo.results.slice(0, reviewCount).map(review => (
     <Review
@@ -48,8 +50,15 @@ export default function ReviewColumn(props) {
         {moreReviews &&
         <button className="btn btn-lg btn-outline-dark" onClick={addReviews}>More Reviews</button>
         }
-        <button className="btn btn-lg btn-outline-dark">+ Add a Review</button>
+        <button className="btn btn-lg btn-outline-dark" data-toggle="modal" data-target="#addReview" data-whatever="@mdo" onClick={() => setAddReview(true)}>+ Add a Review</button>
       </div>
+      {addReview &&
+      <AddReview
+        productInfo={props.productInfo}
+        productMeta={props.productMeta}
+        selected={props.selected}
+      />
+      }
     </div>
   )
 }

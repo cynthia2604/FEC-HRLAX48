@@ -8,10 +8,12 @@ import utils from '../utils'
 export default function RatingsAndReviews(props) {
 
   const [productInfo, setProductInfo] = React.useState()
+  const [productMeta, setProductMeta] = React.useState()
   const [percentage, setPercentage] = React.useState(100)
 
   React.useEffect(() => {
     fetchReviews()
+    fetchMeta()
   }, [props.selected])
 
   function fetchReviews() {
@@ -23,6 +25,15 @@ export default function RatingsAndReviews(props) {
       .then(res => setProductInfo(res.data))
   }
 
+  function fetchMeta() {
+    axios.get(`${Options.URL}/reviews/meta/?product_id=${props.selected.id}`, {
+      headers: {
+        Authorization: Options.TOKEN
+      }
+    })
+      .then(res => setProductMeta(res.data))
+  }
+
 
   return (
     <>
@@ -32,7 +43,12 @@ export default function RatingsAndReviews(props) {
       {productInfo &&
       <div className='reviews pt-3'>
         <div className='reviews-left'>
-          <StarColumn rating={props.rating} productInfo={productInfo} starRating={utils.starRating}/>
+          <StarColumn
+            rating={props.rating}
+            productInfo={productInfo}
+            productMeta={productMeta}
+            starRating={utils.starRating}
+          />
         </div>
         <div className='reviews-right'>
           <ReviewColumn
@@ -40,6 +56,8 @@ export default function RatingsAndReviews(props) {
             productInfo={productInfo}
             starRating={utils.starRating}
             refresh={fetchReviews}
+            selected={props.selected}
+            productMeta={productMeta}
           />
         </div>
       </div>
