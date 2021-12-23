@@ -31,7 +31,12 @@ export default function Detail(props) {
     <div>
       <div onClick={() => props.setView('catalogue')}>GO TO CATALOGUE</div>
       <Overview selected={props.selected} rating={rating}/>
-      <RelatedItems products={props.products} selected ={props.selected} setSaved={props.setSaved} outfits={props.outfits}/>
+      <RelatedItems
+        products={props.products}
+        selected ={props.selected}
+        setSaved={props.setSaved}
+        outfits={props.outfits}
+        />
       <RatingsAndReviews selected={props.selected} rating={rating} />
     </div>
   )

@@ -10,7 +10,7 @@ export default function RelatedProductEntry(props) {
 
   React.useEffect(()=>{
     const params = {
-      product_id: props.related.id
+      product_id: props.currentItem.id
     }
     axios.get(`${Options.URL}/products/${params.product_id}/styles/?count=20`, {
       headers: {
@@ -25,9 +25,9 @@ export default function RelatedProductEntry(props) {
       {current &&
       <div>
         <ProductImage currentItem={current} />
-        <div className="related-product-category"> {props.related.category}</div>
-        <div className="related-product-name">{props.related.name}</div>
-        <div className="related-product-price">{props.related.default_price}</div>
+        <div className="related-product-category"> {props.currentItem.category}</div>
+        <div className="related-product-name">{props.currentItem.name}</div>
+        <div className="related-product-price">{props.currentItem.default_price}</div>
         <RelatedItemRating currentItem={current} />
       </div>
       }

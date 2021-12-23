@@ -1,8 +1,7 @@
 import React from 'react';
-import RelatedProductEntry from './RelatedProductEntry'
+import ProductCardEntry from './ProductCardEntry'
 
 export default function OutfitList(props) {
-
 
   function saveOutfit(selected) {
     let noDuplicateOutfits = props.outfits.filter(product => product.id !== selected.id)
@@ -11,7 +10,7 @@ export default function OutfitList(props) {
 
   const entry = props.outfits.map(product => (
     <div className="user-card-list" key={product.id}>
-      <RelatedProductEntry related={product}/>
+      <ProductCardEntry currentItem={product}/>
     </div>
   ))
 

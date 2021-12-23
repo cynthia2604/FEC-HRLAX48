@@ -110,6 +110,7 @@ body {
 .card-product-image {
   margin: 1em 0;
   text-align: center;
+  position: relative;
 }
 
 .card-product-image img {
@@ -134,3 +135,18 @@ body {
   text-align: center; */
   /* color:lightgrey; */
 /* } */
+
+.card-product-image .remove-card-entry {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border:black;
+  font: black;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  border-radius:5px;
+  border: solid 2px black;
+  border-radius: 50%;
+  overflow: hidden;
+}

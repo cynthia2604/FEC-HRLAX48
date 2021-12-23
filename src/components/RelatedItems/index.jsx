@@ -1,5 +1,5 @@
 import React from "react";
-import RelatedProductEntry from './RelatedProductEntry'
+import ProductCardEntry from './ProductCardEntry'
 import axios from 'axios';
 import OutfitList from './OutfitList'
 import Options from '../../config.js';
@@ -20,7 +20,7 @@ export default function RelatedItems(props) {
 
   const entry = relatedItems.map(product => (
     <div className="related-products-card" key={product.id}>
-      <RelatedProductEntry related={product}/>
+      <ProductCardEntry currentItem={product}/>
     </div>
   ))
 
@@ -32,7 +32,12 @@ export default function RelatedItems(props) {
         </div>
       <div className="sectionTitle">YOUR OUTFITS</div>
         <div className="user-created-outfit">
-          <OutfitList currentView={props.selected} setSaved={props.setSaved} outfits={props.outfits}/>
+          <OutfitList
+            currentView={props.selected}
+            setSaved={props.setSaved}
+            outfits={props.outfits}
+            rating={props.rating}
+          />
         </div>
     </div>
   )
