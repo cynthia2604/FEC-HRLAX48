@@ -19,12 +19,17 @@ export default function RelatedProductEntry(props) {
     }).then(res => setCurrent(res.data))
   }, [])
 
-
   return (
     <div className="related-product-card-entry">
       {current &&
       <div>
-        <ProductImage currentItem={current} render={props.render}/>
+        <ProductImage
+          currentItem={current}
+          render={props.render}
+          setSaved={props.setSaved}
+          outfits={props.outfits}
+          whoRender={props.whoRender}
+        />
         <div className="related-product-category"> {props.currentItem.category}</div>
         <div className="related-product-name">{props.currentItem.name}</div>
         <div className="related-product-price">{props.currentItem.default_price}</div>
