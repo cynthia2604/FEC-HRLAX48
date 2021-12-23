@@ -24,8 +24,6 @@ body {
 
 .pd__style-icon {
   border-radius: 50%;
-  width: 25px;
-  height: 25px;
   filter: saturate(10%);
   border: none;
 }
