@@ -78,17 +78,7 @@ export default function AddReview(props) {
       if (props.productMeta.characteristics.Fit) {
         characteristics['19'] = fit
       }
-      console.log({
-        product_id: props.selected.id,
-        rating: rating,
-        summary: summary,
-        body: body,
-        recommend: recommend,
-        name: nickname,
-        email: email,
-        photos: photos,
-        characteristics: characteristics
-      })
+
       axios.post(`${Options.URL}/reviews`, {
         product_id: props.selected.id,
         rating: rating,
@@ -107,7 +97,7 @@ export default function AddReview(props) {
       })
       .then(() => alert('Review Submitted!'))
       .then(() => props.refresh())
-      .catch(err => alert(`Could not submit review: ${err}`))
+      .catch(err => alert(err))
     }
   }
 
@@ -140,7 +130,7 @@ export default function AddReview(props) {
     if (e.target.files.length >= 5) {
       setFull(true)
     }
-    setPhotos(e.target.files)
+    // setPhotos(e.target.files)
   }
 
 
