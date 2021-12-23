@@ -32,9 +32,15 @@ export default function ReviewColumn(props) {
     }
   }
 
+  function scrollCheck(e) {
+    if (e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight) {
+      addReviews()
+    }
+  }
+
   return (
     <div>
-      <div>
+      <div className="reviewColumn" onScroll={scrollCheck}>
         {reviews}
       </div>
       <div className="reviewButtons pt-3 container">
