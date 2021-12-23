@@ -2,10 +2,10 @@ import React from 'react';
 
 export default function ProductImage(props) {
 
-  const [whoRender, setWhoRender] = React.useState('related')
-  // React.useEffect(() => {
-  //   props.whoRender('related')
-  // }, [])
+  // const [whoRender, setWhoRender] = React.useState('related')
+  React.useEffect(() => {
+    props.whoRender('related')
+  }, [])
 
   function removeOutfit(selected) {
     let currentOutfits = props.outfits
@@ -18,7 +18,7 @@ export default function ProductImage(props) {
     return(
       <div className="card-product-image">
         <img src={`${props.currentItem.results[0].photos[0].url}`}/>
-        <button className="modal-button"  onClick={()=> setWhoRender('outfit')}>x</button>
+        <button className="modal-button" >x</button>
       </div>
     )
   } else {
