@@ -67,11 +67,9 @@ body {
 }
 
 .reviewColumn {
-  max-height: 400px;
+  max-height: 500px;
   overflow-y: scroll;
   padding-right: 5px;
-  /* -ms-overflow-style: none;
-  scrollbar-width: 1em; */
 }
 
 .reviewColumn::-webkit-scrollbar {
@@ -84,7 +82,6 @@ body {
 
 .reviewColumn::-webkit-scrollbar-thumb {
   background-color: rgb(80, 80, 80);
-  /* outline: 1px solid slategrey; */
 }
 
 .review {
@@ -111,13 +108,11 @@ body {
 
 .reviewBody {
   font-weight: 400;
-  font-size: 14px;
   color:rgb(100, 100, 100);
   padding-top: 10px;
 }
 
 .reviewBodyShowMore {
-  padding-top: 5px;
   font-size: 11px;
   text-decoration-line: underline;
 }
@@ -126,7 +121,6 @@ body {
   display: flex;
   align-items: center;
   font-weight: 400;
-  font-size: 14px;
   color:rgb(100, 100, 100);
   padding-top: 10px;
 }
@@ -136,6 +130,10 @@ body {
   width: 100%;
   margin-top: 10px;
   padding: 15px;
+}
+
+.reviewHelpful {
+  font-size: 11px;
 }
 
 .reviewDivider {
