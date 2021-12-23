@@ -3,15 +3,23 @@ import ProductCardEntry from './ProductCardEntry'
 
 export default function OutfitList(props) {
 
+  const [whoRender, setWhoRender] = React.useState('related')
+
   function saveOutfit(selected) {
     let noDuplicateOutfits = props.outfits.filter(product => product.id !== selected.id)
     props.setSaved([...noDuplicateOutfits, selected])
-    props.setWhoRender('outfit')
+    props.whoRender('outfit')
   }
 
   const entry = props.outfits.map(product => (
     <div className="user-card-list" key={product.id}>
-      <ProductCardEntry currentItem={product} render={props.render}/>
+      <ProductCardEntry
+        currentItem={product}
+        render={props.render}
+        setSaved={props.setSaved}
+        outfits={props.outfits}
+        whoRender={props.whoRender}
+      />
     </div>
   ))
 
@@ -25,3 +33,4 @@ export default function OutfitList(props) {
     </div>
   )
 }
+

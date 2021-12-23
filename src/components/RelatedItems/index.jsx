@@ -21,7 +21,7 @@ export default function RelatedItems(props) {
 
   const entry = relatedItems.map(product => (
     <div className="related-products-card" key={product.id}>
-      <ProductCardEntry currentItem={product} render={whoRender}/>
+      <ProductCardEntry currentItem={product} render={whoRender} whoRender={setWhoRender}/>
     </div>
   ))
 
