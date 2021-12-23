@@ -13,6 +13,7 @@ export default function App(props) {
   const [view, setView] = React.useState("catalogue");
   const [products, setProducts] = React.useState([]);
   const [selected, setSelected] = React.useState({});
+  const [saved, setSaved] = React.useState([])
 
   React.useEffect(() => {
     axios
@@ -42,6 +43,8 @@ export default function App(props) {
             products={products}
             setView={setView}
             setSelected={setSelected}
+            setSaved={setSaved}
+            outfits={saved}
           />
         </div>
       )}
