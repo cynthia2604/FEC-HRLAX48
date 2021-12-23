@@ -11,13 +11,17 @@ export default function RatingsAndReviews(props) {
   const [percentage, setPercentage] = React.useState(100)
 
   React.useEffect(() => {
+    fetchReviews()
+  }, [props.selected])
+
+  function fetchReviews() {
     axios.get(`${Options.URL}/reviews/?product_id=${props.selected.id}&count=10`, {
       headers: {
         Authorization: Options.TOKEN
       }
     })
       .then(res => setProductInfo(res.data))
-  }, [props.selected])
+  }
 
 
   return (
@@ -31,7 +35,12 @@ export default function RatingsAndReviews(props) {
           <StarColumn rating={props.rating} productInfo={productInfo} starRating={utils.starRating}/>
         </div>
         <div className='reviews-right'>
-          <ReviewColumn rating={props.rating} productInfo={productInfo} starRating={utils.starRating}/>
+          <ReviewColumn
+            rating={props.rating}
+            productInfo={productInfo}
+            starRating={utils.starRating}
+            refresh={fetchReviews}
+          />
         </div>
       </div>
       }

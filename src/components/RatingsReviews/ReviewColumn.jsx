@@ -8,11 +8,12 @@ export default function ReviewColumn(props) {
 
   const reviews = props.productInfo.results.slice(0, reviewCount).map(review => (
     <Review
-    review={review}
-    key={review.review_id}
-    starRating={props.starRating}
-    reviewCount={reviewCount}
-    setReviewCount={setReviewCount}
+      review={review}
+      key={review.review_id}
+      starRating={props.starRating}
+      reviewCount={reviewCount}
+      setReviewCount={setReviewCount}
+      refresh={props.refresh}
     />
   ))
 
