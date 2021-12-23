@@ -57,6 +57,7 @@ export default function ReviewColumn(props) {
         productInfo={props.productInfo}
         productMeta={props.productMeta}
         selected={props.selected}
+        refresh={props.refresh}
       />
       }
     </div>

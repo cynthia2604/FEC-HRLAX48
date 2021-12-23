@@ -37,7 +37,7 @@ export default function RatingsAndReviews(props) {
 
   return (
     <>
-      <div className='sectionTitle pt-5'>
+      <div id="reviews" className='sectionTitle pt-5'>
         {`RATINGS & REVIEWS`}
       </div>
       {productInfo &&
