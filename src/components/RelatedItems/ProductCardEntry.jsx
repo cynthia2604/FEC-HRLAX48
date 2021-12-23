@@ -28,7 +28,7 @@ export default function RelatedProductEntry(props) {
           render={props.render}
           setSaved={props.setSaved}
           outfits={props.outfits}
-          whoRender={props.whoRender}
+          // whoRender={props.whoRender}
         />
         <div className="related-product-category"> {props.currentItem.category}</div>
         <div className="related-product-name">{props.currentItem.name}</div>

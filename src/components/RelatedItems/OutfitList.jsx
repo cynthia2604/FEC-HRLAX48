@@ -3,7 +3,6 @@ import ProductCardEntry from './ProductCardEntry'
 
 export default function OutfitList(props) {
 
-  const [whoRender, setWhoRender] = React.useState('related')
 
   function saveOutfit(selected) {
     let noDuplicateOutfits = props.outfits.filter(product => product.id !== selected.id)
@@ -18,7 +17,7 @@ export default function OutfitList(props) {
         render={props.render}
         setSaved={props.setSaved}
         outfits={props.outfits}
-        whoRender={props.whoRender}
+        // whoRender={props.whoRender}
       />
     </div>
   ))

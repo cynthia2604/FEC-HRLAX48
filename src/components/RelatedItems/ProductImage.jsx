@@ -2,24 +2,26 @@ import React from 'react';
 
 export default function ProductImage(props) {
 
-  React.useEffect(() => {
-    props.whoRender('related')
-  }, [])
+  const [whoRender, setWhoRender] = React.useState('related')
+  // React.useEffect(() => {
+  //   props.whoRender('related')
+  // }, [])
 
   function removeOutfit(selected) {
     let currentOutfits = props.outfits
     let removeOutfit = currentOutfits.filter((product) => product.id !== Number(selected.product_id));
+    setWhoRender('related')
     props.setSaved(removeOutfit)
   }
 
-  if (props.render === 'related') {
+  if (whoRender === 'related') {
     return(
       <div className="card-product-image">
         <img src={`${props.currentItem.results[0].photos[0].url}`}/>
-        <button className="modal-button">x</button>
+        <button className="modal-button"  onClick={()=> setWhoRender('outfit')}>x</button>
       </div>
     )
-  } else  {
+  } else {
     return(
       <div className="card-product-image">
       <img src={`${props.currentItem.results[0].photos[0].url}`}/>
