@@ -8,6 +8,10 @@ body {
   width: 90%;
 }
 
+.cP {
+  cursor: pointer;
+}
+
 .sectionTitle {
   font-weight: 300;
   font-size: 16px;
@@ -106,6 +110,12 @@ body {
   font-size: 14px;
   color:rgb(100, 100, 100);
   padding-top: 10px;
+}
+
+.reviewBodyShowMore {
+  padding-top: 5px;
+  font-size: 11px;
+  text-decoration-line: underline;
 }
 
 .reviewRecommended {

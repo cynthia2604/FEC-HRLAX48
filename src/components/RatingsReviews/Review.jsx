@@ -3,6 +3,8 @@ import moment from "moment"
 
 export default function Review(props) {
 
+  const [showMore, setShowMore] = React.useState(250)
+
   function recommended() {
     if (props.review.recommend) {
       return (
@@ -32,9 +34,21 @@ export default function Review(props) {
         {props.review.summary}
       </div>
       <div className="reviewBody">
-        {props.review.body}
+        {props.review.body.slice(0, showMore)}
+        {showMore === 250 && props.review.body.length > 250 &&
+        <p className="cP reviewBodyShowMore" onClick={() => setShowMore(999)}>Show More...</p>
+        }
       </div>
-        {recommended()}
+      {recommended()}
+      <div className="w-100">
+        Response Block
+      </div>
+      <div>
+        Photos
+      </div>
+      <div>
+        Helpful?
+      </div>
       <div className='reviewDivider'></div>
     </div>
   )
