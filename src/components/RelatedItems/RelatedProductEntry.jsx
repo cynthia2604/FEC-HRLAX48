@@ -2,10 +2,11 @@ import React from 'react';
 import axios from 'axios';
 import Options from '../../config.js';
 import ProductImage from './ProductImage'
+import RelatedItemRating from './RelatedItemRating'
 
 export default function RelatedProductEntry(props) {
 
-  const [ current, setCurrent ] = React.useState({results: [{photos: [{ url: ''}]}]})
+  const [ current, setCurrent ] = React.useState()
 
   React.useEffect(()=>{
     const params = {
@@ -21,11 +22,18 @@ export default function RelatedProductEntry(props) {
 
   return (
     <div className="related-product-card-entry">
-      <ProductImage currentItem={current} />
-      <div className="related-product-category"> {props.related.category}</div>
-      <div className="related-product-name">{props.related.name}</div>
-      <div className="related-product-price">{props.related.default_price}</div>
+      {current &&
+      <div>
+        <ProductImage currentItem={current} />
+        <div className="related-product-category"> {props.related.category}</div>
+        <div className="related-product-name">{props.related.name}</div>
+        <div className="related-product-price">{props.related.default_price}</div>
+        <RelatedItemRating currentItem={current} />
+      </div>
+      }
     </div>
   )
 }
+
+// {results: [{photos: [{ url: ''}]}]}
 
