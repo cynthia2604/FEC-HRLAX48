@@ -40,9 +40,16 @@ export default function Review(props) {
         }
       </div>
       {recommended()}
-      <div className="w-100">
-        Response Block
+      {!props.review.response &&
+      <div className="reviewResponse">
+        <div>
+          <strong>Response:</strong>
+        </div>
+        <div>
+          {props.review.response}This is a test response because all the other responses are null
+        </div>
       </div>
+      }
       <div>
         Photos
       </div>
