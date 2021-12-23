@@ -1,12 +1,14 @@
 import React from "react";
-import ProductCardEntry from './ProductCardEntry'
+import RelatedList from './RelatedList'
 import axios from 'axios';
-import OutfitList from './OutfitList'
+import OutfitList from './OutfitList';
+import Compare from './Compare'
 import Options from '../../config.js';
 
 export default function RelatedItems(props) {
   const [relatedItems, setRelatedItems] = React.useState([]);
-  const [whoRender, setWhoRender] = React.useState('related')
+  const [renderTable, setRenderTable] = React.useState(false);
+  const [selectRelated, setSelectRelated] = React.useState();
 
   React.useEffect(() => {
       axios.get(`${Options.URL}/products/${props.selected.id}/related`, {
@@ -17,19 +19,25 @@ export default function RelatedItems(props) {
         let related = props.products.filter(item => res.data.includes(item.id))
         setRelatedItems(related)
       })
-   }, [])
-
-  const entry = relatedItems.map(product => (
-    <div className="related-products-card" key={product.id}>
-      <ProductCardEntry currentItem={product} render={whoRender} whoRender={setWhoRender}/>
-    </div>
-  ))
+   }, [props.selected])
 
   return (
     <div className="related-products">
       <div className="sectionTitle">RELATED ITEMS</div>
-        <div className="card-products-list">
-          {entry}
+        <div className="related-product-list">
+          <RelatedList
+            related ={relatedItems}
+            setRenderTable={setRenderTable}
+            setSelectRelated={setSelectRelated}
+          />
+         {renderTable &&
+          <Compare
+            related={relatedItems}
+            renderTable={renderTable}
+            selected={props.selected}
+            selectRelated={selectRelated}
+          />
+         }
         </div>
       <div className="sectionTitle">YOUR OUTFITS</div>
         <div className="user-created-outfit">
@@ -37,7 +45,6 @@ export default function RelatedItems(props) {
             currentView={props.selected}
             setSaved={props.setSaved}
             outfits={props.outfits}
-            whoRender={setWhoRender}
           />
         </div>
     </div>

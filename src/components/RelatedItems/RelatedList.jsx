@@ -1,0 +1,25 @@
+import React from "react";
+import ProductCardEntry from './ProductCardEntry'
+import OutfitList from './OutfitList'
+
+export default function RelatedList(props) {
+  const [whoRender, setWhoRender] = React.useState('related')
+
+  const entry = props.related.map(product => (
+    <div className="related-products-card" key={product.id}>
+      <ProductCardEntry
+        currentItem={product}
+        render={whoRender}
+        whoRender={setWhoRender}
+        setRenderTable={props.setRenderTable}
+        setSelectRelated={props.setSelectRelated}
+      />
+    </div>
+  ))
+
+  return(
+    <div className="card-products-list">
+      {entry}
+    </div>
+  )
+}
