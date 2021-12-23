@@ -31,7 +31,10 @@ export default function RatingsAndReviews(props) {
         Authorization: Options.TOKEN
       }
     })
-      .then(res => setProductMeta(res.data))
+      .then(res => {
+        setProductMeta(res.data)
+        setPercentage(Math.floor((res.data.recommended.true + res.data.recommended.false) / res.data.recommended.true))
+      })
   }
 
 
@@ -48,6 +51,7 @@ export default function RatingsAndReviews(props) {
             productInfo={productInfo}
             productMeta={productMeta}
             starRating={utils.starRating}
+            percentage={percentage}
           />
         </div>
         <div className='reviews-right'>

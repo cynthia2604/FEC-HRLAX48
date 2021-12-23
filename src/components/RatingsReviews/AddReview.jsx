@@ -21,8 +21,6 @@ export default function AddReview(props) {
   const [nickname, setNickname] = React.useState('')
   const [email, setEmail] = React.useState('')
 
-  console.log(props)
-
   function handleSubmit() {
     let error = ['Errors:']
     if (!rating) {

@@ -4,13 +4,18 @@ import React from "react"
 export default function StarColumn(props) {
 
   return (
-    <div className='ratingAmount'>
-      <div className='reviewRating'>
-        {props.rating}
+    <>
+      <div className='ratingAmount'>
+        <div className='reviewRating'>
+          {props.rating}
+        </div>
+        <div>
+          {props.starRating(props.rating)}
+        </div>
       </div>
       <div>
-        {props.starRating(props.rating)}
+        {props.percentage}% of reviews recommend this product
       </div>
-    </div>
+    </>
   )
 }
