@@ -7,6 +7,7 @@ export default function ImageGallery({ productStyles }) {
       className="carousel slide"
       data-bs-ride="carousel"
     >
+      {console.log(productStyles)}
       <div className="carousel-indicators">
         <input
           type="image"

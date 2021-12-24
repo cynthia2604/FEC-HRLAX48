@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Selectors from "./Selectors";
 import Style from "./Style";
+import { v4 as uuidv4 } from "uuid";
 
 export default function StyleSelector({ productStyles }) {
   const [selectedStyle, setSelectedStyle] = React.useState({
@@ -8,6 +9,7 @@ export default function StyleSelector({ productStyles }) {
     styleid: "",
     skus: null,
   });
+  const [availableQty, setAvailableQty] = React.useState(0);
 
   return (
     <div>
@@ -26,8 +28,18 @@ export default function StyleSelector({ productStyles }) {
       </div>
 
       <span className="d-flex flex-row justify-content-between">
-        <Selectors select="size" skus={selectedStyle.skus} />
-        <Selectors select="quantity" skus={selectedStyle.skus} />
+        <Selectors
+          select="size"
+          skus={selectedStyle.skus}
+          key={uuidv4()}
+          setAvailableQty={setAvailableQty}
+        />
+        <Selectors
+          select="quantity"
+          skus={selectedStyle.skus}
+          key={uuidv4()}
+          availableQty={availableQty}
+        />
       </span>
     </div>
   );

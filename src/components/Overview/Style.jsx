@@ -3,7 +3,7 @@ import React from "react";
 export default function Style({ name, styleid, setSelectedStyle, skus }) {
   const styleColor = { backgroundColor: `${name}` };
 
-  const handleSelection = (e) => {
+  const handleSelection = () => {
     setSelectedStyle({
       color: `${name}`,
       styleid: styleid,
