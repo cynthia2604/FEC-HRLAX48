@@ -171,14 +171,16 @@ export default function AddReview(props) {
                 <div className="form-group">
                   <label htmlFor="recommend" className="col-form-label">Product Characteristics*</label>
                   {props.productMeta.characteristics.Size &&
+                  <>
                   <div className="pt-3 d-flex justify-content-between">
+                    <p>Size</p>
                     <label className="radio-label-vertical">
                       <input type="radio" name="size" value="1" onClick={() => setSize(1)}></input>
-                      A size too small
+                      Size Too Small
                     </label>
                     <label className="radio-label-vertical">
                       <input type="radio" name="size" value="2" onClick={() => setSize(2)}></input>
-                      1/2 size too small
+                      1/2 Size Too Small
                     </label>
                     <label className="radio-label-vertical">
                       <input type="radio" name="size" value="3" onClick={() => setSize(3)}></input>
@@ -186,23 +188,26 @@ export default function AddReview(props) {
                     </label>
                     <label className="radio-label-vertical">
                       <input type="radio" name="size" value="4" onClick={() => setSize(4)}></input>
-                      1/2 size too big
+                      1/2 Size Too Big
                     </label>
                     <label className="radio-label-vertical">
                       <input type="radio" name="size" value="5" onClick={() => setSize(5)}></input>
-                      A size too big
+                      Size Too Big
                     </label>
                   </div>
+                  </>
                   }
                   {props.productMeta.characteristics.Width &&
+                  <>
                     <div className="pt-3 d-flex justify-content-between">
+                    <p>Width</p>
                     <label className="radio-label-vertical">
                       <input type="radio" name="width" value="1" onClick={() => setWidth(1)}></input>
-                      Too narrow
+                      Too Narrow
                     </label>
                     <label className="radio-label-vertical">
                       <input type="radio" name="width" value="2" onClick={() => setWidth(2)}></input>
-                      Slightly narrow
+                      Slightly Narrow
                     </label>
                     <label className="radio-label-vertical">
                       <input type="radio" name="width" value="3" onClick={() => setWidth(3)}></input>
@@ -210,23 +215,26 @@ export default function AddReview(props) {
                     </label>
                     <label className="radio-label-vertical">
                       <input type="radio" name="width" value="4" onClick={() => setWidth(4)}></input>
-                      Slightly wide
+                      Slightly Wide
                     </label>
                     <label className="radio-label-vertical">
                       <input type="radio" name="width" value="5" onClick={() => setWidth(5)}></input>
-                      Too wide
+                      Too Wide
                     </label>
                   </div>
+                  </>
                   }
                   {props.productMeta.characteristics.Comfort &&
+                  <>
                     <div className="pt-3 d-flex justify-content-between">
+                    <p>Comfort</p>
                     <label className="radio-label-vertical">
                       <input type="radio" name="comfort" value="1" onClick={() => setComfort(1)}></input>
                       Uncomfortable
                     </label>
                     <label className="radio-label-vertical">
                       <input type="radio" name="comfort" value="2" onClick={() => setComfort(2)}></input>
-                      Slightly uncomfortable
+                      Slightly Uncomfortable
                     </label>
                     <label className="radio-label-vertical">
                       <input type="radio" name="comfort" value="3" onClick={() => setComfort(3)}></input>
@@ -241,9 +249,12 @@ export default function AddReview(props) {
                       Perfect
                     </label>
                   </div>
+                  </>
                   }
                   {props.productMeta.characteristics.Quality &&
+                  <>
                     <div className="pt-3 d-flex justify-content-between">
+                    <p>Quality</p>
                     <label className="radio-label-vertical">
                       <input type="radio" name="quality" value="1" onClick={() => setQuality(1)}></input>
                       Poor
@@ -254,7 +265,7 @@ export default function AddReview(props) {
                     </label>
                     <label className="radio-label-vertical">
                       <input type="radio" name="quality" value="3" onClick={() => setQuality(3)}></input>
-                      What I Expected
+                      As Expected
                     </label>
                     <label className="radio-label-vertical">
                       <input type="radio" name="quality" value="4" onClick={() => setQuality(4)}></input>
@@ -265,16 +276,19 @@ export default function AddReview(props) {
                       Perfect
                     </label>
                   </div>
+                  </>
                   }
                   {props.productMeta.characteristics.Length &&
+                  <>
                     <div className="pt-3 d-flex justify-content-between">
+                    <p>Length</p>
                     <label className="radio-label-vertical">
                       <input type="radio" name="length" value="1" onClick={() => setLength(1)}></input>
-                      Runs Short
+                      Short
                     </label>
                     <label className="radio-label-vertical">
                       <input type="radio" name="length" value="2" onClick={() => setLength(2)}></input>
-                      Runs Slightly Short
+                      Slightly Short
                     </label>
                     <label className="radio-label-vertical">
                       <input type="radio" name="length" value="3" onClick={() => setLength(3)}></input>
@@ -282,23 +296,26 @@ export default function AddReview(props) {
                     </label>
                     <label className="radio-label-vertical">
                       <input type="radio" name="length" value="4" onClick={() => setLength(4)}></input>
-                      Runs Slightly Long
+                      Slightly Long
                     </label>
                     <label className="radio-label-vertical">
                       <input type="radio" name="length" value="5" onClick={() => setLength(5)}></input>
-                      Runs Long
+                      Long
                     </label>
                   </div>
+                  </>
                   }
                   {props.productMeta.characteristics.Fit &&
+                  <>
                     <div className="pt-3 d-flex justify-content-between">
+                    <p>Fit</p>
                     <label className="radio-label-vertical">
                       <input type="radio" name="fit" value="1" onClick={() => setFit(1)}></input>
-                      Runs Tight
+                      Tight
                     </label>
                     <label className="radio-label-vertical">
                       <input type="radio" name="fit" value="2" onClick={() => setFit(2)}></input>
-                      Runs Slightly Tight
+                      Slightly Tight
                     </label>
                     <label className="radio-label-vertical">
                       <input type="radio" name="fit" value="3" onClick={() => setFit(3)}></input>
@@ -306,13 +323,14 @@ export default function AddReview(props) {
                     </label>
                     <label className="radio-label-vertical">
                       <input type="radio" name="fit" value="4" onClick={() => setFit(4)}></input>
-                      Runs Slightly Long
+                      Slightly Loose
                     </label>
                     <label className="radio-label-vertical">
                       <input type="radio" name="fit" value="5" onClick={() => setFit(5)}></input>
-                      Runs Long
+                      Loose
                     </label>
                   </div>
+                  </>
                 }
                 </div>
                 <div className="form-group pt-4">
