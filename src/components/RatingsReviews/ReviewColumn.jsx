@@ -8,6 +8,8 @@ export default function ReviewColumn(props) {
   const [moreReviews, setMoreReviews] = React.useState(true)
   const [addReview, setAddReview] = React.useState(false)
   const [sort, setSort] = React.useState('relevance')
+  const [search, setSearch] = React.useState('')
+
 
   let compare
   let reviews = []
@@ -51,6 +53,10 @@ export default function ReviewColumn(props) {
     reviews = props.productInfo.results
   }
 
+  if (search.length >= 3) {
+    reviews = reviews.filter(review => review.body.toLowerCase().includes(search.toLowerCase()))
+  }
+
   let filteredCount = reviews.length
 
   if (compare) {
@@ -59,7 +65,8 @@ export default function ReviewColumn(props) {
     reviews = reviews.slice(0, reviewCount)
   }
 
-  const sorted = reviews.map(review => (
+
+  const reviewElements = reviews.map(review => (
     <Review
     review={review}
     key={review.review_id}
@@ -110,8 +117,9 @@ export default function ReviewColumn(props) {
         <option>helpful</option>
       </select>
       </div>
+      <input placeholder="Search..." onChange={e => setSearch(e.target.value)} className="mb-3 w-50"></input>
       <div className="reviewColumn" onScroll={scrollCheck}>
-        {sorted}
+        {reviewElements}
       </div>
       <div className="reviewButtons pt-3 container">
         {moreReviews &&
