@@ -62,6 +62,7 @@ export default function RatingsAndReviews(props) {
             productMeta={productMeta}
             starRating={utils.starRating}
             percentage={percentage}
+            starFilter={starFilter}
             handleStarClick={handleStarClick}
           />
           }
