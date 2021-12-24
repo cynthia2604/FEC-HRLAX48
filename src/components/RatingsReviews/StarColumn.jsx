@@ -20,23 +20,23 @@ export default function StarColumn(props) {
       </div>
       <div className="pt-2">
         <div className="cP" onClick={() => props.handleStarClick(5)}>
-          <label htmlFor="5star" className="pe-1 reviewBodyShowMore">5 Stars:</label>
+          <label htmlFor="5star" className="pe-1">5 Stars:</label>
           <progress className="" id="5star" value={Number(props.productMeta.ratings["5"]) || 0} max={total}></progress> ({props.productMeta.ratings["5"] || 0})
         </div>
         <div className="cP" onClick={() => props.handleStarClick(4)}>
-          <label htmlFor="4star" className="pe-1 reviewBodyShowMore">4 Stars:</label>
+          <label htmlFor="4star" className="pe-1">4 Stars:</label>
           <progress className="" id="4star" value={Number(props.productMeta.ratings["4"]) || 0} max={total}></progress> ({props.productMeta.ratings["4"] || 0})
         </div>
         <div className="cP" onClick={() => props.handleStarClick(3)}>
-          <label htmlFor="3star" className="pe-1 reviewBodyShowMore">3 Stars:</label>
+          <label htmlFor="3star" className="pe-1">3 Stars:</label>
           <progress className="" id="3star" value={Number(props.productMeta.ratings["3"]) || 0} max={total}></progress> ({props.productMeta.ratings["3"] || 0})
         </div>
         <div className="cP" onClick={() => props.handleStarClick(2)}>
-          <label htmlFor="2star" className="pe-1 reviewBodyShowMore">2 Stars:</label>
+          <label htmlFor="2star" className="pe-1">2 Stars:</label>
           <progress className="" id="2star" value={Number(props.productMeta.ratings["2"]) || 0} max={total}></progress> ({props.productMeta.ratings["2"] || 0})
         </div>
         <div className="cP" onClick={() => props.handleStarClick(1)}>
-          <label htmlFor="1star" className="pe-1 reviewBodyShowMore">1 Stars:</label>
+          <label htmlFor="1star" className="pe-1">1 Stars:</label>
           <progress className="" id="1star" value={Number(props.productMeta.ratings["1"]) || 0} max={total}></progress> ({props.productMeta.ratings["1"] || 0})
         </div>
         {props.starFilter !== 0 &&
