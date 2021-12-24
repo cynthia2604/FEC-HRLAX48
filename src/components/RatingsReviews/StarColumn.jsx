@@ -39,10 +39,15 @@ export default function StarColumn(props) {
           <label htmlFor="1star" className="pe-1">1 Stars:</label>
           <progress className="" id="1star" value={Number(props.productMeta.ratings["1"]) || 0} max={total}></progress> ({props.productMeta.ratings["1"] || 0})
         </div>
-        {props.starFilter !== 0 &&
-        <div>
-          Currently filtering for {props.starFilter} Star reviews.
-        </div>
+        {props.starFilter.length > 0 &&
+        <>
+          <div className="text-center">
+            Currently filtering for {props.starFilter.join(', ')} Star reviews.
+          </div>
+          <div className="text-center cP" onClick={() => props.setStarFilter([])}>
+            Remove All Filters
+          </div>
+        </>
         }
       </div>
     </>

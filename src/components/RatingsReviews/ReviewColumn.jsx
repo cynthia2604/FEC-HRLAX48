@@ -45,8 +45,8 @@ export default function ReviewColumn(props) {
       return 0;
     }
   }
-  if (props.starFilter) {
-    reviews = props.productInfo.results.filter(review => review.rating === props.starFilter)
+  if (props.starFilter.length > 0) {
+    reviews = props.productInfo.results.filter(review => props.starFilter.includes(review.rating))
   } else {
     reviews = props.productInfo.results
   }

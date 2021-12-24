@@ -26,8 +26,6 @@ export default function App(props) {
       .then((res) => setProducts(res.data));
   }, []);
 
-  console.log(products)
-
   return (
     <>
       <Header setView={setView} />

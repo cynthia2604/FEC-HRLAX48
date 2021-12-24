@@ -10,7 +10,7 @@ export default function RatingsAndReviews(props) {
   const [productInfo, setProductInfo] = React.useState()
   const [productMeta, setProductMeta] = React.useState()
   const [percentage, setPercentage] = React.useState(100)
-  const [starFilter, setStarFilter] = React.useState(0)
+  const [starFilter, setStarFilter] = React.useState([])
 
   React.useEffect(() => {
     fetchReviews()
@@ -39,10 +39,12 @@ export default function RatingsAndReviews(props) {
   }
 
   function handleStarClick(num) {
-    if (num === starFilter) {
-      setStarFilter(0)
+    if (starFilter.includes(num)) {
+      let newFilter = [...starFilter]
+      newFilter.splice(newFilter.indexOf(num), 1)
+      setStarFilter(newFilter)
     } else {
-      setStarFilter(num)
+      setStarFilter([...starFilter, num].sort())
     }
   }
 
@@ -63,6 +65,7 @@ export default function RatingsAndReviews(props) {
             starRating={utils.starRating}
             percentage={percentage}
             starFilter={starFilter}
+            setStarFilter={setStarFilter}
             handleStarClick={handleStarClick}
           />
           }
