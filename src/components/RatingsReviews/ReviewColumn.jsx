@@ -45,11 +45,18 @@ export default function ReviewColumn(props) {
       return 0;
     }
   }
+  if (props.starFilter) {
+    reviews = props.productInfo.results.filter(review => review.rating === props.starFilter)
+  } else {
+    reviews = props.productInfo.results
+  }
+
+  let filteredCount = reviews.length
 
   if (compare) {
-    reviews = props.productInfo.results.sort(compare).slice(0, reviewCount)
+    reviews = reviews.sort(compare).slice(0, reviewCount)
   } else {
-    reviews = props.productInfo.results.slice(0, reviewCount)
+    reviews = reviews.slice(0, reviewCount)
   }
 
   const sorted = reviews.map(review => (
@@ -68,8 +75,11 @@ export default function ReviewColumn(props) {
   }, [reviews])
 
   function reviewCheck() {
-    if (reviewCount >= props.productInfo.results.length) {
+    if (reviewCount >= filteredCount) {
       setMoreReviews(false)
+    }
+    if (reviewCount < filteredCount) {
+      setMoreReviews(true)
     }
   }
 
@@ -93,7 +103,7 @@ export default function ReviewColumn(props) {
   return (
     <div>
       <div className="h4">
-      {props.productInfo.results.length} Reviews, sorted by
+      {filteredCount} Reviews, sorted by
       <select value={sort} onChange={handleChange} className="ms-1 px-1">
         <option>newest</option>
         <option>relevance</option>

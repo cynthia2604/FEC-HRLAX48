@@ -10,6 +10,7 @@ export default function RatingsAndReviews(props) {
   const [productInfo, setProductInfo] = React.useState()
   const [productMeta, setProductMeta] = React.useState()
   const [percentage, setPercentage] = React.useState(100)
+  const [starFilter, setStarFilter] = React.useState(0)
 
   React.useEffect(() => {
     fetchReviews()
@@ -33,8 +34,16 @@ export default function RatingsAndReviews(props) {
     })
       .then(res => {
         setProductMeta(res.data)
-        setPercentage(Math.floor((res.data.recommended.true + res.data.recommended.false) / res.data.recommended.true))
+        setPercentage(Math.round(100 * (Number(res.data.recommended.true) / (Number(res.data.recommended.false) + Number(res.data.recommended.true)))))
       })
+  }
+
+  function handleStarClick(num) {
+    if (num === starFilter) {
+      setStarFilter(0)
+    } else {
+      setStarFilter(num)
+    }
   }
 
 
@@ -46,13 +55,16 @@ export default function RatingsAndReviews(props) {
       {productInfo &&
       <div className='reviews pt-3'>
         <div className='reviews-left'>
+          {productMeta &&
           <StarColumn
             rating={props.rating}
             productInfo={productInfo}
             productMeta={productMeta}
             starRating={utils.starRating}
             percentage={percentage}
+            handleStarClick={handleStarClick}
           />
+          }
         </div>
         <div className='reviews-right'>
           <ReviewColumn
@@ -62,6 +74,7 @@ export default function RatingsAndReviews(props) {
             refresh={fetchReviews}
             selected={props.selected}
             productMeta={productMeta}
+            starFilter={starFilter}
           />
         </div>
       </div>
