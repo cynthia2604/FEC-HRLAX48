@@ -111,7 +111,7 @@ export default function ReviewColumn(props) {
     <div>
       <div className="h4">
       {filteredCount} Reviews, sorted by
-      <select value={sort} onChange={handleChange} className="ms-1 px-1">
+      <select value={sort} onChange={handleChange} className="reviewSort">
         <option>newest</option>
         <option>relevance</option>
         <option>helpful</option>
