@@ -35,6 +35,7 @@ export default function QuestionsAnswers(props) {
     <QAElement
       element={element}
       key={element.question_id}
+      refresh={fetchQuestions}
     />
   ))
 
