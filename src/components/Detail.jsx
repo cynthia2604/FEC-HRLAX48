@@ -8,16 +8,20 @@ import QuestionsAnswers from "./QuestionsAnswers"
 
 export default function Detail(props) {
   const [rating, setRating] = React.useState(5)
-  const [reviews, setReviews] = React.useState([])
+  const [productInfo, setProductInfo] = React.useState()
 
   React.useEffect(() => {
+    fetchProductInfo()
+  }, [props.selected])
+
+  function fetchProductInfo() {
     axios.get(`${Options.URL}/reviews/?product_id=${props.selected.id}&count=999`, {
       headers: {
         Authorization: Options.TOKEN
       }
     })
       .then(res => {
-        setReviews(res.data.results)
+        setProductInfo(res.data)
         function roundQuarter(num) {
           return Math.round(num*4)/4
         }
@@ -28,29 +32,34 @@ export default function Detail(props) {
         average = average / res.data.results.length
         setRating(roundQuarter(average))
       })
-  }, [props.selected])
+  }
 
   return (
-    <div>
+    <>
+    {productInfo &&
+      <div>
       <Overview
-        selected={props.selected}
-        rating={rating}
-        reviews={reviews}
+      selected={props.selected}
+      rating={rating}
+      productInfo={productInfo}
       />
       <RelatedItems
-        products={props.products}
-        selected ={props.selected}
-        setSaved={props.setSaved}
-        outfits={props.outfits}
+      products={props.products}
+      selected ={props.selected}
+      setSaved={props.setSaved}
+      outfits={props.outfits}
       />
       <QuestionsAnswers
-        selected={props.selected}
+      selected={props.selected}
       />
       <RatingsAndReviews
-        selected={props.selected}
-        rating={rating}
-        reviews={reviews}
+      selected={props.selected}
+      rating={rating}
+      productInfo={productInfo}
+      refresh={fetchProductInfo}
       />
-    </div>
+      </div>
+    }
+    </>
   )
 }

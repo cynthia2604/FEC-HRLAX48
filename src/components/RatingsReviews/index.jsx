@@ -7,24 +7,24 @@ import utils from '../utils'
 
 export default function RatingsAndReviews(props) {
 
-  const [productInfo, setProductInfo] = React.useState()
+  // const [productInfo, setProductInfo] = React.useState(props.productInfo)
   const [productMeta, setProductMeta] = React.useState()
   const [percentage, setPercentage] = React.useState(100)
   const [starFilter, setStarFilter] = React.useState([])
 
   React.useEffect(() => {
-    fetchReviews()
+    // fetchReviews()
     fetchMeta()
   }, [props.selected])
 
-  function fetchReviews() {
-    axios.get(`${Options.URL}/reviews/?product_id=${props.selected.id}&count=999`, {
-      headers: {
-        Authorization: Options.TOKEN
-      }
-    })
-      .then(res => setProductInfo(res.data))
-  }
+  // function fetchReviews() {
+  //   axios.get(`${Options.URL}/reviews/?product_id=${props.selected.id}&count=999`, {
+  //     headers: {
+  //       Authorization: Options.TOKEN
+  //     }
+  //   })
+  //     .then(res => setProductInfo(res.data))
+  // }
 
   function fetchMeta() {
     axios.get(`${Options.URL}/reviews/meta/?product_id=${props.selected.id}`, {
@@ -54,13 +54,13 @@ export default function RatingsAndReviews(props) {
       <div id="reviews" className='sectionTitle pt-5'>
         {`RATINGS & REVIEWS`}
       </div>
-      {productInfo &&
+      {props.productInfo &&
       <div className='reviews pt-3'>
         <div className='reviews-left'>
           {productMeta &&
           <StarColumn
             rating={props.rating}
-            productInfo={productInfo}
+            productInfo={props.productInfo}
             productMeta={productMeta}
             starRating={utils.starRating}
             percentage={percentage}
@@ -73,9 +73,9 @@ export default function RatingsAndReviews(props) {
         <div className='reviews-right'>
           <ReviewColumn
             rating={props.rating}
-            productInfo={productInfo}
+            productInfo={props.productInfo}
             starRating={utils.starRating}
-            refresh={fetchReviews}
+            refresh={props.refresh}
             selected={props.selected}
             productMeta={productMeta}
             starFilter={starFilter}
