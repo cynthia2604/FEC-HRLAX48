@@ -11,7 +11,7 @@ export default function Detail(props) {
   const [reviews, setReviews] = React.useState([])
 
   React.useEffect(() => {
-    axios.get(`${Options.URL}/reviews/?product_id=${props.selected.id}&count=99`, {
+    axios.get(`${Options.URL}/reviews/?product_id=${props.selected.id}&count=999`, {
       headers: {
         Authorization: Options.TOKEN
       }
