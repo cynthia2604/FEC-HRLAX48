@@ -14,7 +14,6 @@ export default function Selectors({
     size: "Select Size",
     quantity: 1,
     stockQuantity: null,
-    selectedQuantity: 1,
   });
 
   React.useEffect(() => {
@@ -45,7 +44,13 @@ export default function Selectors({
 
   const qtyElement = qtyArray.map((qty) => {
     if (select === "quantity") {
-      return <QuantitySelector key={uuidv4()} quantity={qty} />;
+      return (
+        <QuantitySelector
+          key={uuidv4()}
+          quantity={qty}
+          setDisplay={setDisplay}
+        />
+      );
     }
   });
 
@@ -75,10 +80,18 @@ export default function Selectors({
           aria-haspopup="true"
           aria-expanded="false"
         >
-          {select === "size" ? display.size : display.selectedQuantity}
+          {console.log(
+            "select:",
+            select,
+            "size:",
+            display.size,
+            "quan:",
+            display.quantity
+          )}
+          {select === "size" ? display.size : display.quantity}
         </a>
         <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          {skus && skuElement}
+          {skuElement}
           {qtyElement}
         </div>
       </div>

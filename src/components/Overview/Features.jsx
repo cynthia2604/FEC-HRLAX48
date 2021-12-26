@@ -6,12 +6,12 @@ export default function Features({ productDetail }) {
       <p>
         <b>Features:</b>
       </p>
-      <ul className="d-flex flex-column">
+      <div className="d-flex flex-column">
         {productDetail.features &&
           productDetail.features.map((feature, i) => (
-            <li key={i}>{`-${feature.feature}: ${feature.value}`}</li>
+            <div key={i}>{`${feature.feature}: ${feature.value}`}</div>
           ))}
-      </ul>
+      </div>
     </div>
   );
 }

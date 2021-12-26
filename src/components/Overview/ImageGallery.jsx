@@ -34,7 +34,7 @@ export default function ImageGallery({ selectedStyle }) {
 
   return (
     <div>
-      <Carousel infiniteLoop key={uuidv4()}>
+      <Carousel infiniteLoop showStatus={false} key={uuidv4()}>
         {selectedStyle.photos ? image : defaultPhotos}
       </Carousel>
     </div>
