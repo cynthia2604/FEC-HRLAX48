@@ -13,8 +13,10 @@ export default function StyleSelector({
 
   return (
     <div>
-      <span>{"Style: " + selectedStyle.color}</span>
-      <div className="d-flex flex-row justify-content-between">
+      <div className="pd__styleText mb-2">
+        {"Style: " + selectedStyle.color}
+      </div>
+      <div>
         {productStyles.results &&
           productStyles.results.map((style) => (
             <Style
@@ -28,20 +30,18 @@ export default function StyleSelector({
           ))}
       </div>
 
-      <span className="d-flex flex-row justify-content-between">
+      <span>
         <Selectors
           select="size"
           skus={selectedStyle.skus}
           key={uuidv4()}
           setAvailableQty={setAvailableQty}
-          defaultProduct={defaultProduct}
         />
         <Selectors
           select="quantity"
           skus={selectedStyle.skus}
           key={uuidv4()}
           availableQty={availableQty}
-          defaultProduct={defaultProduct}
         />
       </span>
     </div>

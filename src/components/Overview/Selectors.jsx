@@ -58,10 +58,16 @@ export default function Selectors({
   };
 
   return (
-    <span className="p-2">
-      <div className="dropdown show">
+    <span>
+      <div
+        className={
+          select === "size"
+            ? "dropdown show btn-group pd__button-wide mt-4"
+            : "dropdown show btn-group pd__button-narrow mt-4"
+        }
+      >
         <a
-          className="btn btn-light btn-secondary dropdown-toggle"
+          className="btn btn-light dropdown-toggle "
           href="#"
           role="button"
           id="dropdownMenuLink"

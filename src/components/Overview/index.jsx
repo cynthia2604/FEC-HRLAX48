@@ -55,11 +55,11 @@ export default function Overview({ selected, rating }) {
 
   return (
     <div className="pd">
-      <div className="d-flex flex-row">
-        <span className="w-75 p-3">
+      <div className="pd__box">
+        <div className="pd__wide">
           <ImageGallery key={uuidv4()} selectedStyle={selectedStyle} />
-        </span>
-        <span className="w-25 p-3">
+        </div>
+        <div className="pd__narrow">
           <ProductInfo
             productDetail={productDetail}
             productStyles={productStyles}
@@ -67,15 +67,15 @@ export default function Overview({ selected, rating }) {
             selectedStyle={selectedStyle}
             setSelectedStyle={setSelectedStyle}
           />
-        </span>
+        </div>
       </div>
-      <div className="d-flex flex-row">
-        <span className="w-75 p-3">
+      <div className="pd__box">
+        <div className="pd__wide">
           <Description productDetail={productDetail} />
-        </span>
-        <span className="w-25 p-3">
+        </div>
+        <div className="pd__narrow">
           <Features productDetail={productDetail} />
-        </span>
+        </div>
       </div>
     </div>
   );

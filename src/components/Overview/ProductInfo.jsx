@@ -19,16 +19,16 @@ export default function ProductInfo({
 
   return (
     <div>
-      <div className="d-inline-flex">
-        <span>{utils.starRating(rating)}</span>
-        <span>
+      <div className="pd__box">
+        <div className="pd__normal mb-3">{utils.starRating(rating)}</div>
+        <div className="pd__normal mb-3">
           <u onClick={handleScroll}>Read All Reviews</u>
-        </span>
+        </div>
       </div>
 
-      <p className="pd__category">{productDetail.category}</p>
-      <h2 className="pd__name">{productDetail.name}</h2>
-      <p className="pd__price">{"$" + productDetail.default_price}</p>
+      <p className="mb-3">{"Category: " + productDetail.category}</p>
+      <h3 className="mb-2">{productDetail.name}</h3>
+      <h4 className="mb-3">{"$" + productDetail.default_price}</h4>
       <StyleSelector
         productStyles={productStyles}
         selectedStyle={selectedStyle}

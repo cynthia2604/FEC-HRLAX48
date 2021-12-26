@@ -28,7 +28,7 @@ export default function Style({
   return (
     <button
       name={name}
-      className="pd__style-icon p-2"
+      className="pd__style-icon p-3"
       style={
         name === selectedStyle.color
           ? addSelectionBorder
