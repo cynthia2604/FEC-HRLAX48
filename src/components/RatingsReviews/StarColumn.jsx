@@ -15,7 +15,7 @@ export default function StarColumn(props) {
         </div>
       </div>
       <div>
-        {props.percentage}% of reviews recommend this product
+        {props.percentage || 100}% of reviews recommend this product
       </div>
       <div className="pt-2 w-100">
         <div className="cP w-100" onClick={() => props.handleStarClick(5)}>

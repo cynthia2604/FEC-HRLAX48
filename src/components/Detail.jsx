@@ -4,6 +4,7 @@ import RatingsAndReviews from "./RatingsReviews"
 import RelatedItems from "./RelatedItems"
 import axios from "axios"
 import Options from "../config"
+import QuestionsAnswers from "./QuestionsAnswers"
 
 export default function Detail(props) {
   const [rating, setRating] = React.useState(5)
@@ -36,6 +37,7 @@ export default function Detail(props) {
         setSaved={props.setSaved}
         outfits={props.outfits}
         />
+      <QuestionsAnswers selected={props.selected} />
       <RatingsAndReviews selected={props.selected} rating={rating} />
     </div>
   )

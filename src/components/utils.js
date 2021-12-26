@@ -7,11 +7,11 @@ import StarFilled from '../assets/StarFilled.png'
 
 const utils = {
 
-  StarEmpty: <img src={StarEmpty} width="16px" height="16px"></img>,
-  StarQuarter: <img src={StarQuarter} width="16px" height="16px"></img>,
-  StarHalf: <img src={StarHalf} width="16px" height="16px"></img>,
-  StarThreeQuarters: <img src={StarThreeQuarters} width="16px" height="16px"></img>,
-  StarFilled: <img src={StarFilled} width="16px" height="16px"></img>,
+  StarEmpty: <img src={StarEmpty} width="20px" height="20px"></img>,
+  StarQuarter: <img src={StarQuarter} width="20px" height="20px"></img>,
+  StarHalf: <img src={StarHalf} width="20px" height="20px"></img>,
+  StarThreeQuarters: <img src={StarThreeQuarters} width="20px" height="20px"></img>,
+  StarFilled: <img src={StarFilled} width="20px" height="20px"></img>,
 
   starRating: (rating) => {
     if (!rating) {

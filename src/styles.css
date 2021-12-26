@@ -346,3 +346,7 @@ input[type=range]:focus::-ms-fill-lower {
 input[type=range]:focus::-ms-fill-upper {
   background: #D4D4D4;
 }
+
+.qaLeft {
+  width: 3%;
+}
