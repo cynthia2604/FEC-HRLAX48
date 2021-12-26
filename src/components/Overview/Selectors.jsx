@@ -8,14 +8,10 @@ export default function Selectors({
   skus,
   setAvailableQty,
   availableQty,
+  setDisplay,
+  display,
 }) {
   const [qtyArray, setQtyArray] = React.useState([]);
-  const [display, setDisplay] = React.useState({
-    size: "Select Size",
-    quantity: 1,
-    stockQuantity: null,
-  });
-
   React.useEffect(() => {
     renderQuantity();
   }, [availableQty]);
@@ -43,12 +39,13 @@ export default function Selectors({
   });
 
   const qtyElement = qtyArray.map((qty) => {
-    if (select === "quantity") {
+    if (select === "quantity" && qty <= 15) {
       return (
         <QuantitySelector
           key={uuidv4()}
           quantity={qty}
           setDisplay={setDisplay}
+          size={display.size}
         />
       );
     }
@@ -72,7 +69,7 @@ export default function Selectors({
         }
       >
         <a
-          className="btn btn-light dropdown-toggle "
+          className="btn btn-outline-secondary dropdown-toggle "
           href="#"
           role="button"
           id="dropdownMenuLink"
@@ -80,14 +77,6 @@ export default function Selectors({
           aria-haspopup="true"
           aria-expanded="false"
         >
-          {console.log(
-            "select:",
-            select,
-            "size:",
-            display.size,
-            "quan:",
-            display.quantity
-          )}
           {select === "size" ? display.size : display.quantity}
         </a>
         <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">

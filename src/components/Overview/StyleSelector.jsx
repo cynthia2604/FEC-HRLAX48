@@ -10,6 +10,11 @@ export default function StyleSelector({
   defaultProduct,
 }) {
   const [availableQty, setAvailableQty] = React.useState(0);
+  const [display, setDisplay] = React.useState({
+    size: "Select Size",
+    quantity: "-",
+    stockQuantity: null,
+  });
 
   return (
     <div>
@@ -36,12 +41,16 @@ export default function StyleSelector({
           skus={selectedStyle.skus}
           key={uuidv4()}
           setAvailableQty={setAvailableQty}
+          setDisplay={setDisplay}
+          display={display}
         />
         <Selectors
           select="quantity"
           skus={selectedStyle.skus}
           key={uuidv4()}
           availableQty={availableQty}
+          setDisplay={setDisplay}
+          display={display}
         />
       </span>
     </div>

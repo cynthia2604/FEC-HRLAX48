@@ -3,6 +3,7 @@ import "../../styles.css";
 import StyleSelector from "./StyleSelector";
 import AddToBag from "./AddToBag";
 import utils from "../utils.js";
+import Share from "./Share";
 
 export default function ProductInfo({
   productDetail,
@@ -26,9 +27,9 @@ export default function ProductInfo({
         </div>
       </div>
 
-      <p className="mb-3">{"Category: " + productDetail.category}</p>
-      <h3 className="mb-2">{productDetail.name}</h3>
-      <h4 className="mb-3">{"$" + productDetail.default_price}</h4>
+      <p className="mb-4">{"Category: " + productDetail.category}</p>
+      <h2 className="mb-2">{productDetail.name}</h2>
+      <h3 className="mb-4">{"$" + productDetail.default_price}</h3>
       <StyleSelector
         productStyles={productStyles}
         selectedStyle={selectedStyle}
@@ -36,6 +37,7 @@ export default function ProductInfo({
         defaultProduct={defaultProduct}
       />
       <AddToBag />
+      <Share />
     </div>
   );
 }

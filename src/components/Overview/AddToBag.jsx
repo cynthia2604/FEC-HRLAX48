@@ -9,14 +9,17 @@ export default function AddToBag() {
       <span>
         <button
           type="button"
-          className="btn btn-light pd__button-wide"
+          className="btn btn-outline-secondary pd__button-wide"
           onClick={handleAlert}
         >
           Add To Bag
         </button>
       </span>
       <span>
-        <button type="button" className="btn btn-light pd__button-narrow">
+        <button
+          type="button"
+          className="btn btn-outline-secondary pd__button-narrow"
+        >
           ☆
         </button>
       </span>

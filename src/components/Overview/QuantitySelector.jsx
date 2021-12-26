@@ -1,8 +1,9 @@
 import React from "react";
 
-export default function QuantitySelector({ quantity, setDisplay }) {
+export default function QuantitySelector({ size, quantity, setDisplay }) {
   const handleDisplay = () => {
     setDisplay({
+      size: size,
       quantity: quantity,
     });
   };

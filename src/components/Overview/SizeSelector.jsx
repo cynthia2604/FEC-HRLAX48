@@ -9,6 +9,7 @@ export default function SizeSelector({
   const handleDisplay = () => {
     setDisplay({
       size: sku.size,
+      quantity: 1,
       stockQuantity: sku.quantity,
     });
     setAvailableQty(sku.quantity);

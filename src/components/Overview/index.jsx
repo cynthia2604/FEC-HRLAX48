@@ -16,6 +16,9 @@ export default function Overview({ selected, rating }) {
     skus: null,
     photos: null,
   });
+  {
+    console.log(selectedStyle);
+  }
 
   React.useEffect(() => {
     axios
