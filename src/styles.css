@@ -356,6 +356,24 @@ input[type=range]:focus::-ms-fill-upper {
   width: 3%;
 }
 
+.answerColumn {
+  max-height: 300px;
+  overflow-y: scroll;
+  padding-right: 5px;
+}
+
+.answerColumn::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* .answerColumn::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);
+} */
+
+.answerColumn::-webkit-scrollbar-thumb {
+  background-color: rgb(80, 80, 80);
+}
+
 .searchBar {
   border-radius: 0;
   border: 1px solid rgb(80, 80, 80);

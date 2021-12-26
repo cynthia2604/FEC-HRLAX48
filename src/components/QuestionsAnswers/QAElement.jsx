@@ -8,6 +8,28 @@ export default function QAElement(props) {
 
   const [marked, setMarked] = React.useState(false)
   const [helpful, setHelpful] = React.useState(props.element.question_helpfulness)
+  const [numAnswers, setNumAnswers] = React.useState(2)
+  const [expandedAnswers, setExpandedAnswers] = React.useState(false)
+
+  let answers = []
+  for (let key in props.element.answers) {
+    answers.push(props.element.answers[key])
+  }
+
+  function sellerCompare(a, b) {
+    if (a.answerer_name === 'Seller' && b.answerer_name === 'Seller') {
+      return 0
+    }
+    if (a.answerer_name === 'Seller' && b.answerer_name !== 'Seller') {
+      return -1
+    }
+    if (a.answerer_name !== 'Seller' && b.answerer_name === 'Seller') {
+      return 1
+    }
+  }
+
+  answers = answers.sort((a, b) => b.helpfulness - a.helpfulness).sort(sellerCompare)
+  console.log(answers)
 
   function markHelpful() {
     if (!marked) {
@@ -35,9 +57,17 @@ export default function QAElement(props) {
       })
   }
 
-
   function imageModal(imageURL) {
     // Doesnt do anything yet because we don't actually have images in reviews...
+  }
+
+  function toggleAnswers() {
+    if (expandedAnswers) {
+      setNumAnswers(2)
+    } else {
+      setNumAnswers(999)
+    }
+    setExpandedAnswers(!expandedAnswers)
   }
 
   return (
@@ -71,12 +101,22 @@ export default function QAElement(props) {
         <div className="qaLeft">
           <b>A:</b>
         </div>
-        <div className="mw-75">
-          {Object.keys(props.element.answers).slice(0, 2).map((answer, i) => (
-            <Answer answer={props.element.answers[answer]} key={i} refresh={props.refresh}/>
+        <div className="mw-75 answerColumn">
+          {answers.slice(0, numAnswers).map(answer => (
+            <Answer answer={answer} key={answer.id} refresh={props.refresh}/>
           ))}
         </div>
       </div>
+      {answers.length > 2 &&
+      <>
+      <div className="d-flex">
+        <div className="qaLeft"></div>
+        <div onClick={toggleAnswers} className="cP reviewBodyShowMore mt-0">
+          {numAnswers === 2 ? 'See More Answers' : 'Collapse Answers'}
+        </div>
+      </div>
+      </>
+      }
     </div>
   )
 }
