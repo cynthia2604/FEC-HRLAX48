@@ -2,6 +2,7 @@ import React from "react"
 import moment from "moment"
 import axios from "axios"
 import Options from "../../config"
+import Answer from "./Answer"
 
 export default function QAElement(props) {
 
@@ -24,7 +25,7 @@ export default function QAElement(props) {
     }
   }
 
-  function markQuestionHelpful() {
+  function markHelpful() {
     if (!marked) {
       axios.put(`${Options.URL}/qa/questions/${props.element.question_id}/helpful`, null, {
         headers: {
@@ -68,7 +69,7 @@ export default function QAElement(props) {
           <div>
             Helpful?
           </div>
-          <div className="cP reviewBodyShowMore ps-2 pe-1" onClick={markQuestionHelpful}>
+          <div className="cP reviewBodyShowMore ps-2 pe-1" onClick={markHelpful}>
             Yes
           </div>
           <div>
@@ -88,34 +89,7 @@ export default function QAElement(props) {
         </div>
         <div className="mw-75">
           {Object.keys(props.element.answers).slice(0, 2).map((answer, i) => (
-            <div key={i}>
-              <div className="answerBody">
-                {props.element.answers[answer].body}
-              </div>
-              <div className="d-flex reviewHelpful py-3">
-                <div className="answerAuthor">
-                  by {props.element.answers[answer].answerer_name}, {moment(props.element.answers[answer].date).format('MMMM D, YYYY')}
-                </div>
-                <div className="answerBottomDivider px-2">
-                  |
-                </div>
-                <div>
-                  Helpful?
-                </div>
-                <div className="reviewBodyShowMore ps-2 pe-1">
-                  Yes
-                </div>
-                <div>
-                  (69)
-                </div>
-                <div className="answerBottomDivider px-2">
-                  |
-                </div>
-                <div className="reviewBodyShowMore">
-                  Report
-                </div>
-              </div>
-            </div>
+            <Answer answer={props.element.answers[answer]} key={i}/>
           ))}
         </div>
       </div>
