@@ -45,7 +45,7 @@ export default function QuestionsAnswers(props) {
         {`QUESTIONS & ANSWERS`}
       </div>
       <div className="pt-3">
-        <input className="w-100" onChange={e => setSearch(e.target.value)} value={search} placeholder="Search..."></input>
+        <input className="w-100 searchBar" onChange={e => setSearch(e.target.value)} value={search} placeholder="Have a question? Search for answers..."></input>
       </div>
       <div>
         {QAElements}
