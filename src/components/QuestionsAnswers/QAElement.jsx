@@ -57,7 +57,7 @@ export default function QAElement(props) {
 
   return (
     <div>
-      <div className="questionBody d-flex my-2 align-items-end">
+      <div className="questionBody d-flex align-items-end">
         <div className="qaLeft">
           <b>Q:</b>
         </div>
@@ -82,14 +82,39 @@ export default function QAElement(props) {
           </div>
         </div>
       </div>
-      <div className="questionAnswers d-flex mb-3">
+      <div className="questionAnswers d-flex mt-2">
         <div className="qaLeft">
           <b>A:</b>
         </div>
         <div className="mw-75">
           {Object.keys(props.element.answers).slice(0, 2).map((answer, i) => (
             <div key={i}>
-              {props.element.answers[answer].body}
+              <div className="answerBody">
+                {props.element.answers[answer].body}
+              </div>
+              <div className="d-flex reviewHelpful py-3">
+                <div className="answerAuthor">
+                  by {props.element.answers[answer].answerer_name}, {moment(props.element.answers[answer].date).format('MMMM D, YYYY')}
+                </div>
+                <div className="answerBottomDivider px-2">
+                  |
+                </div>
+                <div>
+                  Helpful?
+                </div>
+                <div className="reviewBodyShowMore ps-2 pe-1">
+                  Yes
+                </div>
+                <div>
+                  (69)
+                </div>
+                <div className="answerBottomDivider px-2">
+                  |
+                </div>
+                <div className="reviewBodyShowMore">
+                  Report
+                </div>
+              </div>
             </div>
           ))}
         </div>
