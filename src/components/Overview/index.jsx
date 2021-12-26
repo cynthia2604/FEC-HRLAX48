@@ -11,11 +11,6 @@ import { v4 as uuidv4 } from "uuid";
 export default function Overview({ selected, rating }) {
   const [productDetail, setProductDetail] = React.useState({});
   const [productStyles, setProductStyles] = React.useState({});
-  const [defaultProduct, setDefaultProduct] = React.useState({
-    color: "",
-    skus: null,
-    photos: null,
-  });
   const [selectedStyle, setSelectedStyle] = React.useState({
     color: "",
     skus: null,
@@ -43,10 +38,6 @@ export default function Overview({ selected, rating }) {
     productStyles && getDefault();
   }, [productStyles]);
 
-  React.useEffect(() => {
-    defaultProduct && selectDefault();
-  }, [defaultProduct]);
-
   const getDefault = () => {
     if (productStyles.results) {
       let defaultObj = productStyles.results[0];
@@ -54,7 +45,7 @@ export default function Overview({ selected, rating }) {
       let photos = defaultObj.photos;
       let skus = defaultObj.skus;
 
-      setDefaultProduct({
+      setSelectedStyle({
         color: color,
         photos: photos,
         skus: skus,
@@ -62,23 +53,11 @@ export default function Overview({ selected, rating }) {
     }
   };
 
-  const selectDefault = () => {
-    setSelectedStyle({
-      color: defaultProduct.color,
-      skus: defaultProduct.skus,
-      photos: defaultProduct.photos,
-    });
-  };
-
   return (
     <div className="pd">
       <div className="d-flex flex-row">
         <span className="w-75 p-3">
-          <ImageGallery
-            key={uuidv4()}
-            selectedStyle={selectedStyle}
-            defaultProduct={defaultProduct}
-          />
+          <ImageGallery key={uuidv4()} selectedStyle={selectedStyle} />
         </span>
         <span className="w-25 p-3">
           <ProductInfo

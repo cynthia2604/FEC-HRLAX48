@@ -3,10 +3,10 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 import { v4 as uuidv4 } from "uuid";
 
-export default function ImageGallery({ selectedStyle, defaultProduct }) {
+export default function ImageGallery({ selectedStyle }) {
   const defaultPhotos =
-    defaultProduct.photos &&
-    defaultProduct.photos.map((photo) => {
+    selectedStyle.photos &&
+    selectedStyle.photos.map((photo) => {
       return (
         <div>
           <img

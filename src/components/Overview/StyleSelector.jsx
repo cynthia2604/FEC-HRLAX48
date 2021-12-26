@@ -22,8 +22,8 @@ export default function StyleSelector({
               name={style.name}
               skus={style.skus}
               photos={style.photos}
+              selectedStyle={selectedStyle}
               setSelectedStyle={setSelectedStyle}
-              defaultProduct={defaultProduct}
             />
           ))}
       </div>
