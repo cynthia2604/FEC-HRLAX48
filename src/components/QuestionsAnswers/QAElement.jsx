@@ -55,7 +55,6 @@ export default function QAElement(props) {
     // Doesnt do anything yet because we don't actually have images in reviews...
   }
 
-console.log(props.element)
   return (
     <div>
       <div className="questionBody d-flex my-2 align-items-end">

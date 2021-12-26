@@ -117,7 +117,7 @@ export default function ReviewColumn(props) {
         <option>helpful</option>
       </select>
       </div>
-      <input placeholder="Search..." onChange={e => setSearch(e.target.value)} className="mb-3 w-50 searchBar"></input>
+      <input placeholder="Search Reviews..." onChange={e => setSearch(e.target.value)} className="mb-3 mt-2 w-100 searchBar"></input>
       <div className="reviewColumn" onScroll={scrollCheck}>
         {reviewElements}
       </div>
