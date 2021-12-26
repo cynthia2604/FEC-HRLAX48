@@ -8,6 +8,7 @@ import QuestionsAnswers from "./QuestionsAnswers"
 
 export default function Detail(props) {
   const [rating, setRating] = React.useState(5)
+  const [reviews, setReviews] = React.useState([])
 
   React.useEffect(() => {
     axios.get(`${Options.URL}/reviews/?product_id=${props.selected.id}&count=99`, {
@@ -16,6 +17,7 @@ export default function Detail(props) {
       }
     })
       .then(res => {
+        setReviews(res.data.results)
         function roundQuarter(num) {
           return Math.round(num*4)/4
         }
@@ -30,15 +32,25 @@ export default function Detail(props) {
 
   return (
     <div>
-      <Overview selected={props.selected} rating={rating}/>
+      <Overview
+        selected={props.selected}
+        rating={rating}
+        reviews={reviews}
+      />
       <RelatedItems
         products={props.products}
         selected ={props.selected}
         setSaved={props.setSaved}
         outfits={props.outfits}
-        />
-      <QuestionsAnswers selected={props.selected} />
-      <RatingsAndReviews selected={props.selected} rating={rating} />
+      />
+      <QuestionsAnswers
+        selected={props.selected}
+      />
+      <RatingsAndReviews
+        selected={props.selected}
+        rating={rating}
+        reviews={reviews}
+      />
     </div>
   )
 }
