@@ -29,7 +29,6 @@ export default function QAElement(props) {
   }
 
   answers = answers.sort((a, b) => b.helpfulness - a.helpfulness).sort(sellerCompare)
-  console.log(answers)
 
   function markHelpful() {
     if (!marked) {
