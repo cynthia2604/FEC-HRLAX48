@@ -1,21 +1,18 @@
 import React from "react";
 
-export default function Style({ name, styleid, setSelectedStyle, skus }) {
-  const styleColor = { backgroundColor: `${name}` };
-
+export default function Style({ name, setSelectedStyle, skus, photos }) {
   const handleSelection = () => {
     setSelectedStyle({
       color: `${name}`,
-      styleid: styleid,
       skus: skus,
+      photos: photos,
     });
   };
 
   return (
     <button
-      id={styleid}
       className="pd__style-icon p-2"
-      style={styleColor}
+      style={{ backgroundColor: `${name}` }}
       onClick={handleSelection}
     ></button>
   );

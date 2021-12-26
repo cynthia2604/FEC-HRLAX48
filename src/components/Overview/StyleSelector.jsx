@@ -3,12 +3,12 @@ import Selectors from "./Selectors";
 import Style from "./Style";
 import { v4 as uuidv4 } from "uuid";
 
-export default function StyleSelector({ productStyles }) {
-  const [selectedStyle, setSelectedStyle] = React.useState({
-    color: "",
-    styleid: "",
-    skus: null,
-  });
+export default function StyleSelector({
+  productStyles,
+  selectedStyle,
+  setSelectedStyle,
+  defaultProduct,
+}) {
   const [availableQty, setAvailableQty] = React.useState(0);
 
   return (
@@ -20,9 +20,10 @@ export default function StyleSelector({ productStyles }) {
             <Style
               key={style.style_id}
               name={style.name}
-              styleid={style.style_id}
               skus={style.skus}
+              photos={style.photos}
               setSelectedStyle={setSelectedStyle}
+              defaultProduct={defaultProduct}
             />
           ))}
       </div>
@@ -33,12 +34,14 @@ export default function StyleSelector({ productStyles }) {
           skus={selectedStyle.skus}
           key={uuidv4()}
           setAvailableQty={setAvailableQty}
+          defaultProduct={defaultProduct}
         />
         <Selectors
           select="quantity"
           skus={selectedStyle.skus}
           key={uuidv4()}
           availableQty={availableQty}
+          defaultProduct={defaultProduct}
         />
       </span>
     </div>
