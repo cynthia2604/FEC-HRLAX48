@@ -16,9 +16,6 @@ export default function Overview({ selected, rating }) {
     skus: null,
     photos: null,
   });
-  {
-    console.log(selectedStyle);
-  }
 
   React.useEffect(() => {
     axios
@@ -38,7 +35,7 @@ export default function Overview({ selected, rating }) {
   }, []);
 
   React.useEffect(() => {
-    productStyles && getDefault();
+    getDefault();
   }, [productStyles]);
 
   const getDefault = () => {
@@ -57,7 +54,7 @@ export default function Overview({ selected, rating }) {
   };
 
   return (
-    <div className="pd">
+    <div>
       <div className="pd__box">
         <div className="pd__wide">
           <ImageGallery key={uuidv4()} selectedStyle={selectedStyle} />

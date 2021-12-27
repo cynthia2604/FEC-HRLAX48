@@ -16,8 +16,8 @@ export default function SizeSelector({
   };
 
   return (
-    <a className="dropdown-item" href="#" onClick={handleDisplay}>
+    <div className="dropdown-item" onClick={handleDisplay}>
       {sku.size}
-    </a>
+    </div>
   );
 }

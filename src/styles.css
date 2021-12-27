@@ -26,14 +26,6 @@ body {
   padding: 0;
 }
 
-.pd {
-  font-family: 'Quicksand', sans-serif !important;
-  margin: 20px;
-  padding-left: 50px;
-  padding-right: 50px;
-  color: rgb(97, 97, 97);
-}
-
 .pd__button-narrow {
 
   margin-right: 10px;

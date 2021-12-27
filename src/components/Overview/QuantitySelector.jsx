@@ -9,8 +9,8 @@ export default function QuantitySelector({ size, quantity, setDisplay }) {
   };
 
   return (
-    <a className="dropdown-item" href="#" onClick={handleDisplay}>
+    <div className="dropdown-item" onClick={handleDisplay}>
       {quantity}
-    </a>
+    </div>
   );
 }
