@@ -1,13 +1,39 @@
 import React from "react";
 
-export default function Style({ name, photos, handleSelection }) {
-  const styleColor = { backgroundColor: `${name}` };
+export default function Style({
+  name,
+  selectedStyle,
+  setSelectedStyle,
+  skus,
+  photos,
+}) {
+  const handleSelection = () => {
+    setSelectedStyle({
+      color: `${name}`,
+      skus: skus,
+      photos: photos,
+    });
+  };
+
+  const addSelectionBorder = {
+    border: "3px solid lightgrey",
+    background: `${name}`,
+  };
+
+  const removeSelectionBorder = {
+    border: "none",
+    backgroundColor: `${name}`,
+  };
 
   return (
     <button
-      className="pd__style-icon p-2"
-      style={styleColor}
       name={name}
+      className="pd__style-icon p-3"
+      style={
+        name === selectedStyle.color
+          ? addSelectionBorder
+          : removeSelectionBorder
+      }
       onClick={handleSelection}
     ></button>
   );

@@ -2,17 +2,42 @@ import React from "react";
 import "../../styles.css";
 import StyleSelector from "./StyleSelector";
 import AddToBag from "./AddToBag";
+import utils from "../utils.js";
+import Share from "./Share";
 
-export default function ProductInfo({ productDetail, productStyles }) {
+export default function ProductInfo({
+  productDetail,
+  productStyles,
+  rating,
+  selectedStyle,
+  setSelectedStyle,
+  defaultProduct,
+}) {
+  const handleScroll = () => {
+    const reviewElement = document.getElementById("review");
+    reviewElement.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div>
-      <span>☆☆☆☆☆</span>
-      <span>Read All Reviews</span>
-      <p className="pd__category">{productDetail.category}</p>
-      <h2 className="pd__name">{productDetail.name}</h2>
-      <p className="pd__price">{"$" + productDetail.default_price}</p>
-      <StyleSelector productStyles={productStyles} />
+      <div className="pd__box">
+        <div className="pd__normal mb-3">{utils.starRating(rating)}</div>
+        <div className="pd__normal mb-3">
+          <u onClick={handleScroll}>Read All Reviews</u>
+        </div>
+      </div>
+
+      <p className="mb-4">{"Category: " + productDetail.category}</p>
+      <h2 className="mb-2">{productDetail.name}</h2>
+      <h3 className="mb-4">{"$" + productDetail.default_price}</h3>
+      <StyleSelector
+        productStyles={productStyles}
+        selectedStyle={selectedStyle}
+        setSelectedStyle={setSelectedStyle}
+        defaultProduct={defaultProduct}
+      />
       <AddToBag />
+      <Share />
     </div>
   );
 }
