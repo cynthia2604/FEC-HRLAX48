@@ -5,7 +5,6 @@ import ProductImage from './ProductImage'
 import RelatedItemRating from './RelatedItemRating'
 
 export default function RelatedProductEntry(props) {
-
   const [ current, setCurrent ] = React.useState()
 
   React.useEffect(()=>{
@@ -20,7 +19,7 @@ export default function RelatedProductEntry(props) {
   }, [])
 
   return (
-    <div className="related-product-card-entry">
+    <div className="product-card-entry">
       {current &&
       <div>
         <ProductImage
@@ -29,10 +28,13 @@ export default function RelatedProductEntry(props) {
           setSaved={props.setSaved}
           outfits={props.outfits}
           whoRender={props.whoRender}
+          setRenderTable={props.setRenderTable}
+          setSelectRelated={props.setSelectRelated}
+          renderTable={props.renderTable}
         />
-        <div className="related-product-category"> {props.currentItem.category}</div>
-        <div className="related-product-name">{props.currentItem.name}</div>
-        <div className="related-product-price">{props.currentItem.default_price}</div>
+        <div className="related-product-category" style={{fontSize: '12px'}}> {props.currentItem.category}</div>
+        <div className="related-product-name" style={{fontWeight:'bold'}}>{props.currentItem.name}</div>
+        <div className="related-product-price" style={{fontSize: '10px'}}>{props.currentItem.default_price}</div>
         <RelatedItemRating currentItem={current} />
       </div>
       }

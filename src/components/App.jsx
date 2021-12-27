@@ -14,7 +14,9 @@ export default function App(props) {
   const [view, setView] = React.useState("catalogue");
   const [products, setProducts] = React.useState([]);
   const [selected, setSelected] = React.useState({});
-  const [saved, setSaved] = React.useState([])
+  const [saved, setSaved] = React.useState(
+   () => JSON.parse(localStorage.getItem('outfits')) || []
+  );
 
   React.useEffect(() => {
     axios
@@ -26,6 +28,10 @@ export default function App(props) {
       .then((res) => setProducts(res.data));
   }, []);
 
+  React.useEffect(() => {
+    localStorage.setItem('outfits', JSON.stringify(saved))
+  }, [ saved ])
+  
   return (
     <>
       <Header setView={setView} />
@@ -45,6 +51,7 @@ export default function App(props) {
             products={products}
             setView={setView}
             setSelected={setSelected}
+            saved={saved}
             setSaved={setSaved}
             outfits={saved}
           />
