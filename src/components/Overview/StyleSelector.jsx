@@ -17,7 +17,7 @@ export default function StyleSelector({
 
   return (
     <div>
-      <div className="pd__styleText mb-2">
+      <div className="pd__styleText mb-3">
         {"Style: " + selectedStyle.color}
       </div>
       <div>

@@ -5,6 +5,7 @@ import ImageGallery from "./ImageGallery";
 import ProductInfo from "./ProductInfo";
 import Description from "./Description";
 import Features from "./Features";
+import Share from "./Share";
 import "../../styles.css";
 import { v4 as uuidv4 } from "uuid";
 
@@ -72,12 +73,15 @@ export default function Overview({ selected, rating, productInfo }) {
           />
         </div>
       </div>
-      <div className="pd__box">
-        <div className="pd__wide">
+      <div className="pd__box mt-5 d-flex justify-content-between">
+        <div className="w-50">
           <Description productDetail={productDetail} />
         </div>
-        <div className="pd__narrow">
+        <div>
           <Features productDetail={productDetail} />
+        </div>
+        <div>
+          <Share />
         </div>
       </div>
     </div>

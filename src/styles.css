@@ -59,17 +59,47 @@ body {
 }
 
 .pd__wide {
-  width: 60%;
-  margin-right: 5%;
+  width: 67%;
+  margin-right: 3%;
 }
 
 .pd__normal {
   width: 50%;
+  margin-right: 3%;
 }
 
 .pd__narrow {
-  width: 35%;
+  width: 30%;
 }
+
+.pd__wide-add {
+  margin-top: 3%;
+  width: 82%;
+  margin-right: 3%;
+}
+
+.pd__narrow-star {
+  margin-top: 3%;
+  width: 15%;
+  align-items: center;
+}
+
+.pd__gallery-container {
+  position: relative;
+}
+
+.pd__gallery-container
+.image {
+  display: block;
+}
+
+.pd__gallery-container
+.expand-icon {
+  position: absolute;
+  left: 93%;
+  bottom: 90%;
+}
+
 
 .reviews {
   display: flex;

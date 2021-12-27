@@ -60,12 +60,12 @@ export default function Selectors({
   };
 
   return (
-    <span>
+    <span className="pd__box d-inline">
       <div
         className={
           select === "size"
-            ? "dropdown show btn-group pd__button-wide mt-4"
-            : "dropdown show btn-group pd__button-narrow mt-4"
+            ? "dropdown show btn-group pd__wide mt-4 text-left"
+            : "dropdown show btn-group pd__narrow mt-4 text-left"
         }
       >
         <div
