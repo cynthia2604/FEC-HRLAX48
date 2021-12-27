@@ -1,15 +1,16 @@
 import React from "react"
 import moment from "moment"
 import axios from "axios"
+import Options from "../../config"
 
 export default function Answer(props) {
 
   const [marked, setMarked] = React.useState(false)
   const [helpful, setHelpful] = React.useState(props.answer.helpfulness)
 
-  function markAnswerHelpful(id) {
+  function markAnswerHelpful() {
     if (!marked) {
-      axios.put(`${Options.URL}/qa/answers/${id}/helpful`, null, {
+      axios.put(`${Options.URL}/qa/answers/${props.answer.id}/helpful`, null, {
         headers: {
           Authorization: Options.TOKEN
         }
@@ -19,6 +20,18 @@ export default function Answer(props) {
           setHelpful(helpful + 1)
         })
     }
+  }
+
+  function reportAnswer() {
+    axios.put(`${Options.URL}/qa/answers/${props.answer.id}/report`, null, {
+      headers: {
+        Authorization: Options.TOKEN
+      }
+    })
+      .then(() => {
+        props.refresh()
+        alert('Thank you for your report. You shouldn\'t see this answer anymore')
+      })
   }
 
 
@@ -37,16 +50,16 @@ export default function Answer(props) {
         <div>
           Helpful?
         </div>
-        <div className="reviewBodyShowMore ps-2 pe-1">
+        <div className="reviewBodyShowMore ps-2 pe-1 cP" onClick={markAnswerHelpful}>
           Yes
         </div>
         <div>
-          ({props.answer.helpfulness})
+          ({helpful})
         </div>
         <div className="answerBottomDivider px-2">
           |
         </div>
-        <div className="reviewBodyShowMore">
+        <div className="reviewBodyShowMore cP" onClick={reportAnswer}>
           Report
         </div>
       </div>
