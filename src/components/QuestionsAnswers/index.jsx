@@ -51,7 +51,7 @@ export default function QuestionsAnswers(props) {
         {QAElements}
       </div>
       {questionCount === 2 &&
-      <div onClick={() => setQuestionCount(999)} className="cP">Show More Questions</div>
+      <button onClick={() => setQuestionCount(999)} className="cP mt-2 btn btn-outline-dark">Show More Questions</button>
       }
     </>
   )
