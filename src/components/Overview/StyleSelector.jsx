@@ -7,7 +7,6 @@ export default function StyleSelector({
   productStyles,
   selectedStyle,
   setSelectedStyle,
-  defaultProduct,
 }) {
   const [availableQty, setAvailableQty] = React.useState(0);
   const [display, setDisplay] = React.useState({
@@ -28,13 +27,13 @@ export default function StyleSelector({
               key={style.style_id}
               name={style.name}
               skus={style.skus}
-              photos={style.photos}
+              allPhotos={style.photos}
+              thumbnail={style.photos[0].thumbnail_url}
               selectedStyle={selectedStyle}
               setSelectedStyle={setSelectedStyle}
             />
           ))}
       </div>
-
       <span>
         <Selectors
           select="size"

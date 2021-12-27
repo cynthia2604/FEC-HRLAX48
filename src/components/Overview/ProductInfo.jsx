@@ -11,7 +11,6 @@ export default function ProductInfo({
   rating,
   selectedStyle,
   setSelectedStyle,
-  defaultProduct,
   reviews,
 }) {
   const handleScroll = () => {
@@ -42,7 +41,6 @@ export default function ProductInfo({
         productStyles={productStyles}
         selectedStyle={selectedStyle}
         setSelectedStyle={setSelectedStyle}
-        defaultProduct={defaultProduct}
       />
       <AddToBag />
       <Share />

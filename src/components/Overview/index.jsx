@@ -15,6 +15,7 @@ export default function Overview({ selected, rating, productInfo }) {
     color: "",
     skus: null,
     photos: null,
+    thumbnails: null,
   });
 
   React.useEffect(() => {
@@ -43,18 +44,19 @@ export default function Overview({ selected, rating, productInfo }) {
       let defaultObj = productStyles.results[0];
       let color = defaultObj.name;
       let photos = defaultObj.photos;
-      let skus = defaultObj.skus;
 
+      let skus = defaultObj.skus;
       setSelectedStyle({
         color: color,
-        photos: photos,
         skus: skus,
+        photos: photos,
+        thumbnail: photos[0].thumbnail_url,
       });
     }
   };
 
   return (
-    <div>
+    <div className="mb-3">
       <div className="pd__box">
         <div className="pd__wide">
           <ImageGallery key={uuidv4()} selectedStyle={selectedStyle} />
