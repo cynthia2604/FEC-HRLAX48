@@ -3,15 +3,15 @@ import React from "react";
 export default function Features({ productDetail }) {
   return (
     <div>
-      <p className="d-flex flex-column">
+      <p>
+        <b>Features:</b>
+      </p>
+      <div className="d-flex flex-column">
         {productDetail.features &&
           productDetail.features.map((feature, i) => (
-            <span key={i}>{`-${feature.feature}: ${feature.value}`}</span>
+            <div key={i}>{`${feature.feature}: ${feature.value}`}</div>
           ))}
-      </p>
-      <p className="pd__share">
-        share on social media facebook, twitter, pinterest
-      </p>
+      </div>
     </div>
   );
 }

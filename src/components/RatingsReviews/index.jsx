@@ -1,40 +1,94 @@
-import React from 'react'
-import axios from 'axios'
-import Options from '../../config'
-import StarColumn from './StarColumn'
-import ReviewColumn from './ReviewColumn'
-import utils from '../utils'
+import React from "react";
+import axios from "axios";
+import Options from "../../config";
+import StarColumn from "./StarColumn";
+import ReviewColumn from "./ReviewColumn";
+import utils from "../utils";
 
 export default function RatingsAndReviews(props) {
-
-  const [productInfo, setProductInfo] = React.useState()
-  const [percentage, setPercentage] = React.useState(100)
+  // const [productInfo, setProductInfo] = React.useState(props.productInfo)
+  const [productMeta, setProductMeta] = React.useState();
+  const [percentage, setPercentage] = React.useState(100);
+  const [starFilter, setStarFilter] = React.useState([]);
 
   React.useEffect(() => {
-    axios.get(`${Options.URL}/reviews/?product_id=${props.selected.id}&count=10`, {
-      headers: {
-        Authorization: Options.TOKEN
-      }
-    })
-      .then(res => setProductInfo(res.data))
-  }, [props.selected])
+    // fetchReviews()
+    fetchMeta();
+  }, [props.selected]);
 
+  // function fetchReviews() {
+  //   axios.get(`${Options.URL}/reviews/?product_id=${props.selected.id}&count=999`, {
+  //     headers: {
+  //       Authorization: Options.TOKEN
+  //     }
+  //   })
+  //     .then(res => setProductInfo(res.data))
+  // }
+
+  function fetchMeta() {
+    axios
+      .get(`${Options.URL}/reviews/meta/?product_id=${props.selected.id}`, {
+        headers: {
+          Authorization: Options.TOKEN,
+        },
+      })
+      .then((res) => {
+        setProductMeta(res.data);
+        setPercentage(
+          Math.round(
+            100 *
+              (Number(res.data.recommended.true) /
+                (Number(res.data.recommended.false) +
+                  Number(res.data.recommended.true)))
+          )
+        );
+      });
+  }
+
+  function handleStarClick(num) {
+    if (starFilter.includes(num)) {
+      let newFilter = [...starFilter];
+      newFilter.splice(newFilter.indexOf(num), 1);
+      setStarFilter(newFilter);
+    } else {
+      setStarFilter([...starFilter, num].sort());
+    }
+  }
 
   return (
     <>
-      <div className='sectionTitle pt-5'>
+      <div id="reviews" className="sectionTitle pt-5">
         {`RATINGS & REVIEWS`}
       </div>
-      {productInfo &&
-      <div className='reviews pt-3'>
-        <div className='reviews-left'>
-          <StarColumn rating={props.rating} productInfo={productInfo} starRating={utils.starRating}/>
+      {props.productInfo && (
+        <div className="reviews pt-3">
+          <div className="reviews-left">
+            {productMeta && (
+              <StarColumn
+                rating={props.rating}
+                productInfo={props.productInfo}
+                productMeta={productMeta}
+                starRating={utils.starRating}
+                percentage={percentage}
+                starFilter={starFilter}
+                setStarFilter={setStarFilter}
+                handleStarClick={handleStarClick}
+              />
+            )}
+          </div>
+          <div className="reviews-right">
+            <ReviewColumn
+              rating={props.rating}
+              productInfo={props.productInfo}
+              starRating={utils.starRating}
+              refresh={props.refresh}
+              selected={props.selected}
+              productMeta={productMeta}
+              starFilter={starFilter}
+            />
+          </div>
         </div>
-        <div className='reviews-right'>
-          <ReviewColumn rating={props.rating} productInfo={productInfo} starRating={utils.starRating}/>
-        </div>
-      </div>
-      }
+      )}
     </>
-  )
+  );
 }
