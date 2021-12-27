@@ -8,7 +8,7 @@ import Features from "./Features";
 import "../../styles.css";
 import { v4 as uuidv4 } from "uuid";
 
-export default function Overview({ selected, rating }) {
+export default function Overview({ selected, rating, productInfo }) {
   const [productDetail, setProductDetail] = React.useState({});
   const [productStyles, setProductStyles] = React.useState({});
   const [selectedStyle, setSelectedStyle] = React.useState({
@@ -66,6 +66,7 @@ export default function Overview({ selected, rating }) {
             rating={rating}
             selectedStyle={selectedStyle}
             setSelectedStyle={setSelectedStyle}
+            reviews={productInfo}
           />
         </div>
       </div>
