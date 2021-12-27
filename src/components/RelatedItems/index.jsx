@@ -26,8 +26,10 @@ export default function RelatedItems(props) {
       <div className="sectionTitle">RELATED ITEMS</div>
         <div className="related-product-list">
           <RelatedList
+            selected={props.selected}
             related ={relatedItems}
             setRenderTable={setRenderTable}
+            renderTable={renderTable}
             setSelectRelated={setSelectRelated}
           />
          {renderTable &&
@@ -43,6 +45,7 @@ export default function RelatedItems(props) {
         <div className="user-created-outfit">
           <OutfitList
             currentView={props.selected}
+            saved={props.saved}
             setSaved={props.setSaved}
             outfits={props.outfits}
           />

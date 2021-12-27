@@ -30,10 +30,11 @@ export default function RelatedProductEntry(props) {
           whoRender={props.whoRender}
           setRenderTable={props.setRenderTable}
           setSelectRelated={props.setSelectRelated}
+          renderTable={props.renderTable}
         />
-        <div className="related-product-category"> {props.currentItem.category}</div>
-        <div className="related-product-name">{props.currentItem.name}</div>
-        <div className="related-product-price">{props.currentItem.default_price}</div>
+        <div className="related-product-category" style={{fontSize: '12px'}}> {props.currentItem.category}</div>
+        <div className="related-product-name" style={{fontWeight:'bold'}}>{props.currentItem.name}</div>
+        <div className="related-product-price" style={{fontSize: '10px'}}>{props.currentItem.default_price}</div>
         <RelatedItemRating currentItem={current} />
       </div>
       }

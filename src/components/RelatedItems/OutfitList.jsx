@@ -7,6 +7,7 @@ export default function OutfitList(props) {
   function saveOutfit(selected) {
     let noDuplicateOutfits = props.outfits.filter(product => product.id !== selected.id)
     props.setSaved([...noDuplicateOutfits, selected])
+    localStorage.setItem('outfits', JSON.stringify(props.saved))
   }
 
   const entry = props.outfits.map(product => (

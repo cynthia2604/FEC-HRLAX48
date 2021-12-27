@@ -12,16 +12,19 @@ export default function Compare(props) {
         Authorization: Options.TOKEN
       }
     }).then((res) => {
-      setSelectedDescription(res.data.features)
+      setSelectedDescription(res.data)
     })
   }, [props.selected])
 
   return(
-    <>
+    <div className="comparison-table">
+
       <CompareTable
         selectedDescription={selectedDescription}
         selectRelated={props.selectRelated}
+        selected={props.selected}
       />
-    </>
+
+    </div>
   )
 }

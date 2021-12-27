@@ -11,7 +11,7 @@ export default function ProductImage(props) {
   }
 
   function showComparison(selected) {
-    props.setRenderTable(true)
+    props.setRenderTable(!props.renderTable)
      axios.get(`${Options.URL}/products/${Number(selected.product_id)}`, {
        headers: {
          Authorization: Options.TOKEN
