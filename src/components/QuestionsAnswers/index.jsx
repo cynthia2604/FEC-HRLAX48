@@ -2,6 +2,7 @@ import React from "react"
 import Options from "../../config"
 import axios from "axios"
 import QAElement from "./QAElement"
+import AddQuestion from "./AddQuestion"
 
 export default function QuestionsAnswers(props) {
 
@@ -47,12 +48,14 @@ export default function QuestionsAnswers(props) {
       <div className="pt-3">
         <input className="w-100 searchBar" onChange={e => setSearch(e.target.value)} value={search} placeholder="Have a question? Search for answers..."></input>
       </div>
-      <div className="pt-2 questionsColumn">
+      <div className="pt-2 mb-2 questionsColumn">
         {QAElements}
       </div>
       {questionCount === 2 &&
-      <button onClick={() => setQuestionCount(999)} className="cP mt-2 btn btn-outline-dark">Show More Questions</button>
+      <button onClick={() => setQuestionCount(999)} className="btn btn-outline-dark">More Questions</button>
       }
+      <button className="ms-3 btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#questionModal">+ Add a Question</button>
+      <AddQuestion selected={props.selected} refresh={fetchQuestions}/>
     </>
   )
 }
