@@ -6,7 +6,7 @@ import QAElement from "./QAElement"
 export default function QuestionsAnswers(props) {
 
   const [productQuestions, setProductQuestions] = React.useState([])
-  const [questionCount, setQuestionCount] = React.useState(4)
+  const [questionCount, setQuestionCount] = React.useState(2)
   const [search, setSearch] = React.useState('')
 
   let questions = []
@@ -48,9 +48,12 @@ export default function QuestionsAnswers(props) {
       <div className="pt-3">
         <input className="w-100 searchBar" onChange={e => setSearch(e.target.value)} value={search} placeholder="Have a question? Search for answers..."></input>
       </div>
-      <div className="pt-2">
+      <div className="pt-2 questionsColumn">
         {QAElements}
       </div>
+      {questionCount === 2 &&
+      <div onClick={() => setQuestionCount(999)} className="cP">Show More Questions</div>
+      }
     </>
   )
 }
