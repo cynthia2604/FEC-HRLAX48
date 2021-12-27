@@ -18,7 +18,6 @@ body {
   object-fit: unset;
 }
 
-
 .sectionTitle {
   font-weight: 300;
   font-size: 16px;
@@ -52,35 +51,21 @@ body {
 }
 
 .pd__box {
-  box-sizing: content-box;
+  display: flex;
   width: 100%;
 }
 
 .pd__wide {
-  box-sizing: border-box;
-  width: 65%;
-  padding-right: 20px;
-  float:left
+  width: 60%;
+  margin-right: 5%;
 }
 
 .pd__normal {
-  box-sizing: border-box;
   width: 50%;
-  padding-right: 20px;
-  float:left
 }
 
 .pd__narrow {
-  box-sizing: border-box;
   width: 35%;
-  padding-left: 20px;
-  float:left
-}
-
-.related-products {
-  box-sizing: content-box;
-  width: 100%;
-  float:left
 }
 
 .reviews {
