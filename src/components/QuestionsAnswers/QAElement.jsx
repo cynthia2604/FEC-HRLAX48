@@ -101,9 +101,9 @@ export default function QAElement(props) {
           <b>A:</b>
         </div>
         <div className="mw-75 answerColumn">
-          {answers.slice(0, numAnswers).map(answer => (
+          {answers.length > 0 ? answers.slice(0, numAnswers).map(answer => (
             <Answer answer={answer} key={answer.id} refresh={props.refresh}/>
-          ))}
+          )) : <div className="pb-3">No answers yet...</div>}
         </div>
       </div>
       {answers.length > 2 &&
