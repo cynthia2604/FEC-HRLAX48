@@ -39,7 +39,6 @@ export default function QuestionsAnswers(props) {
     />
   ))
 
-
   return (
     <>
       <div className='sectionTitle pt-5'>
