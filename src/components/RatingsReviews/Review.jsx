@@ -1,9 +1,13 @@
 import React from "react"
 import moment from "moment"
+import axios from "axios"
+import Options from "../../config"
 
 export default function Review(props) {
 
   const [showMore, setShowMore] = React.useState(250)
+  const [marked, setMarked] = React.useState(false)
+  const [helpful, setHelpful] = React.useState(props.review.helpfulness)
 
   function recommended() {
     if (props.review.recommend) {
@@ -19,6 +23,38 @@ export default function Review(props) {
       )
     }
   }
+
+  function markHelpful() {
+    if (!marked) {
+      axios.put(`${Options.URL}/reviews/${props.review.review_id}/helpful`, null, {
+        headers: {
+          Authorization: Options.TOKEN
+        }
+      })
+        .then(() => {
+          setMarked(true)
+          setHelpful(helpful + 1)
+        })
+    }
+  }
+
+  function reportReview() {
+    axios.put(`${Options.URL}/reviews/${props.review.review_id}/report`, null, {
+      headers: {
+        Authorization: Options.TOKEN
+      }
+    })
+      .then(() => {
+        props.refresh()
+        alert('Thank you for your report. You shouldn\'t see this review anymore')
+      })
+  }
+
+
+  function imageModal(imageURL) {
+    // Doesnt do anything yet because we don't actually have images in reviews...
+  }
+
 
   return (
     <div className='review'>
@@ -36,18 +72,45 @@ export default function Review(props) {
       <div className="reviewBody">
         {props.review.body.slice(0, showMore)}
         {showMore === 250 && props.review.body.length > 250 &&
-        <p className="cP reviewBodyShowMore" onClick={() => setShowMore(999)}>Show More...</p>
+        <p className="cP reviewBodyShowMore pt-2" onClick={() => setShowMore(999)}>Show More...</p>
         }
       </div>
       {recommended()}
-      <div className="w-100">
-        Response Block
+      {props.review.response &&
+      <div className="reviewResponse">
+        <div>
+          <strong>Response From Seller:</strong>
+        </div>
+        <div>
+          {props.review.response}
+        </div>
       </div>
-      <div>
-        Photos
+      }
+      {props.review.photos.length > 0 &&
+      <div className="d-flex pt-3">
+        {props.review.photos.map(photo => (
+          <div key={photo.id} className="cP">
+            <img src={photo.url} alt="Reviewer Photo" height="25px" onClick={() => imageModal(photo.url)}></img>
+          </div>
+        ))}
       </div>
-      <div>
-        Helpful?
+      }
+      <div className="d-flex align-items-center reviewHelpful pt-3">
+        <div>
+          Was this review helpful?
+        </div>
+        <div className="cP reviewBodyShowMore ps-2 pe-1" onClick={markHelpful}>
+          Yes
+        </div>
+        <div>
+          ({helpful})
+        </div>
+        <div className="px-2">
+          |
+        </div>
+        <div className="cP reviewBodyShowMore" onClick={reportReview}>
+          Report
+        </div>
       </div>
       <div className='reviewDivider'></div>
     </div>

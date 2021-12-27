@@ -4,17 +4,24 @@ import RatingsAndReviews from "./RatingsReviews"
 import RelatedItems from "./RelatedItems"
 import axios from "axios"
 import Options from "../config"
+import QuestionsAnswers from "./QuestionsAnswers"
 
 export default function Detail(props) {
   const [rating, setRating] = React.useState(5)
+  const [productInfo, setProductInfo] = React.useState()
 
   React.useEffect(() => {
-    axios.get(`${Options.URL}/reviews/?product_id=${props.selected.id}&count=99`, {
+    fetchProductInfo()
+  }, [props.selected])
+
+  function fetchProductInfo() {
+    axios.get(`${Options.URL}/reviews/?product_id=${props.selected.id}&count=999`, {
       headers: {
         Authorization: Options.TOKEN
       }
     })
       .then(res => {
+        setProductInfo(res.data)
         function roundQuarter(num) {
           return Math.round(num*4)/4
         }
@@ -25,19 +32,34 @@ export default function Detail(props) {
         average = average / res.data.results.length
         setRating(roundQuarter(average))
       })
-  }, [props.selected])
+  }
 
   return (
-    <div>
-      <div onClick={() => props.setView('catalogue')}>GO TO CATALOGUE</div>
-      <Overview selected={props.selected} rating={rating}/>
+    <>
+    {productInfo &&
+      <div>
+      <Overview
+      selected={props.selected}
+      rating={rating}
+      productInfo={productInfo}
+      />
       <RelatedItems
-        products={props.products}
-        selected ={props.selected}
-        setSaved={props.setSaved}
-        outfits={props.outfits}
-        />
-      <RatingsAndReviews selected={props.selected} rating={rating} />
-    </div>
+      products={props.products}
+      selected ={props.selected}
+      setSaved={props.setSaved}
+      outfits={props.outfits}
+      />
+      <QuestionsAnswers
+      selected={props.selected}
+      />
+      <RatingsAndReviews
+      selected={props.selected}
+      rating={rating}
+      productInfo={productInfo}
+      refresh={fetchProductInfo}
+      />
+      </div>
+    }
+    </>
   )
 }
