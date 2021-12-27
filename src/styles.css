@@ -370,6 +370,7 @@ input[type=range]::-webkit-slider-runnable-track {
   border-radius: 10px;
   border: 0px solid #8A8A8A;
 }
+
 input[type=range]::-webkit-slider-thumb {
   height: 18px;
   width: 5px;
