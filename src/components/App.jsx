@@ -8,6 +8,7 @@ import Catalogue from "./Catalogue";
 import Options from "../config";
 import Detail from "./Detail";
 import axios from "axios";
+import Header from "./Header";
 
 export default function App(props) {
   const [view, setView] = React.useState("catalogue");
@@ -17,7 +18,7 @@ export default function App(props) {
 
   React.useEffect(() => {
     axios
-      .get(`${Options.URL}/products/?count=20`, {
+      .get(`${Options.URL}/products/?count=60`, {
         headers: {
           Authorization: Options.TOKEN,
         },
@@ -27,8 +28,9 @@ export default function App(props) {
 
   return (
     <>
+      <Header setView={setView} />
       {view === "catalogue" && (
-        <div>
+        <div className="container">
           <Catalogue
             setView={setView}
             products={products}
