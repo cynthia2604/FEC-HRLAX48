@@ -12,9 +12,10 @@ export default function ProductInfo({
   selectedStyle,
   setSelectedStyle,
   defaultProduct,
+  reviews,
 }) {
   const handleScroll = () => {
-    const reviewElement = document.getElementById("review");
+    const reviewElement = document.getElementById("reviews");
     reviewElement.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -22,9 +23,13 @@ export default function ProductInfo({
     <div>
       <div className="pd__box">
         <div className="pd__normal mb-3">{utils.starRating(rating)}</div>
-        <div className="pd__normal mb-3">
-          <u onClick={handleScroll}>Read All Reviews</u>
-        </div>
+        {reviews.results.length ? (
+          <div className="pd__normal mb-3">
+            <u onClick={handleScroll}>
+              Read All {reviews.results.length} Reviews
+            </u>
+          </div>
+        ) : null}
       </div>
 
       <p className="mb-4">{"Category: " + productDetail.category}</p>

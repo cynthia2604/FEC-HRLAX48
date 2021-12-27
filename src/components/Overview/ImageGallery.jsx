@@ -4,20 +4,6 @@ import { Carousel } from "react-responsive-carousel";
 import { v4 as uuidv4 } from "uuid";
 
 export default function ImageGallery({ selectedStyle }) {
-  const defaultPhotos =
-    selectedStyle.photos &&
-    selectedStyle.photos.map((photo) => {
-      return (
-        <div>
-          <img
-            key={uuidv4()}
-            src={photo.url}
-            style={{ objectFit: "cover", height: 400 }}
-          />
-        </div>
-      );
-    });
-
   const image =
     selectedStyle.photos &&
     selectedStyle.photos.map((photo) => {
@@ -35,7 +21,7 @@ export default function ImageGallery({ selectedStyle }) {
   return (
     <div>
       <Carousel infiniteLoop showStatus={false} key={uuidv4()}>
-        {selectedStyle.photos ? image : defaultPhotos}
+        {image}
       </Carousel>
     </div>
   );
