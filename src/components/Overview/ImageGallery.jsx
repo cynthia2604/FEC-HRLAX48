@@ -20,7 +20,7 @@ export default function ImageGallery({ selectedStyle, handleExpand }) {
     });
 
   return (
-    <div className="pd__gallery-container">
+    <div className="pd__container">
       <div className="image">
         <Carousel
           infiniteLoop

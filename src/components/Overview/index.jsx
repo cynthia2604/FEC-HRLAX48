@@ -17,6 +17,7 @@ export default function Overview({ selected, rating, productInfo }) {
     skus: null,
     photos: null,
     thumbnails: null,
+    thumbnail: null,
   });
   const [isExpand, setIsExpand] = React.useState(false);
 

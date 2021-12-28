@@ -20,7 +20,7 @@ export default function StyleSelector({
       <div className="pd__styleText mb-3">
         {"Style: " + selectedStyle.color}
       </div>
-      <div>
+      <div className="d-flex align-content-start flex-wrap">
         {productStyles.results &&
           productStyles.results.map((style) => (
             <Style
