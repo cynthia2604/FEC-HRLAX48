@@ -18,7 +18,6 @@ export default function Overview({ selected, rating, productInfo }) {
     photos: null,
     thumbnails: null,
   });
-  const [isExpand, setIsExpand] = React.useState(false);
 
   React.useEffect(() => {
     axios
@@ -57,32 +56,22 @@ export default function Overview({ selected, rating, productInfo }) {
     }
   };
 
-  const handleExpand = () => {
-    setIsExpand(!isExpand);
-  };
-
   return (
     <div className="mb-3">
       <div className="pd__box">
-        <div className={isExpand ? "pd__box" : "pd__wide"}>
-          <ImageGallery
-            key={uuidv4()}
+        <div className="pd__wide">
+          <ImageGallery key={uuidv4()} selectedStyle={selectedStyle} />
+        </div>
+        <div className="pd__narrow">
+          <ProductInfo
+            productDetail={productDetail}
+            productStyles={productStyles}
+            rating={rating}
             selectedStyle={selectedStyle}
-            handleExpand={handleExpand}
+            setSelectedStyle={setSelectedStyle}
+            reviews={productInfo}
           />
         </div>
-        {!isExpand ? (
-          <div className="pd__narrow">
-            <ProductInfo
-              productDetail={productDetail}
-              productStyles={productStyles}
-              rating={rating}
-              selectedStyle={selectedStyle}
-              setSelectedStyle={setSelectedStyle}
-              reviews={productInfo}
-            />
-          </div>
-        ) : null}
       </div>
       <div className="pd__box mt-5 d-flex justify-content-between">
         <div className="w-50">

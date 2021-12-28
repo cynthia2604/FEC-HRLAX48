@@ -4,7 +4,7 @@ import { Carousel } from "react-responsive-carousel";
 import { v4 as uuidv4 } from "uuid";
 import AspectRatioIcon from "@mui/icons-material/AspectRatio";
 
-export default function ImageGallery({ selectedStyle, handleExpand }) {
+export default function ImageGallery({ selectedStyle }) {
   const image =
     selectedStyle.photos &&
     selectedStyle.photos.map((photo) => {
@@ -31,7 +31,7 @@ export default function ImageGallery({ selectedStyle, handleExpand }) {
           {image}
         </Carousel>
       </div>
-      <div className="expand-icon" onClick={handleExpand}>
+      <div className="expand-icon">
         <AspectRatioIcon sx={{ color: "white" }} />
       </div>
     </div>
