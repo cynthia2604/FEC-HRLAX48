@@ -21,21 +21,18 @@ export default function ProductInfo({
 
   return (
     <div>
-      {reviews.results.length ? (
-        <div className="pd__box">
-          <div className="pd__normal mb-3">{utils.starRating(rating)}</div>
+      <div className="pd__box">
+        <div className="pd__normal mb-3">{utils.starRating(rating)}</div>
+        {reviews.results.length ? (
           <div className="pd__normal mb-3">
             <u onClick={handleScroll}>
               Read All {reviews.results.length} Reviews
             </u>
           </div>
-        </div>
-      ) : null}
+        ) : null}
+      </div>
 
-      <p className="mb-4">
-        Category:
-        {" " + productDetail.category}
-      </p>
+      <p className="mb-4">{"Category: " + productDetail.category}</p>
       <h2 className="mb-2">{productDetail.name}</h2>
       <h3 className="mb-4">{"$" + productDetail.default_price}</h3>
       <StyleSelector
