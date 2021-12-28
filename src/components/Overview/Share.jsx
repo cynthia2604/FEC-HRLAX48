@@ -8,10 +8,7 @@ import { FacebookIcon, TwitterIcon, PinterestIcon } from "react-share";
 
 export default function Share() {
   return (
-    <div>
-      <p>
-        <b>Share:</b>
-      </p>
+    <div className="mt-4">
       <div className="pd__share d-inline">
         <FacebookShareButton url={window.location.href} hashtag={"#hashtag"}>
           <FacebookIcon size={32} round />
