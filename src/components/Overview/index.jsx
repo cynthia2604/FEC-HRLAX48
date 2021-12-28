@@ -85,7 +85,7 @@ export default function Overview({ selected, rating, productInfo }) {
           </div>
         ) : null}
       </div>
-      <div className="pd__box mt-5 d-flex justify-content-between">
+      <div className="pd__box mt-4 d-flex justify-content-between">
         <div className="w-50">
           <Description productDetail={productDetail} />
         </div>

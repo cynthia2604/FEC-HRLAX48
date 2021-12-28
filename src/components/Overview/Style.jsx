@@ -17,29 +17,26 @@ export default function Style({
     });
   };
 
-  const renderCheck = () => {
-    if (name === selectedStyle.color) {
-      <div className="pd__style-check">
-        <CheckCircleOutlineIcon />
-      </div>;
-    }
-  };
-
   return (
     <div className="pd__container">
       <button
         name={name}
         className="pd__style-icon p-4"
-        style={
-          name === selectedStyle.color
-            ? addSelectionBorder
-            : removeSelectionBorder
-        }
         onClick={handleSelection}
+        style={{ backgroundImage: `url(${thumbnail})` }}
       ></button>
-      <div className="pd__style-check">
-        <CheckCircleOutlineIcon />
-      </div>
+      {name === selectedStyle.color ? (
+        <div className="pd__style-check">
+          <CheckCircleOutlineIcon
+            sx={{
+              color: "grey",
+              backgroundColor: "white",
+              borderRadius: "50%",
+              fontSize: "medium",
+            }}
+          />
+        </div>
+      ) : null}
     </div>
   );
 }
