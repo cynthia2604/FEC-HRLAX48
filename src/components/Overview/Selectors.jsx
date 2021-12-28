@@ -68,8 +68,12 @@ export default function Selectors({
             : "dropdown show btn-group pd__narrow mt-4 text-left"
         }
       >
-        <div
-          className="btn btn-outline-secondary dropdown-toggle"
+        <button
+          className={
+            select === "size" || display.stockQuantity !== null
+              ? `btn btn-outline-secondary dropdown-toggle`
+              : `btn btn-outline-secondary dropdown-toggle disabled`
+          }
           type="button"
           id="dropdownMenuLink"
           data-toggle="dropdown"
@@ -77,7 +81,7 @@ export default function Selectors({
           aria-expanded="false"
         >
           {select === "size" ? display.size : display.quantity}
-        </div>
+        </button>
         <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
           {skuElement}
           {qtyElement}
