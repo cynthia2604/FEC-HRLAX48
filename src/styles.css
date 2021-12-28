@@ -26,12 +26,14 @@ body {
 }
 
 .pd__button-narrow {
+
   margin-right: 10px;
   margin-bottom: 10px;
   width: 50px;
 }
 
 .pd__button-wide {
+
   margin-right: 10px;
   margin-bottom: 10px;
   width: 200px;
@@ -39,9 +41,9 @@ body {
 
 .pd__style-icon {
   border-radius: 50%;
+  filter: saturate(15%);
   margin-right: 10px;
   margin-bottom: 10px;
-  background-size: contain;
 }
 
 .pd__share {

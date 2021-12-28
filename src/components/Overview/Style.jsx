@@ -5,30 +5,30 @@ export default function Style({
   selectedStyle,
   setSelectedStyle,
   skus,
-  allPhotos,
-  thumbnail,
+  photos,
 }) {
   const handleSelection = () => {
     setSelectedStyle({
       color: `${name}`,
       skus: skus,
-      photos: allPhotos,
+      photos: photos,
     });
   };
+
   const addSelectionBorder = {
-    backgroundImage: `url(${thumbnail})`,
     border: "3px solid lightgrey",
+    background: `${name}`,
   };
 
   const removeSelectionBorder = {
-    backgroundImage: `url(${thumbnail})`,
-    border: "0px",
+    border: "none",
+    backgroundColor: `${name}`,
   };
 
   return (
     <button
       name={name}
-      className="pd__style-icon p-4"
+      className="pd__style-icon p-3"
       style={
         name === selectedStyle.color
           ? addSelectionBorder
