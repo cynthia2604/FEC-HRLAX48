@@ -69,8 +69,8 @@ export default function Selectors({
         }
       >
         <div
-          className="btn btn-outline-secondary dropdown-toggle "
-          role="button"
+          className="btn btn-outline-secondary dropdown-toggle"
+          type="button"
           id="dropdownMenuLink"
           data-toggle="dropdown"
           aria-haspopup="true"

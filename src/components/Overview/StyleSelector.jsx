@@ -31,6 +31,8 @@ export default function StyleSelector({
               thumbnail={style.photos[0].thumbnail_url}
               selectedStyle={selectedStyle}
               setSelectedStyle={setSelectedStyle}
+              originalPrice={style.original_price}
+              salePrice={style.sale_price}
             />
           ))}
       </div>

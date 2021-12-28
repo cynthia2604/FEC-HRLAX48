@@ -8,12 +8,16 @@ export default function Style({
   skus,
   allPhotos,
   thumbnail,
+  originalPrice,
+  salePrice,
 }) {
   const handleSelection = () => {
     setSelectedStyle({
       color: `${name}`,
       skus: skus,
       photos: allPhotos,
+      originalPrice: originalPrice,
+      salePrice: salePrice,
     });
   };
 

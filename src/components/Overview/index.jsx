@@ -18,6 +18,8 @@ export default function Overview({ selected, rating, productInfo }) {
     photos: null,
     thumbnails: null,
     thumbnail: null,
+    originalPrice: null,
+    salePrice: null,
   });
   const [isExpand, setIsExpand] = React.useState(false);
 
@@ -48,11 +50,16 @@ export default function Overview({ selected, rating, productInfo }) {
       let color = defaultObj.name;
       let photos = defaultObj.photos;
       let skus = defaultObj.skus;
+      let originalPrice = defaultObj.original_price;
+      let salePrice = defaultObj.sale_price;
+
       setSelectedStyle({
         color: color,
         skus: skus,
         photos: photos,
         thumbnail: photos[0].thumbnail_url,
+        originalPrice: originalPrice,
+        salePrice: salePrice,
       });
     }
   };

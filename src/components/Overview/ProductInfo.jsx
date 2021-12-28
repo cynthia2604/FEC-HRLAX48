@@ -32,7 +32,20 @@ export default function ProductInfo({
       ) : null}
       <p className="mb-2">{productDetail.category}</p>
       <h2 className="mb-3">{productDetail.name}</h2>
-      <p className="mb-3">{"$" + productDetail.default_price}</p>
+      <div className="mb-3">
+        {selectedStyle.salePrice ? (
+          <div>
+            <span>
+              <s>{"$" + selectedStyle.originalPrice}</s>
+            </span>
+            <span style={{ color: "red" }} className="ms-2">
+              {"$" + selectedStyle.salePrice}
+            </span>
+          </div>
+        ) : (
+          "$" + selectedStyle.originalPrice
+        )}
+      </div>
       <StyleSelector
         productStyles={productStyles}
         selectedStyle={selectedStyle}
