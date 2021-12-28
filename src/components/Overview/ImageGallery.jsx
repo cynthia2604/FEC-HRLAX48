@@ -1,5 +1,5 @@
 import React from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { v4 as uuidv4 } from "uuid";
 import AspectRatioIcon from "@mui/icons-material/AspectRatio";
@@ -31,7 +31,7 @@ export default function ImageGallery({ selectedStyle, handleExpand }) {
           {image}
         </Carousel>
       </div>
-      <div className="expand-icon" onClick={handleExpand}>
+      <div className="expand-icon" type="button" onClick={handleExpand}>
         <AspectRatioIcon sx={{ color: "white" }} />
       </div>
     </div>

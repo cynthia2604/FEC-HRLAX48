@@ -81,12 +81,12 @@ body {
   position: relative;
 }
 
-.pd__gallery-container
+.pd__container
 .image {
   display: block;
 }
 
-.pd__gallery-container
+.pd__container
 .expand-icon {
   position: absolute;
   left: 93%;

@@ -47,7 +47,6 @@ export default function Overview({ selected, rating, productInfo }) {
       let defaultObj = productStyles.results[0];
       let color = defaultObj.name;
       let photos = defaultObj.photos;
-
       let skus = defaultObj.skus;
       setSelectedStyle({
         color: color,
