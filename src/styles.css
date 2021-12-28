@@ -97,13 +97,15 @@ body {
   border-radius: 50%;
   margin-right: 10px;
   margin-bottom: 10px;
-  background-size: contain;
+  background-size: cover;
   display: block;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .pd__style-check {
   position: absolute;
-  left: 60%;
+  left: 55%;
   bottom: 75%;
 }
 

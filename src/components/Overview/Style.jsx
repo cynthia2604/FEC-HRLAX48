@@ -23,13 +23,13 @@ export default function Style({
         name={name}
         className="pd__style-icon p-4"
         onClick={handleSelection}
-        style={{ backgroundImage: `url(${thumbnail})` }}
+        style={{ backgroundImage: `url(${thumbnail})`, border: "none" }}
       ></button>
       {name === selectedStyle.color ? (
         <div className="pd__style-check">
           <CheckCircleOutlineIcon
             sx={{
-              color: "grey",
+              color: "rgb(80, 80, 80)",
               backgroundColor: "white",
               borderRadius: "50%",
               fontSize: "medium",
