@@ -12,12 +12,6 @@ body {
   cursor: pointer;
 }
 
-.carousel .thumb {
-  width: 80px;
-  height: 60px;
-  object-fit: unset;
-}
-
 .sectionTitle {
   font-weight: 300;
   font-size: 16px;
@@ -107,8 +101,31 @@ body {
 
 .pd__style-check {
   position: absolute;
-  left: 55%;
+  left: 60%;
   bottom: 75%;
+}
+
+.image-gallery-content.left
+.image-gallery-slide
+.image-gallery-image {
+  height: 450px;
+  object-fit: cover;
+  background-position: center center;
+}
+
+.image-gallery-left-nav
+.image-gallery-svg,
+.image-gallery-right-nav
+.image-gallery-svg {
+  height: 40px;
+  width: 20px;
+}
+
+.pd__gallery-expand {
+  width: 100%;
+  object-fit: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 .reviews {

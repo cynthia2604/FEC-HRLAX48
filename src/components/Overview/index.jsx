@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Options from "../../config";
-import ImageGallery from "./ImageGallery";
+import Gallery from "./Gallery";
 import ProductInfo from "./ProductInfo";
 import Description from "./Description";
 import Features from "./Features";
@@ -72,8 +72,8 @@ export default function Overview({ selected, rating, productInfo }) {
   return (
     <div className="mb-3">
       <div className="pd__box">
-        <div className={isExpand ? "pd__box" : "pd__wide"}>
-          <ImageGallery
+        <div className={isExpand ? "pd__gallery-expand" : "pd__wide"}>
+          <Gallery
             key={uuidv4()}
             selectedStyle={selectedStyle}
             handleExpand={handleExpand}
