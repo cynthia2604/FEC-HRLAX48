@@ -25,9 +25,12 @@ export default function Style({
     <div className="pd__container">
       <button
         name={name}
-        className="pd__style-icon p-4"
+        className="pd__style-icon"
         onClick={handleSelection}
-        style={{ backgroundImage: `url(${thumbnail})`, border: "none" }}
+        style={{
+          backgroundImage: `url(${thumbnail})`,
+          border: "none",
+        }}
       ></button>
       {name === selectedStyle.color ? (
         <div className="pd__style-check">
