@@ -45,6 +45,7 @@ export default function StyleSelector({
           setDisplay={setDisplay}
           display={display}
           selectedStyle={selectedStyle}
+          availableQty={availableQty}
         />
         <Selectors
           select="quantity"

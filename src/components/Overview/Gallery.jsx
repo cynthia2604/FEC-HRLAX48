@@ -1,8 +1,8 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import AspectRatioIcon from "@mui/icons-material/AspectRatio";
-import ImageGallery from "../../../node_modules/react-image-gallery";
-import "../../../node_modules/react-image-gallery/styles/css/image-gallery.css";
+import ImageGallery from "react-image-gallery";
+import "../../image-gallery.css";
 
 export default function Gallery({ selectedStyle, handleExpand }) {
   const images = [];
