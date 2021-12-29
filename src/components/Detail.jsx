@@ -1,67 +1,82 @@
-import React from "react"
-import Overview from "./Overview"
-import RatingsAndReviews from "./RatingsReviews"
-import RelatedItems from "./RelatedItems"
-import axios from "axios"
-import Options from "../config"
-import QuestionsAnswers from "./QuestionsAnswers"
+import React from "react";
+import Overview from "./Overview";
+import RatingsAndReviews from "./RatingsReviews";
+import RelatedItems from "./RelatedItems";
+import axios from "axios";
+import Options from "../config";
+import QuestionsAnswers from "./QuestionsAnswers";
 
 export default function Detail(props) {
-  const [rating, setRating] = React.useState(5)
-  const [productInfo, setProductInfo] = React.useState()
+  const [rating, setRating] = React.useState(5);
+  const [productInfo, setProductInfo] = React.useState();
+  const [selectedStyle, setSelectedStyle] = React.useState({
+    color: "",
+    skus: null,
+    photos: null,
+    thumbnails: null,
+    thumbnail: null,
+    originalPrice: null,
+    salePrice: null,
+  });
 
   React.useEffect(() => {
-    fetchProductInfo()
-  }, [props.selected])
+    fetchProductInfo();
+  }, [props.selected]);
 
   function fetchProductInfo() {
-    axios.get(`${Options.URL}/reviews/?product_id=${props.selected.id}&count=999`, {
-      headers: {
-        Authorization: Options.TOKEN
-      }
-    })
-      .then(res => {
-        setProductInfo(res.data)
+    axios
+      .get(
+        `${Options.URL}/reviews/?product_id=${props.selected.id}&count=999`,
+        {
+          headers: {
+            Authorization: Options.TOKEN,
+          },
+        }
+      )
+      .then((res) => {
+        setProductInfo(res.data);
         function roundQuarter(num) {
-            return Math.round(num*4)/4
+          return Math.round(num * 4) / 4;
         }
         let average = 0;
         if (res.data.results.length) {
           for (let i = 0; i < res.data.results.length; i++) {
-            average += res.data.results[i].rating
+            average += res.data.results[i].rating;
           }
-          average = average / res.data.results.length
+          average = average / res.data.results.length;
         }
-        setRating(roundQuarter(average))
-      })
+        setRating(roundQuarter(average));
+      });
   }
 
   return (
     <>
-    {productInfo &&
-      <div>
-      <Overview
-      selected={props.selected}
-      rating={rating}
-      productInfo={productInfo}
-      />
-      <RelatedItems
-      products={props.products}
-      selected ={props.selected}
-      setSaved={props.setSaved}
-      outfits={props.outfits}
-      />
-      <QuestionsAnswers
-      selected={props.selected}
-      />
-      <RatingsAndReviews
-      selected={props.selected}
-      rating={rating}
-      productInfo={productInfo}
-      refresh={fetchProductInfo}
-      />
-      </div>
-    }
+      {productInfo && (
+        <div>
+          <Overview
+            selected={props.selected}
+            selectedStyle={selectedStyle}
+            setSelectedStyle={setSelectedStyle}
+            rating={rating}
+            productInfo={productInfo}
+          />
+          <RelatedItems
+            products={props.products}
+            selected={props.selected}
+            setSaved={props.setSaved}
+            outfits={props.outfits}
+            selectedStyle={selectedStyle}
+            setSelectedStyle={setSelectedStyle}
+          />
+          <QuestionsAnswers selected={props.selected} />
+          <RatingsAndReviews
+            selected={props.selected}
+            rating={rating}
+            productInfo={productInfo}
+            refresh={fetchProductInfo}
+          />
+        </div>
+      )}
     </>
-  )
+  );
 }

@@ -10,18 +10,15 @@ import OverviewInfo from "./OverviewInfo";
 import "../../styles.css";
 import { v4 as uuidv4 } from "uuid";
 
-export default function Overview({ selected, rating, productInfo }) {
+export default function Overview({
+  selected,
+  rating,
+  productInfo,
+  selectedStyle,
+  setSelectedStyle,
+}) {
   const [productDetail, setProductDetail] = React.useState({});
   const [productStyles, setProductStyles] = React.useState({});
-  const [selectedStyle, setSelectedStyle] = React.useState({
-    color: "",
-    skus: null,
-    photos: null,
-    thumbnails: null,
-    thumbnail: null,
-    originalPrice: null,
-    salePrice: null,
-  });
   const [isExpand, setIsExpand] = React.useState(false);
 
   React.useEffect(() => {
@@ -71,7 +68,7 @@ export default function Overview({ selected, rating, productInfo }) {
 
   return (
     <div className="mb-3">
-      <div className="pd__box d-flex align-items-center">
+      <div className="pd__box">
         <div className={isExpand ? "pd__gallery-expand" : "wide"}>
           <Gallery
             key={uuidv4()}
