@@ -8,22 +8,25 @@ import { FacebookIcon, TwitterIcon, PinterestIcon } from "react-share";
 
 export default function Share() {
   return (
-    <div className="mt-2">
-      <FacebookShareButton
-        url={"https://www.facebook.com/"}
-        hashtag={"#hashtag"}
-      >
-        <FacebookIcon size={32} round />
-      </FacebookShareButton>
-      <TwitterShareButton url={"https://www.twitter.com/"} hashtag={"#hashtag"}>
-        <TwitterIcon size={32} round />
-      </TwitterShareButton>
-      <PinterestShareButton
-        url={"https://www.pinterest.com/"}
-        hashtag={"#hashtag"}
-      >
-        <PinterestIcon size={32} round />
-      </PinterestShareButton>
+    <div>
+      <p>
+        <b>Share:</b>
+      </p>
+      <div className="me-2 d-inline">
+        <FacebookShareButton url={window.location.href} hashtag={"#hashtag"}>
+          <FacebookIcon size={32} round />
+        </FacebookShareButton>
+      </div>
+      <div className="me-2 d-inline">
+        <TwitterShareButton url={window.location.href} hashtag={"#hashtag"}>
+          <TwitterIcon size={32} round />
+        </TwitterShareButton>
+      </div>
+      <div className="me-2 d-inline">
+        <PinterestShareButton url={window.location.href} hashtag={"#hashtag"}>
+          <PinterestIcon size={32} round />
+        </PinterestShareButton>
+      </div>
     </div>
   );
 }

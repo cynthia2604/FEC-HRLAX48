@@ -32,12 +32,6 @@ body {
   cursor: pointer;
 }
 
-.carousel .thumb {
-  width: 80px;
-  height: 60px;
-  object-fit: unset;
-}
-
 .sectionTitle {
   font-weight: 300;
   font-size: 16px;
@@ -45,47 +39,123 @@ body {
   padding: 0;
 }
 
-.pd__button-narrow {
-
-  margin-right: 10px;
-  margin-bottom: 10px;
-  width: 50px;
-}
-
-.pd__button-wide {
-
-  margin-right: 10px;
-  margin-bottom: 10px;
-  width: 200px;
-}
-
-.pd__style-icon {
-  border-radius: 50%;
-  filter: saturate(15%);
-  margin-right: 10px;
-  margin-bottom: 10px;
-}
-
-.pd__styleText {
-  margin-bottom: 10px;
-}
-
 .pd__box {
   display: flex;
   width: 100%;
 }
 
-.pd__wide {
-  width: 60%;
-  margin-right: 5%;
+.pd__box
+.quantity {
+  width: 42%;
 }
 
-.pd__normal {
+.pd__box
+.size{
+  margin-right: 3%;
+  width: 55%;
+}
+
+.pd__box
+.add {
+  margin-top: 3%;
+  margin-right: 3%;
+  width: 80%;
+}
+
+.pd__box
+.star {
+  margin-top: 3%;
+  width: 17%;
+}
+
+.pd__box
+.wide {
+  width: 65%;
+  margin-right: 4%;
+}
+
+.pd__box
+.normal {
   width: 50%;
 }
 
-.pd__narrow {
-  width: 35%;
+.pd__box
+.narrow {
+  width: 30%;
+}
+
+.pd__container {
+  position: relative;
+}
+
+.pd__container
+.image {
+  display: block;
+}
+
+.pd__container
+.expand-icon {
+  position: absolute;
+  left: 93%;
+  bottom: 90%;
+}
+
+.pd__style-icon {
+  border-radius: 50%;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  background-size: cover;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 60px;
+  height: 60px;
+}
+
+.pd__style-check {
+  position: absolute;
+  left: 60%;
+  bottom: 75%;
+}
+
+.image-gallery-content.left
+.image-gallery-slide
+.image-gallery-image {
+  height: 460px;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.pd__alt {
+  height: 460px;
+  width: 100%;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.image-gallery-left-nav
+.image-gallery-svg,
+.image-gallery-right-nav
+.image-gallery-svg {
+  height: 44px;
+  width: 22px;
+}
+
+.pd__gallery-expand {
+  width: 100%;
+  object-fit: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.css-1d159sf-MuiSvgIcon-root {
+  filter: drop-shadow(2px 2px 1px rgb(0 0 0 / 0.4));
+}
+
+.css-1d159sf-MuiSvgIcon-root:hover {
+  fill: #2a68c5;
 }
 
 .reviews {

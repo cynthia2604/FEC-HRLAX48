@@ -10,11 +10,15 @@ export default function Selectors({
   availableQty,
   setDisplay,
   display,
+  selectedStyle,
 }) {
   const [qtyArray, setQtyArray] = React.useState([]);
+
   React.useEffect(() => {
     renderQuantity();
   }, [availableQty]);
+
+  //if quan not avaliable, then display out of stock and remove size from dropdown
 
   const getSku = () => {
     let result = [];
@@ -51,6 +55,20 @@ export default function Selectors({
     }
   });
 
+  const handleDropdown = () => {
+    if (select === "size") {
+      return display.size;
+    } else {
+      for (var key in skus) {
+        if (key === "null") {
+          return "Out of Stock";
+        }
+      }
+    }
+
+    return display.quantity;
+  };
+
   const renderQuantity = () => {
     var qty = [];
     for (var i = 1; i <= availableQty; i++) {
@@ -60,24 +78,28 @@ export default function Selectors({
   };
 
   return (
-    <span>
+    <span className="pd__box d-inline">
       <div
         className={
           select === "size"
-            ? "dropdown show btn-group pd__button-wide mt-4"
-            : "dropdown show btn-group pd__button-narrow mt-4"
+            ? "dropdown show btn-group size mt-4"
+            : "dropdown show btn-group quantity mt-4"
         }
       >
-        <div
-          className="btn btn-outline-secondary dropdown-toggle "
-          role="button"
+        <button
+          className={
+            select === "size" || display.stockQuantity !== null
+              ? `btn btn-outline-secondary dropdown-toggle`
+              : `btn btn-outline-secondary dropdown-toggle disabled`
+          }
+          type="button"
           id="dropdownMenuLink"
           data-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false"
         >
-          {select === "size" ? display.size : display.quantity}
-        </div>
+          {handleDropdown()}
+        </button>
         <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
           {skuElement}
           {qtyElement}
