@@ -17,7 +17,7 @@ export default function SizeSelector({
 
   return (
     <div className="dropdown-item" onClick={handleDisplay}>
-      {sku.size}
+      {sku.quantity !== null ? sku.size : null}
     </div>
   );
 }

@@ -12,9 +12,12 @@ export default function Selectors({
   display,
 }) {
   const [qtyArray, setQtyArray] = React.useState([]);
+
   React.useEffect(() => {
     renderQuantity();
   }, [availableQty]);
+
+  //if quan not avaliable, then display out of stock and remove size from dropdown
 
   const getSku = () => {
     let result = [];
@@ -60,12 +63,12 @@ export default function Selectors({
   };
 
   return (
-    <span>
+    <span className="pd__box d-inline">
       <div
         className={
           select === "size"
-            ? "dropdown show btn-group pd__button-wide mt-4"
-            : "dropdown show btn-group pd__button-narrow mt-4"
+            ? "dropdown show btn-group size mt-4"
+            : "dropdown show btn-group quantity mt-4"
         }
       >
         <button

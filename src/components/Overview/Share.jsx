@@ -12,17 +12,17 @@ export default function Share() {
       <p>
         <b>Share:</b>
       </p>
-      <div className="pd__share d-inline">
+      <div className="me-2 d-inline">
         <FacebookShareButton url={window.location.href} hashtag={"#hashtag"}>
           <FacebookIcon size={32} round />
         </FacebookShareButton>
       </div>
-      <div className="pd__share d-inline">
+      <div className="me-2 d-inline">
         <TwitterShareButton url={window.location.href} hashtag={"#hashtag"}>
           <TwitterIcon size={32} round />
         </TwitterShareButton>
       </div>
-      <div className="pd__share d-inline">
+      <div className="me-2 d-inline">
         <PinterestShareButton url={window.location.href} hashtag={"#hashtag"}>
           <PinterestIcon size={32} round />
         </PinterestShareButton>

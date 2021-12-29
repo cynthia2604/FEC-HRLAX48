@@ -72,7 +72,7 @@ export default function Overview({ selected, rating, productInfo }) {
   return (
     <div className="mb-3">
       <div className="pd__box">
-        <div className={isExpand ? "pd__gallery-expand" : "pd__wide"}>
+        <div className={isExpand ? "pd__gallery-expand" : "wide"}>
           <Gallery
             key={uuidv4()}
             selectedStyle={selectedStyle}
@@ -80,7 +80,7 @@ export default function Overview({ selected, rating, productInfo }) {
           />
         </div>
         {!isExpand ? (
-          <div className="pd__narrow">
+          <div className="narrow">
             <ProductInfo
               productDetail={productDetail}
               productStyles={productStyles}
