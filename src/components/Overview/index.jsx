@@ -71,7 +71,7 @@ export default function Overview({ selected, rating, productInfo }) {
 
   return (
     <div className="mb-3">
-      <div className="pd__box d-flex align-items-center">
+      <div className="pd__box">
         <div className={isExpand ? "pd__gallery-expand" : "wide"}>
           <Gallery
             key={uuidv4()}
