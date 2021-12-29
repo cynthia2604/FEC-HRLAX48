@@ -3,6 +3,7 @@ import moment from "moment"
 import axios from "axios"
 import Options from "../../config"
 import Answer from "./Answer"
+import AddAnswer from "./AddAnswer"
 
 export default function QAElement(props) {
 
@@ -10,6 +11,7 @@ export default function QAElement(props) {
   const [helpful, setHelpful] = React.useState(props.element.question_helpfulness)
   const [numAnswers, setNumAnswers] = React.useState(2)
   const [expandedAnswers, setExpandedAnswers] = React.useState(false)
+  const [showModal, setShowModal] = React.useState(false)
 
   let answers = []
   for (let key in props.element.answers) {
@@ -91,7 +93,7 @@ export default function QAElement(props) {
           <div className="px-2">
             |
           </div>
-          <div className="cP reviewBodyShowMore" onClick={() => {}}>
+          <div className="cP reviewBodyShowMore" onClick={() => setShowModal(true)} data-toggle="modal" data-target="#answerModal">
             Add Answer
           </div>
         </div>
@@ -101,9 +103,9 @@ export default function QAElement(props) {
           <b>A:</b>
         </div>
         <div className="mw-75 answerColumn">
-          {answers.slice(0, numAnswers).map(answer => (
+          {answers.length > 0 ? answers.slice(0, numAnswers).map(answer => (
             <Answer answer={answer} key={answer.id} refresh={props.refresh}/>
-          ))}
+          )) : <div className="pb-3">No answers yet...</div>}
         </div>
       </div>
       {answers.length > 2 &&
@@ -115,6 +117,9 @@ export default function QAElement(props) {
         </div>
       </div>
       </>
+      }
+      {showModal &&
+      <AddAnswer question={props.element} refresh={props.refresh} setShowModal={setShowModal}/>
       }
     </div>
   )

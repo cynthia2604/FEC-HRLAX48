@@ -125,7 +125,7 @@ export default function ReviewColumn(props) {
         {moreReviews &&
         <button className="btn btn-lg btn-outline-dark" onClick={addReviews}>More Reviews</button>
         }
-        <button className="btn btn-lg btn-outline-dark" data-toggle="modal" data-target="#addReview" data-whatever="@mdo" onClick={() => setAddReview(true)}>+ Add a Review</button>
+        <button className="btn btn-lg btn-outline-dark" data-toggle="modal" data-target="#addReview" onClick={() => setAddReview(true)}>+ Add a Review</button>
       </div>
       {addReview &&
       <AddReview
