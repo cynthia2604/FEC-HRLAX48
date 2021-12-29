@@ -5,11 +5,11 @@ export default function AddToBag() {
     return;
   };
   return (
-    <span className="pd__box d-inline">
+    <span className="btn-group">
       <span>
         <button
           type="button"
-          className="btn btn-outline-secondary pd__wide-add"
+          className="btn btn-outline-secondary pd__button-wide"
           onClick={handleAlert}
         >
           Add To Bag
@@ -18,7 +18,7 @@ export default function AddToBag() {
       <span>
         <button
           type="button"
-          className="btn btn-outline-secondary pd__narrow-star"
+          className="btn btn-outline-secondary pd__button-narrow"
         >
           ☆
         </button>

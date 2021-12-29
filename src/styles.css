@@ -20,12 +20,14 @@ body {
 }
 
 .pd__button-narrow {
+
   margin-right: 10px;
   margin-bottom: 10px;
   width: 50px;
 }
 
 .pd__button-wide {
+
   margin-right: 10px;
   margin-bottom: 10px;
   width: 200px;
@@ -46,23 +48,16 @@ body {
 }
 
 .pd__wide {
-  width: 67%;
-  margin-right: 3%;
+  width: 60%;
+  margin-right: 5%;
 }
 
 .pd__normal {
   width: 50%;
-  margin-right: 3%;
 }
 
 .pd__narrow {
-  width: 30%;
-}
-
-.pd__wide-add {
-  margin-top: 3%;
-  width: 82%;
-  margin-right: 3%;
+  width: 35%;
 }
 
 .pd__narrow-star {

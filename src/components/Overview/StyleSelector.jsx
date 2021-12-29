@@ -7,6 +7,7 @@ export default function StyleSelector({
   productStyles,
   selectedStyle,
   setSelectedStyle,
+  defaultProduct,
 }) {
   const [availableQty, setAvailableQty] = React.useState(0);
   const [display, setDisplay] = React.useState({
@@ -17,7 +18,7 @@ export default function StyleSelector({
 
   return (
     <div>
-      <div className="pd__styleText mb-3">
+      <div className="pd__styleText mb-2">
         {"Style: " + selectedStyle.color}
       </div>
       <div className="d-flex align-content-start flex-wrap">
@@ -27,8 +28,7 @@ export default function StyleSelector({
               key={style.style_id}
               name={style.name}
               skus={style.skus}
-              allPhotos={style.photos}
-              thumbnail={style.photos[0].thumbnail_url}
+              photos={style.photos}
               selectedStyle={selectedStyle}
               setSelectedStyle={setSelectedStyle}
               originalPrice={style.original_price}
@@ -36,6 +36,7 @@ export default function StyleSelector({
             />
           ))}
       </div>
+
       <span>
         <Selectors
           select="size"
