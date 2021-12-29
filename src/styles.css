@@ -121,14 +121,14 @@ body {
 .image-gallery-content.left
 .image-gallery-slide
 .image-gallery-image {
-  height: 450px;
+  height: 460px;
   object-fit: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .pd__alt {
-  height: 450px;
+  height: 460px;
   width: 100%;
   object-fit: cover;
   background-repeat: no-repeat;

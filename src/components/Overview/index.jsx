@@ -71,7 +71,7 @@ export default function Overview({ selected, rating, productInfo }) {
 
   return (
     <div className="mb-3">
-      <div className="pd__box">
+      <div className="pd__box d-flex align-items-center">
         <div className={isExpand ? "pd__gallery-expand" : "wide"}>
           <Gallery
             key={uuidv4()}
@@ -100,7 +100,7 @@ export default function Overview({ selected, rating, productInfo }) {
           <OverviewInfo overview={productDetail.overview} />
         ) : null}
         <div>
-          <Features productDetail={productDetail} />
+          <Features productDetail={productDetail} className="w-30" />
         </div>
         <div>
           <Share />

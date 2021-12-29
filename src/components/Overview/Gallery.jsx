@@ -5,8 +5,8 @@ import ImageGallery from "../../../node_modules/react-image-gallery";
 import "../../../node_modules/react-image-gallery/styles/css/image-gallery.css";
 
 export default function Gallery({ selectedStyle, handleExpand }) {
-  let images = [];
-  let isAvaliable = [];
+  const images = [];
+  const isAvaliable = [];
   const image =
     selectedStyle.photos &&
     selectedStyle.photos.map((photo) => {
