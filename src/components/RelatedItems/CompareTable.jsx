@@ -8,7 +8,7 @@ export default function CompareTable(props) {
   // const comparison = comparison.rows(props.selectRelated)
   return(
     <>
-    {props.selectRelated  &&
+    {(props.selectedDescription && props.selectRelated)  &&
       <table className="table">
         <thead text="comparing">
           <tr>
@@ -18,7 +18,7 @@ export default function CompareTable(props) {
           </tr>
         </thead>
         <tbody>
-        {comparison.rows(props.selectRelated)}
+        {comparison.rows(props.selectedDescription , props.selectRelated,)}
         </tbody>
       </table>
     }
