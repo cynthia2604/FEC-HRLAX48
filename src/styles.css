@@ -307,10 +307,15 @@ body {
   cursor: pointer;
 }
 
+.related-products {
+  max-width: 60%;
+}
+
 .card-products-list {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  padding-top: 20px;
 }
 
 .card-product-image {
@@ -333,15 +338,14 @@ body {
 }
 
 .btn-square.btn-xl {
-  width: 15vw;
-  height: 15vw;
-  padding: 10px 16px;
+  width: 311px;
+  height: 394px;
   border-radius: 35px;
   font-size: 50px;
   text-align: center;
   color:lightgrey;
   display: inline-block;
-  vertical-align:middle;
+  vertical-align: middle;
 }
 
 .product-card-entry {
@@ -359,9 +363,8 @@ body {
   background-color: transparent;
   background-repeat: no-repeat;
   border: none;
-  border-radius:5px;
   border: solid 2px black;
-  border-radius: 50%;
+  border-radius: 52%;
   overflow: hidden;
 }
 
@@ -377,6 +380,7 @@ body {
 
 .card-product-image .modal-button {
   position: absolute;
+  font-size:30px;
   top: 0;
   right: 0;
   border:black;
@@ -384,8 +388,6 @@ body {
   background-color: transparent;
   background-repeat: no-repeat;
   border: none;
-  border-radius:5px;
-  border: solid 2px black;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -393,8 +395,13 @@ body {
 .table {
   background-color: white;
   border-width: 0;
+  border-collapse: collapse;
   border:none;
   overflow:scroll;
+}
+
+.related-product-list {
+  padding-bottom: 30px;
 }
 
 progress {

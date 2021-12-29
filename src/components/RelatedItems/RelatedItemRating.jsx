@@ -15,7 +15,7 @@ export default function RelatedItemRating(props) {
     })
       .then(res => {
         function roundHalf(num) {
-          return Math.round(num*2)/2
+          return Math.round(num * 4) / 4
         }
         let average = 0;
         for (let i = 0; i < res.data.results.length; i++) {
@@ -23,16 +23,14 @@ export default function RelatedItemRating(props) {
         }
         average = average / res.data.results.length
         setRelatedItemRating(roundHalf(average))
-      })
-  }, [props.currentItem])
+    })
+  }, [])
 
   return(
     <div className="related-product-rating">
       {relatedItemRating &&
-        <div className="rating">{utils.starRating(relatedItemRating)}</div>
+        <div className="rating"style={{paddingBottom:'10px', marginLeft: '10px'}}>{utils.starRating(relatedItemRating)}</div>
       }
     </div>
   )
 }
-
-// {results: [{rating: Number}]}

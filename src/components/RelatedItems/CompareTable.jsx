@@ -4,8 +4,7 @@ import Options from '../../config.js';
 import comparison from './util.js'
 
 export default function CompareTable(props) {
-
-  // const comparison = comparison.rows(props.selectRelated)
+  
   return(
     <>
     {(props.selectedDescription && props.selectRelated)  &&

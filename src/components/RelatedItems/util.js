@@ -12,7 +12,7 @@ const comparison = {
       item.value.push(value)
       return a;
     }, [])
-   
+
     return filteredArr.map(feature => {
       if (feature.value.length > 1) {
         return (
@@ -44,22 +44,3 @@ const comparison = {
 }
 
 export default comparison;
-
-// console.log(arr2)
-    // if (arr2.features.length > arr1.features.length) {
-    //   return arr2.features.map((feature, i) => (
-    //   <tr>
-    //     <td>{(feature.value) ? (feature.value) : (null)}</td>
-    //     <th scope="row">{feature.feature}</th>
-    //     <td></td>
-    //   </tr>
-    // ))
-    // } else {
-    //   return arr1.features.map(feature => (
-    //     <tr>
-    //       <td>{(feature.value) ? (feature.value) : (null)}</td>
-    //       <th scope="row">{feature.feature}</th>
-    //       <td></td>
-    //     </tr>
-    //   ))
-    // }
