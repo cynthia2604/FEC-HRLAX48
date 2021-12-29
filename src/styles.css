@@ -122,10 +122,17 @@ body {
 .image-gallery-slide
 .image-gallery-image {
   height: 450px;
-
   object-fit: cover;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.pd__alt {
+  height: 450px;
+  width: 100%;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .image-gallery-left-nav
