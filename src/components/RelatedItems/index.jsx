@@ -4,8 +4,8 @@ import axios from 'axios';
 import OutfitList from './OutfitList';
 import Compare from './Compare'
 import Options from '../../config.js';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
 
 export default function RelatedItems(props) {
   const [relatedItems, setRelatedItems] = React.useState([]);
@@ -26,7 +26,7 @@ export default function RelatedItems(props) {
   return (
     <div className="related-products">
       <div className="sectionTitle">RELATED ITEMS</div>
-        <Carousel >
+
           <div className="related-product-list">
             <RelatedList
               selected={props.selected}
@@ -44,9 +44,7 @@ export default function RelatedItems(props) {
             />
           }
           </div>
-        </Carousel>
       <div className="sectionTitle">YOUR OUTFITS</div>
-        <Carousel>
           <div className="user-created-outfit">
             <OutfitList
               currentView={props.selected}
@@ -55,7 +53,6 @@ export default function RelatedItems(props) {
               outfits={props.outfits}
             />
           </div>
-        </Carousel>
     </div>
   )
 }

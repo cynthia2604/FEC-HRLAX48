@@ -17,7 +17,7 @@ export default function RelatedProductEntry(props) {
       }
     }).then(res => setCurrent(res.data))
   }, [])
-
+  
   return (
     <div className="product-card-entry">
       {current &&

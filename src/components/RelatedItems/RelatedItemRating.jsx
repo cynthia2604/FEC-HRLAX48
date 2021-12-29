@@ -18,10 +18,12 @@ export default function RelatedItemRating(props) {
           return Math.round(num * 4) / 4
         }
         let average = 0;
-        for (let i = 0; i < res.data.results.length; i++) {
-          average += res.data.results[i].rating
+        if (res.data.results.length) {
+          for (let i = 0; i < res.data.results.length; i++) {
+            average += res.data.results[i].rating
+          }
+          average = average / res.data.results.length
         }
-        average = average / res.data.results.length
         setRelatedItemRating(roundHalf(average))
     })
   }, [])
