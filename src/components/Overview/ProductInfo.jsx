@@ -11,7 +11,6 @@ export default function ProductInfo({
   rating,
   selectedStyle,
   setSelectedStyle,
-  defaultProduct,
   reviews,
 }) {
   const handleScroll = () => {
@@ -21,11 +20,11 @@ export default function ProductInfo({
 
   return (
     <div>
-      <div className="pd__box">
-        <div className="pd__normal mb-3">{utils.starRating(rating)}</div>
-        {reviews.results.length ? (
-          <div className="pd__normal mb-3">
-            <u onClick={handleScroll}>
+      {reviews.results.length ? (
+        <div className="pd__box">
+          <div className="pd__normal mb-2">{utils.starRating(rating)}</div>
+          <div className="pd__normal mb-2">
+            <u type="button" onClick={handleScroll}>
               Read All {reviews.results.length} Reviews
             </u>
           </div>
@@ -51,10 +50,8 @@ export default function ProductInfo({
         productStyles={productStyles}
         selectedStyle={selectedStyle}
         setSelectedStyle={setSelectedStyle}
-        defaultProduct={defaultProduct}
       />
       <AddToBag />
-      <Share />
     </div>
   );
 }
