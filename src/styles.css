@@ -389,7 +389,7 @@ body {
   background-repeat: no-repeat;
   border: none;
   border-radius: 50%;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .table {
