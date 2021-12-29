@@ -10,6 +10,7 @@ export default function Selectors({
   availableQty,
   setDisplay,
   display,
+  selectedStyle,
 }) {
   const [qtyArray, setQtyArray] = React.useState([]);
 
@@ -54,6 +55,20 @@ export default function Selectors({
     }
   });
 
+  const handleDropdown = () => {
+    if (select === "size") {
+      return display.size;
+    } else {
+      for (var key in skus) {
+        if (key === "null") {
+          return "Out of Stock";
+        }
+      }
+    }
+
+    return display.quantity;
+  };
+
   const renderQuantity = () => {
     var qty = [];
     for (var i = 1; i <= availableQty; i++) {
@@ -83,7 +98,7 @@ export default function Selectors({
           aria-haspopup="true"
           aria-expanded="false"
         >
-          {select === "size" ? display.size : display.quantity}
+          {handleDropdown()}
         </button>
         <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
           {skuElement}

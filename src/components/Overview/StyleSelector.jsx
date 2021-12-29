@@ -44,6 +44,7 @@ export default function StyleSelector({
           setAvailableQty={setAvailableQty}
           setDisplay={setDisplay}
           display={display}
+          selectedStyle={selectedStyle}
         />
         <Selectors
           select="quantity"
@@ -52,6 +53,7 @@ export default function StyleSelector({
           availableQty={availableQty}
           setDisplay={setDisplay}
           display={display}
+          selectedStyle={selectedStyle}
         />
       </span>
     </div>
