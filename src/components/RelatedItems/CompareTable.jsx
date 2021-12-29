@@ -1,13 +1,15 @@
 import React from 'react'
 import axios from 'axios'
 import Options from '../../config.js';
+import comparison from './util.js'
 
 export default function CompareTable(props) {
 
-  // const comparison = props.
+  // const comparison = comparison.rows(props.selectRelated)
+
   return(
     <>
-    {props.selectRelated &&
+    {props.selectRelated  &&
     <table className="table">
       <thead text="comparing">
         <tr>
@@ -17,23 +19,10 @@ export default function CompareTable(props) {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <th scope= "row">1</th>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <th scope= "row">1</th>
-          <td style={{cellSpacing: '20px'}}>2</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <th scope= "row">1</th>
-          <td>3</td>
-        </tr>
+      {comparison.rows1(props.selectRelated)}
       </tbody>
     </table>
+
     }
     </>
   )
