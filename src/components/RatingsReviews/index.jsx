@@ -55,6 +55,7 @@ export default function RatingsAndReviews(props) {
     }
   }
 
+
   return (
     <>
       <div id="reviews" className="sectionTitle pt-5">

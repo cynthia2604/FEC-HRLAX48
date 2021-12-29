@@ -3,6 +3,26 @@ body {
   color:rgb(80, 80, 80);
 }
 
+* {
+  scrollbar-width: none;
+  scrollbar-color: rgb(155, 155, 155);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 2px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(82, 187, 114);
+  border-radius: 0;
+  /* border: 10px solid orange; */
+}
+
 .container {
   margin: auto;
   width: 90%;
@@ -160,18 +180,6 @@ body {
   max-height: 500px;
   overflow-y: scroll;
   padding-right: 5px;
-}
-
-.reviewColumn::-webkit-scrollbar {
-  width: 2px;
-}
-
-.reviewColumn::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);
-}
-
-.reviewColumn::-webkit-scrollbar-thumb {
-  background-color: rgb(80, 80, 80);
 }
 
 .review {
@@ -398,9 +406,11 @@ input[type=range] {
   -webkit-appearance: none;
   width: 100%;
 }
+
 input[type=range]:focus {
   outline: none;
 }
+
 input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
   height: 5px;
@@ -419,9 +429,11 @@ input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   margin-top: -6.5px;
 }
+
 input[type=range]:focus::-webkit-slider-runnable-track {
   background: #D4D4D4;
 }
+
 input[type=range]::-moz-range-track {
   width: 100%;
   height: 5px;
@@ -437,6 +449,7 @@ input[type=range]::-moz-range-thumb {
   border-radius: 0px;
   background: #52BB72;
 }
+
 input[type=range]::-ms-track {
   width: 100%;
   height: 5px;
@@ -446,17 +459,20 @@ input[type=range]::-ms-track {
   border-color: transparent;
   color: transparent;
 }
+
 input[type=range]::-ms-fill-lower {
   background: #D4D4D4;
   border: 0px solid #8A8A8A;
   border-radius: 20px;
   box-shadow: 0px 0px 0px #000000;
 }
+
 input[type=range]::-ms-fill-upper {
   background: #D4D4D4;
   border: 0px solid #8A8A8A;
   border-radius: 20px;
 }
+
 input[type=range]::-ms-thumb {
   /* margin-top: 1px; */
   box-shadow: 0px 0px 0px #000000;
@@ -464,12 +480,14 @@ input[type=range]::-ms-thumb {
   height: 18px;
   width: 5px;
   border-radius: 0px;
-  background: #52BB72;
+  background: rgb(82, 187, 114);
   cursor: pointer;
 }
+
 input[type=range]:focus::-ms-fill-lower {
   background: #D4D4D4;
 }
+
 input[type=range]:focus::-ms-fill-upper {
   background: #D4D4D4;
 }
@@ -480,6 +498,12 @@ input[type=range]:focus::-ms-fill-upper {
 
 .qaLeft {
   width: 3%;
+}
+
+.questionsColumn {
+  max-height: 400px;
+  overflow-y: scroll;
+  padding-right: 5px;
 }
 
 .answerColumn {
@@ -501,8 +525,19 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .searchBar {
-  border-radius: 0;
+  border-radius: 5px;
   border: 1px solid rgb(80, 80, 80);
   padding: 10px;
   text-indent: 5px;
+}
+
+.mainButton {
+  border-radius: 5px;
+  border: 1px solid black;
+  background-color: transparent;
+  padding: 10px 20px;
+}
+
+.mainButton:hover {
+  background-color: rgb(125, 125, 125);
 }
