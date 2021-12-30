@@ -11,15 +11,19 @@ import axios from "axios";
 import Header from "./Header";
 import Footer from "./Footer";
 
+let theme
+export function siteTheme() {
+  return theme
+}
+
 export default function App(props) {
   const [view, setView] = React.useState("catalogue");
   const [products, setProducts] = React.useState([]);
   const [selected, setSelected] = React.useState({});
-  const [saved, setSaved] = React.useState(
-   () => JSON.parse(localStorage.getItem('outfits')) || []
-  );
+  const [saved, setSaved] = React.useState(() => JSON.parse(localStorage.getItem('outfits')) || []);
+  const [darkTheme, setDarkTheme] = React.useState(() => JSON.parse(localStorage.getItem('darkMode')) || false)
 
-  const [darkTheme, setDarkTheme] = React.useState(false)
+  theme = darkTheme
 
   React.useEffect(() => {
     axios

@@ -1,3 +1,4 @@
+import { Switch } from "@mui/material"
 import React from "react"
 import Switches from "../assets/Switches"
 
@@ -19,12 +20,17 @@ export default function Header(props) {
     props.setView("catalogue")
   }
 
+  function handleChange() {
+    props.setDarkTheme(!props.darkTheme)
+    localStorage.setItem('darkMode', JSON.stringify(!props.darkTheme))
+  }
+
   return (
     <div className="w-100 d-flex p-3 px-5 mb-4 align-items-center sticky-top" style={divStyle}>
       <div className="me-auto cP" onClick={handleClick}>
         <b>projectCatwalk</b>
       </div>
-      <div className="p-0 pe-4 m-0" onChange={() => props.setDarkTheme(!props.darkTheme)}>
+      <div className="p-0 pe-4 m-0" onChange={handleChange}>
         {Switches()}
       </div>
       <div>
