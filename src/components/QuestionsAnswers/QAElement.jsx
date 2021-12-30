@@ -71,6 +71,10 @@ export default function QAElement(props) {
     setExpandedAnswers(!expandedAnswers)
   }
 
+  const helpfulStyle = {
+    color: props.darkTheme ? "rgb(200, 200, 200)" : "rgb(100, 100, 100)"
+  }
+
   return (
     <div>
       <div className="questionBody d-flex align-items-end">
@@ -80,7 +84,7 @@ export default function QAElement(props) {
         <div className="me-auto mw-75">
           <b>{props.element.question_body}</b>
         </div>
-        <div className="d-flex align-items-center reviewHelpful pt-3">
+        <div className="d-flex align-items-center reviewHelpful pt-3" style={helpfulStyle}>
           <div>
             Helpful?
           </div>
@@ -104,22 +108,22 @@ export default function QAElement(props) {
         </div>
         <div className="mw-75 answerColumn">
           {answers.length > 0 ? answers.slice(0, numAnswers).map(answer => (
-            <Answer answer={answer} key={answer.id} refresh={props.refresh}/>
-          )) : <div className="pb-3">No answers yet...</div>}
+            <Answer answer={answer} key={answer.id} refresh={props.refresh} darkTheme={props.darkTheme}/>
+          )) : <div className="pb-3" style={helpfulStyle}>No answers yet...</div>}
         </div>
       </div>
       {answers.length > 2 &&
       <>
       <div className="d-flex">
         <div className="qaLeft"></div>
-        <div onClick={toggleAnswers} className="cP reviewBodyShowMore mt-0">
+        <div onClick={toggleAnswers} className="cP reviewBodyShowMore mt-0" style={helpfulStyle}>
           {numAnswers === 2 ? 'See More Answers' : 'Collapse Answers'}
         </div>
       </div>
       </>
       }
       {showModal &&
-      <AddAnswer question={props.element} refresh={props.refresh} setShowModal={setShowModal}/>
+      <AddAnswer question={props.element} refresh={props.refresh} setShowModal={setShowModal} darkTheme={props.darkTheme}/>
       }
     </div>
   )
