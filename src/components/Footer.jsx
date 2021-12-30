@@ -9,7 +9,7 @@ export default function Footer(props) {
   }
 
   return (
-    <div className="w-100 d-flex p-3 px-5 mt-5 align-items-center justify-content-center" style={divStyle}>
+    <div className="w-100 d-flex p-2 px-5 mt-5 align-items-center justify-content-center" style={divStyle}>
       <div>
         ® 2022 Migos
       </div>
