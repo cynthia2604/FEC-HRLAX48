@@ -1,10 +1,15 @@
 import React from "react";
 import ProductCardEntry from './ProductCardEntry'
 import OutfitList from './OutfitList'
-import AliceCarousel from 'react-alice-carousel';
-import 'react-alice-carousel/lib/alice-carousel.css';
+import { IconButton } from '@mui/material'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 export default function RelatedList(props) {
+
+  const [whoRender, setWhoRender] = React.useState('related');
+  const [xPos, setXPos] = React.useState(0)
+
   const entry =  props.related.map(product => {
     if (props.selected.id !== product.id) {
       return(
@@ -22,85 +27,19 @@ export default function RelatedList(props) {
     }
   })
 
-  const thumbItems = (array, [setThumbIndex, setThumbAnimation]) => {
-    return array.map((item, i) => (
-      <div className="thumb" key={i} onClick={()=> (setThumbIndex(i), setThumbAnimation(true))}>
-        {item}
-      </div>
-    ))
+  function translateX(direction) {
+    (direction === 'right') ? setXPos(x => x - 300) : setXPos( x => x + 300)
   }
 
-  const [whoRender, setWhoRender] = React.useState('related');
-  const [mainIndex, setMainIndex] = React.useState(0);
-  const [mainAnimation, setMainAnimation] = React.useState(false);
-  const [thumbIndex, setThumbIndex] = React.useState(0);
-  const [thumbAnimation, setThumbAnimation] = React.useState(false);
-  const [thumbs] = React.useState(thumbItems(entry, [setThumbIndex, setThumbAnimation]));
-
-
-
-  const slideNext= () => {
-    if (!thumbAnimation && thumbIndex < thumbs.length -1) {
-      setThumbAnimation(true);
-      setThumbIndex(thumbIndex + 1);
-    }
-  }
-
-  const slidePrev= () => {
-    if (!thumbAnimation && thumbIndex > 0) {
-      setThumbAnimation(true);
-      setThumbIndex(thumbIndex - 1);
-    }
-  }
-
-  const syncMainBeforeChange = (e) => {
-    setMainAnimation(true);
-  }
-
-  const syncMainAfterChange = (e) => {
-    setMainAnimation(false);
-    if (e.type === 'action') {
-      setThumbIndex(e.item)
-      setThumbAnimation(false)
-    } else {
-      setMainIndex(thumbIndex);
-    }
-  }
-
-  const syncThumbs = (e) => {
-    setThumbIndex(e.item);
-    setThumbAnimation(false);
-    if (!mainAnimation) {
-      setMainIndex(e.item)
-    }
-  }
-
-  return [
-    <AliceCarousel
-      items= {entry}
-      activeIndex={mainIndex}
-      animationType= "fadeout"
-      AnimationDuration={800}
-      disableDotsControls
-      disableButtonsControls
-      mouseTracking={!thumbAnimation}
-      onSlideChange={syncMainBeforeChange}
-      onSlideChanged={syncMainAfterChange}
-      touchTracking={!thumbAnimation}
-    />,
-      <div className="card-products-list">
-        <AliceCarousel
-          activeIndex={thumbIndex}
-          autowidth
-          disableDotsControls
-          disableButtonsControls
-          items={thumbs}
-          mouseTracking={false}
-          onSlideChanged={syncThumbs}
-          touchTracking={!mainAnimation}
-        />
-        <div className="btn-prev" onClick={slidePrev}>&lang;</div>
-        <div className="btn-next" onClick={slideNext}>&rang;</div>
-      </div>
-  ]
+  return (
+    <div className="carousel-container" >
+      {xPos < 0 && <ArrowBackIosNewIcon className="slide-button" onClick={() => translateX('left')}/>}
+        <div className= "carousel-container-inner" style={{transform: `translateX(${xPos}px)`}}>
+          <div className="card-products-list">
+            {entry}
+          </div>
+        </div>
+      <ArrowForwardIosIcon className="slide-button-right" onClick={() => translateX('right')}/>
+    </div>
+  )
 }

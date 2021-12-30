@@ -14,19 +14,19 @@ export default function RelatedItemRating(props) {
       }
     })
       .then(res => {
-        function roundHalf(num) {
-          return Math.round(num * 4) / 4
-        }
-        let average = 0;
+      function roundQuarter(num) {
+          return Math.round(num * 4) / 4;
+      }
+      let average = 0;
         if (res.data.results.length) {
           for (let i = 0; i < res.data.results.length; i++) {
-            average += res.data.results[i].rating
+            average += res.data.results[i].rating;
           }
-          average = average / res.data.results.length
+          average = average / res.data.results.length;
         }
-        setRelatedItemRating(roundHalf(average))
+      setRelatedItemRating(roundQuarter(average));
     })
-  }, [])
+  }, [props.currentItem])
 
   return(
     <div className="related-product-rating">

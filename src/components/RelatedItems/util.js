@@ -35,7 +35,7 @@ const comparison = {
           <tr>
             <td></td>
             <th scope="row">{feature.feature}</th>
-            <td>{feature.value[0]}</td>
+            <td style={{marginLeft: '20px'}}>{feature.value[0]}</td>
           </tr>
         )
       }
