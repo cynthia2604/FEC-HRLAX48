@@ -36,10 +36,15 @@ export default function AddQuestion(props) {
     }
   }
 
+  const modalStyle = {
+    backgroundColor: props.darkTheme ? "rgb(50, 50, 50)" : "white",
+    color: props.darkTheme ? "white" : "black"
+  }
+
   return (
     <div className="modal fade" id="questionModal" tabIndex="-1" aria-hidden="true">
       <div className="modal-dialog">
-        <div className="modal-content">
+        <div className="modal-content" style={modalStyle}>
           <div className="modal-header">
             <h5 className="modal-title">New Question About: {props.selected.name}</h5>
             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -48,16 +53,16 @@ export default function AddQuestion(props) {
             <form>
               <div className="mb-3">
                 <label htmlFor="question" className="col-form-label">Your Question*:</label>
-                <textarea type="text" className="form-control" id="question" maxLength={1000} placeholder="Where does this product ship from?" onChange={e => setQuestion(e.target.value)}></textarea>
+                <textarea style={modalStyle} type="text" className="form-control" id="question" maxLength={1000} placeholder="Where does this product ship from?" onChange={e => setQuestion(e.target.value)}></textarea>
               </div>
               <div className="mb-3">
                 <label htmlFor="nickname" className="col-form-label">Nickname*:</label>
-                <input className="form-control" id="nickname" maxLength={60} placeholder="Example: jackson11!" onChange={e => setNickname(e.target.value)}></input>
+                <input style={modalStyle} className="form-control" id="nickname" maxLength={60} placeholder="Example: jackson11!" onChange={e => setNickname(e.target.value)}></input>
                 For privacy reasons, do not use your full name or email address
               </div>
               <div className="mb-3">
                 <label htmlFor="email" className="col-form-label">Email*:</label>
-                <input type="email" className="form-control" id="email" maxLength={60} placeholder="jackson11@gmail.com" onChange={e => setEmail(e.target.value)}></input>
+                <input style={modalStyle} type="email" className="form-control" id="email" maxLength={60} placeholder="jackson11@gmail.com" onChange={e => setEmail(e.target.value)}></input>
                 For authentication reasons, you will not be emailed
               </div>
             </form>

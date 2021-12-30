@@ -9,14 +9,21 @@ import Options from "../config";
 import Detail from "./Detail";
 import axios from "axios";
 import Header from "./Header";
+import Footer from "./Footer";
+
+let theme
+export function siteTheme() {
+  return theme
+}
 
 export default function App(props) {
   const [view, setView] = React.useState("catalogue");
   const [products, setProducts] = React.useState([]);
   const [selected, setSelected] = React.useState({});
-  const [saved, setSaved] = React.useState(
-   () => JSON.parse(localStorage.getItem('outfits')) || []
-  );
+  const [saved, setSaved] = React.useState(() => JSON.parse(localStorage.getItem('outfits')) || []);
+  const [darkTheme, setDarkTheme] = React.useState(() => JSON.parse(localStorage.getItem('darkMode')) || false)
+
+  theme = darkTheme
 
   React.useEffect(() => {
     axios
@@ -31,16 +38,26 @@ export default function App(props) {
   React.useEffect(() => {
     localStorage.setItem('outfits', JSON.stringify(saved))
   }, [ saved ])
-  
+
+  const themedStyle = {
+    backgroundColor: darkTheme ? 'rgb(25, 25, 25)' : 'white',
+    color: darkTheme ? 'white' : 'black'
+  }
+
   return (
-    <>
-      <Header setView={setView} />
+    <div style={themedStyle}>
+      <Header
+        setView={setView}
+        darkTheme={darkTheme}
+        setDarkTheme={setDarkTheme}
+      />
       {view === "catalogue" && (
         <div className="container">
           <Catalogue
             setView={setView}
             products={products}
             setSelected={setSelected}
+            darkTheme={darkTheme}
           />
         </div>
       )}
@@ -54,9 +71,11 @@ export default function App(props) {
             saved={saved}
             setSaved={setSaved}
             outfits={saved}
+            darkTheme={darkTheme}
           />
         </div>
       )}
-    </>
+      <Footer darkTheme={darkTheme} />
+    </div>
   );
 }

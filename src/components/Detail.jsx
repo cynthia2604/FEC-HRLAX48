@@ -59,6 +59,7 @@ export default function Detail(props) {
             setSelectedStyle={setSelectedStyle}
             rating={rating}
             productInfo={productInfo}
+            darkTheme={props.darkTheme}
           />
           <RelatedItems
             products={props.products}
@@ -67,13 +68,18 @@ export default function Detail(props) {
             outfits={props.outfits}
             selectedStyle={selectedStyle}
             setSelectedStyle={setSelectedStyle}
+            darkTheme={props.darkTheme}
           />
-          <QuestionsAnswers selected={props.selected} />
+          <QuestionsAnswers
+            selected={props.selected}
+            darkTheme={props.darkTheme}
+          />
           <RatingsAndReviews
             selected={props.selected}
             rating={rating}
             productInfo={productInfo}
             refresh={fetchProductInfo}
+            darkTheme={props.darkTheme}
           />
         </div>
       )}

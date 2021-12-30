@@ -37,8 +37,16 @@ export default function QuestionsAnswers(props) {
       element={element}
       key={element.question_id}
       refresh={fetchQuestions}
+      darkTheme={props.darkTheme}
     />
   ))
+
+  const buttonStyle = props.darkTheme ? "btn btn-outline-light" : "btn btn-outline-dark"
+
+  const searchStyle = {
+    borderColor: props.darkTheme ? "white" : "black",
+    color: props.darkTheme ? "white" : "black",
+  }
 
   return (
     <>
@@ -46,16 +54,16 @@ export default function QuestionsAnswers(props) {
         {`QUESTIONS & ANSWERS`}
       </div>
       <div className="pt-3">
-        <input className="w-100 searchBar" onChange={e => setSearch(e.target.value)} value={search} placeholder="Have a question? Search for answers..."></input>
+        <input className="w-100 searchBar" style={searchStyle} onChange={e => setSearch(e.target.value)} value={search} placeholder="Have a question? Search for answers..."></input>
       </div>
       <div className="pt-2 mb-2 questionsColumn">
         {QAElements}
       </div>
       {questionCount === 2 &&
-      <button onClick={() => setQuestionCount(999)} className="btn btn-outline-dark">More Questions</button>
+      <button onClick={() => setQuestionCount(999)} className={buttonStyle}>More Questions</button>
       }
-      <button className="ms-3 btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#questionModal">+ Add a Question</button>
-      <AddQuestion selected={props.selected} refresh={fetchQuestions}/>
+      <button className={`ms-3 ${buttonStyle}`} data-bs-toggle="modal" data-bs-target="#questionModal">+ Add a Question</button>
+      <AddQuestion selected={props.selected} refresh={fetchQuestions} darkTheme={props.darkTheme}/>
     </>
   )
 }

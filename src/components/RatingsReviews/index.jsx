@@ -70,10 +70,12 @@ export default function RatingsAndReviews(props) {
                 productInfo={props.productInfo}
                 productMeta={productMeta}
                 starRating={utils.starRating}
+                starRatingWhite={utils.starRatingWhite}
                 percentage={percentage}
                 starFilter={starFilter}
                 setStarFilter={setStarFilter}
                 handleStarClick={handleStarClick}
+                darkTheme={props.darkTheme}
               />
             )}
           </div>
@@ -81,11 +83,13 @@ export default function RatingsAndReviews(props) {
             <ReviewColumn
               rating={props.rating}
               productInfo={props.productInfo}
+              starRatingWhite={utils.starRatingWhite}
               starRating={utils.starRating}
               refresh={props.refresh}
               selected={props.selected}
               productMeta={productMeta}
               starFilter={starFilter}
+              darkTheme={props.darkTheme}
             />
           </div>
         </div>

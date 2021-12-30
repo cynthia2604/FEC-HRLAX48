@@ -71,9 +71,11 @@ export default function ReviewColumn(props) {
     review={review}
     key={review.review_id}
       starRating={props.starRating}
+      starRatingWhite={props.starRatingWhite}
       reviewCount={reviewCount}
       setReviewCount={setReviewCount}
       refresh={props.refresh}
+      darkTheme={props.darkTheme}
     />
   ))
 
@@ -107,25 +109,38 @@ export default function ReviewColumn(props) {
     props.refresh()
   }
 
+  const searchStyle = {
+    borderColor: props.darkTheme ? "white" : "black",
+    color: props.darkTheme ? "white" : "black",
+  }
+
+  const sortStyle = {
+    color: props.darkTheme ? "white" : "black",
+    fontWeight: "bold",
+    textDecorationLine: "underline"
+  }
+
+  const buttonStyle = props.darkTheme ? "btn btn-lg btn-outline-light" : "btn btn-lg btn-outline-dark"
+
   return (
     <div>
       <div className="h4">
       {filteredCount} Reviews, sorted by
-      <select value={sort} onChange={handleChange} className="reviewSort">
+      <select value={sort} onChange={handleChange} className="reviewSort" style={sortStyle}>
         <option>newest</option>
         <option>relevance</option>
         <option>helpful</option>
       </select>
       </div>
-      <input placeholder="Search Reviews..." onChange={e => setSearch(e.target.value)} className="mb-3 mt-2 w-100 searchBar"></input>
+      <input placeholder="Search Reviews..." onChange={e => setSearch(e.target.value)} className="mb-3 mt-2 w-100 searchBar" style={searchStyle}></input>
       <div className="reviewColumn" onScroll={scrollCheck}>
         {reviewElements}
       </div>
       <div className="reviewButtons pt-3 container">
         {moreReviews &&
-        <button className="btn btn-lg btn-outline-dark" onClick={addReviews}>More Reviews</button>
+        <button className={buttonStyle} onClick={addReviews}>More Reviews</button>
         }
-        <button className="btn btn-lg btn-outline-dark" data-toggle="modal" data-target="#addReview" onClick={() => setAddReview(true)}>+ Add a Review</button>
+        <button className={buttonStyle} data-toggle="modal" data-target="#addReview" onClick={() => setAddReview(true)}>+ Add a Review</button>
       </div>
       {addReview &&
       <AddReview
@@ -133,6 +148,7 @@ export default function ReviewColumn(props) {
         productMeta={props.productMeta}
         selected={props.selected}
         refresh={props.refresh}
+        darkTheme={props.darkTheme}
       />
       }
     </div>
