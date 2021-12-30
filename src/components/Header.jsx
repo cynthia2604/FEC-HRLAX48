@@ -5,9 +5,10 @@ import Switches from "../assets/Switches"
 export default function Header(props) {
 
   const divStyle = {
-    backgroundColor: props.darkTheme ? 'rgb(50, 50, 50)' : 'rgb(200, 200, 200)',
+    backgroundColor: props.darkTheme ? 'rgb(40, 40, 40)' : 'rgb(225, 225, 225)',
     color: props.darkTheme ? 'white' : 'black',
-    position: 'sticky'
+    position: 'sticky',
+    boxShadow: "0 5px 20px rgba(0, 0, 0, 0.5)"
   }
 
   return (
