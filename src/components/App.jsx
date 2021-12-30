@@ -9,6 +9,7 @@ import Options from "../config";
 import Detail from "./Detail";
 import axios from "axios";
 import Header from "./Header";
+import Footer from "./Footer";
 
 export default function App(props) {
   const [view, setView] = React.useState("catalogue");
@@ -70,6 +71,7 @@ export default function App(props) {
           />
         </div>
       )}
+      <Footer darkTheme={darkTheme} />
     </div>
   );
 }

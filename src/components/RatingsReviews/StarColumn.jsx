@@ -11,7 +11,7 @@ export default function StarColumn(props) {
           {props.rating.toFixed(1)}
         </div>
         <div>
-          {props.starRating(props.rating)}
+          {props.darkTheme ? props.starRatingWhite(props.rating) : props.starRating(props.rating)}
         </div>
       </div>
       <div>
