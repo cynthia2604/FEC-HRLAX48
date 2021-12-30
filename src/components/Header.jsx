@@ -1,4 +1,3 @@
-import { FormControlLabel, FormGroup, Switch } from "@mui/material"
 import React from "react"
 import Switches from "../assets/Switches"
 
@@ -11,9 +10,18 @@ export default function Header(props) {
     boxShadow: "0 5px 20px rgba(0, 0, 0, 0.5)"
   }
 
+
+  function handleClick() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    })
+    props.setView("catalogue")
+  }
+
   return (
     <div className="w-100 d-flex p-3 px-5 mb-4 align-items-center sticky-top" style={divStyle}>
-      <div className="me-auto cP" onClick={() => props.setView("catalogue")}>
+      <div className="me-auto cP" onClick={handleClick}>
         <b>projectCatwalk</b>
       </div>
       <div className="p-0 pe-4 m-0" onChange={() => props.setDarkTheme(!props.darkTheme)}>
