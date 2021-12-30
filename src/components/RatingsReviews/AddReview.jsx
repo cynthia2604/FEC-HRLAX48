@@ -1,6 +1,8 @@
 import React from "react";
 import StarFilled from "../../assets/StarFilled.png"
 import StarEmpty from "../../assets/StarEmpty.png"
+import StarFilledWhite from "../../assets/StarFilledWhite.png"
+import StarEmptyWhite from "../../assets/StarEmptyWhite.png"
 import axios from "axios";
 import Options from "../../config";
 
@@ -133,13 +135,40 @@ export default function AddReview(props) {
     // setPhotos(e.target.files)
   }
 
+  const modalStyle = {
+    backgroundColor: props.darkTheme ? "rgb(50, 50, 50)" : "white",
+    color: props.darkTheme ? "white" : "black"
+  }
 
+  function stars() {
+    if (!props.darkTheme) {
+      return (
+        <>
+        <img src={rating >= 1 ? StarFilled : StarEmpty} width="20px" height="20px" className="cP" onClick={() => setRating(1)}></img>
+        <img src={rating >= 2 ? StarFilled : StarEmpty} width="20px" height="20px" className="cP" onClick={() => setRating(2)}></img>
+        <img src={rating >= 3 ? StarFilled : StarEmpty} width="20px" height="20px" className="cP" onClick={() => setRating(3)}></img>
+        <img src={rating >= 4 ? StarFilled : StarEmpty} width="20px" height="20px" className="cP" onClick={() => setRating(4)}></img>
+        <img src={rating >= 5 ? StarFilled : StarEmpty} width="20px" height="20px" className="cP me-1" onClick={() => setRating(5)}></img>
+        </>
+      )
+    } else {
+      return (
+        <>
+        <img src={rating >= 1 ? StarFilledWhite : StarEmptyWhite} width="20px" height="20px" className="cP" onClick={() => setRating(1)}></img>
+        <img src={rating >= 2 ? StarFilledWhite : StarEmptyWhite} width="20px" height="20px" className="cP" onClick={() => setRating(2)}></img>
+        <img src={rating >= 3 ? StarFilledWhite : StarEmptyWhite} width="20px" height="20px" className="cP" onClick={() => setRating(3)}></img>
+        <img src={rating >= 4 ? StarFilledWhite : StarEmptyWhite} width="20px" height="20px" className="cP" onClick={() => setRating(4)}></img>
+        <img src={rating >= 5 ? StarFilledWhite : StarEmptyWhite} width="20px" height="20px" className="cP me-1" onClick={() => setRating(5)}></img>
+        </>
+      )
+    }
+  }
 
   return (
     <div>
       <div className="modal fade" id="addReview" tabIndex="-1" role="dialog" aria-labelledby="addReviewLabel" aria-hidden="true">
         <div className="modal-dialog" role="document">
-          <div className="modal-content">
+          <div className="modal-content" style={modalStyle}>
             <div className="modal-header">
               <h5 className="modal-title" id="addReviewLabel">Write your review about {props.selected.name}</h5>
               <button type="button" className="btn-close" data-dismiss="modal" aria-label="Close"></button>
@@ -148,11 +177,7 @@ export default function AddReview(props) {
               <form>
                 <div className="form-group d-flex align-items-center">
                   <label className="col-form-label pe-2">Overall Rating*</label>
-                  <img src={rating >= 1 ? StarFilled : StarEmpty} width="20px" height="20px" className="cP" onClick={() => setRating(1)}></img>
-                  <img src={rating >= 2 ? StarFilled : StarEmpty} width="20px" height="20px" className="cP" onClick={() => setRating(2)}></img>
-                  <img src={rating >= 3 ? StarFilled : StarEmpty} width="20px" height="20px" className="cP" onClick={() => setRating(3)}></img>
-                  <img src={rating >= 4 ? StarFilled : StarEmpty} width="20px" height="20px" className="cP" onClick={() => setRating(4)}></img>
-                  <img src={rating >= 5 ? StarFilled : StarEmpty} width="20px" height="20px" className="cP me-1" onClick={() => setRating(5)}></img>
+                  {stars()}
                   {textRating(rating)}
                 </div>
                 <div className="form-group">
@@ -333,25 +358,25 @@ export default function AddReview(props) {
                 </div>
                 <div className="form-group pt-4">
                   <label htmlFor="summary-text" className="col-form-label">Review Summary:</label>
-                  <input className="form-control" id="summary-text" maxLength={60} onChange={(e) => setSummary(e.target.value)} placeholder="Example: Best Purchase Ever!"></input>
+                  <input style={modalStyle} className="form-control" id="summary-text" maxLength={60} onChange={(e) => setSummary(e.target.value)} placeholder="Example: Best Purchase Ever!"></input>
                 </div>
                 <div className="form-group">
                   <label htmlFor="Body-text" className="col-form-label">Review Body*:</label>
-                  <textarea className="form-control" id="Body-text" minLength={50} maxLength={1000} onChange={(e) => setBody(e.target.value)} placeholder="Why did you like the product or not?"></textarea>
+                  <textarea style={modalStyle} className="form-control" id="Body-text" minLength={50} maxLength={1000} onChange={(e) => setBody(e.target.value)} placeholder="Why did you like the product or not?"></textarea>
                   {bodyMinimum()}
                 </div>
                 <div className="pt-3">
                   <label htmlFor="formFileMultiple" className="form-label">Upload Photos (Limit 5)</label>
-                  <input className="form-control" type="file" id="formFileMultiple" multiple disabled={full} onChange={handlePhotos} />
+                  <input style={modalStyle} className="form-control" type="file" id="formFileMultiple" multiple disabled onChange={handlePhotos}/>
                 </div>
                 <div className="form-group pt-2">
                   <label htmlFor="nickname-text" className="col-form-label">Nickname*:</label>
-                  <input className="form-control" id="nickname-text" maxLength={60} onChange={(e) => setNickname(e.target.value)} placeholder="jackson11!"></input>
+                  <input style={modalStyle} className="form-control" id="nickname-text" maxLength={60} onChange={(e) => setNickname(e.target.value)} placeholder="jackson11!"></input>
                   For privacy reasons, do not use your full name or email address.
                 </div>
                 <div className="form-group pt-2">
                   <label htmlFor="email-text" className="col-form-label">Email*:</label>
-                  <input className="form-control" id="email-text" type="email" maxLength={60} onChange={(e) => setEmail(e.target.value)} placeholder="jackson11@email.com"></input>
+                  <input style={modalStyle} className="form-control" id="email-text" type="email" maxLength={60} onChange={(e) => setEmail(e.target.value)} placeholder="jackson11@email.com"></input>
                   For authentication reasons, you will not be emailed.
                 </div>
               </form>

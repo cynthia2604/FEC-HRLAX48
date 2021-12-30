@@ -123,7 +123,7 @@ export default function QAElement(props) {
       </>
       }
       {showModal &&
-      <AddAnswer question={props.element} refresh={props.refresh} setShowModal={setShowModal}/>
+      <AddAnswer question={props.element} refresh={props.refresh} setShowModal={setShowModal} darkTheme={props.darkTheme}/>
       }
     </div>
   )
