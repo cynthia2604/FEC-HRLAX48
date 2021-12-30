@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  color:rgb(80, 80, 80);
+  color:rgba(0, 0, 0, 0.87);
 }
 
 * {
@@ -212,7 +212,6 @@ body {
 
 .reviewAuthor {
   margin-left: auto;
-  color: rgb(150, 150, 150);
   font-size: 11px;
   font-weight: 400;
   align-items: flex-end;
@@ -225,7 +224,6 @@ body {
 
 .reviewBody {
   font-weight: 400;
-  color:rgb(100, 100, 100);
   padding-top: 10px;
 }
 
@@ -238,12 +236,10 @@ body {
   display: flex;
   align-items: center;
   font-weight: 400;
-  color:rgb(100, 100, 100);
   padding-top: 10px;
 }
 
 .reviewResponse {
-  background-color: rgb(172, 172, 172);
   width: 100%;
   margin-top: 10px;
   padding: 15px;
@@ -251,13 +247,11 @@ body {
 
 .reviewHelpful {
   font-size: 11px;
-  color:rgb(100, 100, 100)
 }
 
 .reviewDivider {
   width: 100%;
   height: 1px;
-  background-color: black;
   margin-block: 15px;
 }
 
@@ -509,6 +503,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 .reviewSort {
   border: none;
+  background-color: transparent;
 }
 
 .qaLeft {
@@ -544,6 +539,7 @@ input[type=range]:focus::-ms-fill-upper {
   border: 1px solid rgb(80, 80, 80);
   padding: 10px;
   text-indent: 5px;
+  background-color: transparent;
 }
 
 .mainButton {

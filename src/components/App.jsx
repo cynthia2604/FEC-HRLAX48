@@ -18,6 +18,8 @@ export default function App(props) {
    () => JSON.parse(localStorage.getItem('outfits')) || []
   );
 
+  const [darkTheme, setDarkTheme] = React.useState(false)
+
   React.useEffect(() => {
     axios
       .get(`${Options.URL}/products/?count=60`, {
@@ -31,16 +33,26 @@ export default function App(props) {
   React.useEffect(() => {
     localStorage.setItem('outfits', JSON.stringify(saved))
   }, [ saved ])
-  
+
+  const themedStyle = {
+    backgroundColor: darkTheme ? '#3c3c3c' : 'white',
+    color: darkTheme ? 'white' : 'black'
+  }
+
   return (
-    <>
-      <Header setView={setView} />
+    <div style={themedStyle}>
+      <Header
+        setView={setView}
+        darkTheme={darkTheme}
+        setDarkTheme={setDarkTheme}
+      />
       {view === "catalogue" && (
         <div className="container">
           <Catalogue
             setView={setView}
             products={products}
             setSelected={setSelected}
+            darkTheme={darkTheme}
           />
         </div>
       )}
@@ -54,9 +66,10 @@ export default function App(props) {
             saved={saved}
             setSaved={setSaved}
             outfits={saved}
+            darkTheme={darkTheme}
           />
         </div>
       )}
-    </>
+    </div>
   );
 }

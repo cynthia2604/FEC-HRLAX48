@@ -37,31 +37,35 @@ export default function Detail(props) {
   }
 
   return (
-    <>
+    <div>
     {productInfo &&
       <div>
       <Overview
       selected={props.selected}
       rating={rating}
       productInfo={productInfo}
+      darkTheme={props.darkTheme}
       />
       <RelatedItems
       products={props.products}
       selected ={props.selected}
       setSaved={props.setSaved}
       outfits={props.outfits}
+      darkTheme={props.darkTheme}
       />
       <QuestionsAnswers
       selected={props.selected}
+      darkTheme={props.darkTheme}
       />
       <RatingsAndReviews
       selected={props.selected}
       rating={rating}
       productInfo={productInfo}
       refresh={fetchProductInfo}
+      darkTheme={props.darkTheme}
       />
       </div>
     }
-    </>
+    </div>
   )
 }
