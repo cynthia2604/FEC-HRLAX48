@@ -35,7 +35,7 @@ export default function App(props) {
   }, [ saved ])
 
   const themedStyle = {
-    backgroundColor: darkTheme ? '#3c3c3c' : 'white',
+    backgroundColor: darkTheme ? 'rgb(25, 25, 25)' : 'white',
     color: darkTheme ? 'white' : 'black'
   }
 
