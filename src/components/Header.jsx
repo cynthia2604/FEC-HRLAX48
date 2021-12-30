@@ -26,7 +26,7 @@ export default function Header(props) {
   }
 
   return (
-    <div className="w-100 d-flex p-3 px-5 mb-4 align-items-center sticky-top" style={divStyle}>
+    <div className="w-100 d-flex px-5 mb-4 align-items-center sticky-top" style={divStyle}>
       <div className="me-auto cP" onClick={handleClick}>
         <b>projectCatwalk</b>
       </div>
