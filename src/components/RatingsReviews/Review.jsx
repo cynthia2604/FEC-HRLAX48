@@ -112,7 +112,7 @@ export default function Review(props) {
           Report
         </div>
       </div>
-      <div className='reviewDivider'></div>
+      <div className='reviewDivider' style={{backgroundColor: props.darkTheme ? 'black' : 'white'}}></div>
     </div>
   )
 }

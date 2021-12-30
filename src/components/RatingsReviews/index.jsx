@@ -74,6 +74,7 @@ export default function RatingsAndReviews(props) {
                 starFilter={starFilter}
                 setStarFilter={setStarFilter}
                 handleStarClick={handleStarClick}
+                darkTheme={props.darkTheme}
               />
             )}
           </div>
@@ -86,6 +87,7 @@ export default function RatingsAndReviews(props) {
               selected={props.selected}
               productMeta={productMeta}
               starFilter={starFilter}
+              darkTheme={props.darkTheme}
             />
           </div>
         </div>

@@ -34,13 +34,16 @@ export default function Answer(props) {
       })
   }
 
+  const sellerStyle = {
+    color: props.darkTheme ? "rgb(200, 200, 200)" : "rgb(100, 100, 100)"
+  }
 
   return (
     <div>
       <div className="answerBody">
         {props.answer.body}
       </div>
-      <div className="d-flex reviewHelpful pt-2 pb-3">
+      <div className="d-flex reviewHelpful pt-2 pb-3" style={sellerStyle}>
         <div className="answerAuthor">
           by {props.answer.answerer_name === 'Seller' ? <b>{props.answer.answerer_name}</b> : props.answer.answerer_name}, {moment(props.answer.date).format('MMMM D, YYYY')}
         </div>

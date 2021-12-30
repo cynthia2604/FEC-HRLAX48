@@ -74,6 +74,7 @@ export default function ReviewColumn(props) {
       reviewCount={reviewCount}
       setReviewCount={setReviewCount}
       refresh={props.refresh}
+      darkTheme={props.darkTheme}
     />
   ))
 
@@ -133,6 +134,7 @@ export default function ReviewColumn(props) {
         productMeta={props.productMeta}
         selected={props.selected}
         refresh={props.refresh}
+        darkTheme={props.darkTheme}
       />
       }
     </div>
