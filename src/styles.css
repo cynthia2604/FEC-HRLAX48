@@ -203,6 +203,12 @@ body {
 
 .review {
   font-size: 14px;
+  min-height: 215px;
+  max-height: 400px;
+  word-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .reviewTop {

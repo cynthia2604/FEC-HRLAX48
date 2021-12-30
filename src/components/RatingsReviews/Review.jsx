@@ -60,6 +60,7 @@ export default function Review(props) {
   }
 
   return (
+    <>
     <div className='review'>
       <div className='reviewTop'>
         <div className="reviewStars">
@@ -115,7 +116,8 @@ export default function Review(props) {
           Report
         </div>
       </div>
-      <div className='reviewDivider' style={{backgroundColor: props.darkTheme ? 'rgb(150, 150, 150)' : 'rgb(100, 100, 100)'}}></div>
     </div>
+    <div className='reviewDivider' style={{backgroundColor: props.darkTheme ? 'rgb(150, 150, 150)' : 'rgb(100, 100, 100)'}}></div>
+    </>
   )
 }
