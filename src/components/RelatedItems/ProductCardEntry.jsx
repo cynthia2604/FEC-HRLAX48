@@ -17,7 +17,7 @@ export default function RelatedProductEntry(props) {
       }
     }).then(res => setCurrent(res.data))
   }, [])
-  
+
   return (
     <div className="product-card-entry">
       {current &&
@@ -31,6 +31,7 @@ export default function RelatedProductEntry(props) {
           setRenderTable={props.setRenderTable}
           setSelectRelated={props.setSelectRelated}
           renderTable={props.renderTable}
+          selectedStyle={props.selectedStyle}
         />
         <div className="related-product-category" style={{fontSize: '15px', marginLeft: '10px'}}> {props.currentItem.category}</div>
         <div className="related-product-name" style={{fontWeight:'bold', marginLeft: '10px'}}>{props.currentItem.name}</div>

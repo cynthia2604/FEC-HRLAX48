@@ -51,6 +51,7 @@ export default function RelatedItems(props) {
               saved={props.saved}
               setSaved={props.setSaved}
               outfits={props.outfits}
+              selectedStyle={props.selectedStyle}
             />
           </div>
     </div>

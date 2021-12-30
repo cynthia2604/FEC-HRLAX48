@@ -18,6 +18,7 @@ export default function OutfitList(props) {
         setSaved={props.setSaved}
         outfits={props.outfits}
         whoRender={whoRender}
+        selectedStyle={props.selectedStyle}
       />
     </div>
   ))
