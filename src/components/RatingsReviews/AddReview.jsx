@@ -61,7 +61,7 @@ export default function AddReview(props) {
       error.push('Invalid Email Format')
     }
     if (photos.length !== photosToUpload.length) {
-      error.push('Upload Photos First')
+      error.push('Incomplete Photo Uploads')
     }
     if (error.length !== 1) {
       alert(error.join('\n'))
@@ -109,7 +109,6 @@ export default function AddReview(props) {
   }
 
   async function handleUpload(files) {
-    // e.preventDefault()
     let uploads = []
     for (let i = 0; i < files.length; i++) {
       await axios.post('https://api.imgur.com/3/image', files[i],
@@ -123,7 +122,6 @@ export default function AddReview(props) {
         })
         .catch(err => console.error(err))
     }
-    console.log(uploads)
     setPhotos(uploads)
   }
 
