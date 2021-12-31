@@ -5,7 +5,7 @@ import Options from '../../config.js';
 
 export default function RelatedItemRating(props) {
 
-  const [relatedItemRating, setRelatedItemRating] = React.useState()
+  const [relatedItemRating, setRelatedItemRating] = React.useState(0)
 
   React.useEffect(() => {
     axios.get(`${Options.URL}/reviews/?product_id=${props.currentItem.product_id}&count=99`, {
@@ -29,14 +29,10 @@ export default function RelatedItemRating(props) {
   }, [props.currentItem])
 
   return(
-    <div className="related-product-rating">
-      {relatedItemRating &&
-        <div className="rating"style={{paddingBottom:'10px', marginLeft: '10px'}}>
-        {
-          (props.darkTheme) ? utils.starRatingWhite(relatedItemRating) : utils.starRating(relatedItemRating)
-        }
-        </div>
-      }
+    <div className="related-product-rating"  style={{paddingBottom:'10px', marginLeft: '10px'}}>
+      {(props.darkTheme) ? utils.starRatingWhite(relatedItemRating) : utils.starRating(relatedItemRating)}
     </div>
   )
 }
+
+//(props.darkTheme) ? utils.starRatingWhite(relatedItemRating) : utils.starRating(relatedItemRating)

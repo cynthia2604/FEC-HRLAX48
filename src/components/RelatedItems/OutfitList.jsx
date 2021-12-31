@@ -46,7 +46,7 @@ export default function OutfitList(props) {
         <div className="carousel-container" >
         <div className= "carousel-container-inner" style={{transform: `translateX(${xPos}px)`}}>
           <div className="card-products-list">
-            <button className="btn btn-light btn-square btn-xl" onClick={() => saveOutfit(props.currentView)}> Add Outfit </button>
+            <div className="add-outfit" onClick={() => saveOutfit(props.currentView)}> Add Outfit +</div>
             {entry}
           </div>
         </div>
@@ -58,3 +58,4 @@ export default function OutfitList(props) {
   )
 }
 
+//<button className="btn btn-light btn-square btn-xl" onClick={() => saveOutfit(props.currentView)}> Add Outfit </button>

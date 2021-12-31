@@ -307,14 +307,6 @@ body {
   cursor: pointer;
 }
 
-.card-products-list {
-  display: flex;
-  position:relative;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-top: 20px;
-}
-
 .card-product-image {
   /* margin: 1em 0; */
   text-align: center;
@@ -334,23 +326,19 @@ body {
   object-fit: contain;
 }
 
-.btn-square.btn-xl {
-  width: 311px;
-  height: 394px;
+.add-outfit {
+  width: 15vw;
+  height: 20vw;
   border-radius: 35px;
-  font-size: 50px;
+  font-size: 30px;
   text-align: center;
-  color:lightgrey;
+  background-color:lightgrey;
   display: inline-block;
-  vertical-align: middle;
-}
-
-.product-card-entry {
   margin-left: 30px;
   border-style: solid;
   border-width: thin;
-
 }
+
 
 .card-product-image .remove-card-entry {
   position: absolute;
@@ -361,6 +349,7 @@ body {
   background-repeat: no-repeat;
   border: none;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .related-product-list {
@@ -389,18 +378,42 @@ body {
   border: none;
   border-radius: 50%;
   overflow: visible;
+  cursor: pointer;
 }
 
 .carousel-container {
-  overflow: hidden;
   width:100%;
+  display:flex;
+  flex-direction: column;
+  overflow:hidden;
 }
 
 .carousel-container-inner {
-  width: 125%;
-  /* display: flex;
-  justify-content: space-between; */
+  width: 120%;
+  display: flex;
+  position:relative;
 }
+
+.card-products-list {
+  display: flex;
+  position:relative;
+  flex-direction: row;
+  width:100%;
+  height:100%;
+  padding-top: 20px;
+}
+
+.product-card-entry {
+  margin-left: 30px;
+  border-style: solid;
+  border-width: thin;
+  display:flex;
+  justify-content:space-between;
+}
+
+/* .card-products-list > * {
+  width: calc(100% /3);
+} */
 
 .slide-button-right {
   position: absolute;
@@ -413,37 +426,6 @@ body {
   left:0;
   top:50%;
 }
-
-/*
-.table {
-  position:relative;
-  background-color: white;
-  border-style: hidden;
-  border:none;
-  width:600px;
-  height:300px;
-  overflow:scroll;
-}
-
-table {
-  table-layout: fixed;
-  border:none;
-}
-
-th, td {
-  padding: 20px;
-}
-
-tbody td {
-  overflow:hidden;
-  text-align: center;
-} */
-
-/* .MuiTableCell-body:second-child {
-  width: 10px;
-  white-space: nowrap;
-  padding-left:50px;
-} */
 
 .related-product-list {
   padding-bottom: 30px;
