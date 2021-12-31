@@ -307,14 +307,8 @@ body {
   cursor: pointer;
 }
 
-.card-products-list {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-}
-
 .card-product-image {
-  margin: 1em 0;
+  /* margin: 1em 0; */
   text-align: center;
   position: relative;
 }
@@ -332,40 +326,37 @@ body {
   object-fit: contain;
 }
 
-.btn-square.btn-xl {
+.add-outfit {
   width: 15vw;
-  height: 15vw;
-  padding: 10px 16px;
+  height: 20vw;
   border-radius: 35px;
-  font-size: 50px;
+  font-size: 30px;
   text-align: center;
-  color:lightgrey;
+  background-color:lightgrey;
   display: inline-block;
-  vertical-align:middle;
-}
-
-.product-card-entry {
   margin-left: 30px;
   border-style: solid;
   border-width: thin;
 }
 
+
 .card-product-image .remove-card-entry {
   position: absolute;
   top: 0;
   right: 0;
-  border:black;
   font: black;
   background-color: transparent;
   background-repeat: no-repeat;
   border: none;
-  border-radius:5px;
-  border: solid 2px black;
-  border-radius: 50%;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .related-product-list {
+  position: relative;
+}
+
+.user-created-outfit {
   position: relative;
 }
 
@@ -377,6 +368,7 @@ body {
 
 .card-product-image .modal-button {
   position: absolute;
+  font-size:30px;
   top: 0;
   right: 0;
   border:black;
@@ -384,17 +376,59 @@ body {
   background-color: transparent;
   background-repeat: no-repeat;
   border: none;
-  border-radius:5px;
-  border: solid 2px black;
   border-radius: 50%;
-  overflow: hidden;
+  overflow: visible;
+  cursor: pointer;
 }
 
-.table {
-  background-color: white;
-  border-width: 0;
-  border:none;
-  overflow:scroll;
+.carousel-container {
+  width:100%;
+  display:flex;
+  flex-direction: column;
+  overflow:hidden;
+}
+
+.carousel-container-inner {
+  width: 120%;
+  display: flex;
+  position:relative;
+}
+
+.card-products-list {
+  display: flex;
+  position:relative;
+  flex-direction: row;
+  width:100%;
+  height:100%;
+  padding-top: 20px;
+}
+
+.product-card-entry {
+  margin-left: 30px;
+  border-style: solid;
+  border-width: thin;
+  display:flex;
+  justify-content:space-between;
+}
+
+/* .card-products-list > * {
+  width: calc(100% /3);
+} */
+
+.slide-button-right {
+  position: absolute;
+  top: 50%;
+  right:0;
+}
+
+.slide-button-left {
+  position:absolute;
+  left:0;
+  top:50%;
+}
+
+.related-product-list {
+  padding-bottom: 30px;
 }
 
 progress {

@@ -5,7 +5,7 @@ import Options from '../../config.js';
 
 export default function RelatedItemRating(props) {
 
-  const [relatedItemRating, setRelatedItemRating] = React.useState()
+  const [relatedItemRating, setRelatedItemRating] = React.useState(0)
 
   React.useEffect(() => {
     axios.get(`${Options.URL}/reviews/?product_id=${props.currentItem.product_id}&count=99`, {
@@ -14,25 +14,25 @@ export default function RelatedItemRating(props) {
       }
     })
       .then(res => {
-        function roundHalf(num) {
-          return Math.round(num*2)/2
+      function roundQuarter(num) {
+          return Math.round(num * 4) / 4;
+      }
+      let average = 0;
+        if (res.data.results.length) {
+          for (let i = 0; i < res.data.results.length; i++) {
+            average += res.data.results[i].rating;
+          }
+          average = average / res.data.results.length;
         }
-        let average = 0;
-        for (let i = 0; i < res.data.results.length; i++) {
-          average += res.data.results[i].rating
-        }
-        average = average / res.data.results.length
-        setRelatedItemRating(roundHalf(average))
-      })
+      setRelatedItemRating(roundQuarter(average));
+    })
   }, [props.currentItem])
 
   return(
-    <div className="related-product-rating">
-      {relatedItemRating &&
-        <div className="rating">{utils.starRating(relatedItemRating)}</div>
-      }
+    <div className="related-product-rating"  style={{paddingBottom:'10px', marginLeft: '10px'}}>
+      {(props.darkTheme) ? utils.starRatingWhite(relatedItemRating) : utils.starRating(relatedItemRating)}
     </div>
   )
 }
 
-// {results: [{rating: Number}]}
+//(props.darkTheme) ? utils.starRatingWhite(relatedItemRating) : utils.starRating(relatedItemRating)

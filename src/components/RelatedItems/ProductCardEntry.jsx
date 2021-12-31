@@ -31,16 +31,16 @@ export default function RelatedProductEntry(props) {
           setRenderTable={props.setRenderTable}
           setSelectRelated={props.setSelectRelated}
           renderTable={props.renderTable}
+          selectedStyle={props.selectedStyle}
         />
-        <div className="related-product-category" style={{fontSize: '12px'}}> {props.currentItem.category}</div>
-        <div className="related-product-name" style={{fontWeight:'bold'}}>{props.currentItem.name}</div>
-        <div className="related-product-price" style={{fontSize: '10px'}}>{props.currentItem.default_price}</div>
-        <RelatedItemRating currentItem={current} />
+        <div className="related-product-category" style={{fontSize: '1em', marginLeft: '10px'}}> {props.currentItem.category}</div>
+        <div className="related-product-name" style={{fontWeight:'bold', marginLeft: '10px', overflow:'hidden'}}>{props.currentItem.name}</div>
+        <div className="related-product-price" style={{fontSize: '0.8em', marginLeft: '10px'}}>{props.currentItem.default_price}</div>
+        <RelatedItemRating currentItem={current} darkTheme={props.darkTheme}/>
       </div>
       }
     </div>
   )
 }
 
-// {results: [{photos: [{ url: ''}]}]}
 
