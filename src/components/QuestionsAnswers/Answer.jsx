@@ -2,6 +2,7 @@ import React from "react"
 import moment from "moment"
 import axios from "axios"
 import Options from "../../config"
+import AnswerPhoto from "./AnswerPhoto"
 
 export default function Answer(props) {
 
@@ -43,6 +44,13 @@ export default function Answer(props) {
       <div className="answerBody">
         {props.answer.body}
       </div>
+      {props.answer.photos.length > 0 &&
+      <div className="d-flex pt-2">
+        {props.answer.photos.map(photo => (
+          <AnswerPhoto key={photo} photo={photo} darkTheme={props.darkTheme}/>
+        ))}
+      </div>
+      }
       <div className="d-flex reviewHelpful pt-2 pb-3" style={sellerStyle}>
         <div className="answerAuthor">
           by {props.answer.answerer_name === 'Seller' ? <b>{props.answer.answerer_name}</b> : props.answer.answerer_name}, {moment(props.answer.date).format('MMMM D, YYYY')}

@@ -109,9 +109,10 @@ export default function AddReview(props) {
   }
 
   async function handleUpload(files) {
-    let uploads = []
-    for (let i = 0; i < files.length; i++) {
-      await axios.post('https://api.imgur.com/3/image', files[i],
+    if (files.length <= 5) {
+      let uploads = []
+      for (let i = 0; i < files.length; i++) {
+        await axios.post('https://api.imgur.com/3/image', files[i],
         {
           headers: {
             Authorization: "Client-ID 78dc8e1b5fb253b"
@@ -121,8 +122,11 @@ export default function AddReview(props) {
           uploads.push(res.data.data.link)
         })
         .catch(err => console.error(err))
+      }
+      setPhotos(uploads)
+    } else {
+    alert('Too many files, limit is 5.')
     }
-    setPhotos(uploads)
   }
 
   function textRating(rating) {
@@ -400,7 +404,7 @@ export default function AddReview(props) {
                   <label htmlFor="formFileMultiple" className="form-label">Upload Photos (Limit 5)</label>
                   <input style={modalStyle} className="form-control" type="file" id="formFileMultiple" multiple onChange={handlePhotos}/>
                   {photosToUpload.length > 0 && photosToUpload.length !== photos.length &&
-                  <span>Uploading...</span>
+                  <span>{photosToUpload.length <= 5 ? 'Uploading...' : 'Too Many Files'}</span>
                   }
                   {photos.length > 0 &&
                   <div>

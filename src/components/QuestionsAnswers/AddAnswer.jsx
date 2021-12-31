@@ -8,6 +8,8 @@ export default function AddAnswer(props) {
   const [answer, setAnswer] = React.useState('')
   const [nickname, setNickname] = React.useState('')
   const [email, setEmail] = React.useState('')
+  const [photos, setPhotos] = React.useState([])
+  const [photosToUpload, setPhotosToUpload] = React.useState([])
 
   function handleSubmit() {
     let error = ['Errors:']
@@ -17,6 +19,9 @@ export default function AddAnswer(props) {
     if (!validateEmail(email)) {
       error.push('Invalid Email Format')
     }
+    if (photos.length !== photosToUpload.length) {
+      error.push('Incomplete Photo Uploads')
+    }
     if (error.length !== 1) {
       alert(error.join('\n'))
     } else {
@@ -24,7 +29,7 @@ export default function AddAnswer(props) {
         body: answer,
         name: nickname,
         email: email,
-        photos: []
+        photos: photos
       },
       {
         headers: {
@@ -35,6 +40,32 @@ export default function AddAnswer(props) {
       .then(() => props.setShowModal(false))
       .then(() => props.refresh())
       .catch(err => alert(err))
+    }
+  }
+
+  function handlePhotos(e) {
+    setPhotosToUpload(e.target.files)
+    handleUpload(e.target.files)
+  }
+
+  async function handleUpload(files) {
+    if (files.length <= 5) {
+      let uploads = []
+      for (let i = 0; i < files.length; i++) {
+        await axios.post('https://api.imgur.com/3/image', files[i],
+        {
+          headers: {
+            Authorization: "Client-ID 78dc8e1b5fb253b"
+          }
+        })
+        .then(res => {
+          uploads.push(res.data.data.link)
+        })
+        .catch(err => console.error(err))
+      }
+      setPhotos(uploads)
+    } else {
+    alert('Too many files, limit is 5.')
     }
   }
 
@@ -74,6 +105,19 @@ export default function AddAnswer(props) {
               <div className="mb-3">
                 <label htmlFor="answer" className="col-form-label">Your Answer*:</label>
                 <textarea style={modalStyle} type="text" className="form-control" id="answer" maxLength={1000} onChange={e => setAnswer(e.target.value)}></textarea>
+              </div>
+              <div className="pt-3">
+                <label htmlFor="formFileMultiple" className="form-label">Upload Photos (Limit 5)</label>
+                <input style={modalStyle} className="form-control" type="file" id="formFileMultiple" multiple onChange={handlePhotos}/>
+                {photosToUpload.length > 0 && photosToUpload.length !== photos.length &&
+                <span>{photosToUpload.length <= 5 ? 'Uploading...' : 'Too Many Files'}</span>
+                }
+                {photos.length > 0 &&
+                <div>
+                  <span>Preview:</span><br />
+                  {photos.map(photo => <img key={photo} src={photo} height="50px" alt="Preview Photo" className="me-2"/>)}
+                </div>
+                }
               </div>
               <div className="mb-3">
                 <label htmlFor="nickname" className="col-form-label">Nickname*:</label>
