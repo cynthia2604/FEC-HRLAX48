@@ -1,4 +1,9 @@
 import React from 'react';
+import TableBody from '@mui/material/TableBody';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableRow from '@mui/material/TableRow';
+
 
 const comparison = {
   rows: (arr1, arr2) => {
@@ -16,27 +21,27 @@ const comparison = {
     return filteredArr.map(feature => {
       if (feature.value.length > 1) {
         return (
-          <tr>
-            <td>{feature.value[0]}</td>
-            <th scope="row">{feature.feature}</th>
-            <td>{feature.value[1]}</td>
-          </tr>
+          <TableRow style={{marginTop:'10px'}}>
+            <TableCell align="left" >{feature.value[0]}</TableCell>
+            <TableCell scope="row" style={{fontWeight:'bold'}}>{feature.feature} </TableCell>
+            <TableCell align="right">{feature.value[1]}</TableCell>
+          </TableRow>
         )
       } else if (arr1.features.some(item => item.feature === feature.feature)) {
         return (
-          <tr>
-            <td>{feature.value[0]}</td>
-            <th scope="row">{feature.feature}</th>
-            <td></td>
-          </tr>
+          <TableRow style={{marginTop:'10px'}}>
+            <TableCell align="left">{feature.value[0]}</TableCell>
+            <TableCell scope="row" style={{fontWeight:'bold'}}>{feature.feature}</TableCell>
+            <TableCell align="right"></TableCell>
+          </TableRow>
         )
       } else if (arr2.features.some(item => item.feature === feature.feature)) {
         return (
-          <tr>
-            <td></td>
-            <th scope="row">{feature.feature}</th>
-            <td style={{marginLeft: '20px'}}>{feature.value[0]}</td>
-          </tr>
+          <TableRow style={{marginTop:'10px'}}>
+            <TableCell align="left"></TableCell>
+            <TableCell scope="row" style={{fontWeight:'bold'}}>{feature.feature}</TableCell>
+            <TableCell align="right">{feature.value[0]}</TableCell>
+          </TableRow>
         )
       }
     })
@@ -44,3 +49,5 @@ const comparison = {
 }
 
 export default comparison;
+
+//

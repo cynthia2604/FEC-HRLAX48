@@ -9,6 +9,7 @@ export default function RelatedList(props) {
 
   const [whoRender, setWhoRender] = React.useState('related');
   const [xPos, setXPos] = React.useState(0)
+  const [renderLeft, setRenderLeft] = React.useState(0)
 
   const entry =  props.related.map(product => {
     if (props.selected.id !== product.id) {
@@ -28,12 +29,19 @@ export default function RelatedList(props) {
   })
 
   function translateX(direction) {
-    (direction === 'right') ? setXPos(x => x - 300) : setXPos( x => x + 300)
+    // (direction === 'right') ? setXPos(x => x - 200) : setXPos( x => x + 200)
+    if (direction === 'right') {
+      setXPos(x => x - 200)
+      setRenderLeft(y => y + 1)
+    } else {
+      setXPos(x=> x + 200)
+      setRenderLeft(y => y - 1)
+    }
   }
 
   return (
     <div className="carousel-container" >
-      {xPos < 0 && <ArrowBackIosNewIcon className="slide-button" onClick={() => translateX('left')}/>}
+      {(renderLeft !== 0) && <ArrowBackIosNewIcon className="slide-button-left" onClick={() => translateX('left')}/>}
         <div className= "carousel-container-inner" style={{transform: `translateX(${xPos}px)`}}>
           <div className="card-products-list">
             {entry}
