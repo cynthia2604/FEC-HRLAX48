@@ -67,7 +67,7 @@ export default function Overview({
   };
 
   return (
-    <div className="mb-3">
+    <div className="mb-3" data-test="component-overview">
       <div className="pd__box">
         <div className={isExpand ? "pd__gallery-expand" : "wide"}>
           <Gallery
