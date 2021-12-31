@@ -12,6 +12,7 @@ export default function ProductInfo({
   selectedStyle,
   setSelectedStyle,
   reviews,
+  darkTheme,
 }) {
   const handleScroll = () => {
     const reviewElement = document.getElementById("reviews");
@@ -22,7 +23,12 @@ export default function ProductInfo({
     <div>
       {reviews.results.length ? (
         <div className="pd__box">
-          <div className="pd__normal mb-2 me-3">{utils.starRating(rating)}</div>
+          <div className="pd__normal mb-2 me-3">
+            {" "}
+            {darkTheme
+              ? utils.starRatingWhite(rating)
+              : utils.starRating(rating)}
+          </div>
           <div className="pd__normal mb-2">
             <u type="button" onClick={handleScroll}>
               Read All {reviews.results.length} Reviews

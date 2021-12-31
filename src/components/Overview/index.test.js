@@ -12,3 +12,11 @@ test("render without error", () => {
   const component = findByTestAttr(wrapper, "component-overview");
   expect(component.length).toBe(1);
 });
+
+import { render, screen } from "@testing-library/react"; // (or /dom, /vue, ...)
+
+it("should render without error", () => {
+  render(<Overview />);
+  const input = screen.getByLabelText("Username");
+  // Events and assertions...
+});
