@@ -32,23 +32,25 @@ export default function RelatedList(props) {
   function translateX(direction) {
     // (direction === 'right') ? setXPos(x => x - 200) : setXPos( x => x + 200)
     if (direction === 'right') {
+      setRenderLeft(count => count + 1)
       setXPos(x => x - 200)
-      setRenderLeft(y => y + 1)
     } else {
+      setRenderLeft(count => count - 1)
       setXPos(x=> x + 200)
-      setRenderLeft(y => y - 1)
     }
   }
 
   return (
     <div className="carousel-container" >
-      {(renderLeft !== 0) && <ArrowBackIosNewIcon className="slide-button-left" onClick={() => translateX('left')}/>}
         <div className= "carousel-container-inner" style={{transform: `translateX(${xPos}px)`}}>
           <div className="card-products-list">
             {entry}
           </div>
         </div>
+      {(renderLeft >0) && <ArrowBackIosNewIcon className="slide-button-left" onClick={() => translateX('left')}/>}
       <ArrowForwardIosIcon className="slide-button-right" onClick={() => translateX('right')}/>
     </div>
   )
 }
+
+//{(renderLeft > 0) &&

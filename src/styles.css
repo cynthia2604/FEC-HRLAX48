@@ -407,10 +407,12 @@ body {
   top: 50%;
   right:0;
 }
-/* .slide-button-left {
+
+.slide-button-left {
   position:absolute;
-  left:50%;
-} */
+  left:0;
+  top:50%;
+}
 
 /*
 .table {
