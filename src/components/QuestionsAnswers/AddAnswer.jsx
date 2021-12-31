@@ -14,7 +14,7 @@ export default function AddAnswer(props) {
     if (!nickname) {
       error.push('Nickname Missing')
     }
-    if (!email.includes('@')) {
+    if (!validateEmail(email)) {
       error.push('Invalid Email Format')
     }
     if (error.length !== 1) {
@@ -43,8 +43,26 @@ export default function AddAnswer(props) {
     color: props.darkTheme ? "white" : "black"
   }
 
+  function handleClick(e) {
+    if (e.target !== e.currentTarget) {
+      event.stopPropagation()
+      return
+    }
+    props.setShowModal(false)
+  }
+
+  function validateEmail(input) {
+    var validRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+    if (input.match(validRegex)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   return (
-    <div className="modal fade" id="answerModal" tabIndex="-1" aria-hidden="true" onClick={() => props.setShowModal(false)}>
+    <div className="modal fade" id="answerModal" tabIndex="-1" aria-hidden="true" onClick={(e) => handleClick(e)}>
       <div className="modal-dialog">
         <div className="modal-content" style={modalStyle}>
           <div className="modal-header">

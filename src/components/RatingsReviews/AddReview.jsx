@@ -19,11 +19,12 @@ export default function AddReview(props) {
   const [summary, setSummary] = React.useState('')
   const [body, setBody] = React.useState('')
   const [photos, setPhotos] = React.useState([])
+  const [photosToUpload, setPhotosToUpload] = React.useState([])
   const [full, setFull] = React.useState(false)
   const [nickname, setNickname] = React.useState('')
   const [email, setEmail] = React.useState('')
 
-  function handleSubmit() {
+  async function handleSubmit() {
     let error = ['Errors:']
     if (!rating) {
       error.push('Rating Missing')
@@ -55,8 +56,11 @@ export default function AddReview(props) {
     if (!nickname) {
       error.push('Nickname Missing')
     }
-    if (!email.includes('@')) {
+    if (!validateEmail(email)) {
       error.push('Invalid Email Format')
+    }
+    if (photos.length !== photosToUpload.length) {
+      error.push('Upload Photos First')
     }
     if (error.length !== 1) {
       alert(error.join('\n'))
@@ -103,6 +107,25 @@ export default function AddReview(props) {
     }
   }
 
+  async function handleUpload(e) {
+    e.preventDefault()
+    let uploads = []
+    for (let i = 0; i < photosToUpload.length; i++) {
+      await axios.post('https://api.imgur.com/3/image', photosToUpload[i],
+        {
+          headers: {
+            Authorization: "Client-ID 78dc8e1b5fb253b"
+          }
+        })
+        .then(res => {
+          uploads.push(res.data.data.link)
+        })
+        .catch(err => console.error(err))
+    }
+    await setPhotos(uploads)
+    alert('Photos Uploaded')
+  }
+
   function textRating(rating) {
     if (rating === 1) {
       return <>Poor</>
@@ -132,7 +155,7 @@ export default function AddReview(props) {
     if (e.target.files.length >= 5) {
       setFull(true)
     }
-    // setPhotos(e.target.files)
+    setPhotosToUpload(e.target.files)
   }
 
   const modalStyle = {
@@ -163,6 +186,17 @@ export default function AddReview(props) {
       )
     }
   }
+
+  function validateEmail(input) {
+    var validRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+    if (input.match(validRegex)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 
   return (
     <div>
@@ -367,7 +401,8 @@ export default function AddReview(props) {
                 </div>
                 <div className="pt-3">
                   <label htmlFor="formFileMultiple" className="form-label">Upload Photos (Limit 5)</label>
-                  <input style={modalStyle} className="form-control" type="file" id="formFileMultiple" multiple disabled onChange={handlePhotos}/>
+                  <input style={modalStyle} className="form-control" type="file" id="formFileMultiple" multiple onChange={handlePhotos}/>
+                  <button disabled={!photosToUpload.length} onClick={handleUpload}>Upload Photos</button>
                 </div>
                 <div className="form-group pt-2">
                   <label htmlFor="nickname-text" className="col-form-label">Nickname*:</label>

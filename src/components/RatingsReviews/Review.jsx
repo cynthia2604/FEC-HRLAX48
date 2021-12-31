@@ -2,6 +2,7 @@ import React from "react"
 import moment from "moment"
 import axios from "axios"
 import Options from "../../config"
+import ReviewPhoto from "./ReviewPhoto"
 
 export default function Review(props) {
 
@@ -93,9 +94,7 @@ export default function Review(props) {
       {props.review.photos.length > 0 &&
       <div className="d-flex pt-3">
         {props.review.photos.map(photo => (
-          <div key={photo.id} className="cP">
-            <img src={photo.url} alt="Reviewer Photo" height="25px" onClick={() => imageModal(photo.url)}></img>
-          </div>
+          <ReviewPhoto key={photo.id} photo={photo} darkTheme={props.darkTheme}/>
         ))}
       </div>
       }
