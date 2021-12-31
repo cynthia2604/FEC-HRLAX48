@@ -5,6 +5,7 @@ import StarFilledWhite from "../../assets/StarFilledWhite.png"
 import StarEmptyWhite from "../../assets/StarEmptyWhite.png"
 import axios from "axios";
 import Options from "../../config";
+import { upload } from "@testing-library/user-event/dist/upload";
 
 export default function AddReview(props) {
 
@@ -107,11 +108,11 @@ export default function AddReview(props) {
     }
   }
 
-  async function handleUpload(e) {
-    e.preventDefault()
+  async function handleUpload(files) {
+    // e.preventDefault()
     let uploads = []
-    for (let i = 0; i < photosToUpload.length; i++) {
-      await axios.post('https://api.imgur.com/3/image', photosToUpload[i],
+    for (let i = 0; i < files.length; i++) {
+      await axios.post('https://api.imgur.com/3/image', files[i],
         {
           headers: {
             Authorization: "Client-ID 78dc8e1b5fb253b"
@@ -122,8 +123,8 @@ export default function AddReview(props) {
         })
         .catch(err => console.error(err))
     }
-    await setPhotos(uploads)
-    alert('Photos Uploaded')
+    console.log(uploads)
+    setPhotos(uploads)
   }
 
   function textRating(rating) {
@@ -152,10 +153,8 @@ export default function AddReview(props) {
   }
 
   function handlePhotos(e) {
-    if (e.target.files.length >= 5) {
-      setFull(true)
-    }
     setPhotosToUpload(e.target.files)
+    handleUpload(e.target.files)
   }
 
   const modalStyle = {
@@ -402,7 +401,15 @@ export default function AddReview(props) {
                 <div className="pt-3">
                   <label htmlFor="formFileMultiple" className="form-label">Upload Photos (Limit 5)</label>
                   <input style={modalStyle} className="form-control" type="file" id="formFileMultiple" multiple onChange={handlePhotos}/>
-                  <button disabled={!photosToUpload.length} onClick={handleUpload}>Upload Photos</button>
+                  {photosToUpload.length > 0 && photosToUpload.length !== photos.length &&
+                  <span>Uploading...</span>
+                  }
+                  {photos.length > 0 &&
+                  <div>
+                    <span>Preview:</span><br />
+                    {photos.map(photo => <img key={photo} src={photo} height="50px" alt="Preview Photo" className="me-2"/>)}
+                  </div>
+                  }
                 </div>
                 <div className="form-group pt-2">
                   <label htmlFor="nickname-text" className="col-form-label">Nickname*:</label>
