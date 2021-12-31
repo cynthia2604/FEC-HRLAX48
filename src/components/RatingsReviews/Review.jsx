@@ -60,6 +60,10 @@ export default function Review(props) {
     color: props.darkTheme ? "rgb(200, 200, 200)" : "rgb(100, 100, 100)"
   }
 
+  const responseStyle = {
+    backgroundColor: props.darkTheme ? "rgb(100, 100, 100)" : "rgb(200, 200, 200)"
+  }
+
   return (
     <>
     <div className='review'>
@@ -82,7 +86,7 @@ export default function Review(props) {
       </div>
       {recommended()}
       {props.review.response &&
-      <div className="reviewResponse">
+      <div className="reviewResponse" style={responseStyle}>
         <div>
           <strong>Response From Seller:</strong>
         </div>
