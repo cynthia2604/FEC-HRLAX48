@@ -31,7 +31,11 @@ export default function RelatedItemRating(props) {
   return(
     <div className="related-product-rating">
       {relatedItemRating &&
-        <div className="rating"style={{paddingBottom:'10px', marginLeft: '10px'}}>{utils.starRating(relatedItemRating)}</div>
+        <div className="rating"style={{paddingBottom:'10px', marginLeft: '10px'}}>
+        {
+          (props.darkTheme) ? utils.starRatingWhite(relatedItemRating) : utils.starRating(relatedItemRating)
+        }
+        </div>
       }
     </div>
   )

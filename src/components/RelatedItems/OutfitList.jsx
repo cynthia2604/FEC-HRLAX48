@@ -27,6 +27,7 @@ export default function OutfitList(props) {
         outfits={props.outfits}
         whoRender={whoRender}
         selectedStyle={props.selectedStyle}
+        darkTheme={props.darkTheme}
       />
     </div>
   ))

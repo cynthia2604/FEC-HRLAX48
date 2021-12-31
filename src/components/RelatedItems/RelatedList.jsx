@@ -22,6 +22,7 @@ export default function RelatedList(props) {
             setRenderTable={props.setRenderTable}
             setSelectRelated={props.setSelectRelated}
             renderTable={props.renderTable}
+            darkTheme={props.darkTheme}
             />
         </div>
       )

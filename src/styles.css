@@ -393,10 +393,9 @@ body {
 
 .carousel-container {
   overflow: hidden;
-  background: linear-gradient(transparent 150px, white);
   width:100%;
-
 }
+
 .carousel-container-inner {
   width: 125%;
   /* display: flex;

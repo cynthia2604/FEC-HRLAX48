@@ -4,8 +4,7 @@ import axios from 'axios';
 import OutfitList from './OutfitList';
 import Compare from './Compare'
 import Options from '../../config.js';
-import AliceCarousel from 'react-alice-carousel';
-import 'react-alice-carousel/lib/alice-carousel.css';
+
 
 export default function RelatedItems(props) {
   const [relatedItems, setRelatedItems] = React.useState([]);
@@ -34,6 +33,7 @@ export default function RelatedItems(props) {
               setRenderTable={setRenderTable}
               renderTable={renderTable}
               setSelectRelated={setSelectRelated}
+              darkTheme={props.darkTheme}
             />
           {renderTable &&
             <Compare
@@ -52,6 +52,7 @@ export default function RelatedItems(props) {
               setSaved={props.setSaved}
               outfits={props.outfits}
               selectedStyle={props.selectedStyle}
+              darkTheme={props.darkTheme}
             />
           </div>
     </div>
