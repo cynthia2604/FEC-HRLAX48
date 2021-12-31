@@ -51,11 +51,6 @@ export default function Review(props) {
       })
   }
 
-
-  function imageModal(imageURL) {
-    // Doesnt do anything yet because we don't actually have images in reviews...
-  }
-
   const authorStyle = {
     color: props.darkTheme ? "rgb(200, 200, 200)" : "rgb(100, 100, 100)"
   }
