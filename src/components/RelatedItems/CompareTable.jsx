@@ -19,7 +19,7 @@ export default function CompareTable(props) {
       <Table stickyHeader aria-label="stick-table" className="table"  sx={{
           [`& .${tableCellClasses.root}`]: {
             borderBottom: "none",
-            minWidth: 300,
+            minWidth: 250,
             marginLeft: '5px',
             backgroundColor: 'white',
             borderColor:"white"
