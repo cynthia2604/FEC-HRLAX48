@@ -33,7 +33,7 @@ export default function ProductImage(props) {
   } else  {
     return(
       <div className="card-product-image">
-      <img src={`${props.selectedStyle.photos}`}/>
+       <img src={`${props.currentItem.results[0].photos[0].url}`}/>
       <HighlightOffIcon className="remove-card-entry" onClick={() => removeOutfit(props.currentItem)} />
     </div>
     )
