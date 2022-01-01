@@ -5,6 +5,8 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import Collection from "./Collection";
+import Alert from "react-bootstrap/Alert";
 
 export default function AddToBag({ category, name }) {
   const [{ basket, selected }, dispatch] = useStateValue();
@@ -42,15 +44,16 @@ export default function AddToBag({ category, name }) {
             </Button>
           </Col>
           <Col>
-            <Button variant="outline-secondary" size="small">
-              ☆
-            </Button>
+            <Collection />
           </Col>
         </Row>
       </Container>
+      <Row>
+        <Alert variant="warning" show={show}>
+          Added to Collection!
+        </Alert>
+      </Row>
       <BagModal
-        basket={basket}
-        selected={selected}
         show={show}
         setShow={setShow}
         handleClose={handleClose}

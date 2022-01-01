@@ -10,9 +10,6 @@ import OverviewInfo from "./OverviewInfo";
 import "../../styles.css";
 import { v4 as uuidv4 } from "uuid";
 import { useStateValue } from "./store/StateProvider";
-import { ThemeProvider } from "styled-components";
-import { GlobalStyles } from "./components/Globalstyle";
-import { lightTheme, darkTheme } from "./components/Themes";
 
 export default function Overview({
   rating,
@@ -24,10 +21,6 @@ export default function Overview({
   const [productStyles, setProductStyles] = React.useState({});
   const [isExpand, setIsExpand] = React.useState(false);
   const [{ selected }, dispatch] = useStateValue();
-  const [theme, setTheme] = useState("light");
-  const themeToggler = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
-  };
 
   React.useEffect(() => {
     axios

@@ -4,8 +4,6 @@ import { useStateValue } from "./store/StateProvider";
 
 export default function Style({
   name,
-  selectedStyle,
-  setSelectedStyle,
   skus,
   allPhotos,
   thumbnail,
