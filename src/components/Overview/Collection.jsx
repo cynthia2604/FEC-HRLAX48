@@ -11,7 +11,6 @@ import Snackbar from "@mui/material/Snackbar";
 export default function Collection() {
   const [star, setStar] = React.useState(false);
   const [open, setOpen] = React.useState(false);
-  let message = "Added To Collection!";
 
   const handleClick = () => {
     setStar(!star);

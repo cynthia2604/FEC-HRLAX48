@@ -5,8 +5,6 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import Collection from "./Collection";
-import Alert from "react-bootstrap/Alert";
 
 export default function AddToBag({ category, name }) {
   const [{ basket, selected }, dispatch] = useStateValue();
