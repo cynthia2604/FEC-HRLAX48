@@ -229,7 +229,7 @@ const utils = {
     } else if (rating === .75) {
       return (
         <div>
-          {utils.StarThreeQuarters}{utils.StarEmptyWhite}{utils.StarEmptyWhite}{utils.StarEmptyWhite}{utils.StarEmptyWhite}
+          {utils.StarThreeQuartersWhite}{utils.StarEmptyWhite}{utils.StarEmptyWhite}{utils.StarEmptyWhite}{utils.StarEmptyWhite}
         </div>
       )
     } else if (rating === 1.25) {
@@ -241,7 +241,7 @@ const utils = {
     } else if (rating === 1.75) {
       return (
         <div>
-          {utils.StarFilledWhite}{utils.StarThreeQuarters}{utils.StarEmptyWhite}{utils.StarEmptyWhite}{utils.StarEmptyWhite}
+          {utils.StarFilledWhite}{utils.StarThreeQuartersWhite}{utils.StarEmptyWhite}{utils.StarEmptyWhite}{utils.StarEmptyWhite}
         </div>
       )
     } else if (rating === 2.25) {
@@ -253,7 +253,7 @@ const utils = {
     } else if (rating === 2.75) {
       return (
         <div>
-          {utils.StarFilledWhite}{utils.StarFilledWhite}{utils.StarThreeQuarters}{utils.StarEmptyWhite}{utils.StarEmptyWhite}
+          {utils.StarFilledWhite}{utils.StarFilledWhite}{utils.StarThreeQuartersWhite}{utils.StarEmptyWhite}{utils.StarEmptyWhite}
         </div>
       )
     } else if (rating === 3.25) {
@@ -265,7 +265,7 @@ const utils = {
     } else if (rating === 3.75) {
       return (
         <div>
-          {utils.StarFilledWhite}{utils.StarFilledWhite}{utils.StarFilledWhite}{utils.StarThreeQuarters}{utils.StarEmptyWhite}
+          {utils.StarFilledWhite}{utils.StarFilledWhite}{utils.StarFilledWhite}{utils.StarThreeQuartersWhite}{utils.StarEmptyWhite}
         </div>
       )
     } else if (rating === 4.25) {
@@ -277,7 +277,7 @@ const utils = {
     } else if (rating === 4.75) {
       return (
         <div>
-          {utils.StarFilledWhite}{utils.StarFilledWhite}{utils.StarFilledWhite}{utils.StarFilledWhite}{utils.StarThreeQuarters}
+          {utils.StarFilledWhite}{utils.StarFilledWhite}{utils.StarFilledWhite}{utils.StarFilledWhite}{utils.StarThreeQuartersWhite}
         </div>
       )
     }

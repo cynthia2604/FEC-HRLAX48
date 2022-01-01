@@ -106,7 +106,7 @@ export default function QAElement(props) {
         <div className="qaLeft">
           <b>A:</b>
         </div>
-        <div className="mw-75 answerColumn">
+        <div className="w-75 answerColumn">
           {answers.length > 0 ? answers.slice(0, numAnswers).map(answer => (
             <Answer answer={answer} key={answer.id} refresh={props.refresh} darkTheme={props.darkTheme}/>
           )) : <div className="pb-3" style={helpfulStyle}>No answers yet...</div>}

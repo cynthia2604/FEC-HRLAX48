@@ -2,6 +2,7 @@ import React from "react"
 import moment from "moment"
 import axios from "axios"
 import Options from "../../config"
+import ReviewPhoto from "./ReviewPhoto"
 
 export default function Review(props) {
 
@@ -50,13 +51,12 @@ export default function Review(props) {
       })
   }
 
-
-  function imageModal(imageURL) {
-    // Doesnt do anything yet because we don't actually have images in reviews...
-  }
-
   const authorStyle = {
     color: props.darkTheme ? "rgb(200, 200, 200)" : "rgb(100, 100, 100)"
+  }
+
+  const responseStyle = {
+    backgroundColor: props.darkTheme ? "rgb(100, 100, 100)" : "rgb(200, 200, 200)"
   }
 
   return (
@@ -81,7 +81,7 @@ export default function Review(props) {
       </div>
       {recommended()}
       {props.review.response &&
-      <div className="reviewResponse">
+      <div className="reviewResponse" style={responseStyle}>
         <div>
           <strong>Response From Seller:</strong>
         </div>
@@ -93,9 +93,7 @@ export default function Review(props) {
       {props.review.photos.length > 0 &&
       <div className="d-flex pt-3">
         {props.review.photos.map(photo => (
-          <div key={photo.id} className="cP">
-            <img src={photo.url} alt="Reviewer Photo" height="25px" onClick={() => imageModal(photo.url)}></img>
-          </div>
+          <ReviewPhoto key={photo.id} photo={photo} darkTheme={props.darkTheme}/>
         ))}
       </div>
       }
