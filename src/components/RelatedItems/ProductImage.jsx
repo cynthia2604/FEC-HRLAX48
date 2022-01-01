@@ -7,8 +7,7 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 export default function ProductImage(props) {
 
   function removeOutfit(selected) {
-    let currentOutfits = props.outfits
-    let removeOutfit = currentOutfits.filter((product) => product.id !== Number(selected.product_id));
+    let removeOutfit = selected.filter((product) => product.id !== Number(selected.product_id));
     props.setSaved(removeOutfit)
   }
 
@@ -30,12 +29,12 @@ export default function ProductImage(props) {
         <StarBorderIcon className="modal-button" onClick={() => showComparison(props.currentItem)}/>
       </div>
     )
-  } else  {
+  } else {
     return(
       <div className="card-product-image">
-       <img src={`${props.currentItem.results[0].photos[0].url}`}/>
+       <img src={`${props.selectedStyle.photos[0].thumbnail_url}`}/>
       <HighlightOffIcon className="remove-card-entry" onClick={() => removeOutfit(props.currentItem)} />
-    </div>
+      </div>
     )
   }
 }
