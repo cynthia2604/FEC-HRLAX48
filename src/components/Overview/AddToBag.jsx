@@ -12,8 +12,6 @@ export default function AddToBag({ category, name }) {
   const [{ basket, selected }, dispatch] = useStateValue();
   const [show, setShow] = React.useState(false);
 
-  const handleClose = () => setShow(false);
-
   const handleAdd = () => {
     dispatch({
       type: "ADD_TO_BASKET",
@@ -28,6 +26,10 @@ export default function AddToBag({ category, name }) {
       },
     });
     setShow(true);
+  };
+
+  const handleClose = () => {
+    setShow(false);
   };
 
   return (
@@ -48,11 +50,7 @@ export default function AddToBag({ category, name }) {
           </Col>
         </Row>
       </Container>
-      <Row>
-        <Alert variant="warning" show={show}>
-          Added to Collection!
-        </Alert>
-      </Row>
+      <Row></Row>
       <BagModal
         show={show}
         setShow={setShow}

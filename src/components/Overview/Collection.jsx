@@ -6,19 +6,25 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
+import Snackbar from "@mui/material/Snackbar";
 
-export default function Collection({ setShow }) {
+export default function Collection() {
   const [star, setStar] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+  let message = "Added To Collection!";
+
+  const handleClick = () => {
+    setStar(!star);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <>
-      <Button
-        variant="outline-secondary"
-        size="small"
-        onClick={() => {
-          setStar(!star);
-        }}
-      >
+      <Button variant="outline-secondary" size="small" onClick={handleClick}>
         {star ? (
           <StarIcon
             sx={{
@@ -29,6 +35,13 @@ export default function Collection({ setShow }) {
           <StarBorderIcon />
         )}
       </Button>
+      <Snackbar
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        open={open}
+        message={star ? "Added To Collection!" : "Removed From Collection"}
+        onClose={handleClose}
+        autoHideDuration="1000"
+      />
     </>
   );
 }
