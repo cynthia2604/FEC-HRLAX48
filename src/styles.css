@@ -39,20 +39,27 @@ body {
   padding: 0;
 }
 
+.btn-outline-secondary {
+  color: rgba(0, 0, 0, 0.87);
+  border-color: rgba(0, 0, 0, 0.87)
+}
+
+.btn-large {
+  min-width: 100%;
+}
+
+.col {
+  padding: 0px;
+  margin: 0px;
+}
+
+.btn-small {
+  min-width: 100%;
+}
+
 .pd__box {
   display: flex;
   width: 100%;
-}
-
-.pd__box
-.quantity {
-  width: 42%;
-}
-
-.pd__box
-.size{
-  margin-right: 3%;
-  width: 55%;
 }
 
 .pd__box

@@ -10,6 +10,9 @@ import OverviewInfo from "./OverviewInfo";
 import "../../styles.css";
 import { v4 as uuidv4 } from "uuid";
 import { useStateValue } from "./store/StateProvider";
+import { ThemeProvider } from "styled-components";
+import { GlobalStyles } from "./components/Globalstyle";
+import { lightTheme, darkTheme } from "./components/Themes";
 
 export default function Overview({
   rating,
@@ -21,6 +24,10 @@ export default function Overview({
   const [productStyles, setProductStyles] = React.useState({});
   const [isExpand, setIsExpand] = React.useState(false);
   const [{ selected }, dispatch] = useStateValue();
+  const [theme, setTheme] = useState("light");
+  const themeToggler = () => {
+    theme === "light" ? setTheme("dark") : setTheme("light");
+  };
 
   React.useEffect(() => {
     axios
@@ -51,6 +58,13 @@ export default function Overview({
       let skus = defaultObj.skus;
       let originalPrice = defaultObj.original_price;
       let salePrice = defaultObj.sale_price;
+      let hasSku = () => {
+        if (Object.keys(skus)[0] !== "null") {
+          return "-";
+        } else {
+          return "Out Of Stock";
+        }
+      };
 
       dispatch({
         type: "ADD_TO_SELECTED",
@@ -61,8 +75,9 @@ export default function Overview({
           thumbnail: photos[0].thumbnail_url,
           originalPrice: originalPrice,
           salePrice: salePrice,
-          size: "select size",
-          quantity: "-",
+          size: "Select Size",
+          quantity: hasSku(),
+          disabled: true,
         },
       });
     }

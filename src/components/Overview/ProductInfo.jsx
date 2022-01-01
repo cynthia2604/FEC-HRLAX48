@@ -1,6 +1,6 @@
 import React from "react";
 import "../../styles.css";
-import StyleSelector from "./StyleSelector";
+import Styles from "./Styles";
 import AddToBag from "./AddToBag";
 import utils from "../utils.js";
 import Share from "./Share";
@@ -51,7 +51,7 @@ export default function ProductInfo({
           "$" + selected.originalPrice
         )}
       </div>
-      <StyleSelector productStyles={productStyles} />
+      <Styles productStyles={productStyles} />
       <AddToBag category={productDetail.category} name={productDetail.name} />
     </div>
   );
