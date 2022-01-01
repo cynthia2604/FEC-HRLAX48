@@ -31,7 +31,6 @@ export default function QuestionsAnswers(props) {
     questions = productQuestions
   }
 
-
   const QAElements = questions.slice(0, questionCount).map(element => (
     <QAElement
       element={element}

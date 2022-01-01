@@ -5,6 +5,7 @@ import StarFilledWhite from "../../assets/StarFilledWhite.png"
 import StarEmptyWhite from "../../assets/StarEmptyWhite.png"
 import axios from "axios";
 import Options from "../../config";
+import { upload } from "@testing-library/user-event/dist/upload";
 
 export default function AddReview(props) {
 
@@ -19,11 +20,12 @@ export default function AddReview(props) {
   const [summary, setSummary] = React.useState('')
   const [body, setBody] = React.useState('')
   const [photos, setPhotos] = React.useState([])
+  const [photosToUpload, setPhotosToUpload] = React.useState([])
   const [full, setFull] = React.useState(false)
   const [nickname, setNickname] = React.useState('')
   const [email, setEmail] = React.useState('')
 
-  function handleSubmit() {
+  async function handleSubmit() {
     let error = ['Errors:']
     if (!rating) {
       error.push('Rating Missing')
@@ -55,8 +57,11 @@ export default function AddReview(props) {
     if (!nickname) {
       error.push('Nickname Missing')
     }
-    if (!email.includes('@')) {
+    if (!validateEmail(email)) {
       error.push('Invalid Email Format')
+    }
+    if (photos.length !== photosToUpload.length) {
+      error.push('Incomplete Photo Uploads')
     }
     if (error.length !== 1) {
       alert(error.join('\n'))
@@ -103,6 +108,27 @@ export default function AddReview(props) {
     }
   }
 
+  async function handleUpload(files) {
+    if (files.length <= 5) {
+      let uploads = []
+      for (let i = 0; i < files.length; i++) {
+        await axios.post('https://api.imgur.com/3/image', files[i],
+        {
+          headers: {
+            Authorization: "Client-ID 78dc8e1b5fb253b"
+          }
+        })
+        .then(res => {
+          uploads.push(res.data.data.link)
+        })
+        .catch(err => console.error(err))
+      }
+      setPhotos(uploads)
+    } else {
+    alert('Too many files, limit is 5.')
+    }
+  }
+
   function textRating(rating) {
     if (rating === 1) {
       return <>Poor</>
@@ -129,10 +155,8 @@ export default function AddReview(props) {
   }
 
   function handlePhotos(e) {
-    if (e.target.files.length >= 5) {
-      setFull(true)
-    }
-    // setPhotos(e.target.files)
+    setPhotosToUpload(e.target.files)
+    handleUpload(e.target.files)
   }
 
   const modalStyle = {
@@ -163,6 +187,17 @@ export default function AddReview(props) {
       )
     }
   }
+
+  function validateEmail(input) {
+    var validRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+    if (input.match(validRegex)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 
   return (
     <div>
@@ -367,7 +402,16 @@ export default function AddReview(props) {
                 </div>
                 <div className="pt-3">
                   <label htmlFor="formFileMultiple" className="form-label">Upload Photos (Limit 5)</label>
-                  <input style={modalStyle} className="form-control" type="file" id="formFileMultiple" multiple disabled onChange={handlePhotos}/>
+                  <input style={modalStyle} className="form-control" type="file" id="formFileMultiple" multiple onChange={handlePhotos}/>
+                  {photosToUpload.length > 0 && photosToUpload.length !== photos.length &&
+                  <span>{photosToUpload.length <= 5 ? 'Uploading...' : 'Too Many Files'}</span>
+                  }
+                  {photos.length > 0 &&
+                  <div>
+                    <span>Preview:</span><br />
+                    {photos.map(photo => <img key={photo} src={photo} height="50px" alt="Preview Photo" className="me-2"/>)}
+                  </div>
+                  }
                 </div>
                 <div className="form-group pt-2">
                   <label htmlFor="nickname-text" className="col-form-label">Nickname*:</label>
