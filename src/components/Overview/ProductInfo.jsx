@@ -6,11 +6,10 @@ import utils from "../utils.js";
 import Share from "./Share";
 
 export default function ProductInfo({
+  selected,
   productDetail,
   productStyles,
   rating,
-  selectedStyle,
-  setSelectedStyle,
   reviews,
   darkTheme,
 }) {
@@ -39,25 +38,21 @@ export default function ProductInfo({
       <p className="mb-2">{productDetail.category}</p>
       <h2 className="mb-3">{productDetail.name}</h2>
       <div className="mb-3">
-        {selectedStyle.salePrice ? (
+        {selected.salePrice ? (
           <div>
             <span>
-              <s>{"$" + selectedStyle.originalPrice}</s>
+              <s>{"$" + selected.originalPrice}</s>
             </span>
             <span style={{ color: "red" }} className="ms-2">
-              {"$" + selectedStyle.salePrice}
+              {"$" + selected.salePrice}
             </span>
           </div>
         ) : (
-          "$" + selectedStyle.originalPrice
+          "$" + selected.originalPrice
         )}
       </div>
-      <StyleSelector
-        productStyles={productStyles}
-        selectedStyle={selectedStyle}
-        setSelectedStyle={setSelectedStyle}
-      />
-      <AddToBag />
+      <StyleSelector productStyles={productStyles} />
+      <AddToBag category={productDetail.category} name={productDetail.name} />
     </div>
   );
 }

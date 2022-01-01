@@ -3,78 +3,53 @@ import SizeSelector from "./SizeSelector";
 import QuantitySelector from "./QuantitySelector";
 import { v4 as uuidv4 } from "uuid";
 
-export default function Selectors({
-  select,
-  skus,
-  setAvailableQty,
-  availableQty,
-  setDisplay,
-  display,
-  selectedStyle,
-}) {
-  const [qtyArray, setQtyArray] = React.useState([]);
-
-  React.useEffect(() => {
-    renderQuantity();
-  }, [availableQty]);
-
-  //if quan not avaliable, then display out of stock and remove size from dropdown
-
+export default function Selectors({ select, selected }) {
   const getSku = () => {
     let result = [];
-    for (var key in skus) {
-      result.push({ quantity: skus[key].quantity, size: skus[key].size });
+    for (var key in selected.skus) {
+      let current = selected.skus[key];
+      result.push({
+        id: key,
+        quantity: current.quantity,
+        size: current.size,
+      });
     }
     return result;
+    ß;
   };
 
   const skuElement = getSku().map((sku) => {
     if (select === "size") {
-      return (
-        <SizeSelector
-          sku={sku}
-          setQtyArray={setQtyArray}
-          key={uuidv4()}
-          setDisplay={setDisplay}
-          setAvailableQty={setAvailableQty}
-        />
-      );
+      return <SizeSelector sku={sku} key={uuidv4()} />;
     }
   });
 
-  const qtyElement = qtyArray.map((qty) => {
-    if (select === "quantity" && qty <= 15) {
-      return (
-        <QuantitySelector
-          key={uuidv4()}
-          quantity={qty}
-          setDisplay={setDisplay}
-          size={display.size}
-        />
-      );
-    }
-  });
+  const qtyElement =
+    selected.stockQuantityArr &&
+    selected.stockQuantityArr.map((qty) => {
+      if (select === "quantity" && qty <= 15) {
+        return (
+          <QuantitySelector
+            key={uuidv4()}
+            quantity={qty}
+            size={selected.size}
+          />
+        );
+      }
+    });
 
   const handleDropdown = () => {
     if (select === "size") {
-      return display.size;
+      return selected.size;
     } else {
-      for (var key in skus) {
+      for (var key in selected.skus) {
         if (key === "null") {
           return "Out of Stock";
         }
       }
     }
 
-    return display.quantity;
-  };
-
-  const renderQuantity = () => {
-    var qty = [];
-    for (var i = 1; i <= availableQty; i++) {
-      qty.push(i);
-    }
-    setQtyArray(qty);
+    return selected.quantity;
   };
 
   return (
@@ -88,7 +63,7 @@ export default function Selectors({
       >
         <button
           className={
-            select === "size" || display.stockQuantity !== null
+            select === "size" || selected.size !== null
               ? `btn btn-outline-secondary dropdown-toggle`
               : `btn btn-outline-secondary dropdown-toggle disabled`
           }

@@ -1,5 +1,6 @@
 import React from "react";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import { useStateValue } from "./store/StateProvider";
 
 export default function Style({
   name,
@@ -11,13 +12,19 @@ export default function Style({
   originalPrice,
   salePrice,
 }) {
+  const [{ selected }, dispatch] = useStateValue();
+
   const handleSelection = () => {
-    setSelectedStyle({
-      color: `${name}`,
-      skus: skus,
-      photos: allPhotos,
-      originalPrice: originalPrice,
-      salePrice: salePrice,
+    dispatch({
+      type: "ADD_TO_SELECTED",
+      item: {
+        color: `${name}`,
+        skus: skus,
+        photos: allPhotos,
+        originalPrice: originalPrice,
+        salePrice: salePrice,
+        thumbnail: thumbnail,
+      },
     });
   };
 
@@ -32,7 +39,7 @@ export default function Style({
           border: "none",
         }}
       ></button>
-      {name === selectedStyle.color ? (
+      {name === selected.color ? (
         <div className="pd__style-check">
           <CheckCircleOutlineIcon
             sx={{

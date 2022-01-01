@@ -9,29 +9,29 @@ import Share from "./Share";
 import OverviewInfo from "./OverviewInfo";
 import "../../styles.css";
 import { v4 as uuidv4 } from "uuid";
+import { useStateValue } from "./store/StateProvider";
 
 export default function Overview({
-  selected,
   rating,
   productInfo,
-  selectedStyle,
-  setSelectedStyle,
   darkTheme,
+  selectedProduct,
 }) {
   const [productDetail, setProductDetail] = React.useState({});
   const [productStyles, setProductStyles] = React.useState({});
   const [isExpand, setIsExpand] = React.useState(false);
+  const [{ selected }, dispatch] = useStateValue();
 
   React.useEffect(() => {
     axios
-      .get(`${Options.URL}/products/${selected.id}`, {
+      .get(`${Options.URL}/products/${selectedProduct.id}`, {
         headers: {
           Authorization: Options.TOKEN,
         },
       })
       .then(({ data }) => setProductDetail(data));
     axios
-      .get(`${Options.URL}/products/${selected.id}/styles`, {
+      .get(`${Options.URL}/products/${selectedProduct.id}/styles`, {
         headers: {
           Authorization: Options.TOKEN,
         },
@@ -52,13 +52,18 @@ export default function Overview({
       let originalPrice = defaultObj.original_price;
       let salePrice = defaultObj.sale_price;
 
-      setSelectedStyle({
-        color: color,
-        skus: skus,
-        photos: photos,
-        thumbnail: photos[0].thumbnail_url,
-        originalPrice: originalPrice,
-        salePrice: salePrice,
+      dispatch({
+        type: "ADD_TO_SELECTED",
+        item: {
+          color: color,
+          skus: skus,
+          photos: photos,
+          thumbnail: photos[0].thumbnail_url,
+          originalPrice: originalPrice,
+          salePrice: salePrice,
+          size: "select size",
+          quantity: "-",
+        },
       });
     }
   };
@@ -73,18 +78,17 @@ export default function Overview({
         <div className={isExpand ? "pd__gallery-expand" : "wide"}>
           <Gallery
             key={uuidv4()}
-            selectedStyle={selectedStyle}
+            selected={selected}
             handleExpand={handleExpand}
           />
         </div>
         {!isExpand ? (
           <div className="narrow">
             <ProductInfo
+              selected={selected}
               productDetail={productDetail}
               productStyles={productStyles}
               rating={rating}
-              selectedStyle={selectedStyle}
-              setSelectedStyle={setSelectedStyle}
               reviews={productInfo}
               darkTheme={darkTheme}
             />

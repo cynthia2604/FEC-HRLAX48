@@ -4,12 +4,12 @@ import AspectRatioIcon from "@mui/icons-material/AspectRatio";
 import ImageGallery from "../../../node_modules/react-image-gallery";
 import "../../../node_modules/react-image-gallery/styles/css/image-gallery.css";
 
-export default function Gallery({ selectedStyle, handleExpand }) {
+export default function Gallery({ selected, handleExpand }) {
   const images = [];
   const isAvaliable = [];
   const image =
-    selectedStyle.photos &&
-    selectedStyle.photos.map((photo) => {
+    selected.photos &&
+    selected.photos.map((photo) => {
       isAvaliable.push(photo.url);
       let tempObj = { original: photo.url, thumbnail: photo.thumbnail_url };
       images.push(tempObj);

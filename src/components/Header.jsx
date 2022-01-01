@@ -2,8 +2,10 @@ import { Switch } from "@mui/material";
 import React from "react";
 import Switches from "../assets/Switches";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
+import { useStateValue } from "./Overview/store/StateProvider";
 
 export default function Header(props) {
+  const [{ basket }, dispatch] = useStateValue();
   const divStyle = {
     backgroundColor: props.darkTheme ? "rgb(40, 40, 40)" : "rgb(225, 225, 225)",
     color: props.darkTheme ? "white" : "black",
@@ -35,6 +37,7 @@ export default function Header(props) {
       <div className="p-0 pe-4 m-0" onChange={handleChange}>
         {Switches()}
         <LocalMallIcon />
+        <span>{basket.length}</span>
       </div>
       <div>by Migos</div>
     </div>
