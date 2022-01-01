@@ -4,6 +4,7 @@ import BagModal from "./BagModal";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Collection from "./Collection";
 import Button from "react-bootstrap/Button";
 
 export default function AddToBag({ category, name }) {
@@ -39,6 +40,7 @@ export default function AddToBag({ category, name }) {
               variant="outline-secondary"
               size="large"
               onClick={handleAdd}
+              disabled={selected.disabled}
             >
               Add To Bag
             </Button>

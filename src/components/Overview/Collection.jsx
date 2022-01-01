@@ -37,9 +37,9 @@ export default function Collection() {
       <Snackbar
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
         open={open}
-        message={star ? "Added To Collection!" : "Removed From Collection"}
+        message={star ? "Added To Collection!" : "Removed From Collection!"}
         onClose={handleClose}
-        autoHideDuration="1000"
+        autoHideDuration={1000}
       />
     </>
   );
