@@ -63,7 +63,7 @@ export default function Selectors({ select, selected }) {
       >
         <button
           className={
-            select === "size" || selected.size !== null
+            select === "size" || selected.size === "Select Size"
               ? `btn btn-outline-secondary dropdown-toggle`
               : `btn btn-outline-secondary dropdown-toggle disabled`
           }

@@ -62,17 +62,19 @@ export default function AddToBag({ category, name }) {
                 <Col>
                   <div>{name}</div>
                   <div>{category}</div>
-                  <div>{`Size: ${selected.size}`}</div>
-                  <div>{selected.salePrice || selected.originalPrice}</div>
+                  <div>{`Size ${selected.size}`}</div>
+                  <div>{`$${
+                    selected.salePrice || selected.originalPrice
+                  }`}</div>
                 </Col>
               </Row>
             </Container>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              {`View Bag(${selected.quantity})`}
+            <Button variant="outline-secondary" onClick={handleClose}>
+              {`View Bag(${basket.length})`}
             </Button>
-            <Button variant="primary" onClick={handleClose}>
+            <Button variant="outline-success" onClick={handleClose}>
               Checkout
             </Button>
           </Modal.Footer>
