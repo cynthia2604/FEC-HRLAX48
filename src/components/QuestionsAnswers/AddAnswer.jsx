@@ -165,6 +165,7 @@ export default function AddAnswer(props) {
                   style={modalStyle}
                   className='form-control'
                   type='file'
+                  accept='image/*'
                   id='formFileMultiple'
                   multiple
                   onChange={handlePhotos}
