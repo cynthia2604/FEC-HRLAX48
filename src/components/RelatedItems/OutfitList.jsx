@@ -36,16 +36,15 @@ export default function OutfitList(props) {
         currentStyle= {product}
         rating={props.rating}
       />
-
   ))
 
   return(
 
         <div className="carousel-container" >
         <div className= "carousel-container-inner" style={{transform: `translateX(${xPos}px)`}}>
-            <div className="add-outfit" onClick={() => saveOutfit(props.selectedStyle)}> Add Outfit +</div>
+          <div className="add-outfit" onClick={() => saveOutfit(props.selectedStyle)}> Add Outfit +</div>
             {entry}
-        </div>
+          </div>
         {(renderLeft >0) && <ArrowBackIosNewIcon className="slide-button-left" onClick={() => translateX('left')}/>}
         <ArrowForwardIosIcon className="slide-button-right" onClick={() => translateX('right')}/>
        </div>
