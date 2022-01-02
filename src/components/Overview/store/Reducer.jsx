@@ -1,6 +1,7 @@
 export const initialState = {
   basket: [],
   selected: {},
+  toggleWarning: false,
 };
 
 // export const getBasketTotal = (basket) =>
@@ -22,6 +23,13 @@ const reducer = (state, action) => {
         ...state,
         selected: { ...state.selected, ...action.item },
       };
+
+    case "TOGGLE_WARNING":
+      return {
+        ...state,
+        toggleWarning: action.item,
+      };
+
     default:
       return state;
   }

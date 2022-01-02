@@ -58,6 +58,7 @@ export default function Detail(props) {
             rating={rating}
             productInfo={productInfo}
             darkTheme={props.darkTheme}
+            setView={props.setView}
           />
           <RelatedItems
             products={props.products}

@@ -12,6 +12,7 @@ export default function ProductInfo({
   rating,
   reviews,
   darkTheme,
+  setView,
 }) {
   const handleScroll = () => {
     const reviewElement = document.getElementById("reviews");
@@ -52,7 +53,11 @@ export default function ProductInfo({
         )}
       </div>
       <Styles productStyles={productStyles} />
-      <AddToBag category={productDetail.category} name={productDetail.name} />
+      <AddToBag
+        category={productDetail.category}
+        name={productDetail.name}
+        setView={setView}
+      />
     </div>
   );
 }

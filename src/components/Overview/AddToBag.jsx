@@ -7,24 +7,32 @@ import Col from "react-bootstrap/Col";
 import Collection from "./Collection";
 import Button from "react-bootstrap/Button";
 
-export default function AddToBag({ category, name }) {
-  const [{ basket, selected }, dispatch] = useStateValue();
+export default function AddToBag({ category, name, setView }) {
+  const [{ basket, selected, toggleWarning }, dispatch] = useStateValue();
   const [show, setShow] = React.useState(false);
+  //const [warning, setWarning] = React.useState(false);
 
   const handleAdd = () => {
-    dispatch({
-      type: "ADD_TO_BASKET",
-      item: {
-        id: selected.id,
-        color: selected.color,
-        size: selected.size,
-        quantity: selected.quantity,
-        thumbnail: selected.thumbnail,
-        originalPrice: selected.originalPrice,
-        salePrice: selected.salePrice,
-      },
-    });
-    setShow(true);
+    if (typeof selected.quantity === "number") {
+      dispatch({
+        type: "ADD_TO_BASKET",
+        item: {
+          id: selected.id,
+          color: selected.color,
+          size: selected.size,
+          quantity: selected.quantity,
+          thumbnail: selected.thumbnail,
+          originalPrice: selected.originalPrice,
+          salePrice: selected.salePrice,
+        },
+      });
+      setShow(true);
+    } else {
+      dispatch({
+        type: "TOGGLE_WARNING",
+        item: true,
+      });
+    }
   };
 
   const handleClose = () => {
@@ -40,7 +48,6 @@ export default function AddToBag({ category, name }) {
               variant="outline-secondary"
               size="large"
               onClick={handleAdd}
-              disabled={selected.disabled}
             >
               Add To Bag
             </Button>
@@ -49,6 +56,13 @@ export default function AddToBag({ category, name }) {
             <Collection />
           </Col>
         </Row>
+        {toggleWarning ? (
+          <Row>
+            <div style={{ color: "red", textAlign: "center" }}>
+              --select size first--
+            </div>
+          </Row>
+        ) : null}
       </Container>
       <BagModal
         show={show}
@@ -56,6 +70,7 @@ export default function AddToBag({ category, name }) {
         handleClose={handleClose}
         category={category}
         name={name}
+        setView={setView}
       />
     </>
   );

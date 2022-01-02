@@ -3,7 +3,7 @@ import { useStateValue } from "./store/StateProvider";
 import Dropdown from "react-bootstrap/Dropdown";
 
 export default function SizeDropdown() {
-  const [{ selected }, dispatch] = useStateValue();
+  const [{ selected, toggleWarning }, dispatch] = useStateValue();
 
   const handleDisplay = (sku) => {
     dispatch({
@@ -16,6 +16,10 @@ export default function SizeDropdown() {
         stockQuantityArr: [...Array(sku.quantity + 1).keys()].slice(1),
         disabled: false,
       },
+    });
+    dispatch({
+      type: "TOGGLE_WARNING",
+      item: false,
     });
   };
 

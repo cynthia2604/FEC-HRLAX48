@@ -16,6 +16,7 @@ export default function Overview({
   productInfo,
   darkTheme,
   selectedProduct,
+  setView,
 }) {
   const [productDetail, setProductDetail] = React.useState({});
   const [productStyles, setProductStyles] = React.useState({});
@@ -99,6 +100,7 @@ export default function Overview({
               rating={rating}
               reviews={productInfo}
               darkTheme={darkTheme}
+              setView={setView}
             />
           </div>
         ) : null}
