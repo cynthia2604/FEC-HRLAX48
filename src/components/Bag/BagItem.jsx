@@ -5,10 +5,15 @@ import Col from "react-bootstrap/Col";
 
 export default function BagItem({ item }) {
   return (
-    <Container>
+    <Container className="mb-3">
       <Row>
         <Col>
-          <img src={item.thumbnail}></img>
+          <img
+            src={item.thumbnail}
+            height="100"
+            width="100"
+            objectFit="cover"
+          ></img>
         </Col>
         <Col>
           <div>{item.color}</div>

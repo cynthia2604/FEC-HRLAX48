@@ -6,7 +6,7 @@ export default function checkout({ setView, bag, setBag }) {
   const [{ basket }, dispatch] = useStateValue();
 
   React.useEffect(() => {
-    setBag([...bag, basket]);
+    basket.length && setBag([...bag, ...basket]);
     console.log("basket", basket);
   }, [basket]);
 
