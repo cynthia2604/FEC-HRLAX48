@@ -54,9 +54,7 @@ export default function Detail(props) {
       {productInfo && (
         <div>
           <Overview
-            selected={props.selected}
-            selectedStyle={selectedStyle}
-            setSelectedStyle={setSelectedStyle}
+            selectedProduct={props.selected}
             rating={rating}
             productInfo={productInfo}
             darkTheme={props.darkTheme}

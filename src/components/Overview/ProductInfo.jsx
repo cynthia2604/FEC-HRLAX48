@@ -1,17 +1,17 @@
 import React from "react";
 import "../../styles.css";
-import StyleSelector from "./StyleSelector";
+import Styles from "./Styles";
 import AddToBag from "./AddToBag";
 import utils from "../utils.js";
 import Share from "./Share";
 
 export default function ProductInfo({
+  selected,
   productDetail,
   productStyles,
   rating,
-  selectedStyle,
-  setSelectedStyle,
   reviews,
+  darkTheme,
 }) {
   const handleScroll = () => {
     const reviewElement = document.getElementById("reviews");
@@ -22,7 +22,12 @@ export default function ProductInfo({
     <div>
       {reviews.results.length ? (
         <div className="pd__box">
-          <div className="pd__normal mb-2 me-3">{utils.starRating(rating)}</div>
+          <div className="pd__normal mb-2 me-3">
+            {" "}
+            {darkTheme
+              ? utils.starRatingWhite(rating)
+              : utils.starRating(rating)}
+          </div>
           <div className="pd__normal mb-2">
             <u type="button" onClick={handleScroll}>
               Read All {reviews.results.length} Reviews
@@ -33,25 +38,21 @@ export default function ProductInfo({
       <p className="mb-2">{productDetail.category}</p>
       <h2 className="mb-3">{productDetail.name}</h2>
       <div className="mb-3">
-        {selectedStyle.salePrice ? (
+        {selected.salePrice ? (
           <div>
             <span>
-              <s>{"$" + selectedStyle.originalPrice}</s>
+              <s>{"$" + selected.originalPrice}</s>
             </span>
             <span style={{ color: "red" }} className="ms-2">
-              {"$" + selectedStyle.salePrice}
+              {"$" + selected.salePrice}
             </span>
           </div>
         ) : (
-          "$" + selectedStyle.originalPrice
+          "$" + selected.originalPrice
         )}
       </div>
-      <StyleSelector
-        productStyles={productStyles}
-        selectedStyle={selectedStyle}
-        setSelectedStyle={setSelectedStyle}
-      />
-      <AddToBag />
+      <Styles productStyles={productStyles} />
+      <AddToBag category={productDetail.category} name={productDetail.name} />
     </div>
   );
 }
