@@ -50,7 +50,6 @@ export default function AddToBag({ category, name }) {
           </Col>
         </Row>
       </Container>
-      <Row></Row>
       <BagModal
         show={show}
         setShow={setShow}
