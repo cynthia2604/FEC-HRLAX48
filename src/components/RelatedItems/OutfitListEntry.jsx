@@ -3,6 +3,7 @@ import OutfitListImage from './OutfitListImage'
 import RelatedItemRating from './RelatedItemRating'
 import axios from 'axios'
 import Options from '../../config.js';
+import utils from '../utils.js'
 
 export default function OutListEntry (props) {
   const [currentRating, setCurrentRating] = React.useState({})
@@ -29,10 +30,12 @@ export default function OutListEntry (props) {
           selectedStyle={props.selectedStyle}
           currentStyle={props.currentStyle}
         />
-        <div className="user-product-category" style={{fontSize: '1em', marginLeft: '10px'}}>{props.currentView.category}</div>
-        <div className="user-product-name" style={{fontWeight:'bold', marginLeft: '10px', overflow:'hidden'}}>{props.outfits.color}</div>
-        <div className="user-product-price" style={{fontSize: '0.8em', marginLeft: '10px'}}>{props.outfits.originalPrice}</div>
-        <RelatedItemRating currentItem={currentRating} darkTheme={props.darkTheme}/>
+        <div className="user-product-category" style={{fontSize: '1em', marginLeft: '10px'}}>{props.currentStyle.color}</div>
+        <div className="user-product-name" style={{fontWeight:'bold', marginLeft: '10px', overflow:'hidden'}}>{props.currentView.name}</div>
+        <div className="user-product-price" style={{fontSize: '0.8em', marginLeft: '10px'}}>{props.currentStyle.originalPrice}</div>
+        <div className="related-product-rating"  style={{paddingBottom:'10px', marginLeft: '10px'}}>
+          {(props.darkTheme) ? utils.starRatingWhite(props.rating) : utils.starRating(props.rating)}
+        </div>
       </div>
     }
     </>

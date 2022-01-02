@@ -57,37 +57,9 @@ export default function RelatedItems(props) {
               outfits={props.outfits}
               selectedStyle={props.selectedStyle}
               darkTheme={props.darkTheme}
+              rating={props.rating}
             />
           </div>
     </div>
   )
 }
-
-/* <div className="related-product-list">
-            <RelatedList
-              selected={props.selected}
-              related ={relatedItems}
-              setRenderTable={setRenderTable}
-              renderTable={renderTable}
-              setSelectRelated={setSelectRelated}
-              darkTheme={props.darkTheme}
-            />
-          {renderTable &&
-            <Compare
-              related={relatedItems}
-              renderTable={renderTable}
-              selected={props.selected}
-              selectRelated={selectRelated}
-            />
-          }
-          </div> */
-/* <div className="user-created-outfit">
-            <OutfitList
-              currentView={props.selected}
-              saved={props.saved}
-              setSaved={props.setSaved}
-              outfits={props.outfits}
-              selectedStyle={props.selectedStyle}
-              darkTheme={props.darkTheme}
-            />
-          </div> */

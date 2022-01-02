@@ -64,6 +64,7 @@ export default function Detail(props) {
             selected={props.selected}
             setSaved={props.setSaved}
             outfits={props.outfits}
+            rating={rating}
             selectedStyle={selectedStyle}
             setSelectedStyle={setSelectedStyle}
             darkTheme={props.darkTheme}

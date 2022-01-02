@@ -10,7 +10,7 @@ export default function OutfitListImage(props) {
 
   return(
     <>
-    {props.selectedStyle.thumbnail &&
+    {props.currentStyle &&
       <div className="card-product-image">
        <img src={`${props.currentStyle.photos[0].thumbnail_url}`}/>
       <HighlightOffIcon className="remove-card-entry" onClick={() => removeOutfit(props.outfits)} />
