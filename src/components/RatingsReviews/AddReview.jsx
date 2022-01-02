@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import Options from '../../config';
-import { Alert, Rating, Snackbar } from '@mui/material';
+import { Alert, LinearProgress, Rating, Snackbar } from '@mui/material';
 import utils from '../utils';
+import { Box } from '@mui/system';
 
 export default function AddReview(props) {
   const [rating, setRating] = React.useState(0);
@@ -611,6 +612,7 @@ export default function AddReview(props) {
                     style={modalStyle}
                     className='form-control'
                     type='file'
+                    accept='image/*'
                     id='formFileMultiple'
                     multiple
                     onChange={handlePhotos}
@@ -618,9 +620,13 @@ export default function AddReview(props) {
                   {photosToUpload.length > 0 &&
                     photosToUpload.length !== photos.length && (
                       <span>
-                        {photosToUpload.length <= 5
-                          ? 'Uploading...'
-                          : 'Too Many Files'}
+                        {photosToUpload.length <= 5 ? (
+                          <Box sx={{ width: '100%' }}>
+                            <LinearProgress /> Uploading...
+                          </Box>
+                        ) : (
+                          'Too Many Files'
+                        )}
                       </span>
                     )}
                   {photos.length > 0 && (

@@ -81,7 +81,7 @@ export default function Review(props) {
           </div>
           <div className='reviewAuthor' style={authorStyle}>
             {props.review.reviewer_name} -{' '}
-            {moment(props.review.date).format('MMMM D, YYYY')}
+            {moment(props.review.date).parseZone().format('MMMM D, YYYY')}
           </div>
         </div>
         <div className='reviewTitle'>{props.review.summary}</div>
