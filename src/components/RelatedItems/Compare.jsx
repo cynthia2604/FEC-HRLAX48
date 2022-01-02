@@ -23,6 +23,8 @@ export default function Compare(props) {
         selectedDescription={selectedDescription}
         selectRelated={props.selectRelated}
         selected={props.selected}
+        setRenderTable={props.setRenderTable}
+        renderTable={props.renderTable}
       />
 
     </div>

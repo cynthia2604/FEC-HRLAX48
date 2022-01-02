@@ -9,6 +9,7 @@ import TableCell,  { tableCellClasses }  from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import ClearIcon from '@mui/icons-material/Clear';
 
 export default function CompareTable(props) {
 
@@ -38,6 +39,7 @@ export default function CompareTable(props) {
       </Table>
       </TableContainer>
     }
+    <ClearIcon style={{position: 'absolute', top:'0', right:'0'}}onClick={()=> props.setRenderTable(!props.renderTable)}/>
     </Paper>
   )
 }

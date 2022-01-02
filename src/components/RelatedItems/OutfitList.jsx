@@ -1,16 +1,15 @@
 import React from 'react';
-import ProductCardEntry from './ProductCardEntry'
+import OutfitListEntry from './OutfitListEntry'
 import { IconButton } from '@mui/material'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 export default function OutfitList(props) {
-  const [whoRender, setWhoRender] = React.useState('outfit')
   const [xPos, setXPos] = React.useState(0)
   const [renderLeft, setRenderLeft] = React.useState(0)
 
   function saveOutfit(selected) {
-    let noDuplicateOutfits = props.outfits.filter(product => product.id !== selected.id)
+    let noDuplicateOutfits = props.outfits.filter(product => product.color !== selected.color)
     props.setSaved([...noDuplicateOutfits, selected])
     localStorage.setItem('outfits', JSON.stringify(props.saved))
   };
@@ -26,34 +25,30 @@ export default function OutfitList(props) {
   }
 
   const entry = props.outfits.map(product => (
-    <div className="user-card-list" key={product.id}>
-      <ProductCardEntry
-        currentItem={product}
-        render={whoRender}
+
+      <OutfitListEntry
         setSaved={props.setSaved}
         outfits={props.outfits}
-        whoRender={whoRender}
         selectedStyle={props.selectedStyle}
         darkTheme={props.darkTheme}
+        currentView={props.currentView}
+        currentStyle= {product}
       />
-    </div>
+
   ))
 
   return(
-    <div className="user-outfits">
-      <div className="card-products-list">
+
         <div className="carousel-container" >
         <div className= "carousel-container-inner" style={{transform: `translateX(${xPos}px)`}}>
-          <div className="card-products-list">
-            <div className="add-outfit" onClick={() => saveOutfit(props.currentView)}> Add Outfit +</div>
+            <div className="add-outfit" onClick={() => saveOutfit(props.selectedStyle)}> Add Outfit +</div>
             {entry}
-          </div>
         </div>
         {(renderLeft >0) && <ArrowBackIosNewIcon className="slide-button-left" onClick={() => translateX('left')}/>}
         <ArrowForwardIosIcon className="slide-button-right" onClick={() => translateX('right')}/>
        </div>
-      </div>
-    </div>
+
+
   )
 }
 

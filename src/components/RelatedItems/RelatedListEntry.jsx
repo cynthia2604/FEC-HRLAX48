@@ -4,6 +4,7 @@ import Options from '../../config.js';
 import ProductImage from './ProductImage'
 import RelatedItemRating from './RelatedItemRating'
 
+
 export default function RelatedProductEntry(props) {
   const [ current, setCurrent ] = React.useState()
 
@@ -21,17 +22,13 @@ export default function RelatedProductEntry(props) {
   return (
     <>
     {current &&
-      <div className="product-card-entry">
+      <div className="product-card-entry" >
         <ProductImage
           currentItem={current}
           render={props.render}
-          setSaved={props.setSaved}
-          outfits={props.outfits}
-          whoRender={props.whoRender}
           setRenderTable={props.setRenderTable}
           setSelectRelated={props.setSelectRelated}
           renderTable={props.renderTable}
-          selectedStyle={props.selectedStyle}
         />
         <div className="related-product-category" style={{fontSize: '1em', marginLeft: '10px'}}> {props.currentItem.category}</div>
         <div className="related-product-name" style={{fontWeight:'bold', marginLeft: '10px', overflow:'hidden'}}>{props.currentItem.name}</div>
@@ -44,3 +41,4 @@ export default function RelatedProductEntry(props) {
 }
 
 
+//style={{width: `${props.width * 0.4}`}}

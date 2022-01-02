@@ -367,17 +367,13 @@ body {
 
 .related-product-list {
   position: relative;
-
-}
-
-.user-created-outfit {
-  position: relative;
+  width:100%;
+  height: 100%;
 }
 
 .comparison-table {
   position: absolute;
-  top: 0;
-  right: 0;
+  z-index:1;
 }
 
 .card-product-image .modal-button {
@@ -397,17 +393,20 @@ body {
 
 .carousel-container {
   padding-top: 20px;
-  width: 100%;
   display:flex;
-  overflow:hidden;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
 
 .carousel-container-inner {
-  width: 300%;
   display: flex;
-  position:relative;
+  position: relative;
   flex-direction: row;
-  /* justify-content: space-between; */
+  justify-content: space-between;
 }
 
 /* .card-products-list {
@@ -417,12 +416,12 @@ body {
 } */
 
 
-.carousel-container .product-card-entry {
+.product-card-entry {
   margin-left: 30px;
   border-style: solid;
   border-width: thin;
-  width: 20%;
   position: relative;
+  width: 30%;
 }
 
 .slide-button-right {
@@ -433,8 +432,8 @@ body {
 }
 
 .slide-button-left {
-  position:absolute;
-  left:0;
+  position: absolute;
+  left: 0;
   top:50%;
   transform: translateY(-50%);
 }

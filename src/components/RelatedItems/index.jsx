@@ -7,6 +7,7 @@ import Options from '../../config.js';
 
 
 export default function RelatedItems(props) {
+  const [width, setWidth] = React.useState(0)
   const [relatedItems, setRelatedItems] = React.useState([]);
   const [renderTable, setRenderTable] = React.useState(false);
   const [selectRelated, setSelectRelated] = React.useState();
@@ -19,13 +20,23 @@ export default function RelatedItems(props) {
       }).then((res) => {
         let related = props.products.filter(item => res.data.includes(item.id))
         setRelatedItems(related)
+        setWidth(() => document.getElementById("related-product-list").offsetWidth)
       })
    }, [props.selected])
 
   return (
     <div className="related-products">
       <div className="sectionTitle">RELATED ITEMS</div>
-        <div className="related-product-list">
+        <div id="related-product-list">
+          {renderTable &&
+            <Compare
+              related={relatedItems}
+              renderTable={renderTable}
+              setRenderTable={setRenderTable}
+              selected={props.selected}
+              selectRelated={selectRelated}
+            />
+          }
             <RelatedList
               selected={props.selected}
               related ={relatedItems}
@@ -33,15 +44,9 @@ export default function RelatedItems(props) {
               renderTable={renderTable}
               setSelectRelated={setSelectRelated}
               darkTheme={props.darkTheme}
+              width= {width}
             />
-          {renderTable &&
-            <Compare
-              related={relatedItems}
-              renderTable={renderTable}
-              selected={props.selected}
-              selectRelated={selectRelated}
-            />
-          }
+
           </div>
         <div className="sectionTitle">YOUR OUTFITS</div>
         <div className="user-created-outfit">
