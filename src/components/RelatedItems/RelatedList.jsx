@@ -14,8 +14,7 @@ export default function RelatedList(props) {
   const entry =  props.related.map(product => {
     if (props.selected.id !== product.id) {
       return(
-        <div className="related-products-card" key={product.id} >
-          <ProductCardEntry
+          <ProductCardEntry key={product.id}
             currentItem={product}
             render={whoRender}
             whoRender={setWhoRender}
@@ -23,8 +22,7 @@ export default function RelatedList(props) {
             setSelectRelated={props.setSelectRelated}
             renderTable={props.renderTable}
             darkTheme={props.darkTheme}
-            />
-        </div>
+          />
       )
     }
   })
@@ -43,9 +41,7 @@ export default function RelatedList(props) {
   return (
     <div className="carousel-container" >
         <div className= "carousel-container-inner" style={{transform: `translateX(${xPos}px)`}}>
-          <div className="card-products-list">
-            {entry}
-          </div>
+          {entry}
         </div>
       {(renderLeft >0) && <ArrowBackIosNewIcon className="slide-button-left" onClick={() => translateX('left')}/>}
       <ArrowForwardIosIcon className="slide-button-right" onClick={() => translateX('right')}/>

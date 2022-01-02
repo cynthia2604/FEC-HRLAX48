@@ -19,9 +19,9 @@ export default function RelatedProductEntry(props) {
   }, [])
 
   return (
-    <div className="product-card-entry">
-      {current &&
-      <div>
+    <>
+    {current &&
+      <div className="product-card-entry">
         <ProductImage
           currentItem={current}
           render={props.render}
@@ -38,8 +38,8 @@ export default function RelatedProductEntry(props) {
         <div className="related-product-price" style={{fontSize: '0.8em', marginLeft: '10px'}}>{props.currentItem.default_price}</div>
         <RelatedItemRating currentItem={current} darkTheme={props.darkTheme}/>
       </div>
-      }
-    </div>
+    }
+    </>
   )
 }
 

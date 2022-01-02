@@ -25,8 +25,7 @@ export default function RelatedItems(props) {
   return (
     <div className="related-products">
       <div className="sectionTitle">RELATED ITEMS</div>
-
-          <div className="related-product-list">
+        <div className="related-product-list">
             <RelatedList
               selected={props.selected}
               related ={relatedItems}
@@ -44,8 +43,8 @@ export default function RelatedItems(props) {
             />
           }
           </div>
-      <div className="sectionTitle">YOUR OUTFITS</div>
-          <div className="user-created-outfit">
+        <div className="sectionTitle">YOUR OUTFITS</div>
+        <div className="user-created-outfit">
             <OutfitList
               currentView={props.selected}
               saved={props.saved}
@@ -58,3 +57,32 @@ export default function RelatedItems(props) {
     </div>
   )
 }
+
+/* <div className="related-product-list">
+            <RelatedList
+              selected={props.selected}
+              related ={relatedItems}
+              setRenderTable={setRenderTable}
+              renderTable={renderTable}
+              setSelectRelated={setSelectRelated}
+              darkTheme={props.darkTheme}
+            />
+          {renderTable &&
+            <Compare
+              related={relatedItems}
+              renderTable={renderTable}
+              selected={props.selected}
+              selectRelated={selectRelated}
+            />
+          }
+          </div> */
+/* <div className="user-created-outfit">
+            <OutfitList
+              currentView={props.selected}
+              saved={props.saved}
+              setSaved={props.setSaved}
+              outfits={props.outfits}
+              selectedStyle={props.selectedStyle}
+              darkTheme={props.darkTheme}
+            />
+          </div> */

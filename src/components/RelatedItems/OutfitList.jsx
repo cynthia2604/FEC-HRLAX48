@@ -16,7 +16,6 @@ export default function OutfitList(props) {
   };
 
   function translateX(direction) {
-    // (direction === 'right') ? setXPos(x => x - 200) : setXPos( x => x + 200)
     if (direction === 'right') {
       setRenderLeft(count => count + 1)
       setXPos(x => x - 200)

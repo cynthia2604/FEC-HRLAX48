@@ -154,7 +154,7 @@ const utils = {
   },
 
   starRatingWhite: (rating) => {
-    if (!rating || rating === 0) {
+    if (!rating) {
       return (
         <div>
           {utils.StarEmptyWhite}{utils.StarEmptyWhite}{utils.StarEmptyWhite}{utils.StarEmptyWhite}{utils.StarEmptyWhite}

@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Options from '../../config.js';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
+import SearchIcon from '@mui/icons-material/Search';
 
 export default function ProductImage(props) {
 
@@ -26,13 +26,13 @@ export default function ProductImage(props) {
     return(
       <div className="card-product-image">
         <img src={`${props.currentItem.results[0].photos[0].url}`}/>
-        <StarBorderIcon className="modal-button" onClick={() => showComparison(props.currentItem)}/>
+        <SearchIcon className="modal-button" onClick={() => showComparison(props.currentItem)}/>
       </div>
     )
   } else {
     return(
       <div className="card-product-image">
-       <img src={`${props.selectedStyle.photos[0].thumbnail_url}`}/>
+       <img src={`${props.currentItem.results[0].photos[0].thumbnail_url}`}/>
       <HighlightOffIcon className="remove-card-entry" onClick={() => removeOutfit(props.currentItem)} />
       </div>
     )
