@@ -391,10 +391,8 @@ body {
 .carousel-container-inner {
   display: flex;
   position: relative;
-  width: auto;
   flex-direction: row;
   border: 1px solid red;
-  justify-content: space-around;
 }
 
 .product-card-entry {
