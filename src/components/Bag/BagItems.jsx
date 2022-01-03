@@ -4,6 +4,7 @@ import Summary from "./Summary";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { v4 as uuidv4 } from "uuid";
 
 export default function BagItems({ bag, setBag, darkTheme }) {
   const deleteCartItem = (id) => {
@@ -22,7 +23,7 @@ export default function BagItems({ bag, setBag, darkTheme }) {
             bag.map((item) => {
               return (
                 <BagItem
-                  key={item.id}
+                  key={uuidv4}
                   item={item}
                   deleteCartItem={deleteCartItem}
                 />

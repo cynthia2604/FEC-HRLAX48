@@ -28,6 +28,11 @@ export default function Header(props) {
     props.setView("checkout");
   }
 
+  const totalQuantity = props.bag.reduce(
+    (amount, item) => parseInt(item.quantity) + amount,
+    0
+  );
+
   return (
     <div
       className="w-100 d-flex px-5 mb-4 align-items-center sticky-top"
@@ -39,7 +44,7 @@ export default function Header(props) {
       <div className="p-0 pe-4 m-0" onChange={handleChange}>
         {Switches()}
         <LocalMallIcon onClick={goToCheckout} type="button" />
-        <span>{props.bag.length}</span>
+        <span>{totalQuantity}</span>
       </div>
       <div>by Migos</div>
     </div>
