@@ -7,13 +7,11 @@ export default function checkout({ setView, bag, setBag }) {
 
   React.useEffect(() => {
     basket.length && setBag([...bag, ...basket]);
-    console.log("basket", basket);
   }, [basket]);
 
   React.useEffect(() => {
     localStorage.setItem("bagItems", JSON.stringify(bag));
-    console.log("bag", bag);
   }, [bag]);
 
-  return <BagItems bag={bag} />;
+  return <BagItems bag={bag} setBag={setBag} />;
 }

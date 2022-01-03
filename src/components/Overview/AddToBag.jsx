@@ -24,6 +24,7 @@ export default function AddToBag({ category, name, setView }) {
           thumbnail: selected.thumbnail,
           originalPrice: selected.originalPrice,
           salePrice: selected.salePrice,
+          name: name,
         },
       });
       setShow(true);
@@ -43,7 +44,10 @@ export default function AddToBag({ category, name, setView }) {
     <>
       <Container fluid>
         <Row className="pt-2">
-          <Col className="col-10 pe-2">
+          <Col
+            className="col-10 pe-2"
+            style={{ padding: "0px", margin: "0px" }}
+          >
             <Button
               variant="outline-secondary"
               size="large"
@@ -52,7 +56,7 @@ export default function AddToBag({ category, name, setView }) {
               Add To Bag
             </Button>
           </Col>
-          <Col>
+          <Col style={{ padding: "0px", margin: "0px" }}>
             <Collection />
           </Col>
         </Row>

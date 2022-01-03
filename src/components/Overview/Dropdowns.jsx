@@ -16,7 +16,7 @@ export default function Dropdowns() {
     <>
       <Container fluid>
         <Row className="pt-3">
-          <Col className="col-8 pe-2">
+          <Col className="col-8 pe-2" style={{ padding: "0px", margin: "0px" }}>
             <DropdownButton
               id="dropdown-basic-button"
               variant="outline-secondary"
@@ -27,7 +27,7 @@ export default function Dropdowns() {
               <SizeDropdown key={uuidv4()} />
             </DropdownButton>
           </Col>
-          <Col>
+          <Col style={{ padding: "0px", margin: "0px" }}>
             <DropdownButton
               id="dropdown-basic-button quantity"
               variant="outline-secondary"
