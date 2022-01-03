@@ -1,5 +1,5 @@
 export const initialState = {
-  basket: JSON.parse(localStorage.getItem("outfits")) || [],
+  basket: JSON.parse(localStorage.getItem("bagItems")) || [],
   selected: {},
   toggleWarning: false,
 };
@@ -12,7 +12,7 @@ const reducer = (state, action) => {
         basket: [...state.basket, action.item],
       };
 
-    case "REMOVE_FROM_BASKET":
+    case "REPLACE_BASKET":
       return {
         ...state,
         basket: action.item,

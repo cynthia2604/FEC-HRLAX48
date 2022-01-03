@@ -8,12 +8,10 @@ import { v4 as uuidv4 } from "uuid";
 
 export default function BagItems({ basket, dispatch, darkTheme }) {
   const deleteCartItem = (id) => {
-    let items = JSON.parse(localStorage.getItem("bagItems"));
-    items = items.filter((item) => item.id !== id);
-    //localStorage.setItem("bagItems", JSON.stringify(items));
+    const filtered = basket.filter((item) => item.id !== id);
     dispatch({
-      type: "REMOVE_FROM_BASKET",
-      item: items,
+      type: "REPLACE_BASKET",
+      item: filtered,
     });
   };
 

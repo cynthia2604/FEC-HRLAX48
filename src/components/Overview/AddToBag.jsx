@@ -13,33 +13,51 @@ export default function AddToBag({ category, name, setView, darkTheme }) {
 
   const handleAdd = () => {
     if (typeof selected.quantity === "number") {
-      // if (basket.length) {
-      //   for (var i = 0; i < basket.length; i++) {
-      //     if (
-      //       basket[i].id === selected.id &&
-      //       basket[i].size === selected.size &&
-      //       basket[i].color === selected.color
-      //     ) {
-      //       basket[i].quanity += selected.quantity;
-      //     }
-      //   }
-      // } else {
-      dispatch({
-        type: "ADD_TO_BASKET",
-        item: {
-          id: selected.id,
-          color: selected.color,
-          size: selected.size,
-          quantity: selected.quantity,
-          thumbnail: selected.thumbnail,
-          originalPrice: selected.originalPrice,
-          salePrice: selected.salePrice,
-          name: name,
-        },
-      });
+      let newBasket = null;
 
-      localStorage.setItem("bagItems", JSON.stringify(basket));
-      console.log(localStorage.bagItems);
+      for (var i = 0; i < basket.length; i++) {
+        if (
+          basket[i].id === selected.id &&
+          basket[i].size === selected.size &&
+          basket[i].color === selected.color
+        ) {
+          basket[i].quantity += selected.quantity;
+
+          basket[i].originalPrice = (
+            selected.originalPrice * basket[i].quantity
+          ).toFixed(2);
+
+          if (basket[i].salePrice) {
+            basket[i].salePrice = (
+              selected.salePrice * basket[i].quantity
+            ).toFixed(2);
+          }
+
+          newBasket = Array.from(new Set(basket));
+        }
+      }
+
+      if (newBasket) {
+        dispatch({
+          type: "REPLACE_BASKET",
+          item: newBasket,
+        });
+      } else {
+        dispatch({
+          type: "ADD_TO_BASKET",
+          item: {
+            id: selected.id,
+            color: selected.color,
+            size: selected.size,
+            quantity: selected.quantity,
+            thumbnail: selected.thumbnail,
+            originalPrice: selected.originalPrice,
+            salePrice: selected.salePrice,
+            name: name,
+          },
+        });
+      }
+
       setShow(true);
     } else {
       dispatch({
