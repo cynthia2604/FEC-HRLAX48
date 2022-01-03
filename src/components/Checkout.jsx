@@ -7,7 +7,6 @@ export default function checkout({ setView, bag, setBag, darkTheme }) {
 
   React.useEffect(() => {
     let newItem = basket.pop();
-
     newItem && setBag([...bag, newItem]);
   }, [basket]);
 
