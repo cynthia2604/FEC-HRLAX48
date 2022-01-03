@@ -6,12 +6,15 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { v4 as uuidv4 } from "uuid";
 
-export default function BagItems({ bag, setBag, darkTheme }) {
+export default function BagItems({ basket, dispatch, darkTheme }) {
   const deleteCartItem = (id) => {
     let items = JSON.parse(localStorage.getItem("bagItems"));
     items = items.filter((item) => item.id !== id);
-    localStorage.setItem("bagItems", JSON.stringify(items));
-    setBag(items);
+    //localStorage.setItem("bagItems", JSON.stringify(items));
+    dispatch({
+      type: "REMOVE_FROM_BASKET",
+      item: items,
+    });
   };
 
   return (
@@ -19,8 +22,8 @@ export default function BagItems({ bag, setBag, darkTheme }) {
       <Row>
         <Col md={8}>
           <h4 className="mb-4">Bag</h4>
-          {bag.length ? (
-            bag.map((item) => {
+          {basket.length ? (
+            basket.map((item) => {
               return (
                 <BagItem
                   key={uuidv4()}
@@ -37,7 +40,7 @@ export default function BagItems({ bag, setBag, darkTheme }) {
         </Col>
         <Col className="ms-5">
           <h4 className="mb-4">Summary</h4>
-          <Summary bag={bag} darkTheme={darkTheme} />
+          <Summary basket={basket} darkTheme={darkTheme} />
         </Col>
       </Row>
     </Container>

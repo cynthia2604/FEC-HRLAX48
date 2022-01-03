@@ -13,6 +13,17 @@ export default function AddToBag({ category, name, setView, darkTheme }) {
 
   const handleAdd = () => {
     if (typeof selected.quantity === "number") {
+      // if (basket.length) {
+      //   for (var i = 0; i < basket.length; i++) {
+      //     if (
+      //       basket[i].id === selected.id &&
+      //       basket[i].size === selected.size &&
+      //       basket[i].color === selected.color
+      //     ) {
+      //       basket[i].quanity += selected.quantity;
+      //     }
+      //   }
+      // } else {
       dispatch({
         type: "ADD_TO_BASKET",
         item: {
@@ -26,6 +37,9 @@ export default function AddToBag({ category, name, setView, darkTheme }) {
           name: name,
         },
       });
+
+      localStorage.setItem("bagItems", JSON.stringify(basket));
+      console.log(localStorage.bagItems);
       setShow(true);
     } else {
       dispatch({
