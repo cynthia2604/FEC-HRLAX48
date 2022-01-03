@@ -1,29 +1,31 @@
-import React from "react";
-import "bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.js";
-import $ from "jquery";
-import Popper from "popper.js";
-import Catalogue from "./Catalogue";
-import Options from "../config";
-import Detail from "./Detail";
-import axios from "axios";
-import Header from "./Header";
-import Footer from "./Footer";
+import React from 'react';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/js/bootstrap.js';
+import Catalogue from './Catalogue';
+import Options from '../config';
+import Detail from './Detail';
+import axios from 'axios';
+import Header from './Header';
+import Footer from './Footer';
 
-let theme
+let theme;
 export function siteTheme() {
-  return theme
+  return theme;
 }
 
 export default function App(props) {
-  const [view, setView] = React.useState("catalogue");
+  const [view, setView] = React.useState('catalogue');
   const [products, setProducts] = React.useState([]);
   const [selected, setSelected] = React.useState({});
-  const [saved, setSaved] = React.useState(() => JSON.parse(localStorage.getItem('outfits')) || []);
-  const [darkTheme, setDarkTheme] = React.useState(() => JSON.parse(localStorage.getItem('darkMode')) || false)
+  const [saved, setSaved] = React.useState(
+    () => JSON.parse(localStorage.getItem('outfits')) || []
+  );
+  const [darkTheme, setDarkTheme] = React.useState(
+    () => JSON.parse(localStorage.getItem('darkMode')) || false
+  );
 
-  theme = darkTheme
+  theme = darkTheme;
 
   React.useEffect(() => {
     axios
@@ -36,13 +38,13 @@ export default function App(props) {
   }, []);
 
   React.useEffect(() => {
-    localStorage.setItem('outfits', JSON.stringify(saved))
-  }, [ saved ])
+    localStorage.setItem('outfits', JSON.stringify(saved));
+  }, [saved]);
 
   const themedStyle = {
     backgroundColor: darkTheme ? 'rgb(25, 25, 25)' : 'white',
-    color: darkTheme ? 'white' : 'black'
-  }
+    color: darkTheme ? 'white' : 'black',
+  };
 
   return (
     <div style={themedStyle}>
@@ -51,8 +53,8 @@ export default function App(props) {
         darkTheme={darkTheme}
         setDarkTheme={setDarkTheme}
       />
-      {view === "catalogue" && (
-        <div className="container">
+      {view === 'catalogue' && (
+        <div className='container'>
           <Catalogue
             setView={setView}
             products={products}
@@ -61,8 +63,8 @@ export default function App(props) {
           />
         </div>
       )}
-      {view === "detail" && (
-        <div className="container">
+      {view === 'detail' && (
+        <div className='container'>
           <Detail
             selected={selected}
             products={products}
