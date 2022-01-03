@@ -2,7 +2,7 @@ import React from "react";
 import BagItems from "./Bag/BagItems";
 import { useStateValue } from "../components/Overview/store/StateProvider";
 
-export default function checkout({ setView, bag, setBag }) {
+export default function checkout({ setView, bag, setBag, darkTheme }) {
   const [{ basket }, dispatch] = useStateValue();
 
   React.useEffect(() => {
@@ -13,5 +13,5 @@ export default function checkout({ setView, bag, setBag }) {
     localStorage.setItem("bagItems", JSON.stringify(bag));
   }, [bag]);
 
-  return <BagItems bag={bag} setBag={setBag} />;
+  return <BagItems bag={bag} setBag={setBag} darkTheme={darkTheme} />;
 }

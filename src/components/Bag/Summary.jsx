@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
-export default function Summary({ bag }) {
+export default function Summary({ bag, darkTheme }) {
   const subtotal = bag
     .reduce(
       (amount, item) => parseInt(item.salePrice || item.originalPrice) + amount,
@@ -47,7 +47,10 @@ export default function Summary({ bag }) {
         </Col>
       </Row>
       <hr className="mt-3"></hr>
-      <Button variant="outline-secondary" size="lg" style={{ width: "100%" }}>
+      <Button
+        variant={darkTheme ? "outline-secondary-dark" : "outline-secondary"}
+        style={{ width: "100%" }}
+      >
         Checkout
       </Button>
     </>

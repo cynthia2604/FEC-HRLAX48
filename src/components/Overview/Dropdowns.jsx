@@ -9,7 +9,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import { useStateValue } from "./store/StateProvider";
 
-export default function Dropdowns() {
+export default function Dropdowns({ darkTheme }) {
   const [{ selected }, dispatch] = useStateValue();
 
   return (
@@ -19,7 +19,9 @@ export default function Dropdowns() {
           <Col className="col-8 pe-2" style={{ padding: "0px", margin: "0px" }}>
             <DropdownButton
               id="dropdown-basic-button"
-              variant="outline-secondary"
+              variant={
+                darkTheme ? "outline-secondary-dark" : "outline-secondary"
+              }
               title={selected.size}
               disabled={selected.quantity === "Out Of Stock" ? true : false}
               size="large"
@@ -30,7 +32,9 @@ export default function Dropdowns() {
           <Col style={{ padding: "0px", margin: "0px" }}>
             <DropdownButton
               id="dropdown-basic-button quantity"
-              variant="outline-secondary"
+              variant={
+                darkTheme ? "outline-secondary-dark" : "outline-secondary"
+              }
               disabled={selected.disabled}
               title={selected.quantity}
               size="small"

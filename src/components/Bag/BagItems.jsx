@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-export default function BagItems({ bag, setBag }) {
+export default function BagItems({ bag, setBag, darkTheme }) {
   const deleteCartItem = (id) => {
     let items = JSON.parse(localStorage.getItem("bagItems"));
     items = items.filter((item) => item.id !== id);
@@ -36,7 +36,7 @@ export default function BagItems({ bag, setBag }) {
         </Col>
         <Col className="ms-5">
           <h4 className="mb-4">Summary</h4>
-          <Summary bag={bag} />
+          <Summary bag={bag} darkTheme={darkTheme} />
         </Col>
       </Row>
     </Container>

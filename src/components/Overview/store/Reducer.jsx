@@ -2,7 +2,6 @@ export const initialState = {
   basket: [],
   selected: {},
   toggleWarning: false,
-  darkMode: false,
 };
 
 const reducer = (state, action) => {
@@ -20,12 +19,6 @@ const reducer = (state, action) => {
       };
 
     case "TOGGLE_WARNING":
-      return {
-        ...state,
-        toggleWarning: action.item,
-      };
-
-    case "TOGGLE_DARKMODE":
       return {
         ...state,
         toggleWarning: action.item,

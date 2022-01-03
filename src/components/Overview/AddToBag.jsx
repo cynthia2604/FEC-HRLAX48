@@ -7,10 +7,9 @@ import Col from "react-bootstrap/Col";
 import Collection from "./Collection";
 import Button from "react-bootstrap/Button";
 
-export default function AddToBag({ category, name, setView }) {
+export default function AddToBag({ category, name, setView, darkTheme }) {
   const [{ basket, selected, toggleWarning }, dispatch] = useStateValue();
   const [show, setShow] = React.useState(false);
-  //const [warning, setWarning] = React.useState(false);
 
   const handleAdd = () => {
     if (typeof selected.quantity === "number") {
@@ -49,7 +48,9 @@ export default function AddToBag({ category, name, setView }) {
             style={{ padding: "0px", margin: "0px" }}
           >
             <Button
-              variant="outline-secondary"
+              variant={
+                darkTheme ? "outline-secondary-dark" : "outline-secondary"
+              }
               size="large"
               onClick={handleAdd}
             >
@@ -57,7 +58,7 @@ export default function AddToBag({ category, name, setView }) {
             </Button>
           </Col>
           <Col style={{ padding: "0px", margin: "0px" }}>
-            <Collection />
+            <Collection darkTheme={darkTheme} />
           </Col>
         </Row>
         {toggleWarning ? (
@@ -75,6 +76,7 @@ export default function AddToBag({ category, name, setView }) {
         category={category}
         name={name}
         setView={setView}
+        darkTheme={darkTheme}
       />
     </>
   );

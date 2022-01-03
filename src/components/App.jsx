@@ -87,7 +87,12 @@ export default function App(props) {
       )}
       {view === "checkout" && (
         <div className="container">
-          <Checkout setView={setView} bag={bag} setBag={setBag} />
+          <Checkout
+            setView={setView}
+            bag={bag}
+            setBag={setBag}
+            darkTheme={darkTheme}
+          />
         </div>
       )}
       <Footer darkTheme={darkTheme} />
