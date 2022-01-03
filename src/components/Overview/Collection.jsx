@@ -8,7 +8,7 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
 import Snackbar from "@mui/material/Snackbar";
 
-export default function Collection() {
+export default function Collection({ darkTheme }) {
   const [star, setStar] = React.useState(false);
   const [open, setOpen] = React.useState(false);
 
@@ -23,7 +23,11 @@ export default function Collection() {
 
   return (
     <>
-      <Button variant="outline-secondary" size="small" onClick={handleClick}>
+      <Button
+        variant={darkTheme ? "outline-secondary-dark" : "outline-secondary"}
+        size="small"
+        onClick={handleClick}
+      >
         {star ? (
           <StarIcon
             sx={{

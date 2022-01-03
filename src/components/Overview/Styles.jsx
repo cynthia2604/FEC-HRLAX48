@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useStateValue } from "./store/StateProvider";
 import Dropdowns from "./Dropdowns";
 
-export default function Styles({ productStyles }) {
+export default function Styles({ productStyles, darkTheme }) {
   const [{ selected }, dispatch] = useStateValue();
 
   return (
@@ -24,7 +24,7 @@ export default function Styles({ productStyles }) {
             />
           ))}
       </div>
-      <Dropdowns />
+      <Dropdowns darkTheme={darkTheme} />
     </>
   );
 }

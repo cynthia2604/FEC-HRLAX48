@@ -16,6 +16,7 @@ export default function Overview({
   productInfo,
   darkTheme,
   selectedProduct,
+  setView,
 }) {
   const [productDetail, setProductDetail] = React.useState({});
   const [productStyles, setProductStyles] = React.useState({});
@@ -81,7 +82,7 @@ export default function Overview({
   };
 
   return (
-    <div className="mb-3" data-test="component-overview">
+    <div className="mb-3">
       <div className="pd__box">
         <div className={isExpand ? "pd__gallery-expand" : "wide"}>
           <Gallery
@@ -99,6 +100,7 @@ export default function Overview({
               rating={rating}
               reviews={productInfo}
               darkTheme={darkTheme}
+              setView={setView}
             />
           </div>
         ) : null}
