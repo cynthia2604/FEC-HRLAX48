@@ -12,12 +12,13 @@ export default function BagItems({ bag, setBag }) {
     localStorage.setItem("bagItems", JSON.stringify(items));
     setBag(items);
   };
+
   return (
     <Container>
       <Row>
         <Col md={8}>
           <h4 className="mb-4">Bag</h4>
-          {bag &&
+          {bag.length ? (
             bag.map((item) => {
               return (
                 <BagItem
@@ -26,7 +27,12 @@ export default function BagItems({ bag, setBag }) {
                   deleteCartItem={deleteCartItem}
                 />
               );
-            })}
+            })
+          ) : (
+            <div style={{ color: "grey" }}>
+              -- Your Bag is Currently Empty --
+            </div>
+          )}
         </Col>
         <Col className="ms-5">
           <h4 className="mb-4">Summary</h4>

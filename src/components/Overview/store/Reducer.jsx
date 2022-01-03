@@ -2,13 +2,8 @@ export const initialState = {
   basket: [],
   selected: {},
   toggleWarning: false,
+  darkMode: false,
 };
-
-// export const getBasketTotal = (basket) =>
-//   basket?.reduce((amount, item) => item.price + amount, 0);
-
-// export const getBasketQtyTotal = (basket) =>
-//   basket?.reduce((amount, item) => item.quantity + amount, 0);
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -25,6 +20,12 @@ const reducer = (state, action) => {
       };
 
     case "TOGGLE_WARNING":
+      return {
+        ...state,
+        toggleWarning: action.item,
+      };
+
+    case "TOGGLE_DARKMODE":
       return {
         ...state,
         toggleWarning: action.item,
