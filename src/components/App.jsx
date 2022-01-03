@@ -1,6 +1,4 @@
 import React from "react";
-import "bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Checkout from "./Checkout";
 import Catalogue from "./Catalogue";
 import Options from "../config";
