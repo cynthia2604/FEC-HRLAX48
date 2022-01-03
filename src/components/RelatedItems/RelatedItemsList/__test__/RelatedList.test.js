@@ -1,8 +1,8 @@
 import React from "react";
 import '@testing-library/jest-dom'
 import RelatedList from "../RelatedList";
-import { RelatedListEntry } from '../RelatedListEntry';
-import {render, screen } from '@testing-library/react';
+import  RelatedListEntry from '../RelatedListEntry';
+const { render, screen }  = require('@testing-library/react');
 
 const related = [
   {
@@ -19,6 +19,13 @@ const related = [
   }
 ]
 
+const currentItem = {
+    id: '42372',
+    name:'Blues Suede Shoes',
+    category: 'Dress Shoes',
+    default_price: '120.00'
+}
+
 jest.mock('../RelatedListEntry', () => {
   return {
     esModule: true,
@@ -32,9 +39,8 @@ jest.mock('../RelatedListEntry', () => {
 })
 
 test('should generate a list of related items', () => {
-  const wrapper = render(<RelatedList related={ related }/>)
-  expect(wrapper).toMatchSnapshot();
-  wrapper.unmount();
-  // const element = screen.getByTestId("related-items-carousel")
-  // expect(element).toBeInTheDocument();
+  render(<RelatedList related={ related } selected={currentItem}/>)
+
+  const element = screen.getByTestId("related-items-carousel")
+  expect(element).toBeInTheDocument();
 })
