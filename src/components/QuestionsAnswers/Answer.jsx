@@ -1,79 +1,86 @@
-import React from "react"
-import moment from "moment"
-import axios from "axios"
-import Options from "../../config"
-import AnswerPhoto from "./AnswerPhoto"
+import React from 'react';
+import moment from 'moment';
+import axios from 'axios';
+import Options from '../../config';
+import AnswerPhoto from './AnswerPhoto';
 
 export default function Answer(props) {
-
-  const [marked, setMarked] = React.useState(false)
-  const [helpful, setHelpful] = React.useState(props.answer.helpfulness)
+  const [marked, setMarked] = React.useState(false);
+  const [helpful, setHelpful] = React.useState(props.answer.helpfulness);
 
   function markAnswerHelpful() {
     if (!marked) {
-      axios.put(`${Options.URL}/qa/answers/${props.answer.id}/helpful`, null, {
-        headers: {
-          Authorization: Options.TOKEN
-        }
-      })
-        .then(() => {
-          setMarked(true)
-          setHelpful(helpful + 1)
+      axios
+        .put(`${Options.URL}/qa/answers/${props.answer.id}/helpful`, null, {
+          headers: {
+            Authorization: Options.TOKEN,
+          },
         })
+        .then(() => {
+          setMarked(true);
+          setHelpful(helpful + 1);
+        });
     }
   }
 
   function reportAnswer() {
-    axios.put(`${Options.URL}/qa/answers/${props.answer.id}/report`, null, {
-      headers: {
-        Authorization: Options.TOKEN
-      }
-    })
-      .then(() => {
-        props.refresh()
-        alert('Thank you for your report. You shouldn\'t see this answer anymore')
+    axios
+      .put(`${Options.URL}/qa/answers/${props.answer.id}/report`, null, {
+        headers: {
+          Authorization: Options.TOKEN,
+        },
       })
+      .then(() => {
+        props.refresh();
+        props.setSnackMessage(
+          "Thank you for your report, you shouldn't see this answer anymore"
+        );
+        props.setShowSnack(true);
+      });
   }
 
   const sellerStyle = {
-    color: props.darkTheme ? "rgb(200, 200, 200)" : "rgb(100, 100, 100)"
-  }
+    color: props.darkTheme ? 'rgb(200, 200, 200)' : 'rgb(100, 100, 100)',
+  };
 
   return (
     <div>
-      <div className="answerBody">
-        {props.answer.body}
-      </div>
-      {props.answer.photos.length > 0 &&
-      <div className="d-flex pt-2">
-        {props.answer.photos.map(photo => (
-          <AnswerPhoto key={photo} photo={photo} darkTheme={props.darkTheme}/>
-        ))}
-      </div>
-      }
-      <div className="d-flex reviewHelpful pt-2 pb-3" style={sellerStyle}>
-        <div className="answerAuthor">
-          by {props.answer.answerer_name === 'Seller' ? <b>{props.answer.answerer_name}</b> : props.answer.answerer_name}, {moment(props.answer.date).format('MMMM D, YYYY')}
+      <div className='answerBody'>{props.answer.body}</div>
+      {props.answer.photos.length > 0 && (
+        <div className='d-flex pt-2'>
+          {props.answer.photos.map((photo) => (
+            <AnswerPhoto
+              key={photo}
+              photo={photo}
+              darkTheme={props.darkTheme}
+            />
+          ))}
         </div>
-        <div className="answerBottomDivider px-2">
-          |
+      )}
+      <div className='d-flex reviewHelpful pt-2 pb-3' style={sellerStyle}>
+        <div className='answerAuthor'>
+          by{' '}
+          {props.answer.answerer_name === 'Seller' ? (
+            <b>{props.answer.answerer_name}</b>
+          ) : (
+            props.answer.answerer_name
+          )}
+          , {moment(props.answer.date).parseZone().format('MMMM D, YYYY')}
         </div>
-        <div>
-          Helpful?
-        </div>
-        <div className="reviewBodyShowMore ps-2 pe-1 cP" onClick={markAnswerHelpful}>
+        <div className='answerBottomDivider px-2'>|</div>
+        <div>Helpful?</div>
+        <div
+          className='reviewBodyShowMore ps-2 pe-1 cP'
+          onClick={markAnswerHelpful}
+        >
           Yes
         </div>
-        <div>
-          ({helpful})
-        </div>
-        <div className="answerBottomDivider px-2">
-          |
-        </div>
-        <div className="reviewBodyShowMore cP" onClick={reportAnswer}>
+        <div>({helpful})</div>
+        <div className='answerBottomDivider px-2'>|</div>
+        <div className='reviewBodyShowMore cP' onClick={reportAnswer}>
           Report
         </div>
       </div>
     </div>
-  )
+  );
 }

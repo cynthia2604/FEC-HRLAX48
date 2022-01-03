@@ -5,19 +5,12 @@ import RelatedItems from "./RelatedItems";
 import axios from "axios";
 import Options from "../config";
 import QuestionsAnswers from "./QuestionsAnswers";
+import { useStateValue } from "../components/Overview/store/StateProvider";
 
 export default function Detail(props) {
   const [rating, setRating] = React.useState(5);
   const [productInfo, setProductInfo] = React.useState();
-  const [selectedStyle, setSelectedStyle] = React.useState({
-    color: "",
-    skus: null,
-    photos: null,
-    thumbnails: null,
-    thumbnail: null,
-    originalPrice: null,
-    salePrice: null,
-  });
+  const [{ selected }, dispatch] = useStateValue();
 
   React.useEffect(() => {
     fetchProductInfo();
@@ -58,6 +51,7 @@ export default function Detail(props) {
             rating={rating}
             productInfo={productInfo}
             darkTheme={props.darkTheme}
+            setView={props.setView}
           />
           <RelatedItems
             products={props.products}

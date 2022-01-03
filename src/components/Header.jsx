@@ -2,10 +2,8 @@ import { Switch } from "@mui/material";
 import React from "react";
 import Switches from "../assets/Switches";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
-import { useStateValue } from "./Overview/store/StateProvider";
 
 export default function Header(props) {
-  const [{ basket }, dispatch] = useStateValue();
   const divStyle = {
     backgroundColor: props.darkTheme ? "rgb(40, 40, 40)" : "rgb(225, 225, 225)",
     color: props.darkTheme ? "white" : "black",
@@ -26,6 +24,15 @@ export default function Header(props) {
     localStorage.setItem("darkMode", JSON.stringify(!props.darkTheme));
   }
 
+  function goToCheckout() {
+    props.setView("checkout");
+  }
+
+  const totalQuantity = props.bag.reduce(
+    (amount, item) => parseInt(item.quantity) + amount,
+    0
+  );
+
   return (
     <div
       className="w-100 d-flex px-5 mb-4 align-items-center sticky-top"
@@ -36,10 +43,9 @@ export default function Header(props) {
       </div>
       <div className="p-0 pe-4 m-0" onChange={handleChange}>
         {Switches()}
-        <LocalMallIcon />
-        <span>{basket.length}</span>
+        <LocalMallIcon onClick={goToCheckout} type="button" />
+        <span>{totalQuantity}</span>
       </div>
-      <div>by Migos</div>
     </div>
   );
 }

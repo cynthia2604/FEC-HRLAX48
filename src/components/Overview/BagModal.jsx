@@ -7,12 +7,13 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
-export default function AddToBag({
+export default function BagModal({
   show,
   setShow,
   handleClose,
   category,
   name,
+  setView,
 }) {
   const [{ basket, selected }, dispatch] = useStateValue();
 
@@ -42,10 +43,15 @@ export default function AddToBag({
         </Modal.Body>
         <Modal.Footer>
           <Button variant="outline-secondary" onClick={handleClose}>
-            {`View Bag(${basket.length})`}
+            {`Continue Shopping`}
           </Button>
-          <Button variant="outline-success" onClick={handleClose}>
-            Checkout
+          <Button
+            variant="outline-success"
+            onClick={() => {
+              setView("checkout");
+            }}
+          >
+            {`Checkout`}
           </Button>
         </Modal.Footer>
       </Modal>
