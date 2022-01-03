@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import Options from '../../config.js';
+import Options from '../../../config.js';
 
 import SearchIcon from '@mui/icons-material/Search';
 

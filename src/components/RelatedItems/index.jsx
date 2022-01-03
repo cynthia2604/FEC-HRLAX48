@@ -1,8 +1,8 @@
 import React from "react";
-import RelatedList from './RelatedList'
+import RelatedList from '../RelatedItems/RelatedItemsList/RelatedList'
 import axios from 'axios';
-import OutfitList from './OutfitList';
-import Compare from './Compare'
+import OutfitList from '../RelatedItems/OutfitList/OutfitList';
+import Compare from '../RelatedItems/Compare/Compare'
 import Options from '../../config.js';
 
 

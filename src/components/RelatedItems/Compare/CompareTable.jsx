@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import Options from '../../config.js';
+import Options from '../../../config.js';
 import comparison from './util.js'
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';

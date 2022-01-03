@@ -393,28 +393,20 @@ body {
 
 .carousel-container {
   padding-top: 20px;
-  display:flex;
   width: 100%;
   height: auto;
   overflow: hidden;
   position: relative;
-  flex-wrap: nowrap;
-  justify-content: space-between;
 }
 
 .carousel-container-inner {
   display: flex;
   position: relative;
+  width: auto;
   flex-direction: row;
-  justify-content: space-between;
+  border: 1px solid red;
+  justify-content: space-around;
 }
-
-/* .card-products-list {
-  display: flex;
-  position:relative;
-  padding-top: 20px;
-} */
-
 
 .product-card-entry {
   margin-left: 30px;

@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import CompareTable from './CompareTable'
-import Options from '../../config.js';
+import Options from '../../../config.js';
 
 export default function Compare(props) {
   const [selectedDescription, setSelectedDescription] = React.useState()
