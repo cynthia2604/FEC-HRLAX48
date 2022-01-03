@@ -1,9 +1,9 @@
-import React from "react";
-import axios from "axios";
-import Options from "../../config";
-import StarColumn from "./StarColumn";
-import ReviewColumn from "./ReviewColumn";
-import utils from "../utils";
+import React from 'react';
+import axios from 'axios';
+import Options from '../../config';
+import StarColumn from './StarColumn';
+import ReviewColumn from './ReviewColumn';
+import utils from '../utils';
 
 export default function RatingsAndReviews(props) {
   // const [productInfo, setProductInfo] = React.useState(props.productInfo)
@@ -55,15 +55,14 @@ export default function RatingsAndReviews(props) {
     }
   }
 
-
   return (
-    <>
-      <div id="reviews" className="sectionTitle pt-5">
+    <div>
+      <div id='reviews' className='sectionTitle pt-5'>
         {`RATINGS & REVIEWS`}
       </div>
       {props.productInfo && (
-        <div className="reviews pt-3">
-          <div className="reviews-left">
+        <div className='reviews pt-3'>
+          <div className='reviews-left'>
             {productMeta && (
               <StarColumn
                 rating={props.rating}
@@ -79,7 +78,7 @@ export default function RatingsAndReviews(props) {
               />
             )}
           </div>
-          <div className="reviews-right">
+          <div className='reviews-right'>
             <ReviewColumn
               rating={props.rating}
               productInfo={props.productInfo}
@@ -94,6 +93,6 @@ export default function RatingsAndReviews(props) {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
