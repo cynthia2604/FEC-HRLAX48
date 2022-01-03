@@ -8,6 +8,7 @@ import Detail from "./Detail";
 import axios from "axios";
 import Header from "./Header";
 import Footer from "./Footer";
+import { useStateValue } from "../components/Overview/store/StateProvider";
 
 let theme;
 export function siteTheme() {
@@ -21,12 +22,9 @@ export default function App(props) {
   const [saved, setSaved] = React.useState(
     () => JSON.parse(localStorage.getItem("outfits")) || []
   );
+  const [{ basket }, dispatch] = useStateValue();
   const [darkTheme, setDarkTheme] = React.useState(
     () => JSON.parse(localStorage.getItem("darkMode")) || false
-  );
-  const [bag, setBag] = React.useState(
-    // getting stored value
-    () => JSON.parse(localStorage.getItem("bagItems")) || []
   );
 
   theme = darkTheme;
@@ -45,6 +43,10 @@ export default function App(props) {
     localStorage.setItem("outfits", JSON.stringify(saved));
   }, [saved]);
 
+  React.useEffect(() => {
+    localStorage.setItem("bagItems", JSON.stringify(basket));
+  }, [basket]);
+
   const themedStyle = {
     backgroundColor: darkTheme ? "rgb(25, 25, 25)" : "white",
     color: darkTheme ? "white" : "black",
@@ -56,7 +58,6 @@ export default function App(props) {
         setView={setView}
         darkTheme={darkTheme}
         setDarkTheme={setDarkTheme}
-        bag={bag}
       />
       {view === "catalogue" && (
         <div className="container">
@@ -84,12 +85,7 @@ export default function App(props) {
       )}
       {view === "checkout" && (
         <div className="container">
-          <Checkout
-            setView={setView}
-            bag={bag}
-            setBag={setBag}
-            darkTheme={darkTheme}
-          />
+          <Checkout darkTheme={darkTheme} basket={basket} dispatch={dispatch} />
         </div>
       )}
       <Footer darkTheme={darkTheme} />

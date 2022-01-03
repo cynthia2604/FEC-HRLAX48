@@ -2,8 +2,10 @@ import { Switch } from "@mui/material";
 import React from "react";
 import Switches from "../assets/Switches";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
+import { useStateValue } from "../components/Overview/store/StateProvider";
 
 export default function Header(props) {
+  const [{ basket }, dispatch] = useStateValue();
   const divStyle = {
     backgroundColor: props.darkTheme ? "rgb(40, 40, 40)" : "rgb(225, 225, 225)",
     color: props.darkTheme ? "white" : "black",
@@ -28,10 +30,13 @@ export default function Header(props) {
     props.setView("checkout");
   }
 
-  const totalQuantity = props.bag.reduce(
-    (amount, item) => parseInt(item.quantity) + amount,
-    0
-  );
+  React.useEffect(() => {
+    basket.length && totalQuantity;
+  }, [basket]);
+
+  const totalQuantity =
+    basket.length &&
+    basket.reduce((amount, item) => parseInt(item.quantity) + amount, 0);
 
   return (
     <div

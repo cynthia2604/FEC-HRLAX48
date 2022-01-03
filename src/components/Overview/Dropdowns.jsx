@@ -22,7 +22,7 @@ export default function Dropdowns({ darkTheme }) {
               variant={
                 darkTheme ? "outline-secondary-dark" : "outline-secondary"
               }
-              title={selected.size}
+              title={selected.size || "Select Size"}
               disabled={selected.quantity === "Out Of Stock" ? true : false}
               size="large"
             >
@@ -36,7 +36,7 @@ export default function Dropdowns({ darkTheme }) {
                 darkTheme ? "outline-secondary-dark" : "outline-secondary"
               }
               disabled={selected.disabled}
-              title={selected.quantity}
+              title={selected.quantity || "-"}
               size="small"
             >
               <QuantityDropdown key={uuidv4()} />
