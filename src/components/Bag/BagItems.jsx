@@ -23,7 +23,7 @@ export default function BagItems({ bag, setBag, darkTheme }) {
             bag.map((item) => {
               return (
                 <BagItem
-                  key={uuidv4}
+                  key={uuidv4()}
                   item={item}
                   deleteCartItem={deleteCartItem}
                 />

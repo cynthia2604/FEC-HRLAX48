@@ -5,7 +5,7 @@ import AddToBag from "../AddToBag.jsx";
 
 it("render without error", () => {
   render(<AddToBag />);
-  const element = screen.getByText(//i);
+  const element = screen.getByText(//);
   expect().toBe
 });
 
