@@ -23,7 +23,7 @@ export default function BagModal({
       <Modal.Header
         closeButton
         style={{
-          backgroundColor: darkTheme ? "black" : "white",
+          backgroundColor: darkTheme ? "rgb(50, 50, 50)" : "white",
           border: darkTheme ? "1px solid white" : null,
         }}
       >
@@ -35,7 +35,7 @@ export default function BagModal({
       <Modal.Body
         style={{
           color: darkTheme ? "white" : "black",
-          backgroundColor: darkTheme ? "black" : "white",
+          backgroundColor: darkTheme ? "rgb(50, 50, 50)" : "white",
 
           borderRight: darkTheme ? "1px solid white" : null,
           borderLeft: darkTheme ? "1px solid white" : null,
@@ -58,7 +58,7 @@ export default function BagModal({
       </Modal.Body>
       <Modal.Footer
         style={{
-          backgroundColor: darkTheme ? "black" : "white",
+          backgroundColor: darkTheme ? "rgb(50, 50, 50)" : "white",
           border: darkTheme ? "1px solid white" : null,
         }}
       >
