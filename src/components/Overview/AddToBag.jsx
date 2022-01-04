@@ -51,7 +51,7 @@ export default function AddToBag({ setView, darkTheme }) {
             size: selected.size,
             quantity: selected.quantity,
             thumbnail: selected.thumbnail,
-            originalPrice: selected.originalPrice,
+            originalPrice: selected.originalPrice * selected.quantity,
             salePrice: selected.salePrice,
             name: selected.productName,
           },
