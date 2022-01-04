@@ -42,16 +42,17 @@ export default function Overview({
 
   React.useEffect(() => {
     getDefault();
-  }, [productStyles]);
+  }, [productStyles, productDetail]);
 
   const getDefault = () => {
-    if (productStyles.results) {
+    if (productStyles.results && productDetail) {
       let defaultObj = productStyles.results[0];
       let color = defaultObj.name;
       let photos = defaultObj.photos;
       let skus = defaultObj.skus;
       let originalPrice = defaultObj.original_price;
       let salePrice = defaultObj.sale_price;
+
       let hasSku = () => {
         if (Object.keys(skus)[0] !== "null") {
           return "-";
@@ -72,6 +73,9 @@ export default function Overview({
           size: "Select Size",
           quantity: hasSku(),
           disabled: true,
+          productName: productDetail.name,
+          category: productDetail.category,
+          productId: productDetail.id,
         },
       });
     }
@@ -83,7 +87,7 @@ export default function Overview({
 
   return (
     <div className="mb-3">
-      <div className="pd__box">
+      <div className="pd__box mb-4 pb-4">
         <div className={isExpand ? "pd__gallery-expand" : "wide"}>
           <Gallery
             key={uuidv4()}
@@ -105,7 +109,7 @@ export default function Overview({
           </div>
         ) : null}
       </div>
-      <div className="pd__box mt-4 d-flex justify-content-between">
+      <div className="pd__box d-flex justify-content-between pb-3 pt-1">
         <div className="w-50">
           <Description productDetail={productDetail} />
         </div>

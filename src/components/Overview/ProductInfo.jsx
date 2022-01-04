@@ -52,13 +52,14 @@ export default function ProductInfo({
           "$" + selected.originalPrice
         )}
       </div>
-      <Styles productStyles={productStyles} darkTheme={darkTheme} />
-      <AddToBag
-        category={productDetail.category}
-        name={productDetail.name}
-        setView={setView}
+      <Styles
+        productStyles={productStyles}
         darkTheme={darkTheme}
+        productId={productDetail.id}
+        productName={productDetail.name}
+        category={productDetail.category}
       />
+      <AddToBag setView={setView} darkTheme={darkTheme} />
     </div>
   );
 }

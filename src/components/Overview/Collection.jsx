@@ -24,7 +24,7 @@ export default function Collection({ darkTheme }) {
   return (
     <>
       <Button
-        variant={darkTheme ? "outline-secondary-dark" : "outline-secondary"}
+        variant={darkTheme ? "outline-light" : "outline-secondary"}
         size="small"
         onClick={handleClick}
       >
@@ -33,9 +33,10 @@ export default function Collection({ darkTheme }) {
             sx={{
               color: "#ffd700",
             }}
+            fontSize="23px"
           />
         ) : (
-          <StarBorderIcon />
+          <StarBorderIcon fontSize="23px" />
         )}
       </Button>
       <Snackbar
