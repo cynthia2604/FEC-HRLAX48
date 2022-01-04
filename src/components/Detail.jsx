@@ -57,6 +57,7 @@ export default function Detail(props) {
             products={props.products}
             selected={props.selected}
             setSaved={props.setSaved}
+            saved={props.saved}
             outfits={props.outfits}
             rating={rating}
             selectedStyle={{selected}}

@@ -49,7 +49,7 @@ export default function RelatedItems(props) {
             />
 
           </div>
-        <div className="sectionTitle">YOUR OUTFITS</div>
+        <div className="sectionTitle" style={{paddingTop:'30px'}}>YOUR OUTFITS</div>
         <div className="user-created-outfit">
             <OutfitList
               currentView={props.selected}
@@ -59,6 +59,7 @@ export default function RelatedItems(props) {
               selectedStyle={props.selectedStyle}
               darkTheme={props.darkTheme}
               rating={props.rating}
+              width= {width}
             />
           </div>
     </div>

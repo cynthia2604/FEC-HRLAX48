@@ -22,7 +22,7 @@ export default function OutListEntry (props) {
   return (
     <>
     {(props.outfits && props.currentView) &&
-      <div className="product-card-entry">
+      <div className= "outfit-card-entry" style={{width: `${(props.outfits.length/4)*30}%` }}>
         <OutfitListImage
           setSaved={props.setSaved}
           outfits={props.outfits}
@@ -41,7 +41,7 @@ export default function OutListEntry (props) {
                   {`$${props.currentStyle.salePrice}`}
                 </span>
               </div>
-            ) : (
+        ) : (
               <div className="user-product-price" style={{fontSize: '0.8em', marginLeft: '10px'}}>
                {`$${props.currentStyle.originalPrice}`}
               </div>

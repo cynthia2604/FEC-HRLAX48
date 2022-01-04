@@ -27,7 +27,6 @@ export default function RelatedList(props) {
       )
   })
 
-
   function translateX(direction) {
     if (direction === 'right') {
       setRenderLeft(count => count + 1)
@@ -39,14 +38,28 @@ export default function RelatedList(props) {
       setXPos(x=> x + 1296)
     }
   }
-
   return (
-    <div className="carousel-container" data-testid= "related-items-carousel">
-        <div className= "carousel-container-inner" style={{transform: `translateX(${xPos}px)`, width: `${(props.related.length/4) * props.width}px`}}>
-          {entry}
-        </div>
-      {(renderLeft > 0) && <ArrowBackIosNewIcon className="slide-button-left" onClick={() => translateX('left')}/>}
-      {(renderRight > 1) && <ArrowForwardIosIcon className="slide-button-right" onClick={() => translateX('right')}/> }
-    </div>
+      <div className="carousel-container" data-testid= "related-items-carousel">
+          <div className= "carousel-container-inner" style={{
+            transform: `translateX(${xPos}px)`,
+            width: `${(props.related.length/4) * props.width}px`
+          }}>
+            {entry}
+          </div>
+        {(renderLeft > 0) && <ArrowBackIosNewIcon className="slide-button-left" onClick={() => translateX('left')}/>}
+        {(renderRight > 1) && <ArrowForwardIosIcon className="slide-button-right" onClick={() => translateX('right')}/> }
+      </div>
   )
+
 }
+
+
+// return (
+//   <div className="carousel-container" data-testid= "related-items-carousel">
+//       <div className= "carousel-container-inner" style={{transform: `translateX(${xPos}px)`, width: `${(props.related.length/4) * props.width}px`}}>
+//         {entry}
+//       </div>
+//     {(renderLeft > 0) && <ArrowBackIosNewIcon className="slide-button-left" onClick={() => translateX('left')}/>}
+//     {(renderRight > 1) && <ArrowForwardIosIcon className="slide-button-right" onClick={() => translateX('right')}/> }
+//   </div>
+// )
