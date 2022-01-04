@@ -6,7 +6,7 @@ import Options from '../../../config.js';
 import utils from '../../utils.js'
 
 export default function OutListEntry (props) {
-  const [currentRating, setCurrentRating] = React.useState({})
+  const [currentRating, setCurrentRating] = React.useState()
 
   React.useEffect(()=>{
     const params = {
@@ -17,11 +17,11 @@ export default function OutListEntry (props) {
         Authorization: Options.TOKEN
       }
     }).then(res => setCurrentRating(res.data))
-  }, [])
+  }, [props.currentStyle])
 
   return (
     <>
-    {(props.currentStyle) &&
+    {(props.currentStyle && currentRating) &&
       <div className= "outfit-card-entry" style={{width: `${(props.outfits.length/4)*30}%` }}>
         <OutfitListImage
           setSaved={props.setSaved}
@@ -31,7 +31,7 @@ export default function OutListEntry (props) {
           currentStyle={props.currentStyle}
         />
         <div className="user-product-category" style={{fontSize: '0.8em', marginLeft: '10px'}}>{props.currentStyle.color}</div>
-        <div className="user-product-name" style={{fontWeight:'bold', marginLeft: '10px', overflow:'hidden'}}>{props.currentStyle.name}</div>
+        <div className="user-product-name" style={{fontWeight:'bold', marginLeft: '10px', overflow:'hidden'}}>{props.currentStyle.productName}</div>
         {props.currentStyle.salePrice ? (
              <div className="user-product-price" style={{fontSize: '0.8em', marginLeft: '10px'}}>
                 <span>

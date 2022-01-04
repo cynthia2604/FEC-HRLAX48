@@ -19,13 +19,14 @@ const comparison = {
     }, [])
 
     const rowStyle = {
-      color: (darkTheme) ? 'white' : 'black'
+      color: (darkTheme) ? 'white' : 'black',
+      paddingLeft: '5px',
     }
 
-    return filteredArr.map(feature => {
+    return filteredArr.map((feature, i) => {
       if (feature.value.length > 1) {
         return (
-          <TableRow style={{marginTop:'10px'}}>
+          <TableRow style={{marginTop:'10px'}} key={i}>
             <TableCell align="left" style={rowStyle} >{feature.value[0]}</TableCell>
             <TableCell scope="row" style={{fontWeight:'bold', color: rowStyle.color}}>{feature.feature} </TableCell>
             <TableCell align="right" style={rowStyle}>{feature.value[1]}</TableCell>
@@ -33,7 +34,7 @@ const comparison = {
         )
       } else if (arr1.features.some(item => item.feature === feature.feature)) {
         return (
-          <TableRow style={{marginTop:'10px'}}>
+          <TableRow style={{marginTop:'10px'}} key={i}>
             <TableCell align="left" style={rowStyle}>{feature.value[0]}</TableCell>
             <TableCell scope="row" style={{fontWeight:'bold' , color: rowStyle.color}}>{feature.feature}</TableCell>
             <TableCell align="right"></TableCell>
@@ -41,7 +42,7 @@ const comparison = {
         )
       } else if (arr2.features.some(item => item.feature === feature.feature)) {
         return (
-          <TableRow style={{marginTop:'10px'}}>
+          <TableRow style={{marginTop:'10px'}} key={i}>
             <TableCell align="left"></TableCell>
             <TableCell scope="row" style={{fontWeight:'bold', color: rowStyle.color}}>{feature.feature}</TableCell>
             <TableCell align="right" style={rowStyle}>{feature.value[0]}</TableCell>

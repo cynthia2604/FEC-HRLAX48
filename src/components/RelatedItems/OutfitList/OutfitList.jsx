@@ -38,7 +38,6 @@ export default function OutfitList(props) {
         outfits={props.outfits}
         selectedStyle={props.selectedStyle.selected}
         darkTheme={props.darkTheme}
-        currentView={props.currentView}
         currentStyle= {product}
         rating={props.rating}
       />

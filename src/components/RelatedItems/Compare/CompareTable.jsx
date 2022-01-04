@@ -19,6 +19,11 @@ export default function CompareTable(props) {
     color: (props.darkTheme) ? 'white' : 'black',
   }
 
+  const header = {
+    fontSize:'13px',
+    color: (props.darkTheme) ? 'white' : 'black',
+  }
+
   const button = {
     position: 'absolute',
     top:'0',
@@ -37,11 +42,12 @@ export default function CompareTable(props) {
     {(props.selectedDescription && props.selectRelated)  &&
       <TableContainer sx={{
         maxHeight: 200,
+        marginLeft: '5px',
         "&::-webkit-scrollbar": {
           display: 'none'
         }
       }}>
-      <Table stickyHeader aria-label="stick-table" className="table"  sx={{
+      <Table stickyHeader aria-label="stick-table" className="table" sx={{
           [`& .${tableCellClasses.root}`]: {
             borderBottom: "none",
             minWidth: 250,
@@ -50,12 +56,14 @@ export default function CompareTable(props) {
             backgroundColor: (props.darkTheme) ? 'black' : 'white',
           }
       }}>
-        <TableHead style={{fontSize:'15px'}}
-        > Compare
+        <TableHead style={{fontSize:'15px'}} >
           <TableRow>
-            <TableCell scope="col" style={colStyle}>{props.selected.name}</TableCell>
-            <TableCell scope ="col" style={colStyle}></TableCell>
-            <TableCell scope="col" style={colStyle}>{props.selectRelated.name}</TableCell>
+            <TableCell style={header}>Compare</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell scope="col" align="left" style={colStyle}>{props.selected.name}</TableCell>
+            <TableCell scope ="col" align="inherit" style={colStyle}></TableCell>
+            <TableCell scope="col" align="right" style={colStyle}>{props.selectRelated.name}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody style={{marginTop:'10px'}}>
