@@ -47,7 +47,6 @@ export default function Detail(props) {
   return (
     <>
       {(!productInfo || rating === undefined) && (
-        // {(!productInfo || !rating) && (
         <div className='d-flex flex-wrap justify-content-center align-items-center'>
           <Box sx={{ display: 'flex' }}>
             <CircularProgress color='inherit' />
@@ -55,7 +54,6 @@ export default function Detail(props) {
         </div>
       )}
       {productInfo && rating !== undefined && (
-        // {productInfo && !!rating && (
         <div>
           <Overview
             selectedProduct={props.selected}
@@ -72,7 +70,7 @@ export default function Detail(props) {
             saved={props.saved}
             outfits={props.outfits}
             rating={rating}
-            selectedStyle={{selected}}
+            selectedStyle={{ selected }}
             darkTheme={props.darkTheme}
           />
           <QuestionsAnswers
