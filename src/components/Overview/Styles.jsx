@@ -4,7 +4,13 @@ import { v4 as uuidv4 } from "uuid";
 import { useStateValue } from "./store/StateProvider";
 import Dropdowns from "./Dropdowns";
 
-export default function Styles({ productStyles, darkTheme }) {
+export default function Styles({
+  productStyles,
+  darkTheme,
+  productId,
+  productName,
+  category,
+}) {
   const [{ selected }, dispatch] = useStateValue();
 
   return (
@@ -21,6 +27,9 @@ export default function Styles({ productStyles, darkTheme }) {
               thumbnail={style.photos[0].thumbnail_url}
               originalPrice={style.original_price}
               salePrice={style.sale_price}
+              productId={productId}
+              productName={productName}
+              category={category}
             />
           ))}
       </div>

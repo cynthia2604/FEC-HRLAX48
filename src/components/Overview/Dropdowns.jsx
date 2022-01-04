@@ -16,12 +16,10 @@ export default function Dropdowns({ darkTheme }) {
     <>
       <Container fluid>
         <Row className="pt-3">
-          <Col className="col-8 pe-2" style={{ padding: "0px", margin: "0px" }}>
+          <Col className="col-7 pe-2" style={{ padding: "0px", margin: "0px" }}>
             <DropdownButton
               id="dropdown-basic-button"
-              variant={
-                darkTheme ? "outline-secondary-dark" : "outline-secondary"
-              }
+              variant={darkTheme ? "outline-light" : "outline-secondary"}
               title={selected.size || "Select Size"}
               disabled={selected.quantity === "Out Of Stock" ? true : false}
               size="large"
@@ -32,9 +30,7 @@ export default function Dropdowns({ darkTheme }) {
           <Col style={{ padding: "0px", margin: "0px" }}>
             <DropdownButton
               id="dropdown-basic-button quantity"
-              variant={
-                darkTheme ? "outline-secondary-dark" : "outline-secondary"
-              }
+              variant={darkTheme ? "outline-light" : "outline-secondary"}
               disabled={selected.disabled}
               title={selected.quantity || "-"}
               size="small"
