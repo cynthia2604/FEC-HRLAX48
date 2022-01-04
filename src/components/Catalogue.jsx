@@ -61,7 +61,7 @@ export default function Catalogue(props) {
     <div className='d-flex flex-wrap justify-content-around text-center'>
       {Object.keys(productInfo).length < 8 && (
         <Box sx={{ display: 'flex' }}>
-          <CircularProgress />
+          <CircularProgress color='inherit' />
         </Box>
       )}
       {Object.keys(productInfo).length === 8 && (
