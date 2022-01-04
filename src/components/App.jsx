@@ -55,14 +55,14 @@ export default function App(props) {
   };
 
   return (
-    <div className='d-flex flex-column min-vh-100' style={themedStyle}>
+    <div className='d-flex flex-column heightWrapper' style={themedStyle}>
       <Header
         setView={setView}
         darkTheme={darkTheme}
         setDarkTheme={setDarkTheme}
       />
       {view === 'catalogue' && (
-        <div className='container'>
+        <div className='container vertCenter'>
           <Catalogue
             setView={setView}
             products={products}
@@ -74,7 +74,7 @@ export default function App(props) {
         </div>
       )}
       {view === 'detail' && (
-        <div className='container mb-5'>
+        <div className='container flex-grow-1 mb-5'>
           <Detail
             selected={selected}
             products={products}
@@ -88,7 +88,7 @@ export default function App(props) {
         </div>
       )}
       {view === 'checkout' && (
-        <div className='container'>
+        <div className='container flex-grow-1'>
           <Checkout darkTheme={darkTheme} basket={basket} dispatch={dispatch} />
         </div>
       )}
