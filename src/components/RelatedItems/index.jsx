@@ -19,7 +19,8 @@ export default function RelatedItems(props) {
         }
       }).then((res) => {
         let related = props.products.filter(item => res.data.includes(item.id))
-        setRelatedItems(related)
+        let filteredRelated = related.filter(product => product.id !== props.selected.id)
+        setRelatedItems(filteredRelated)
         setWidth(() => document.getElementById("related-product-list").offsetWidth)
       })
    }, [props.selected])

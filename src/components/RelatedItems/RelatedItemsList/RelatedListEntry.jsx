@@ -22,7 +22,7 @@ export default function RelatedProductEntry(props) {
   return (
     <>
     {current &&
-      <div className="product-card-entry" >
+      <div className="product-card-entry" style={{width: `${(props.related.length/4)*30}%` }}>
         <ProductImage
           currentItem={current}
           render={props.render}
