@@ -21,7 +21,6 @@ export default function BagModal({
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header
-        closeButton
         style={{
           backgroundColor: darkTheme ? "rgb(50, 50, 50)" : "white",
           border: darkTheme ? "1px solid white" : null,
