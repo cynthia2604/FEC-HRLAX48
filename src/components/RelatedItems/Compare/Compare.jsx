@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import CompareTable from './CompareTable'
-import Options from '../../config.js';
+import Options from '../../../config.js';
 
 export default function Compare(props) {
   const [selectedDescription, setSelectedDescription] = React.useState()
@@ -23,6 +23,9 @@ export default function Compare(props) {
         selectedDescription={selectedDescription}
         selectRelated={props.selectRelated}
         selected={props.selected}
+        setRenderTable={props.setRenderTable}
+        renderTable={props.renderTable}
+        darkTheme={props.darkTheme}
       />
 
     </div>

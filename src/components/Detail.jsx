@@ -57,8 +57,10 @@ export default function Detail(props) {
             products={props.products}
             selected={props.selected}
             setSaved={props.setSaved}
+            saved={props.saved}
             outfits={props.outfits}
-            selectedStyle={selected}
+            rating={rating}
+            selectedStyle={{selected}}
             darkTheme={props.darkTheme}
           />
           <QuestionsAnswers
