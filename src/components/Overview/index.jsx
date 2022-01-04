@@ -42,7 +42,7 @@ export default function Overview({
 
   React.useEffect(() => {
     getDefault();
-  }, [productStyles]);
+  }, [productStyles, productDetail]);
 
   const getDefault = () => {
     if (productStyles.results && productDetail) {
@@ -52,7 +52,7 @@ export default function Overview({
       let skus = defaultObj.skus;
       let originalPrice = defaultObj.original_price;
       let salePrice = defaultObj.sale_price;
-      let { name, category, id } = productDetail;
+
       let hasSku = () => {
         if (Object.keys(skus)[0] !== "null") {
           return "-";
@@ -73,9 +73,9 @@ export default function Overview({
           size: "Select Size",
           quantity: hasSku(),
           disabled: true,
-          productName: name,
-          category: category,
-          productId: id,
+          productName: productDetail.name,
+          category: productDetail.category,
+          productId: productDetail.id,
         },
       });
     }
