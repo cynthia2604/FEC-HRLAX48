@@ -1,5 +1,7 @@
 import React from 'react';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import MigoPNG from '../../../assets/Migos.png'
+
 
 export default function OutfitListImage(props) {
 
@@ -12,7 +14,7 @@ export default function OutfitListImage(props) {
     <>
     {(props.currentStyle) &&
       <div className="card-product-image">
-       <img src={`${props.currentStyle.thumbnail}`}/>
+       <img src={`${props.currentStyle.thumbnail || MigoPNG}`}/>
       <HighlightOffIcon className="remove-card-entry" onClick={() => removeOutfit(props.outfits)} />
       </div>
     }

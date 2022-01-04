@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Options from '../../../config.js';
+import MigoPNG from '../../../assets/Migos.png'
 
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -20,7 +21,7 @@ export default function ProductImage(props) {
 
     return(
       <div className="card-product-image">
-        <img src={`${props.currentItem.results[0].photos[0].url}`}/>
+        <img src={`${props.currentItem.results[0].photos[0].url || MigoPNG}`}/>
         <SearchIcon className="modal-button" onClick={() => showComparison(props.currentItem)}/>
       </div>
     )
