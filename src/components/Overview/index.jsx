@@ -45,7 +45,7 @@ export default function Overview({
   }, [productStyles]);
 
   const getDefault = () => {
-    if (productStyles.results) {
+    if (productStyles.results && productDetail.name) {
       let defaultObj = productStyles.results[0];
       let color = defaultObj.name;
       let photos = defaultObj.photos;
@@ -72,6 +72,9 @@ export default function Overview({
           size: "Select Size",
           quantity: hasSku(),
           disabled: true,
+          productName: productDetail.name,
+          category: productDetail.category,
+          productId: productDetail.id,
         },
       });
     }

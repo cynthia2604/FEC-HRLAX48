@@ -47,19 +47,9 @@ body {
   padding: 0;
 }
 
-.btn-outline-secondary {
-  color: rgba(0, 0, 0, 0.87);
-  border-color: rgba(0, 0, 0, 0.87);
-}
-
 .btn-large {
   min-width: 100%;
   height: 100%;
-}
-
-.btn-outline-secondary-dark {
-  color: white;
-  border-color: white;
 }
 
 .btn-small {

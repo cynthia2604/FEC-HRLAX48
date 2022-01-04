@@ -51,7 +51,7 @@ export default function Summary({ basket, darkTheme }) {
       </Row>
       <hr className="mt-3"></hr>
       <Button
-        variant={darkTheme ? "outline-secondary-dark" : "outline-secondary"}
+        variant={darkTheme ? "outline-light" : "outline-secondary"}
         style={{ width: "100%" }}
       >
         Checkout

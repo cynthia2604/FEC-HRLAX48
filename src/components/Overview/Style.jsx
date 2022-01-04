@@ -9,6 +9,9 @@ export default function Style({
   thumbnail,
   originalPrice,
   salePrice,
+  productId,
+  productName,
+  category,
 }) {
   const [{ selected }, dispatch] = useStateValue();
 
@@ -22,6 +25,9 @@ export default function Style({
         originalPrice: originalPrice,
         salePrice: salePrice,
         thumbnail: thumbnail,
+        productId: productId,
+        productName: productName,
+        category: category,
       },
     });
   };

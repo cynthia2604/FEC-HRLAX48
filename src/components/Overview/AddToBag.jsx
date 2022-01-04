@@ -7,7 +7,7 @@ import Col from "react-bootstrap/Col";
 import Collection from "./Collection";
 import Button from "react-bootstrap/Button";
 
-export default function AddToBag({ category, name, setView, darkTheme }) {
+export default function AddToBag({ setView, darkTheme }) {
   const [{ basket, selected, toggleWarning }, dispatch] = useStateValue();
   const [show, setShow] = React.useState(false);
 
@@ -53,7 +53,7 @@ export default function AddToBag({ category, name, setView, darkTheme }) {
             thumbnail: selected.thumbnail,
             originalPrice: selected.originalPrice,
             salePrice: selected.salePrice,
-            name: name,
+            name: selected.productName,
           },
         });
       }
@@ -80,10 +80,8 @@ export default function AddToBag({ category, name, setView, darkTheme }) {
             style={{ padding: "0px", margin: "0px" }}
           >
             <Button
-              variant={
-                darkTheme ? "outline-secondary-dark" : "outline-secondary"
-              }
-              size="large"
+              variant={darkTheme ? "outline-light" : "outline-secondary"}
+              style={{ width: "100%" }}
               onClick={handleAdd}
             >
               Add To Bag
@@ -105,7 +103,7 @@ export default function AddToBag({ category, name, setView, darkTheme }) {
         show={show}
         setShow={setShow}
         handleClose={handleClose}
-        category={category}
+        category={selected.category}
         name={name}
         setView={setView}
         darkTheme={darkTheme}
