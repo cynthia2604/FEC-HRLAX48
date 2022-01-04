@@ -43,7 +43,7 @@ export default function BagModal({
         <Container fluid>
           <Row>
             <Col>
-              <img src={selected.thumbnail} height="100"></img>
+              <img src={selected.thumbnail} height="120"></img>
             </Col>
             <Col>
               <div>
