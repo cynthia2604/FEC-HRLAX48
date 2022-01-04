@@ -34,9 +34,9 @@ export default function Catalogue(props) {
   const products = props.products.map((product) => {
     return (
       <div
-        onClick={() => handleClick(product)}
         key={product.id}
         className='cP col-3'
+        onClick={() => handleClick(product)}
       >
         <img
           src={productInfo[product.id]?.results[0]?.photos[0]?.url || migos}
@@ -45,7 +45,7 @@ export default function Catalogue(props) {
           width='250px'
           height='250px'
         />
-        <div className=''>
+        <div>
           <b>{product.name}</b>
         </div>
         <div className='pb-4'>${product.default_price}</div>
