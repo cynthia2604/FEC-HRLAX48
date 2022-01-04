@@ -16,7 +16,7 @@ export default function Dropdowns({ darkTheme }) {
     <>
       <Container fluid>
         <Row className="pt-3">
-          <Col className="col-8 pe-2" style={{ padding: "0px", margin: "0px" }}>
+          <Col className="col-7 pe-2" style={{ padding: "0px", margin: "0px" }}>
             <DropdownButton
               id="dropdown-basic-button"
               variant={darkTheme ? "outline-light" : "outline-secondary"}
