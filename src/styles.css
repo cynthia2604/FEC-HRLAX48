@@ -7,6 +7,10 @@ body {
   color: rgba(0, 0, 0, 0.87);
 }
 
+.catalogueImage {
+  object-fit: cover;
+}
+
 * {
   scrollbar-width: none;
   scrollbar-color: rgb(155, 155, 155);

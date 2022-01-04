@@ -5,13 +5,16 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
-export default function Summary({ bag, darkTheme }) {
-  const subtotal = bag
-    .reduce(
-      (amount, item) => parseInt(item.salePrice || item.originalPrice) + amount,
-      0
-    )
-    .toFixed(2);
+export default function Summary({ basket, darkTheme }) {
+  const subtotal =
+    basket.length &&
+    basket
+      .reduce(
+        (amount, item) =>
+          parseInt(item.salePrice || item.originalPrice) + amount,
+        0
+      )
+      .toFixed(2);
 
   const totalPrice = (subtotal * (1 + 0.1025)).toFixed(2);
 
