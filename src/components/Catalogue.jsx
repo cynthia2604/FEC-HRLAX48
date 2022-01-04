@@ -42,8 +42,6 @@ export default function Catalogue(props) {
           src={productInfo[product.id]?.results[0]?.photos[0]?.url || migos}
           alt={product.name}
           className='catalogueImage'
-          width='250px'
-          height='250px'
         />
         <div>
           <b>{product.name}</b>
@@ -58,15 +56,17 @@ export default function Catalogue(props) {
   };
 
   return (
-    <div className='d-flex flex-wrap justify-content-around text-center'>
+    <div className='d-flex flex-column justify-content-center align-items-center'>
       {Object.keys(productInfo).length < 8 && (
         <Box sx={{ display: 'flex' }}>
           <CircularProgress color='inherit' />
         </Box>
       )}
       {Object.keys(productInfo).length === 8 && (
-        <div className='d-flex flex-wrap justify-content-around text-center'>
-          {products}
+        <>
+          <div className='d-flex flex-wrap justify-content-between align-items-center text-center'>
+            {products}
+          </div>
           <div className='pt-5'>
             <Pagination
               count={10}
@@ -85,7 +85,7 @@ export default function Catalogue(props) {
               }}
             />
           </div>
-        </div>
+        </>
       )}
     </div>
   );

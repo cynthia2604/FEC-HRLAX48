@@ -1,15 +1,15 @@
-import React from "react";
-import axios from "axios";
-import Options from "../../config";
-import Gallery from "./Gallery";
-import ProductInfo from "./ProductInfo";
-import Description from "./Description";
-import Features from "./Features";
-import Share from "./Share";
-import OverviewInfo from "./OverviewInfo";
-import "../../styles.css";
-import { v4 as uuidv4 } from "uuid";
-import { useStateValue } from "./store/StateProvider";
+import React from 'react';
+import axios from 'axios';
+import Options from '../../config';
+import Gallery from './Gallery';
+import ProductInfo from './ProductInfo';
+import Description from './Description';
+import Features from './Features';
+import Share from './Share';
+import OverviewInfo from './OverviewInfo';
+import '../../styles.css';
+import { v4 as uuidv4 } from 'uuid';
+import { useStateValue } from './store/StateProvider';
 
 export default function Overview({
   rating,
@@ -54,15 +54,15 @@ export default function Overview({
       let salePrice = defaultObj.sale_price;
 
       let hasSku = () => {
-        if (Object.keys(skus)[0] !== "null") {
-          return "-";
+        if (Object.keys(skus)[0] !== 'null') {
+          return '-';
         } else {
-          return "Out Of Stock";
+          return 'Out Of Stock';
         }
       };
 
       dispatch({
-        type: "ADD_TO_SELECTED",
+        type: 'ADD_TO_SELECTED',
         item: {
           color: color,
           skus: skus,
@@ -70,7 +70,7 @@ export default function Overview({
           thumbnail: photos[0].thumbnail_url,
           originalPrice: originalPrice,
           salePrice: salePrice,
-          size: "Select Size",
+          size: 'Select Size',
           quantity: hasSku(),
           disabled: true,
           productName: productDetail.name,
@@ -86,17 +86,20 @@ export default function Overview({
   };
 
   return (
-    <div className="mb-3">
-      <div className="pd__box mb-4 pb-4">
-        <div className={isExpand ? "pd__gallery-expand" : "wide"}>
-          <Gallery
-            key={uuidv4()}
-            selected={selected}
-            handleExpand={handleExpand}
-          />
+    <div className='mb-3'>
+      <div className='pd__box mb-4 pb-4'>
+        <div className={isExpand ? 'pd__gallery-expand' : 'wide'}>
+          {selected.productId === productDetail.id &&
+            selected.photos?.length > 0 && (
+              <Gallery
+                key={uuidv4()}
+                selected={selected}
+                handleExpand={handleExpand}
+              />
+            )}
         </div>
         {!isExpand ? (
-          <div className="narrow">
+          <div className='narrow'>
             <ProductInfo
               selected={selected}
               productDetail={productDetail}
@@ -109,15 +112,15 @@ export default function Overview({
           </div>
         ) : null}
       </div>
-      <div className="pd__box d-flex justify-content-between pb-3 pt-1">
-        <div className="w-50">
+      <div className='pd__box d-flex justify-content-between pb-3 pt-1'>
+        <div className='w-50'>
           <Description productDetail={productDetail} />
         </div>
         {productDetail.overview ? (
           <OverviewInfo overview={productDetail.overview} />
         ) : null}
         <div>
-          <Features productDetail={productDetail} className="w-30" />
+          <Features productDetail={productDetail} className='w-30' />
         </div>
         <div>
           <Share />
