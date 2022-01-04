@@ -72,7 +72,7 @@ export default function Catalogue(props) {
               count={10}
               shape='rounded'
               page={props.page}
-              onChange={(e) => props.setPage(Number(e.target.innerText))}
+              onChange={(e, newPage) => props.setPage(newPage)}
               sx={{
                 '& .MuiPaginationItem-root': {
                   color: props.darkTheme ? 'white' : 'black',
