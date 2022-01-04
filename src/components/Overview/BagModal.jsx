@@ -43,14 +43,18 @@ export default function BagModal({
         <Container fluid>
           <Row>
             <Col>
-              <img src={selected.thumbnail} height="130"></img>
+              <img src={selected.thumbnail} height="100"></img>
             </Col>
             <Col>
-              <div>{selected.productName}</div>
-              <div>{selected.color}</div>
-              <div>{selected.category}</div>
-              <div>{`Size ${selected.size}`}</div>
-              <div>{`$${selected.salePrice || selected.originalPrice}`}</div>
+              <div>
+                <b>{selected.productName}</b>
+              </div>
+              <div className="pd__font-small">{selected.color}</div>
+              <div className="pd__font-small">{selected.category}</div>
+              <div className="pd__font-small">{`Size ${selected.size}`}</div>
+              <div className="pd__font-small">{`$${
+                selected.salePrice || selected.originalPrice
+              }`}</div>
             </Col>
           </Row>
         </Container>
