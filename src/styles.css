@@ -7,8 +7,17 @@ body {
   color: rgba(0, 0, 0, 0.87);
 }
 
+.catalogueItem {
+  width: 22vw;
+  margin: 1vw;
+}
+
 .catalogueImage {
   object-fit: cover;
+  width: 20vw;
+  height: 20vw;
+  max-width: 250px;
+  max-height: 250px;
 }
 
 * {
@@ -31,9 +40,18 @@ body {
   /* border: 10px solid orange; */
 }
 
+.heightWrapper {
+  min-height: 100vh;
+}
+
 .container {
-  margin: auto;
-  width: 90%;
+  margin-inline: auto;
+  width: 90vw;
+}
+
+.vertCenter {
+  height: 100%;
+  margin-block: auto;
 }
 
 .cP {
