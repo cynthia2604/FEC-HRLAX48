@@ -6,7 +6,7 @@ import TableRow from '@mui/material/TableRow';
 
 
 const comparison = {
-  rows: (arr1, arr2) => {
+  rows: (arr1, arr2, darkTheme) => {
     let combinedArr = arr1.features.concat(arr2.features)
 
     const filteredArr = combinedArr.reduce((a, {feature, value}) => {
@@ -18,20 +18,24 @@ const comparison = {
       return a;
     }, [])
 
+    const rowStyle = {
+      color: (darkTheme) ? 'white' : 'black'
+    }
+
     return filteredArr.map(feature => {
       if (feature.value.length > 1) {
         return (
           <TableRow style={{marginTop:'10px'}}>
-            <TableCell align="left" >{feature.value[0]}</TableCell>
-            <TableCell scope="row" style={{fontWeight:'bold'}}>{feature.feature} </TableCell>
-            <TableCell align="right">{feature.value[1]}</TableCell>
+            <TableCell align="left" style={rowStyle} >{feature.value[0]}</TableCell>
+            <TableCell scope="row" style={{fontWeight:'bold', color: rowStyle.color}}>{feature.feature} </TableCell>
+            <TableCell align="right" style={rowStyle}>{feature.value[1]}</TableCell>
           </TableRow>
         )
       } else if (arr1.features.some(item => item.feature === feature.feature)) {
         return (
           <TableRow style={{marginTop:'10px'}}>
-            <TableCell align="left">{feature.value[0]}</TableCell>
-            <TableCell scope="row" style={{fontWeight:'bold'}}>{feature.feature}</TableCell>
+            <TableCell align="left" style={rowStyle}>{feature.value[0]}</TableCell>
+            <TableCell scope="row" style={{fontWeight:'bold' , color: rowStyle.color}}>{feature.feature}</TableCell>
             <TableCell align="right"></TableCell>
           </TableRow>
         )
@@ -39,8 +43,8 @@ const comparison = {
         return (
           <TableRow style={{marginTop:'10px'}}>
             <TableCell align="left"></TableCell>
-            <TableCell scope="row" style={{fontWeight:'bold'}}>{feature.feature}</TableCell>
-            <TableCell align="right">{feature.value[0]}</TableCell>
+            <TableCell scope="row" style={{fontWeight:'bold', color: rowStyle.color}}>{feature.feature}</TableCell>
+            <TableCell align="right" style={rowStyle}>{feature.value[0]}</TableCell>
           </TableRow>
         )
       }

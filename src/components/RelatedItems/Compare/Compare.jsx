@@ -25,6 +25,7 @@ export default function Compare(props) {
         selected={props.selected}
         setRenderTable={props.setRenderTable}
         renderTable={props.renderTable}
+        darkTheme={props.darkTheme}
       />
 
     </div>

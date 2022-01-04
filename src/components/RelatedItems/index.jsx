@@ -36,6 +36,7 @@ export default function RelatedItems(props) {
               setRenderTable={setRenderTable}
               selected={props.selected}
               selectRelated={selectRelated}
+              darkTheme={props.darkTheme}
             />
           }
             <RelatedList

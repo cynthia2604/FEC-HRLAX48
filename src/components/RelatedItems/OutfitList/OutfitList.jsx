@@ -23,11 +23,11 @@ export default function OutfitList(props) {
     if (direction === 'right') {
       setRenderLeft(count => count + 1)
       setRenderRight(count => count - 1)
-      setXPos(x => x - 1296)
+      setXPos(x => x - props.width)
     } else {
       setRenderLeft(count => count - 1)
       setRenderRight(count => count + 1)
-      setXPos(x=> x + 1296)
+      setXPos(x=> x + props.width)
     }
   }
 

@@ -30,7 +30,7 @@ export default function OutListEntry (props) {
           selectedStyle={props.selectedStyle}
           currentStyle={props.currentStyle}
         />
-        <div className="user-product-category" style={{fontSize: '1em', marginLeft: '10px'}}>{props.currentStyle.color}</div>
+        <div className="user-product-category" style={{fontSize: '0.8em', marginLeft: '10px'}}>{props.currentStyle.color}</div>
         <div className="user-product-name" style={{fontWeight:'bold', marginLeft: '10px', overflow:'hidden'}}>{props.currentView.name}</div>
         {props.currentStyle.salePrice ? (
              <div className="user-product-price" style={{fontSize: '0.8em', marginLeft: '10px'}}>

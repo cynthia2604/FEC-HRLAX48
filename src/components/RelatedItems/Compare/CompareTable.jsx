@@ -13,33 +13,58 @@ import ClearIcon from '@mui/icons-material/Clear';
 
 export default function CompareTable(props) {
 
+  const colStyle = {
+    fontWeight:'bold',
+    fontSize:'20px',
+    color: (props.darkTheme) ? 'white' : 'black',
+  }
+
+  const button = {
+    position: 'absolute',
+    top:'0',
+    right:'0',
+    color: (props.darkTheme) ? 'white' : 'black',
+    zIndex: 1
+  }
+
   return(
-    <Paper sx={{ overflow: 'hidden'}}>
+    <Paper sx={{
+      overflow: 'hidden',
+      backgroundColor: (props.darkTheme) ? 'black' : 'white',
+      borderColor: (props.darkTheme) ? 'black' : 'white'
+    }}>
+
     {(props.selectedDescription && props.selectRelated)  &&
-      <TableContainer sx={{ maxHeight: 200}}>
+      <TableContainer sx={{
+        maxHeight: 200,
+        "&::-webkit-scrollbar": {
+          display: 'none'
+        }
+      }}>
       <Table stickyHeader aria-label="stick-table" className="table"  sx={{
           [`& .${tableCellClasses.root}`]: {
             borderBottom: "none",
             minWidth: 250,
             marginLeft: '5px',
-            backgroundColor: 'white',
-            borderColor:"white"
+            borderColor: (props.darkTheme) ? 'black' : 'white',
+            backgroundColor: (props.darkTheme) ? 'black' : 'white',
           }
       }}>
-        <TableHead style={{fontSize:'15px'}}> Compare
+        <TableHead style={{fontSize:'15px'}}
+        > Compare
           <TableRow>
-            <TableCell scope="col" style={{fontWeight:'bold', fontSize:'20px'}}>{props.selected.name}</TableCell>
-            <TableCell scope ="col" style={{fontWeight:'bold', fontSize:'20px'}}></TableCell>
-            <TableCell scope="col" style={{fontWeight:'bold', fontSize:'20px'}}>{props.selectRelated.name}</TableCell>
+            <TableCell scope="col" style={colStyle}>{props.selected.name}</TableCell>
+            <TableCell scope ="col" style={colStyle}></TableCell>
+            <TableCell scope="col" style={colStyle}>{props.selectRelated.name}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody style={{marginTop:'10px'}}>
-        {comparison.rows(props.selectedDescription , props.selectRelated,)}
+          {comparison.rows( props.selectedDescription , props.selectRelated, props.darkTheme )}
         </TableBody>
       </Table>
       </TableContainer>
     }
-    <ClearIcon style={{position: 'absolute', top:'0', right:'0'}}onClick={()=> props.setRenderTable(!props.renderTable)}/>
+    <ClearIcon style={button}onClick={()=> props.setRenderTable(!props.renderTable)}/>
     </Paper>
   )
 }
