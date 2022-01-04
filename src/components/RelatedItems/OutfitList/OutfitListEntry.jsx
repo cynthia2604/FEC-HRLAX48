@@ -10,7 +10,7 @@ export default function OutListEntry (props) {
 
   React.useEffect(()=>{
     const params = {
-      product_id: props.currentView.id
+      product_id: props.currentStyle.productId
     }
     axios.get(`${Options.URL}/products/${params.product_id}/styles/?count=20`, {
       headers: {
@@ -21,7 +21,7 @@ export default function OutListEntry (props) {
 
   return (
     <>
-    {(props.outfits && props.currentView) &&
+    {(props.currentStyle) &&
       <div className= "outfit-card-entry" style={{width: `${(props.outfits.length/4)*30}%` }}>
         <OutfitListImage
           setSaved={props.setSaved}
@@ -31,7 +31,7 @@ export default function OutListEntry (props) {
           currentStyle={props.currentStyle}
         />
         <div className="user-product-category" style={{fontSize: '0.8em', marginLeft: '10px'}}>{props.currentStyle.color}</div>
-        <div className="user-product-name" style={{fontWeight:'bold', marginLeft: '10px', overflow:'hidden'}}>{props.currentView.name}</div>
+        <div className="user-product-name" style={{fontWeight:'bold', marginLeft: '10px', overflow:'hidden'}}>{props.currentStyle.name}</div>
         {props.currentStyle.salePrice ? (
              <div className="user-product-price" style={{fontSize: '0.8em', marginLeft: '10px'}}>
                 <span>
@@ -47,9 +47,7 @@ export default function OutListEntry (props) {
               </div>
             )
         }
-        <div className="related-product-rating"  style={{paddingBottom:'10px', marginLeft: '10px'}}>
-          {(props.darkTheme) ? utils.starRatingWhite(props.rating) : utils.starRating(props.rating)}
-        </div>
+        <RelatedItemRating currentItem={currentRating} darkTheme={props.darkTheme}/>
       </div>
     }
     </>
