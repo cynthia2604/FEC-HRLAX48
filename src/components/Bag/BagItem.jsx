@@ -24,17 +24,17 @@ export default function BagItem({
 
   return (
     <Row>
-      <Col md={2}>
+      <Col>
         <img
           src={item.thumbnail}
-          height="100px"
-          width="100px"
+          height="120px"
+          width="120px"
           style={{ objectFit: "cover" }}
           type="button"
           onClick={handleProduct}
         ></img>
       </Col>
-      <Col md={8}>
+      <Col xs={6}>
         <b>
           <div type="button" onClick={handleProduct}>
             {item.name}
@@ -42,14 +42,15 @@ export default function BagItem({
         </b>
         <div>{item.color}</div>
         <div>{`Size ${item.size}`}</div>
-        <div>{`Qty ${item.quantity}`}</div>
-        <SelectQty
-          qtyArr={item.stockQuantityArr}
-          item={item}
-          darkTheme={darkTheme}
-        />
+        <div className="mt-2">
+          <SelectQty
+            qtyArr={item.stockQuantityArr}
+            item={item}
+            darkTheme={darkTheme}
+          />
+        </div>
       </Col>
-      <Col md={2}>
+      <Col>
         <div style={{ textAlign: "end" }}>{`$${
           item.salePrice || item.originalPrice
         }`}</div>

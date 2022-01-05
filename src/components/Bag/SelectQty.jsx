@@ -11,6 +11,7 @@ export default function SelectQty({ qtyArr, item, darkTheme }) {
       id="dropdown-basic-button qty"
       variant={darkTheme ? "outline-light" : "outline-secondary"}
       title={selectedQty}
+      size="sm"
     >
       {qtyArr &&
         qtyArr.map((qty) => {
