@@ -36,6 +36,7 @@ export default function CompareTable(props) {
     top:'0',
     right:'0',
     color: (props.darkTheme) ? 'white' : 'black',
+    cursor: 'pointer'
   }
 
   return(
