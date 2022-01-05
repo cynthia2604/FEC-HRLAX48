@@ -71,7 +71,7 @@ export default function Summary({ basket, darkTheme }) {
       <Snackbar
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
         open={open}
-        message={"Thanks for shopping with us!"}
+        message={"Thank you for shopping with us!"}
         onClose={handleClose}
         autoHideDuration={3000}
       />
