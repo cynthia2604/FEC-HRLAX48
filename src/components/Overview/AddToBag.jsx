@@ -54,6 +54,12 @@ export default function AddToBag({ setView, darkTheme, setSaved, saved }) {
             originalPrice: selected.originalPrice * selected.quantity,
             salePrice: selected.salePrice,
             name: selected.productName,
+            photos: selected.photos,
+            skus: selected.skus,
+            disabled: true,
+            productName: selected.productName,
+            category: selected.category,
+            productId: selected.productId,
           },
         });
       }
