@@ -27,16 +27,17 @@ export default function Collection({ darkTheme }) {
         variant={darkTheme ? "outline-light" : "outline-secondary"}
         size="small"
         onClick={handleClick}
+        style={{ padding: "0px", height: "38px" }}
       >
         {star ? (
           <StarIcon
             sx={{
               color: "#ffd700",
             }}
-            fontSize="23px"
+            style={{ padding: "0px" }}
           />
         ) : (
-          <StarBorderIcon fontSize="23px" />
+          <StarBorderIcon />
         )}
       </Button>
       <Snackbar

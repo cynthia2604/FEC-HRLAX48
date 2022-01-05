@@ -6,14 +6,18 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useStateValue } from "../Overview/store/StateProvider";
 
 export default function BagItem({ item, deleteCartItem, setView }) {
-  const [{ basket, selected, toggleWarning }, dispatch] = useStateValue();
+  const [{ basket, selected }, dispatch] = useStateValue();
 
   const handleProduct = () => {
     for (var key in basket) {
-      if (item.productId === basket[key].productId) {
+      if (item.id === basket[key].id) {
         dispatch({
           type: "ADD_TO_SELECTED",
-          item: basket[key],
+          item: {
+            ...basket[key],
+            size: "Select Size",
+            quantity: "-",
+          },
         });
       }
     }
