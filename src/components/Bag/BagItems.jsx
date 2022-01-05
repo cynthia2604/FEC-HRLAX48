@@ -37,6 +37,7 @@ export default function BagItems({
                   setView={setView}
                   setSelectedProduct={setSelectedProduct}
                   products={products}
+                  darkTheme={darkTheme}
                 />
               );
             })
