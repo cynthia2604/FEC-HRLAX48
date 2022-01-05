@@ -23,7 +23,7 @@ export default function ProductInfo({
     <div>
       {reviews.results.length ? (
         <div className="pd__box">
-          <div className="pd__normal mb-2 me-3">
+          <div className="pd__normal mb-2 me-3 d-flex align-items-center">
             {darkTheme
               ? utils.starRatingWhite(rating)
               : utils.starRating(rating)}
