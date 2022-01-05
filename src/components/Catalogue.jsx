@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import Options from '../config';
+import Options from '../config.js';
 import migos from '../assets/Migos.png';
 import { Box } from '@mui/system';
 import { CircularProgress, Pagination } from '@mui/material';

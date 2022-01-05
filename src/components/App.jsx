@@ -3,7 +3,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Checkout from './Checkout';
 import Catalogue from './Catalogue';
-import Options from '../config';
+import Options from '../config.js';
 import Detail from './Detail';
 import axios from 'axios';
 import Header from './Header';
