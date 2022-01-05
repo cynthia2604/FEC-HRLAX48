@@ -71,6 +71,11 @@ body {
   padding: 0;
 }
 
+.dropdown-menu {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
 .btn-outline-secondary {
   color: black;
   border-color: black;
