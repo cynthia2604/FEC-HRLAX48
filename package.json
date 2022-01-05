@@ -4,6 +4,7 @@
   "description": "FEC Project for HackReactor",
   "main": "index.js",
   "scripts": {
+    "server": "node server/server.js",
     "build": "webpack -w",
     "compile": "webpack",
     "start": "react-scripts start",
