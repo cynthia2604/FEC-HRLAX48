@@ -20,6 +20,12 @@ body {
   max-height: 250px;
 }
 
+.customButton {
+  height: 38px;
+  vertical-align: middle;
+  padding: 0;
+}
+
 * {
   scrollbar-width: none;
   scrollbar-color: rgb(155, 155, 155);
@@ -351,10 +357,10 @@ body {
   position: relative;
 }
 
-.button-text{
+.button-text {
   position: absolute;
-  top:30%;
-  left:50%;
+  top: 30%;
+  left: 50%;
   margin: -50px 0 0 -90px;
 }
 
@@ -385,7 +391,7 @@ body {
 
 .comparison-table {
   position: absolute;
-  z-index:1;
+  z-index: 1;
 }
 
 .card-product-image .modal-button {
@@ -417,19 +423,20 @@ body {
   justify-content: space-between;
 }
 
-.outfit-card-entry , .product-card-entry {
+.outfit-card-entry,
+.product-card-entry {
   margin-left: 30px;
   border-style: solid;
   border-width: thin;
   position: relative;
-  flex-basis:0;
+  flex-basis: 0;
   flex-grow: 1;
 }
 
 .slide-button-right {
   position: absolute;
   top: 50%;
-  right:0;
+  right: 0;
   margin-left: 50px;
   transform: translateY(-50%);
 }
@@ -437,7 +444,7 @@ body {
 .slide-button-left {
   position: absolute;
   left: 0;
-  top:50%;
+  top: 50%;
   transform: translateY(-50%);
 }
 
