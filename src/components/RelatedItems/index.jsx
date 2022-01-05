@@ -54,8 +54,10 @@ export default function RelatedItems(props) {
         <div className="sectionTitle" style={{paddingTop:'30px'}}>YOUR OUTFITS</div>
         <div className="user-created-outfit">
             <OutfitList
+              products={props.products}
               related={relatedItems}
               currentView={props.selected}
+              setSelected={props.setSelected}
               saved={props.saved}
               setSaved={props.setSaved}
               outfits={props.outfits}

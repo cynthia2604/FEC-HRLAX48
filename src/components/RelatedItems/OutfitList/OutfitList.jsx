@@ -41,7 +41,10 @@ export default function OutfitList(props) {
   const entry = props.outfits.map((product,i) => (
       <OutfitListEntry
         key={i}
+        products={props.products}
         related={props.related}
+        currentView={props.currentView}
+        setSelected={props.setSelected}
         setSaved={props.setSaved}
         outfits={props.outfits}
         selectedStyle={props.selectedStyle.selected}
