@@ -53,16 +53,15 @@ export default function OutfitList(props) {
 
   return(
 
-      <div className="carousel-container" style={{height: '384px'}}>
+      <div className="carousel-container" style={{maxHeight: '384px'}}>
         <div className= "carousel-container-inner" style={{
             transform: `translateX(${xPos}px)`,
             width: `${(props.outfits.length > 0) ? ((props.outfits.length + 1) /4) * props.width : 324}px`,
-            height: '100%'
         }}>
           <div className="add-outfit" onClick={() => saveOutfit(props.selectedStyle.selected)}
             style={{
               width: `${(props.outfits.length > 0) ? ((props.outfits.length + 1) /4) * 30 : 100}%`,
-              height: '100%'
+              height:'360px'
             }}
           >
             <div className="button-text">
