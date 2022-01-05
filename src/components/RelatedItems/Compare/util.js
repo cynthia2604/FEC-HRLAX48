@@ -23,20 +23,31 @@ const comparison = {
       paddingLeft: '5px',
     }
 
+    const rowStyle2 = {
+      color: (darkTheme) ? 'white' : 'black',
+      paddingRight: '20px',
+    }
+
+    const middleColumn = {
+      fontWeight:'bold',
+      paddingLeft:'80px',
+      color: (darkTheme) ? 'white' : 'black',
+    }
+
     return filteredArr.map((feature, i) => {
       if (feature.value.length > 1) {
         return (
           <TableRow style={{marginTop:'10px'}} key={i}>
             <TableCell align="left" style={rowStyle} >{feature.value[0]}</TableCell>
-            <TableCell scope="row" style={{fontWeight:'bold', color: rowStyle.color}}>{feature.feature} </TableCell>
-            <TableCell align="right" style={rowStyle}>{feature.value[1]}</TableCell>
+            <TableCell scope="row" style={middleColumn}>{feature.feature} </TableCell>
+            <TableCell align="right" style={rowStyle2}>{feature.value[1]}</TableCell>
           </TableRow>
         )
       } else if (arr1.features.some(item => item.feature === feature.feature)) {
         return (
           <TableRow style={{marginTop:'10px'}} key={i}>
             <TableCell align="left" style={rowStyle}>{feature.value[0]}</TableCell>
-            <TableCell scope="row" style={{fontWeight:'bold' , color: rowStyle.color}}>{feature.feature}</TableCell>
+            <TableCell scope="row" style={middleColumn}>{feature.feature}</TableCell>
             <TableCell align="right"></TableCell>
           </TableRow>
         )
@@ -44,8 +55,8 @@ const comparison = {
         return (
           <TableRow style={{marginTop:'10px'}} key={i}>
             <TableCell align="left"></TableCell>
-            <TableCell scope="row" style={{fontWeight:'bold', color: rowStyle.color}}>{feature.feature}</TableCell>
-            <TableCell align="right" style={rowStyle}>{feature.value[0]}</TableCell>
+            <TableCell scope="row" style={middleColumn}>{feature.feature}</TableCell>
+            <TableCell align="right" style={rowStyle2}>{feature.value[0]}</TableCell>
           </TableRow>
         )
       }

@@ -10,7 +10,7 @@ export default function RelatedList(props) {
   const [renderRight, setRenderRight] = React.useState(0)
 
   React.useEffect(() => {
-    setRenderRight(Math.floor(props.related.length/4))
+    setRenderRight(Math.ceil(props.related.length/4))
   }, [props.related])
 
   const entry =  props.related.map(product => {
@@ -23,6 +23,7 @@ export default function RelatedList(props) {
             darkTheme={props.darkTheme}
             width={props.width}
             related={props.related}
+            setSelected={props.setSelected}
           />
       )
   })
@@ -50,7 +51,6 @@ export default function RelatedList(props) {
         {(renderRight > 1) && <ArrowForwardIosIcon className="slide-button-right" onClick={() => translateX('right')}/> }
       </div>
   )
-
 }
 
 
