@@ -31,9 +31,17 @@ export default function OutfitList(props) {
     }
   }
 
+  function getHeight() {
+    if (props.related.length > 0) {
+      const height = document.getElementById('related-product-list').offsetHeight;
+      return height
+    }
+  }
+
   const entry = props.outfits.map((product,i) => (
       <OutfitListEntry
         key={i}
+        related={props.related}
         setSaved={props.setSaved}
         outfits={props.outfits}
         selectedStyle={props.selectedStyle.selected}
@@ -45,22 +53,28 @@ export default function OutfitList(props) {
 
   return(
 
-      <div className="carousel-container" >
+      <div className="carousel-container" style={{height: '384px'}}>
         <div className= "carousel-container-inner" style={{
             transform: `translateX(${xPos}px)`,
-            width: `${(props.outfits.length) ? ((props.outfits.length + 1) /4) * props.width : 1296}px`
+            width: `${(props.outfits.length > 0) ? ((props.outfits.length + 1) /4) * props.width : 324}px`,
+            height: '100%'
         }}>
           <div className="add-outfit" onClick={() => saveOutfit(props.selectedStyle.selected)}
             style={{
-              width: `${(props.outfits.length) ? ((props.outfits.length + 1) /4) * 30 : 30}%`
+              width: `${(props.outfits.length > 0) ? ((props.outfits.length + 1) /4) * 30 : 100}%`,
+              height: '100%'
             }}
-          > Add Outfit + </div>
+          >
+            <div className="button-text">
+              <h1>Add Outfit</h1>
+              <h2 style={{fontSize:'100px'}}>+</h2>
+            </div>
+          </div>
             {entry}
           </div>
         {(renderLeft > 0) && <ArrowBackIosNewIcon className="slide-button-left" onClick={() => translateX('left')}/>}
         {(renderRight > 1) && <ArrowForwardIosIcon className="slide-button-right" onClick={() => translateX('right')}/>}
       </div>
-
   )
 }
 

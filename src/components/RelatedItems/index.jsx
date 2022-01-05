@@ -44,6 +44,7 @@ export default function RelatedItems(props) {
               related ={relatedItems}
               setRenderTable={setRenderTable}
               renderTable={renderTable}
+              setSelected={props.setSelected}
               setSelectRelated={setSelectRelated}
               darkTheme={props.darkTheme}
               width= {width}
@@ -53,6 +54,7 @@ export default function RelatedItems(props) {
         <div className="sectionTitle" style={{paddingTop:'30px'}}>YOUR OUTFITS</div>
         <div className="user-created-outfit">
             <OutfitList
+              related={relatedItems}
               currentView={props.selected}
               saved={props.saved}
               setSaved={props.setSaved}

@@ -19,6 +19,13 @@ export default function CompareTable(props) {
     color: (props.darkTheme) ? 'white' : 'black',
   }
 
+  const colStyle2= {
+    fontWeight:'bold',
+    fontSize:'20px',
+    paddingRight:'20px',
+    color: (props.darkTheme) ? 'white' : 'black',
+  }
+
   const header = {
     fontSize:'13px',
     color: (props.darkTheme) ? 'white' : 'black',
@@ -29,7 +36,6 @@ export default function CompareTable(props) {
     top:'0',
     right:'0',
     color: (props.darkTheme) ? 'white' : 'black',
-    zIndex: 1
   }
 
   return(
@@ -41,7 +47,7 @@ export default function CompareTable(props) {
 
     {(props.selectedDescription && props.selectRelated)  &&
       <TableContainer sx={{
-        maxHeight: 200,
+        maxHeight: 300,
         marginLeft: '5px',
         "&::-webkit-scrollbar": {
           display: 'none'
@@ -62,8 +68,8 @@ export default function CompareTable(props) {
           </TableRow>
           <TableRow>
             <TableCell scope="col" align="left" style={colStyle}>{props.selected.name}</TableCell>
-            <TableCell scope ="col" align="inherit" style={colStyle}></TableCell>
-            <TableCell scope="col" align="right" style={colStyle}>{props.selectRelated.name}</TableCell>
+            <TableCell scope ="col" align="inherit"></TableCell>
+            <TableCell scope="col" align="right" style={colStyle2}>{props.selectRelated.name}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody style={{marginTop:'10px'}}>
@@ -72,7 +78,7 @@ export default function CompareTable(props) {
       </Table>
       </TableContainer>
     }
-    <ClearIcon style={button}onClick={()=> props.setRenderTable(!props.renderTable)}/>
+    <ClearIcon style={button} onClick={()=> props.setRenderTable(!props.renderTable)}/>
     </Paper>
   )
 }

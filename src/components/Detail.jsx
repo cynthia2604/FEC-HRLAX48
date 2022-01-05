@@ -67,6 +67,7 @@ export default function Detail(props) {
           <RelatedItems
             products={props.products}
             selected={props.selected}
+            setSelected={props.setSelected}
             setSaved={props.setSaved}
             saved={props.saved}
             outfits={props.outfits}

@@ -7,7 +7,8 @@ import SearchIcon from '@mui/icons-material/Search';
 
 export default function ProductImage(props) {
 
-  function showComparison(selected) {
+  function showComparison(selected, e) {
+    e.stopPropagation();
     props.setRenderTable(true)
      axios.get(`${Options.URL}/products/${Number(selected.product_id)}`, {
        headers: {
@@ -22,7 +23,7 @@ export default function ProductImage(props) {
     return(
       <div className="card-product-image">
         <img src={`${props.currentItem.results[0].photos[0].url || MigoPNG}`}/>
-        <SearchIcon className="modal-button" onClick={() => showComparison(props.currentItem)}/>
+        <SearchIcon className="modal-button" onClick={(e) => showComparison(props.currentItem, e)}/>
       </div>
     )
 

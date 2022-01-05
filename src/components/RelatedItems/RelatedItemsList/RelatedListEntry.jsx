@@ -19,10 +19,17 @@ export default function RelatedProductEntry(props) {
     }).then(res => setCurrent(res.data))
   }, [])
 
+  function reselectItem(current) {
+    props.setSelected(current)
+  }
+
   return (
     <>
     {current &&
-      <div className="product-card-entry" style={{width: `${(props.related.length/4)*30}%` }}>
+      <div className="product-card-entry"
+        style={{width: `${(props.related.length/4)*30}%` }}
+        onClick={() => reselectItem(props.currentItem)}
+      >
         <ProductImage
           currentItem={current}
           render={props.render}
