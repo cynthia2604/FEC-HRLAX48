@@ -42,7 +42,7 @@ const utils = {
   starRating: (rating) => {
     if (!rating) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarEmpty}
           {utils.StarEmpty}
           {utils.StarEmpty}
@@ -52,7 +52,7 @@ const utils = {
       );
     } else if (rating === 1) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilled}
           {utils.StarEmpty}
           {utils.StarEmpty}
@@ -62,7 +62,7 @@ const utils = {
       );
     } else if (rating === 2) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilled}
           {utils.StarFilled}
           {utils.StarEmpty}
@@ -72,7 +72,7 @@ const utils = {
       );
     } else if (rating === 3) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilled}
           {utils.StarFilled}
           {utils.StarFilled}
@@ -82,7 +82,7 @@ const utils = {
       );
     } else if (rating === 4) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilled}
           {utils.StarFilled}
           {utils.StarFilled}
@@ -92,7 +92,7 @@ const utils = {
       );
     } else if (rating === 5) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilled}
           {utils.StarFilled}
           {utils.StarFilled}
@@ -102,7 +102,7 @@ const utils = {
       );
     } else if (rating === 0.5) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarHalf}
           {utils.StarEmpty}
           {utils.StarEmpty}
@@ -112,7 +112,7 @@ const utils = {
       );
     } else if (rating === 1.5) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilled}
           {utils.StarHalf}
           {utils.StarEmpty}
@@ -122,7 +122,7 @@ const utils = {
       );
     } else if (rating === 2.5) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilled}
           {utils.StarFilled}
           {utils.StarHalf}
@@ -132,7 +132,7 @@ const utils = {
       );
     } else if (rating === 3.5) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilled}
           {utils.StarFilled}
           {utils.StarFilled}
@@ -142,7 +142,7 @@ const utils = {
       );
     } else if (rating === 4.5) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilled}
           {utils.StarFilled}
           {utils.StarFilled}
@@ -152,7 +152,7 @@ const utils = {
       );
     } else if (rating === 0.25) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarQuarter}
           {utils.StarEmpty}
           {utils.StarEmpty}
@@ -162,7 +162,7 @@ const utils = {
       );
     } else if (rating === 0.75) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarThreeQuarters}
           {utils.StarEmpty}
           {utils.StarEmpty}
@@ -172,7 +172,7 @@ const utils = {
       );
     } else if (rating === 1.25) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilled}
           {utils.StarQuarter}
           {utils.StarEmpty}
@@ -182,7 +182,7 @@ const utils = {
       );
     } else if (rating === 1.75) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilled}
           {utils.StarThreeQuarters}
           {utils.StarEmpty}
@@ -192,7 +192,7 @@ const utils = {
       );
     } else if (rating === 2.25) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilled}
           {utils.StarFilled}
           {utils.StarQuarter}
@@ -202,7 +202,7 @@ const utils = {
       );
     } else if (rating === 2.75) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilled}
           {utils.StarFilled}
           {utils.StarThreeQuarters}
@@ -212,7 +212,7 @@ const utils = {
       );
     } else if (rating === 3.25) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilled}
           {utils.StarFilled}
           {utils.StarFilled}
@@ -222,7 +222,7 @@ const utils = {
       );
     } else if (rating === 3.75) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilled}
           {utils.StarFilled}
           {utils.StarFilled}
@@ -232,7 +232,7 @@ const utils = {
       );
     } else if (rating === 4.25) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilled}
           {utils.StarFilled}
           {utils.StarFilled}
@@ -242,7 +242,7 @@ const utils = {
       );
     } else if (rating === 4.75) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilled}
           {utils.StarFilled}
           {utils.StarFilled}
@@ -256,7 +256,7 @@ const utils = {
   starRatingWhite: (rating) => {
     if (!rating) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarEmptyWhite}
           {utils.StarEmptyWhite}
           {utils.StarEmptyWhite}
@@ -266,7 +266,7 @@ const utils = {
       );
     } else if (rating === 1) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilledWhite}
           {utils.StarEmptyWhite}
           {utils.StarEmptyWhite}
@@ -276,7 +276,7 @@ const utils = {
       );
     } else if (rating === 2) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilledWhite}
           {utils.StarFilledWhite}
           {utils.StarEmptyWhite}
@@ -286,7 +286,7 @@ const utils = {
       );
     } else if (rating === 3) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilledWhite}
           {utils.StarFilledWhite}
           {utils.StarFilledWhite}
@@ -296,7 +296,7 @@ const utils = {
       );
     } else if (rating === 4) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilledWhite}
           {utils.StarFilledWhite}
           {utils.StarFilledWhite}
@@ -306,7 +306,7 @@ const utils = {
       );
     } else if (rating === 5) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilledWhite}
           {utils.StarFilledWhite}
           {utils.StarFilledWhite}
@@ -316,7 +316,7 @@ const utils = {
       );
     } else if (rating === 0.5) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarHalfWhite}
           {utils.StarEmptyWhite}
           {utils.StarEmptyWhite}
@@ -326,7 +326,7 @@ const utils = {
       );
     } else if (rating === 1.5) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilledWhite}
           {utils.StarHalfWhite}
           {utils.StarEmptyWhite}
@@ -336,7 +336,7 @@ const utils = {
       );
     } else if (rating === 2.5) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilledWhite}
           {utils.StarFilledWhite}
           {utils.StarHalfWhite}
@@ -346,7 +346,7 @@ const utils = {
       );
     } else if (rating === 3.5) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilledWhite}
           {utils.StarFilledWhite}
           {utils.StarFilledWhite}
@@ -356,7 +356,7 @@ const utils = {
       );
     } else if (rating === 4.5) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilledWhite}
           {utils.StarFilledWhite}
           {utils.StarFilledWhite}
@@ -366,7 +366,7 @@ const utils = {
       );
     } else if (rating === 0.25) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarQuarterWhite}
           {utils.StarEmptyWhite}
           {utils.StarEmptyWhite}
@@ -376,7 +376,7 @@ const utils = {
       );
     } else if (rating === 0.75) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarThreeQuartersWhite}
           {utils.StarEmptyWhite}
           {utils.StarEmptyWhite}
@@ -386,7 +386,7 @@ const utils = {
       );
     } else if (rating === 1.25) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilledWhite}
           {utils.StarQuarterWhite}
           {utils.StarEmptyWhite}
@@ -396,7 +396,7 @@ const utils = {
       );
     } else if (rating === 1.75) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilledWhite}
           {utils.StarThreeQuartersWhite}
           {utils.StarEmptyWhite}
@@ -406,7 +406,7 @@ const utils = {
       );
     } else if (rating === 2.25) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilledWhite}
           {utils.StarFilledWhite}
           {utils.StarQuarterWhite}
@@ -416,7 +416,7 @@ const utils = {
       );
     } else if (rating === 2.75) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilledWhite}
           {utils.StarFilledWhite}
           {utils.StarThreeQuartersWhite}
@@ -426,7 +426,7 @@ const utils = {
       );
     } else if (rating === 3.25) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilledWhite}
           {utils.StarFilledWhite}
           {utils.StarFilledWhite}
@@ -436,7 +436,7 @@ const utils = {
       );
     } else if (rating === 3.75) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilledWhite}
           {utils.StarFilledWhite}
           {utils.StarFilledWhite}
@@ -446,7 +446,7 @@ const utils = {
       );
     } else if (rating === 4.25) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilledWhite}
           {utils.StarFilledWhite}
           {utils.StarFilledWhite}
@@ -456,7 +456,7 @@ const utils = {
       );
     } else if (rating === 4.75) {
       return (
-        <div>
+        <div className='d-flex align-items-center'>
           {utils.StarFilledWhite}
           {utils.StarFilledWhite}
           {utils.StarFilledWhite}
