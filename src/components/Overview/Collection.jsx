@@ -43,7 +43,7 @@ export default function Collection({ darkTheme }) {
       <Snackbar
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
         open={open}
-        message={star ? "Added to outfits!" : "Removed from outfits!"}
+        message={star ? "Added to Outfits!" : "Removed from Outfits!"}
         onClose={handleClose}
         autoHideDuration={3000}
       />
