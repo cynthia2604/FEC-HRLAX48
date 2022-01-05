@@ -4,9 +4,11 @@ import RelatedItemRating from '../RelatedItemRating';
 import axios from 'axios';
 import Options from '../../../config.js';
 import utils from '../../utils.js';
+import { useStateValue } from "../../Overview/store/StateProvider";
 
 export default function OutListEntry(props) {
   const [currentRating, setCurrentRating] = React.useState();
+  const [{ selected }, dispatch] = useStateValue();
 
   React.useEffect(() => {
     const params = {
@@ -23,12 +25,36 @@ export default function OutListEntry(props) {
     }
   }, [props.currentStyle]);
 
+  function displayStyle () {
+    dispatch({
+      type: "ADD_TO_SELECTED",
+      item: {
+        color: `${props.currentStyle.name}`,
+        skus: props.currentStyle.skus,
+        photos: props.currentStyle.photos,
+        originalPrice: props.currentStyle.originalPrice,
+        salePrice: props.currentStyle.salePrice,
+        thumbnail: props.currentStyle.thumbnail,
+        productId: props.currentStyle.productId,
+        productName: props.currentStyle.productName,
+        category: props.currentStyle.category,
+      },
+    });
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+
+
   return (
     <>
       {props.currentStyle && currentRating && (
         <div
           className='outfit-card-entry'
           style={{ width: `${(props.outfits.length / 4) * 30}%` }}
+          onClick={() => displayStyle()}
+          type="button"
         >
           <OutfitListImage
             setSaved={props.setSaved}

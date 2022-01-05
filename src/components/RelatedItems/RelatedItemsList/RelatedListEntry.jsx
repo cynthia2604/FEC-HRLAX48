@@ -21,6 +21,10 @@ export default function RelatedProductEntry(props) {
 
   function reselectItem(current) {
     props.setSelected(current)
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }
 
   return (
