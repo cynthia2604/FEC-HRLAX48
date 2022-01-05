@@ -138,8 +138,8 @@ body {
 
 .pd__container .expand-icon {
   position: absolute;
-  left: 93%;
-  bottom: 90%;
+  top: 8px;
+  right: 16px;
 }
 
 .pd__style-icon {
