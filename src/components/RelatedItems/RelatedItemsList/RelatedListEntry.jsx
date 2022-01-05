@@ -27,7 +27,7 @@ export default function RelatedProductEntry(props) {
     <>
     {current &&
       <div className="product-card-entry"
-        style={{width: `${(props.related.length/4)*30}%` }}
+        style={{width: `${(props.related.length/4)*30}%`, cursor: 'pointer' }}
         onClick={() => reselectItem(props.currentItem)}
       >
         <ProductImage
