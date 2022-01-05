@@ -3,7 +3,7 @@ import { useStateValue } from "./store/StateProvider";
 import Dropdown from "react-bootstrap/Dropdown";
 import { v4 as uuidv4 } from "uuid";
 
-export default function QuantityDropdown() {
+export default function QuantityDropdown({ darkTheme }) {
   const [{ selected }, dispatch] = useStateValue();
 
   const handleDisplay = (qty) => {
@@ -25,6 +25,7 @@ export default function QuantityDropdown() {
               handleDisplay(qty);
             }}
             key={uuidv4()}
+            className={darkTheme && "dropdown-item-dark"}
           >
             {qty}
           </Dropdown.Item>

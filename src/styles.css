@@ -81,6 +81,15 @@ body {
   border-color: black;
 }
 
+.dropdown-item-dark {
+  color: rgb(255, 255, 255);
+  background-color: rgb(50, 50, 50);
+}
+
+.dropdown-menu {
+  padding: 0px;
+}
+
 .btn-large {
   min-width: 100%;
   height: 100%;

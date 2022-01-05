@@ -2,7 +2,7 @@ import React from "react";
 import { useStateValue } from "./store/StateProvider";
 import Dropdown from "react-bootstrap/Dropdown";
 
-export default function SizeDropdown() {
+export default function SizeDropdown({ darkTheme }) {
   const [{ selected, toggleWarning }, dispatch] = useStateValue();
 
   const handleDisplay = (sku) => {
@@ -44,6 +44,7 @@ export default function SizeDropdown() {
         }}
         sku={sku.size}
         key={sku.id}
+        className={darkTheme && "dropdown-item-dark"}
       >
         {selected.quantity !== null ? sku.size : null}
       </Dropdown.Item>
