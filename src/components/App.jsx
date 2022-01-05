@@ -94,6 +94,8 @@ export default function App(props) {
             basket={basket}
             dispatch={dispatch}
             setView={setView}
+            setSelectedProduct={setSelected}
+            products={products}
           />
         </div>
       )}

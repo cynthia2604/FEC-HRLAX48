@@ -3,25 +3,21 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import { useStateValue } from "../Overview/store/StateProvider";
 
-export default function BagItem({ item, deleteCartItem, setView }) {
-  const [{ basket, selected }, dispatch] = useStateValue();
-
+export default function BagItem({
+  item,
+  deleteCartItem,
+  setView,
+  setSelectedProduct,
+  products,
+}) {
   const handleProduct = () => {
-    for (var key in basket) {
-      if (item.id === basket[key].id) {
-        dispatch({
-          type: "ADD_TO_SELECTED",
-          item: {
-            ...basket[key],
-            size: "Select Size",
-            quantity: "-",
-          },
-        });
+    for (var product of products) {
+      if (item.productId === product.id) {
+        setSelectedProduct(product);
+        setView("detail");
       }
     }
-    setView("detail");
   };
 
   return (

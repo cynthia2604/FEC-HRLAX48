@@ -6,7 +6,14 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { v4 as uuidv4 } from "uuid";
 
-export default function BagItems({ basket, dispatch, darkTheme, setView }) {
+export default function BagItems({
+  basket,
+  dispatch,
+  darkTheme,
+  setView,
+  setSelectedProduct,
+  products,
+}) {
   const deleteCartItem = (id) => {
     const filtered = basket.filter((item) => item.id !== id);
     dispatch({
@@ -28,6 +35,8 @@ export default function BagItems({ basket, dispatch, darkTheme, setView }) {
                   item={item}
                   deleteCartItem={deleteCartItem}
                   setView={setView}
+                  setSelectedProduct={setSelectedProduct}
+                  products={products}
                 />
               );
             })

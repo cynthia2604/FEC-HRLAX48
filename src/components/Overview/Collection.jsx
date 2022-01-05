@@ -27,14 +27,14 @@ export default function Collection({ darkTheme }) {
         variant={darkTheme ? "outline-light" : "outline-secondary"}
         size="small"
         onClick={handleClick}
-        style={{ padding: "0px", height: "38px" }}
+        style={{ padding: "0px", height: "38px", align: "center" }}
       >
         {star ? (
           <StarIcon
             sx={{
               color: "#ffd700",
             }}
-            style={{ padding: "0px" }}
+            style={{ padding: "0px", align: "center" }}
           />
         ) : (
           <StarBorderIcon />
@@ -43,7 +43,7 @@ export default function Collection({ darkTheme }) {
       <Snackbar
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
         open={open}
-        message={star ? "Added To Collection!" : "Removed From Collection!"}
+        message={star ? "Added to outfits!" : "Removed from outfits!"}
         onClose={handleClose}
         autoHideDuration={3000}
       />
