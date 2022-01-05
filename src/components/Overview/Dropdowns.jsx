@@ -24,7 +24,7 @@ export default function Dropdowns({ darkTheme }) {
               disabled={selected.quantity === "Out Of Stock" ? true : false}
               size="large"
             >
-              <SizeDropdown key={uuidv4()} />
+              <SizeDropdown key={uuidv4()} darkTheme={darkTheme} />
             </DropdownButton>
           </Col>
           <Col style={{ padding: "0px", margin: "0px" }}>
@@ -35,7 +35,7 @@ export default function Dropdowns({ darkTheme }) {
               title={selected.quantity || "-"}
               size="small"
             >
-              <QuantityDropdown key={uuidv4()} />
+              <QuantityDropdown key={uuidv4()} darkTheme={darkTheme} />
             </DropdownButton>
           </Col>
         </Row>

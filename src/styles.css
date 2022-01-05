@@ -71,9 +71,23 @@ body {
   padding: 0;
 }
 
+.dropdown-menu {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
 .btn-outline-secondary {
   color: black;
   border-color: black;
+}
+
+.dropdown-item-dark {
+  color: rgb(255, 255, 255);
+  background-color: rgb(50, 50, 50);
+}
+
+.dropdown-menu {
+  padding: 0px;
 }
 
 .btn-large {
@@ -124,8 +138,8 @@ body {
 
 .pd__container .expand-icon {
   position: absolute;
-  left: 93%;
-  bottom: 90%;
+  top: 8px;
+  right: 16px;
 }
 
 .pd__style-icon {

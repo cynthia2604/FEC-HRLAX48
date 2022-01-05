@@ -4,7 +4,22 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
-export default function BagItem({ item, deleteCartItem }) {
+export default function BagItem({
+  item,
+  deleteCartItem,
+  setView,
+  setSelectedProduct,
+  products,
+}) {
+  const handleProduct = () => {
+    for (var product of products) {
+      if (item.productId === product.id) {
+        setSelectedProduct(product);
+        setView("detail");
+      }
+    }
+  };
+
   return (
     <Row>
       <Col md={2}>
@@ -13,11 +28,15 @@ export default function BagItem({ item, deleteCartItem }) {
           height="100px"
           width="100px"
           style={{ objectFit: "cover" }}
+          type="button"
+          onClick={handleProduct}
         ></img>
       </Col>
       <Col md={8}>
         <b>
-          <div>{item.name}</div>
+          <div type="button" onClick={handleProduct}>
+            {item.name}
+          </div>
         </b>
         <div>{item.color}</div>
 

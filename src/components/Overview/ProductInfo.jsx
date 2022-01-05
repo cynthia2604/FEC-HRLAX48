@@ -24,7 +24,6 @@ export default function ProductInfo({
       {reviews.results.length ? (
         <div className="pd__box">
           <div className="pd__normal mb-2 me-3">
-            {" "}
             {darkTheme
               ? utils.starRatingWhite(rating)
               : utils.starRating(rating)}

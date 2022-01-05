@@ -27,24 +27,25 @@ export default function Collection({ darkTheme }) {
         variant={darkTheme ? "outline-light" : "outline-secondary"}
         size="small"
         onClick={handleClick}
+        style={{ padding: "0px", height: "38px", align: "center" }}
       >
         {star ? (
           <StarIcon
             sx={{
               color: "#ffd700",
             }}
-            fontSize="23px"
+            style={{ padding: "0px", align: "center" }}
           />
         ) : (
-          <StarBorderIcon fontSize="23px" />
+          <StarBorderIcon />
         )}
       </Button>
       <Snackbar
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
         open={open}
-        message={star ? "Added To Collection!" : "Removed From Collection!"}
+        message={star ? "Added to outfits!" : "Removed from outfits!"}
         onClose={handleClose}
-        autoHideDuration={1000}
+        autoHideDuration={3000}
       />
     </>
   );

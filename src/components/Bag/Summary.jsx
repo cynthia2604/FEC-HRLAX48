@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import Snackbar from "@mui/material/Snackbar";
 
 export default function Summary({ basket, darkTheme }) {
   const subtotal =
@@ -15,6 +16,16 @@ export default function Summary({ basket, darkTheme }) {
         0
       )
       .toFixed(2);
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const totalPrice = (subtotal * (1 + 0.1025)).toFixed(2);
 
@@ -53,9 +64,17 @@ export default function Summary({ basket, darkTheme }) {
       <Button
         variant={darkTheme ? "outline-light" : "outline-secondary"}
         style={{ width: "100%" }}
+        onClick={handleClick}
       >
         Checkout
       </Button>
+      <Snackbar
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        open={open}
+        message={"Thanks for shopping with us!"}
+        onClose={handleClose}
+        autoHideDuration={3000}
+      />
     </>
   );
 }
