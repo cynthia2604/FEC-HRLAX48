@@ -44,7 +44,7 @@ export default function Collection({ darkTheme }) {
         open={open}
         message={star ? "Added To Collection!" : "Removed From Collection!"}
         onClose={handleClose}
-        autoHideDuration={1000}
+        autoHideDuration={3000}
       />
     </>
   );
