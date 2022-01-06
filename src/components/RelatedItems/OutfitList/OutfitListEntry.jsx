@@ -36,23 +36,6 @@ export default function OutListEntry(props) {
         props.setSelected(res.data);
       });
 
-    // setTimeout(() => {
-    //   dispatch({
-    //     type: "ADD_TO_SELECTED",
-    //     item: {
-    //       color: props.currentStyle.name,
-    //       skus: props.currentStyle.skus,
-    //       photos: props.currentStyle.photos,
-    //       originalPrice: props.currentStyle.originalPrice,
-    //       salePrice: props.currentStyle.salePrice,
-    //       thumbnail: props.currentStyle.thumbnail,
-    //       productId: props.currentStyle.productId,
-    //       productName: props.currentStyle.productName,
-    //       category: props.currentStyle.category,
-    //       },
-    //   })
-    // }, 500)
-
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
@@ -132,34 +115,3 @@ export default function OutListEntry(props) {
     </>
   );
 }
-//   {selected.salePrice ? (
-//     <div>
-//       <span>
-//         <s>{"$" + selected.originalPrice}</s>
-//       </span>
-//       <span style={{ color: "red" }} className="ms-2">
-//         {"$" + selected.salePrice}
-//       </span>
-//     </div>
-//   ) : (
-//     "$" + selected.originalPrice
-//   )}
-
-// }
-
-// <div className="user-product-price" style={{fontSize: '0.8em', marginLeft: '10px'}}>{props.currentStyle.originalPrice}</div>
-
-// dispatch({
-//   type: "ADD_TO_SELECTED",
-//   item: {
-//     color: props.currentStyle.name,
-//     skus: props.currentStyle.skus,
-//     photos: props.currentStyle.photos,
-//     originalPrice: props.currentStyle.originalPrice,
-//     salePrice: props.currentStyle.salePrice,
-//     thumbnail: props.currentStyle.thumbnail,
-//     productId: props.currentStyle.productId,
-//     productName: props.currentStyle.productName,
-//     category: props.currentStyle.category,
-//   },
-// })
