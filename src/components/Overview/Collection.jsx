@@ -8,11 +8,49 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
 import Snackbar from "@mui/material/Snackbar";
 
-export default function Collection({ darkTheme }) {
+export default function Collection({ darkTheme, saved, setSaved, selected }) {
   const [star, setStar] = React.useState(false);
   const [open, setOpen] = React.useState(false);
 
+  React.useEffect(() => {
+    checkOutfit();
+  }, [selected, saved]);
+
+  function checkOutfit() {
+    for (let i = 0; i < saved.length; i++) {
+      if (
+        selected.productId === saved[i].productId &&
+        selected.index === saved[i].index
+      ) {
+        setStar(true);
+        return;
+      }
+    }
+    setStar(false);
+  }
+
+  function handleOutfit() {
+    if (star) {
+      let removeOutfit = saved.filter(
+        (product) =>
+          product.productId !== selected.productId ||
+          (product.productId === selected.productId &&
+            product.index !== selected.index)
+      );
+      setSaved(removeOutfit);
+    } else {
+      let noDuplicateOutfits = saved.filter(
+        (product) =>
+          product.productId !== selected.productId ||
+          (product.productId === selected.productId &&
+            product.index !== selected.index)
+      );
+      setSaved([...noDuplicateOutfits, selected]);
+    }
+  }
+
   const handleClick = () => {
+    handleOutfit();
     setStar(!star);
     setOpen(true);
   };
