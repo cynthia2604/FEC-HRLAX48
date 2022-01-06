@@ -433,20 +433,19 @@ body {
   display: inline-flex;
   position: relative;
   flex-direction: row;
-  justify-content: space-between;
 }
 
 .outfit-card-entry,
 .product-card-entry {
-  margin-left: 30px;
   border-style: solid;
   border-width: thin;
   position: relative;
-  flex-basis: 0;
-  flex-grow: 1;
+  margin: 0 25px 0 25px;
+  flex: 1 0 0;
 }
 
 .slide-button-right {
+  cursor: pointer;
   position: absolute;
   top: 50%;
   right: 0;
@@ -455,6 +454,7 @@ body {
 }
 
 .slide-button-left {
+  cursor: pointer;
   position: absolute;
   left: 0;
   top: 50%;
