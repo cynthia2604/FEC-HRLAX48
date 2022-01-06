@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import Style from "./Style";
-import { v4 as uuidv4 } from "uuid";
-import { useStateValue } from "./store/StateProvider";
-import Dropdowns from "./Dropdowns";
+import React, { useEffect } from 'react';
+import Style from './Style';
+import { v4 as uuidv4 } from 'uuid';
+import { useStateValue } from './store/StateProvider';
+import Dropdowns from './Dropdowns';
 
 export default function Styles({
   productStyles,
@@ -15,10 +15,10 @@ export default function Styles({
 
   return (
     <>
-      <div className="pd__styleText mb-3">{"Style: " + selected.color}</div>
-      <div className="d-flex align-content-start flex-wrap">
+      <div className='pd__styleText mb-3'>{'Style: ' + selected.color}</div>
+      <div className='d-flex align-content-start flex-wrap'>
         {productStyles.results &&
-          productStyles.results.map((style) => (
+          productStyles.results.map((style, index) => (
             <Style
               key={style.style_id}
               name={style.name}
@@ -30,6 +30,7 @@ export default function Styles({
               productId={productId}
               productName={productName}
               category={category}
+              index={index}
             />
           ))}
       </div>

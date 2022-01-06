@@ -4,9 +4,18 @@ import Options from '../config.js';
 import migos from '../assets/Migos.png';
 import { Box } from '@mui/system';
 import { CircularProgress, Pagination } from '@mui/material';
+import { useStateValue } from './Overview/store/StateProvider';
 
 export default function Catalogue(props) {
+  const [{ selected }, dispatch] = useStateValue();
+
   function handleClick(product) {
+    dispatch({
+      type: 'ADD_TO_SELECTED',
+      item: {
+        index: 0,
+      },
+    });
     props.setSelected(product);
     props.setView('detail');
   }

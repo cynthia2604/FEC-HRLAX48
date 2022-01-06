@@ -1,18 +1,18 @@
-import React from "react";
-import { useStateValue } from "./store/StateProvider";
-import BagModal from "./BagModal";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Collection from "./Collection";
-import Button from "react-bootstrap/Button";
+import React from 'react';
+import { useStateValue } from './store/StateProvider';
+import BagModal from './BagModal';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Collection from './Collection';
+import Button from 'react-bootstrap/Button';
 
-export default function AddToBag({ setView, darkTheme }) {
+export default function AddToBag({ setView, darkTheme, setSaved, saved }) {
   const [{ basket, selected, toggleWarning }, dispatch] = useStateValue();
   const [show, setShow] = React.useState(false);
 
   const handleAdd = () => {
-    if (typeof selected.quantity === "number") {
+    if (typeof selected.quantity === 'number') {
       let newBasket = null;
 
       for (var i = 0; i < basket.length; i++) {
@@ -39,12 +39,12 @@ export default function AddToBag({ setView, darkTheme }) {
 
       if (newBasket) {
         dispatch({
-          type: "REPLACE_BASKET",
+          type: 'REPLACE_BASKET',
           item: newBasket,
         });
       } else {
         dispatch({
-          type: "ADD_TO_BASKET",
+          type: 'ADD_TO_BASKET',
           item: {
             id: selected.id,
             color: selected.color,
@@ -67,7 +67,7 @@ export default function AddToBag({ setView, darkTheme }) {
       setShow(true);
     } else {
       dispatch({
-        type: "TOGGLE_WARNING",
+        type: 'TOGGLE_WARNING',
         item: true,
       });
     }
@@ -80,26 +80,31 @@ export default function AddToBag({ setView, darkTheme }) {
   return (
     <>
       <Container fluid>
-        <Row className="pt-2">
+        <Row className='pt-2'>
           <Col
-            className="col-10 pe-2"
-            style={{ padding: "0px", margin: "0px" }}
+            className='col-10 pe-2'
+            style={{ padding: '0px', margin: '0px' }}
           >
             <Button
-              variant={darkTheme ? "outline-light" : "outline-secondary"}
-              style={{ width: "100%" }}
+              variant={darkTheme ? 'outline-light' : 'outline-secondary'}
+              style={{ width: '100%' }}
               onClick={handleAdd}
             >
               Add To Bag
             </Button>
           </Col>
-          <Col style={{ padding: "0px", margin: "0px" }}>
-            <Collection darkTheme={darkTheme} />
+          <Col style={{ padding: '0px', margin: '0px' }}>
+            <Collection
+              darkTheme={darkTheme}
+              saved={saved}
+              setSaved={setSaved}
+              selected={selected}
+            />
           </Col>
         </Row>
         {toggleWarning ? (
           <Row>
-            <div style={{ color: "red", textAlign: "center" }}>
+            <div style={{ color: 'red', textAlign: 'center' }}>
               --select size first--
             </div>
           </Row>
