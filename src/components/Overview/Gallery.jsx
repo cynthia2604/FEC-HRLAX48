@@ -28,7 +28,7 @@ export default function Gallery({ selected, handleExpand }) {
               showPlayButton={false}
             />
           </div>
-          <div className='expand-icon' type='button' onClick={handleExpand}>
+          <div className='expand-icon cP' onClick={handleExpand}>
             <AspectRatioIcon key={uuidv4()} sx={{ color: 'white' }} />
           </div>
         </div>

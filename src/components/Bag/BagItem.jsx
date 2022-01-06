@@ -46,13 +46,13 @@ export default function BagItem({
           height='120px'
           width='120px'
           style={{ objectFit: 'cover' }}
-          type='button'
+          className='cP'
           onClick={handleProduct}
         ></img>
       </Col>
       <Col xs={5}>
         <b>
-          <div type='button' onClick={handleProduct}>
+          <div className='cP' onClick={handleProduct}>
             {item.name}
           </div>
         </b>
@@ -74,7 +74,7 @@ export default function BagItem({
           onClick={() => {
             deleteCartItem(item.id);
           }}
-          type='button'
+          className='cP'
         />
       </Col>
       <hr className='mt-3'></hr>

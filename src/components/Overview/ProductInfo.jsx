@@ -31,7 +31,7 @@ export default function ProductInfo({
               : utils.starRating(rating)}
           </div>
           <div className='pd__normal mb-2'>
-            <u type='button' onClick={handleScroll}>
+            <u className='cP' onClick={handleScroll}>
               Read All {reviews.results.length} Reviews
             </u>
           </div>
