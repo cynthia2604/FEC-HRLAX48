@@ -30,8 +30,23 @@ export default function Style({
         productName: productName,
         category: category,
         index: index,
+        id: getCurrentID(),
       },
     });
+  };
+
+  const getCurrentID = () => {
+    let result = [];
+    for (var key in skus) {
+      let current = skus[key];
+      result.push({
+        id: key,
+        quantity: current.quantity,
+        size: current.size,
+      });
+    }
+    result = result.filter((item) => item.size === selected.size);
+    return result[0]?.id;
   };
 
   return (
