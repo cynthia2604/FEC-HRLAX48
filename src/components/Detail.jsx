@@ -1,13 +1,13 @@
-import React from "react";
-import Overview from "./Overview";
-import RatingsAndReviews from "./RatingsReviews";
-import RelatedItems from "./RelatedItems";
-import axios from "axios";
-import Options from "../config";
-import QuestionsAnswers from "./QuestionsAnswers";
-import { useStateValue } from "../components/Overview/store/StateProvider";
-import { Box } from "@mui/system";
-import { CircularProgress } from "@mui/material";
+import React from 'react';
+import Overview from './Overview';
+import RatingsAndReviews from './RatingsReviews';
+import RelatedItems from './RelatedItems';
+import axios from 'axios';
+import Options from '../config';
+import QuestionsAnswers from './QuestionsAnswers';
+import { useStateValue } from '../components/Overview/store/StateProvider';
+import { Box } from '@mui/system';
+import { CircularProgress } from '@mui/material';
 
 export default function Detail(props) {
   const [rating, setRating] = React.useState();
@@ -47,15 +47,13 @@ export default function Detail(props) {
   return (
     <>
       {(!productInfo || rating === undefined) && (
-        // {(!productInfo || !rating) && (
-        <div className="d-flex flex-wrap justify-content-center align-items-center">
-          <Box sx={{ display: "flex" }}>
-            <CircularProgress color="inherit" />
+        <div className='d-flex flex-wrap justify-content-center align-items-center'>
+          <Box sx={{ display: 'flex' }}>
+            <CircularProgress color='inherit' />
           </Box>
         </div>
       )}
       {productInfo && rating !== undefined && (
-        // {productInfo && !!rating && (
         <div>
           <Overview
             selectedProduct={props.selected}
@@ -63,6 +61,8 @@ export default function Detail(props) {
             productInfo={productInfo}
             darkTheme={props.darkTheme}
             setView={props.setView}
+            setSaved={props.setSaved}
+            saved={props.saved}
           />
           <RelatedItems
             products={props.products}

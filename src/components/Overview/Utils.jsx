@@ -1,6 +1,11 @@
-export default function getDefault(productStyles, productDetail, dispatch) {
+export default function getDefault(
+  productStyles,
+  productDetail,
+  dispatch,
+  index = 0
+) {
   if (productStyles.results && productDetail) {
-    let defaultObj = productStyles.results[0];
+    let defaultObj = productStyles.results[index];
     let color = defaultObj.name;
     let photos = defaultObj.photos;
     let skus = defaultObj.skus;
@@ -8,15 +13,15 @@ export default function getDefault(productStyles, productDetail, dispatch) {
     let salePrice = defaultObj.sale_price;
 
     let hasSku = () => {
-      if (Object.keys(skus)[0] !== "null") {
-        return "-";
+      if (Object.keys(skus)[0] !== 'null') {
+        return '-';
       } else {
-        return "Out Of Stock";
+        return 'Out Of Stock';
       }
     };
 
     dispatch({
-      type: "ADD_TO_SELECTED",
+      type: 'ADD_TO_SELECTED',
       item: {
         color: color,
         skus: skus,
@@ -24,12 +29,13 @@ export default function getDefault(productStyles, productDetail, dispatch) {
         thumbnail: photos[0].thumbnail_url,
         originalPrice: originalPrice,
         salePrice: salePrice,
-        size: "Select Size",
+        size: 'Select Size',
         quantity: hasSku(),
         disabled: true,
         productName: productDetail.name,
         category: productDetail.category,
         productId: productDetail.id,
+        index: index,
       },
     });
   }

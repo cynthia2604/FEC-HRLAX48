@@ -1,16 +1,16 @@
-import React from "react";
-import axios from "axios";
-import Options from "../../config";
-import Gallery from "./Gallery";
-import ProductInfo from "./ProductInfo";
-import Description from "./Description";
-import Features from "./Features";
-import Share from "./Share";
-import OverviewInfo from "./OverviewInfo";
-import "../../styles.css";
-import { v4 as uuidv4 } from "uuid";
-import { useStateValue } from "./store/StateProvider";
-import getDefault from "./Utils";
+import React from 'react';
+import axios from 'axios';
+import Options from '../../config';
+import Gallery from './Gallery';
+import ProductInfo from './ProductInfo';
+import Description from './Description';
+import Features from './Features';
+import Share from './Share';
+import OverviewInfo from './OverviewInfo';
+import '../../styles.css';
+import { v4 as uuidv4 } from 'uuid';
+import { useStateValue } from './store/StateProvider';
+import getDefault from './Utils';
 
 export default function Overview({
   rating,
@@ -18,6 +18,8 @@ export default function Overview({
   darkTheme,
   selectedProduct,
   setView,
+  setSaved,
+  saved,
 }) {
   const [productDetail, setProductDetail] = React.useState({});
   const [productStyles, setProductStyles] = React.useState({});
@@ -42,7 +44,7 @@ export default function Overview({
   }, [selectedProduct]);
 
   React.useEffect(() => {
-    getDefault(productStyles, productDetail, dispatch);
+    getDefault(productStyles, productDetail, dispatch, selected.index);
   }, [productStyles, productDetail]);
 
   const handleExpand = () => {
@@ -50,9 +52,9 @@ export default function Overview({
   };
 
   return (
-    <div className="mb-3">
-      <div className="pd__box mb-4 pb-4">
-        <div className={isExpand ? "pd__gallery-expand" : "wide"}>
+    <div className='mb-3'>
+      <div className='pd__box mb-4 pb-4'>
+        <div className={isExpand ? 'pd__gallery-expand' : 'wide'}>
           {selected.productId === productDetail.id &&
             selected.photos?.length > 0 && (
               <Gallery
@@ -63,7 +65,7 @@ export default function Overview({
             )}
         </div>
         {!isExpand ? (
-          <div className="narrow">
+          <div className='narrow'>
             <ProductInfo
               selected={selected}
               productDetail={productDetail}
@@ -72,19 +74,21 @@ export default function Overview({
               reviews={productInfo}
               darkTheme={darkTheme}
               setView={setView}
+              saved={saved}
+              setSaved={setSaved}
             />
           </div>
         ) : null}
       </div>
-      <div className="pd__box d-flex justify-content-between pb-3 pt-1">
-        <div className="w-50">
+      <div className='pd__box d-flex justify-content-between pb-3 pt-1'>
+        <div className='w-50'>
           <Description productDetail={productDetail} />
         </div>
         {productDetail.overview ? (
           <OverviewInfo overview={productDetail.overview} />
         ) : null}
         <div>
-          <Features productDetail={productDetail} className="w-30" />
+          <Features productDetail={productDetail} className='w-30' />
         </div>
         <div>
           <Share />
