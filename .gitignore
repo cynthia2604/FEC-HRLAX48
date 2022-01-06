@@ -2,6 +2,7 @@
 coverage/
 dist/*
 !dist/index.html
+!dist/migofav.jpg
 node_modules/
 *.log
 src/config.js
