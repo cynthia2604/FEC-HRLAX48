@@ -58,17 +58,6 @@ export default function OutfitList(props) {
           width: `${((props.outfits.length) / 4) * props.width}px`,
         }}
       >
-        {/* <div className="add-outfit" onClick={() => saveOutfit(props.selectedStyle.selected)}
-            style={{
-              width: `${(props.outfits.length > 0) ? ((props.outfits.length + 1) /4) * 30 : 100}%`,
-              height:'360px'
-            }}
-          >
-            <div className="button-text">
-              <h1>Add Outfit</h1>
-              <h2 style={{fontSize:'100px'}}>+</h2>
-            </div>
-          </div> */}
         {entry}
       </div>
       {renderLeft > 0 && (
