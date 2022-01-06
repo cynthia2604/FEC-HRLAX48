@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import AspectRatioIcon from '@mui/icons-material/AspectRatio';
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
+import MigosImage from '../../assets/Migos.png';
 
 export default function Gallery({ selected, handleExpand }) {
   const images = [];
@@ -32,10 +33,7 @@ export default function Gallery({ selected, handleExpand }) {
           </div>
         </div>
       ) : (
-        <img
-          className='pd__alt'
-          src='https://i5.walmartimages.com/asr/4add4de6-7b92-4846-8316-b7a0cbec4dc7_1.8e2f7305081b9284e56d112fe146dc90.png?odnHeight=612&odnWidth=612&odnBg=FFFFFF'
-        ></img>
+        <img className='pd__alt' src={MigosImage}></img>
       )}
     </div>
   );
