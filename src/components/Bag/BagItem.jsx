@@ -1,9 +1,9 @@
-import React from "react";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import SelectQty from "./SelectQty";
+import React from 'react';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import SelectQty from './SelectQty';
 
 export default function BagItem({
   item,
@@ -12,12 +12,13 @@ export default function BagItem({
   setSelectedProduct,
   products,
   darkTheme,
+  basket,
 }) {
   const handleProduct = () => {
     for (var product of products) {
       if (item.productId === product.id) {
         setSelectedProduct(product);
-        setView("detail");
+        setView('detail');
       }
     }
   };
@@ -27,22 +28,22 @@ export default function BagItem({
       <Col>
         <img
           src={item.thumbnail}
-          height="120px"
-          width="120px"
-          style={{ objectFit: "cover" }}
-          type="button"
+          height='120px'
+          width='120px'
+          style={{ objectFit: 'cover' }}
+          type='button'
           onClick={handleProduct}
         ></img>
       </Col>
-      <Col xs={6}>
+      <Col xs={5}>
         <b>
-          <div type="button" onClick={handleProduct}>
+          <div type='button' onClick={handleProduct}>
             {item.name}
           </div>
         </b>
         <div>{item.color}</div>
         <div>{`Size ${item.size}`}</div>
-        <div className="mt-2">
+        <div className='mt-2'>
           <SelectQty
             qtyArr={item.stockQuantityArr}
             item={item}
@@ -51,19 +52,22 @@ export default function BagItem({
         </div>
       </Col>
       <Col>
-        <div style={{ textAlign: "end" }}>{`$${
-          item.salePrice || item.originalPrice
-        }`}</div>
+        <div style={{ textAlign: 'end' }}>
+          {item &&
+            `${item.quantity} x $${
+              item.salePrice ? item.salePrice : item.originalPrice
+            } -> $${item.itemTotal}`}
+        </div>
         <DeleteOutlineIcon
           key={item.id}
-          style={{ float: "right" }}
+          style={{ float: 'right' }}
           onClick={() => {
             deleteCartItem(item.id);
           }}
-          type="button"
+          type='button'
         />
       </Col>
-      <hr className="mt-3"></hr>
+      <hr className='mt-3'></hr>
     </Row>
   );
 }

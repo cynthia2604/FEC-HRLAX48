@@ -23,15 +23,9 @@ export default function AddToBag({ setView, darkTheme, setSaved, saved }) {
         ) {
           basket[i].quantity += selected.quantity;
 
-          basket[i].originalPrice = (
-            selected.originalPrice * basket[i].quantity
+          basket[i].itemTotal = (
+            basket[i].quantity * (selected.salePrice || selected.originalPrice)
           ).toFixed(2);
-
-          if (basket[i].salePrice) {
-            basket[i].salePrice = (
-              selected.salePrice * basket[i].quantity
-            ).toFixed(2);
-          }
 
           newBasket = Array.from(new Set(basket));
         }
@@ -51,8 +45,11 @@ export default function AddToBag({ setView, darkTheme, setSaved, saved }) {
             size: selected.size,
             quantity: selected.quantity,
             thumbnail: selected.thumbnail,
-            originalPrice: selected.originalPrice * selected.quantity,
+            originalPrice: selected.originalPrice,
             salePrice: selected.salePrice,
+            itemTotal: (
+              selected.quantity * (selected.salePrice || selected.originalPrice)
+            ).toFixed(2),
             name: selected.productName,
             photos: selected.photos,
             skus: selected.skus,

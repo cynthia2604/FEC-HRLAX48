@@ -1,20 +1,16 @@
-import React from "react";
-import BagItem from "./BagItem";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import Snackbar from "@mui/material/Snackbar";
+import React from 'react';
+import BagItem from './BagItem';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+import Snackbar from '@mui/material/Snackbar';
 
 export default function Summary({ basket, darkTheme }) {
   const subtotal =
     basket.length &&
     basket
-      .reduce(
-        (amount, item) =>
-          parseInt(item.salePrice || item.originalPrice) + amount,
-        0
-      )
+      .reduce((amount, item) => parseInt(item.itemTotal) + amount, 0)
       .toFixed(2);
 
   const [open, setOpen] = React.useState(false);
@@ -47,7 +43,7 @@ export default function Summary({ basket, darkTheme }) {
           <div>10.25%</div>
         </Col>
       </Row>
-      <hr className="mt-3"></hr>
+      <hr className='mt-3'></hr>
       <Row>
         <Col>
           <div>
@@ -60,18 +56,18 @@ export default function Summary({ basket, darkTheme }) {
           </div>
         </Col>
       </Row>
-      <hr className="mt-3"></hr>
+      <hr className='mt-3'></hr>
       <Button
-        variant={darkTheme ? "outline-light" : "outline-secondary"}
-        style={{ width: "100%" }}
+        variant={darkTheme ? 'outline-light' : 'outline-secondary'}
+        style={{ width: '100%' }}
         onClick={handleClick}
       >
         Checkout
       </Button>
       <Snackbar
-        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         open={open}
-        message={"Thank you for shopping with us!"}
+        message={'Thank you for shopping with us!'}
         onClose={handleClose}
         autoHideDuration={3000}
       />

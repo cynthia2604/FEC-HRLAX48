@@ -5,17 +5,16 @@ import { v4 as uuidv4 } from 'uuid';
 import { useStateValue } from '../Overview/store/StateProvider';
 
 export default function SelectQty({ qtyArr, item, darkTheme }) {
-  //const [selectedQty, setSelectedQty] = React.useState(item.quantity);
   const [{ basket, selected }, dispatch] = useStateValue();
+
   const handleSelectQty = (qty) => {
-    //qty===4
     let newBasket = [...basket];
     for (let i = 0; i < newBasket.length; i++) {
       if (newBasket[i].id === item.id && newBasket[i].size === item.size) {
         newBasket[i].quantity = qty;
-        // newBasket[i].originalPrice = qty * item.originalPrice;
-        // newBasket[i].salePrice = qty * item.salePrice;
-        newBasket[i].totalPrice = qty * (item.salePrice || item.originalPrice);
+        newBasket[i].itemTotal = (
+          qty * (item.salePrice || item.originalPrice)
+        ).toFixed(2);
       }
     }
 
