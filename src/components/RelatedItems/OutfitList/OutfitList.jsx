@@ -10,7 +10,7 @@ export default function OutfitList(props) {
   const [renderRight, setRenderRight] = React.useState(0);
 
   React.useEffect(() => {
-    setRenderRight(Math.ceil((props.outfits.length + 1) / 4));
+    setRenderRight(Math.ceil((props.outfits.length) / 4));
   }, [props.outfits]);
 
   function saveOutfit(selected) {
@@ -33,15 +33,6 @@ export default function OutfitList(props) {
     }
   }
 
-  function getHeight() {
-    if (props.related.length > 0) {
-      const height = document.getElementById(
-        'related-product-list'
-      ).offsetHeight;
-      return height;
-    }
-  }
-
   const entry = props.outfits.map((product, i) => (
     <OutfitListEntry
       key={i}
@@ -59,16 +50,12 @@ export default function OutfitList(props) {
   ));
 
   return (
-    <div className='carousel-container' style={{ maxHeight: '384px' }}>
+    <div className='carousel-container'>
       <div
         className='carousel-container-inner'
         style={{
           transform: `translateX(${xPos}px)`,
-          width: `${
-            props.outfits.length > 0
-              ? ((props.outfits.length + 1) / 4) * props.width
-              : 324
-          }px`,
+          width: `${((props.outfits.length) / 4) * props.width}px`,
         }}
       >
         {/* <div className="add-outfit" onClick={() => saveOutfit(props.selectedStyle.selected)}
@@ -102,3 +89,7 @@ export default function OutfitList(props) {
 
 //<button className="btn btn-light btn-square btn-xl" onClick={() => saveOutfit(props.currentView)}> Add Outfit </button>
 //style={{width: `${(props.outfits.length/3)*25}%`}}
+
+// props.outfits.length > 0
+// ? ((props.outfits.length) / 4) * props.width
+// : 324
