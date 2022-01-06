@@ -60,6 +60,7 @@ export default function AddToBag({ setView, darkTheme, setSaved, saved }) {
             productName: selected.productName,
             category: selected.category,
             productId: selected.productId,
+            stockQuantityArr: selected.stockQuantityArr,
           },
         });
       }

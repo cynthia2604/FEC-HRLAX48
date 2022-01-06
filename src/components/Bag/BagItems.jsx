@@ -8,11 +8,11 @@ import { v4 as uuidv4 } from "uuid";
 
 export default function BagItems({
   basket,
-  dispatch,
   darkTheme,
   setView,
   setSelectedProduct,
   products,
+  dispatch,
 }) {
   const deleteCartItem = (id) => {
     const filtered = basket.filter((item) => item.id !== id);
@@ -37,6 +37,7 @@ export default function BagItems({
                   setView={setView}
                   setSelectedProduct={setSelectedProduct}
                   products={products}
+                  darkTheme={darkTheme}
                 />
               );
             })

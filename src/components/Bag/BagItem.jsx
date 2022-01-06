@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import SelectQty from "./SelectQty";
 
 export default function BagItem({
   item,
@@ -10,6 +11,7 @@ export default function BagItem({
   setView,
   setSelectedProduct,
   products,
+  darkTheme,
 }) {
   const handleProduct = () => {
     for (var product of products) {
@@ -22,29 +24,33 @@ export default function BagItem({
 
   return (
     <Row>
-      <Col md={2}>
+      <Col>
         <img
           src={item.thumbnail}
-          height="100px"
-          width="100px"
+          height="120px"
+          width="120px"
           style={{ objectFit: "cover" }}
           type="button"
           onClick={handleProduct}
         ></img>
       </Col>
-      <Col md={8}>
+      <Col xs={6}>
         <b>
           <div type="button" onClick={handleProduct}>
             {item.name}
           </div>
         </b>
         <div>{item.color}</div>
-
         <div>{`Size ${item.size}`}</div>
-
-        <div>{`Qty ${item.quantity}`}</div>
+        <div className="mt-2">
+          <SelectQty
+            qtyArr={item.stockQuantityArr}
+            item={item}
+            darkTheme={darkTheme}
+          />
+        </div>
       </Col>
-      <Col md={2}>
+      <Col>
         <div style={{ textAlign: "end" }}>{`$${
           item.salePrice || item.originalPrice
         }`}</div>
