@@ -5,6 +5,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Snackbar from '@mui/material/Snackbar';
+import HelpIcon from '@mui/icons-material/Help';
+import Tooltip from '@mui/material/Tooltip';
 
 export default function Summary({ basket, darkTheme }) {
   const subtotal =
@@ -23,13 +25,27 @@ export default function Summary({ basket, darkTheme }) {
     setOpen(false);
   };
 
-  const totalPrice = (subtotal * (1 + 0.1025)).toFixed(2);
+  const taxHelp =
+    'The actual tax amount will be calculated based on the applicable state and local sales taxes when your order is shipped.';
+
+  const subtotalHelp =
+    'The subtotal reflects the total price of your order before any applicable discounts. It does not include shipping costs and taxes.';
 
   return (
     <>
       <Row>
         <Col>
-          <>{`Subtotal`}</>
+          <>
+            {`Subtotal `}
+            <Tooltip title={subtotalHelp} arrow>
+              <HelpIcon
+                style={{
+                  verticalAlign: '-4px',
+                  fontSize: '18px',
+                }}
+              />
+            </Tooltip>
+          </>
         </Col>
         <Col md={4}>
           <>{`$${subtotal}`}</>
@@ -37,10 +53,20 @@ export default function Summary({ basket, darkTheme }) {
       </Row>
       <Row>
         <Col>
-          <div>{`Estimated Tax`}</div>
+          <div>
+            {`Estimated Tax `}
+            <Tooltip title={taxHelp} arrow>
+              <HelpIcon
+                style={{
+                  verticalAlign: '-4px',
+                  fontSize: '18px',
+                }}
+              />
+            </Tooltip>
+          </div>
         </Col>
         <Col md={4}>
-          <div>10.25%</div>
+          <div>$0.00</div>
         </Col>
       </Row>
       <hr className='mt-3'></hr>
@@ -52,7 +78,7 @@ export default function Summary({ basket, darkTheme }) {
         </Col>
         <Col md={4}>
           <div>
-            <b>{`$${totalPrice}`}</b>
+            <b>{`$${subtotal}`}</b>
           </div>
         </Col>
       </Row>
