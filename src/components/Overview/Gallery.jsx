@@ -6,18 +6,18 @@ import 'react-image-gallery/styles/css/image-gallery.css';
 
 export default function Gallery({ selected, handleExpand }) {
   const images = [];
-  const isAvaliable = [];
+  const isAvailable = [];
   const image =
     selected.photos &&
     selected.photos.map((photo) => {
-      isAvaliable.push(photo.url);
+      isAvailable.push(photo.url);
       let tempObj = { original: photo.url, thumbnail: photo.thumbnail_url };
       images.push(tempObj);
     });
 
   return (
     <div className='pd__container'>
-      {isAvaliable[0] ? (
+      {isAvailable[0] ? (
         <div>
           <div className='image'>
             <ImageGallery

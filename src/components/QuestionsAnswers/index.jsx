@@ -88,14 +88,14 @@ export default function QuestionsAnswers(props) {
           placeholder='Have a question? Search for answers...'
         ></input>
       </div>
-      <div className='pt-2 mb-2 questionsColumn'>{QAElements}</div>
+      <div className='pt-2 mb-3 questionsColumn'>{QAElements}</div>
       {questionCount === 2 && (
         <button onClick={() => setQuestionCount(999)} className={buttonStyle}>
           More Questions
         </button>
       )}
       <button
-        className={`ms-3 ${buttonStyle}`}
+        className={`ms-2 ${buttonStyle}`}
         data-toggle='modal'
         data-target='#questionModal'
         onClick={() => setShowModal(true)}

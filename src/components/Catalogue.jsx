@@ -44,7 +44,7 @@ export default function Catalogue(props) {
     return (
       <div
         key={product.id}
-        className='cP col-3'
+        className='cP catalogueText'
         onClick={() => handleClick(product)}
       >
         <img
@@ -66,12 +66,12 @@ export default function Catalogue(props) {
 
   return (
     <div className='d-flex flex-column justify-content-center align-items-center'>
-      {Object.keys(productInfo).length < 8 && (
+      {Object.keys(productInfo).length < 10 && (
         <Box sx={{ display: 'flex' }}>
           <CircularProgress color='inherit' />
         </Box>
       )}
-      {Object.keys(productInfo).length === 8 && (
+      {Object.keys(productInfo).length === 10 && (
         <>
           <div className='d-flex flex-wrap justify-content-between align-items-center text-center'>
             {products}
@@ -87,6 +87,16 @@ export default function Catalogue(props) {
                   color: props.darkTheme ? 'white' : 'black',
                 },
                 '& .MuiPaginationItem-root.Mui-selected': {
+                  backgroundColor: props.darkTheme
+                    ? 'rgb(50, 50, 50)'
+                    : 'rgb(200, 200, 200)',
+                },
+                '& .MuiPaginationItem-root:hover': {
+                  backgroundColor: props.darkTheme
+                    ? 'rgb(50, 50, 50)'
+                    : 'rgb(225, 225, 225)',
+                },
+                '& .MuiPaginationItem-root.Mui-selected:hover': {
                   backgroundColor: props.darkTheme
                     ? 'rgb(50, 50, 50)'
                     : 'rgb(200, 200, 200)',
