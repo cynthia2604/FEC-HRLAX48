@@ -131,8 +131,8 @@ export default function ReviewColumn(props) {
   };
 
   const buttonStyle = props.darkTheme
-    ? 'btn btn-lg btn-outline-light'
-    : 'btn btn-lg btn-outline-dark';
+    ? 'btn btn-outline-light'
+    : 'btn btn-outline-dark';
 
   return (
     <div>
