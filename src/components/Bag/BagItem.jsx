@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import SelectQty from './SelectQty';
+import { useStateValue } from '../Overview/store/StateProvider';
 
 export default function BagItem({
   item,
@@ -12,16 +13,30 @@ export default function BagItem({
   setSelectedProduct,
   products,
   darkTheme,
-  basket,
 }) {
+  const [{ basket, selected }, dispatch] = useStateValue();
   const handleProduct = () => {
     for (var product of products) {
       if (item.productId === product.id) {
+        dispatch({
+          type: 'ADD_TO_SELECTED',
+          item: item,
+        });
         setSelectedProduct(product);
         setView('detail');
       }
     }
   };
+
+  function itemTotal() {
+    if (item.quantity > 1) {
+      return `(${item.quantity} x $${
+        item.salePrice ? item.salePrice : item.originalPrice
+      }) » $${item.itemTotal}`;
+    } else {
+      return `$${item.itemTotal}`;
+    }
+  }
 
   return (
     <Row>
@@ -52,12 +67,7 @@ export default function BagItem({
         </div>
       </Col>
       <Col>
-        <div style={{ textAlign: 'end' }}>
-          {item &&
-            `${item.quantity} x $${
-              item.salePrice ? item.salePrice : item.originalPrice
-            } -> $${item.itemTotal}`}
-        </div>
+        <div style={{ textAlign: 'end' }}>{item && itemTotal()}</div>
         <DeleteOutlineIcon
           key={item.id}
           style={{ float: 'right' }}

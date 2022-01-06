@@ -1,14 +1,14 @@
-import React from "react";
-import "bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Checkout from "./Checkout";
-import Catalogue from "./Catalogue";
-import Options from "../config.js";
-import Detail from "./Detail";
-import axios from "axios";
-import Header from "./Header";
-import Footer from "./Footer";
-import { useStateValue } from "../components/Overview/store/StateProvider";
+import React from 'react';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Checkout from './Checkout';
+import Catalogue from './Catalogue';
+import Options from '../config.js';
+import Detail from './Detail';
+import axios from 'axios';
+import Header from './Header';
+import Footer from './Footer';
+import { useStateValue } from '../components/Overview/store/StateProvider';
 
 let theme;
 export function siteTheme() {
@@ -16,15 +16,15 @@ export function siteTheme() {
 }
 
 export default function App(props) {
-  const [view, setView] = React.useState("catalogue");
+  const [view, setView] = React.useState('catalogue');
   const [products, setProducts] = React.useState([]);
   const [selected, setSelected] = React.useState({});
   const [saved, setSaved] = React.useState(
-    () => JSON.parse(localStorage.getItem("outfits")) || []
+    () => JSON.parse(localStorage.getItem('outfits')) || []
   );
   const [{ basket }, dispatch] = useStateValue();
   const [darkTheme, setDarkTheme] = React.useState(
-    () => JSON.parse(localStorage.getItem("darkMode")) || false
+    () => JSON.parse(localStorage.getItem('darkMode')) || false
   );
 
   const [page, setPage] = React.useState(1);
@@ -33,7 +33,7 @@ export default function App(props) {
 
   React.useEffect(() => {
     axios
-      .get(`${Options.URL}/products/?count=8&page=${page}`, {
+      .get(`${Options.URL}/products/?count=10&page=${page}`, {
         headers: {
           Authorization: Options.TOKEN,
         },
@@ -42,27 +42,27 @@ export default function App(props) {
   }, [page]);
 
   React.useEffect(() => {
-    localStorage.setItem("outfits", JSON.stringify(saved));
+    localStorage.setItem('outfits', JSON.stringify(saved));
   }, [saved]);
 
   React.useEffect(() => {
-    localStorage.setItem("bagItems", JSON.stringify(basket));
+    localStorage.setItem('bagItems', JSON.stringify(basket));
   }, [basket]);
 
   const themedStyle = {
-    backgroundColor: darkTheme ? "rgb(25, 25, 25)" : "white",
-    color: darkTheme ? "white" : "black",
+    backgroundColor: darkTheme ? 'rgb(25, 25, 25)' : 'white',
+    color: darkTheme ? 'white' : 'black',
   };
 
   return (
-    <div className="d-flex flex-column heightWrapper" style={themedStyle}>
+    <div className='d-flex flex-column heightWrapper' style={themedStyle}>
       <Header
         setView={setView}
         darkTheme={darkTheme}
         setDarkTheme={setDarkTheme}
       />
-      {view === "catalogue" && (
-        <div className="container vertCenter">
+      {view === 'catalogue' && (
+        <div className='container vertCenter'>
           <Catalogue
             setView={setView}
             products={products}
@@ -73,8 +73,8 @@ export default function App(props) {
           />
         </div>
       )}
-      {view === "detail" && (
-        <div className="container flex-grow-1 mb-5">
+      {view === 'detail' && (
+        <div className='container flex-grow-1 mb-5'>
           <Detail
             selected={selected}
             products={products}
@@ -87,8 +87,8 @@ export default function App(props) {
           />
         </div>
       )}
-      {view === "checkout" && (
-        <div className="container flex-grow-1">
+      {view === 'checkout' && (
+        <div className='container flex-grow-1'>
           <Checkout
             darkTheme={darkTheme}
             basket={basket}

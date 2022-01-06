@@ -5,21 +5,30 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { v4 as uuidv4 } from 'uuid';
+import Button from 'react-bootstrap/Button';
+import { useStateValue } from '../Overview/store/StateProvider';
 
 export default function BagItems({
-  basket,
   darkTheme,
   setView,
   setSelectedProduct,
   products,
-  dispatch,
 }) {
+  const [{ basket, selected }, dispatch] = useStateValue();
+
   const deleteCartItem = (id) => {
     const filtered = basket.filter((item) => item.id !== id);
     dispatch({
       type: 'REPLACE_BASKET',
       item: filtered,
     });
+  };
+  const handleBack = () => {
+    if (!Object.keys(selected).length) {
+      setView('catalogue');
+    } else {
+      setView('detail');
+    }
   };
 
   return (
@@ -43,9 +52,18 @@ export default function BagItems({
               );
             })
           ) : (
-            <div style={{ color: 'grey' }}>
-              -- Your Bag is Currently Empty --
-            </div>
+            <>
+              <div style={{ color: 'grey' }}>
+                -- Your Bag is Currently Empty --
+              </div>
+              <Button
+                variant={darkTheme ? 'outline-light' : 'outline-secondary'}
+                className='mt-4'
+                onClick={handleBack}
+              >
+                Back
+              </Button>
+            </>
           )}
         </Col>
         <Col className='ms-5'>

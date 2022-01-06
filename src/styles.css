@@ -20,6 +20,10 @@ body {
   max-height: 250px;
 }
 
+.catalogueText {
+  font-size: clamp(8px, 1vw, 16px);
+}
+
 .customButton {
   height: 38px;
   vertical-align: middle;
@@ -33,7 +37,7 @@ body {
 
 /* Works on Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-  width: 2px;
+  width: 4px;
 }
 
 *::-webkit-scrollbar-track {
@@ -41,8 +45,9 @@ body {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: rgb(82, 187, 114);
-  border-radius: 0;
+  background-color: rgba(200, 200, 200, 0.5);
+  /* rgb(82, 187, 114) */
+  border-radius: 25px;
   /* border: 10px solid orange; */
 }
 
@@ -236,7 +241,7 @@ body {
 .reviewColumn {
   max-height: 500px;
   overflow-y: scroll;
-  padding-right: 5px;
+  padding-right: 10px;
 }
 
 .review {
@@ -306,7 +311,7 @@ body {
 .reviewButtons {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: right;
 }
 
 .radio-label-vertical-wrapper {
@@ -385,6 +390,8 @@ body {
   border: none;
   overflow: hidden;
   cursor: pointer;
+  filter: drop-shadow(2px 2px 1px rgb(0 0 0 / 0.6));
+  color: white;
 }
 
 .remove-card-entry:hover {
@@ -416,10 +423,12 @@ body {
   right: 0;
   overflow: visible;
   cursor: pointer;
+  filter: drop-shadow(2px 2px 1px rgb(0 0 0 / 0.6));
+  color: white;
 }
 
 .modal-button:hover {
-  color: yellow;
+  color: rgb(212, 212, 212);
 }
 
 .carousel-container {
@@ -484,6 +493,7 @@ input[type='range'] {
   height: 24px;
   -webkit-appearance: none;
   width: 100%;
+  border-radius: 10px;
 }
 
 input[type='range']:focus {
@@ -503,7 +513,7 @@ input[type='range']::-webkit-slider-runnable-track {
 input[type='range']::-webkit-slider-thumb {
   height: 18px;
   width: 5px;
-  border-radius: 0px;
+  border-radius: 10px;
   background: #52bb72;
   -webkit-appearance: none;
   margin-top: -6.5px;
@@ -583,7 +593,7 @@ input[type='range']:focus::-ms-fill-upper {
 .questionsColumn {
   max-height: 400px;
   overflow-y: scroll;
-  padding-right: 5px;
+  padding-right: 10px;
 }
 
 .answerColumn {

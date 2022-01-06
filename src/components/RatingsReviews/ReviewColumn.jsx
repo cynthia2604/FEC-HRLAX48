@@ -105,7 +105,10 @@ export default function ReviewColumn(props) {
   }
 
   function scrollCheck(e) {
-    if (e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight) {
+    if (
+      e.target.scrollHeight - e.target.scrollTop ===
+      e.target.clientHeight + 1
+    ) {
       addReviews();
     }
   }
@@ -131,8 +134,8 @@ export default function ReviewColumn(props) {
   };
 
   const buttonStyle = props.darkTheme
-    ? 'btn btn-lg btn-outline-light'
-    : 'btn btn-lg btn-outline-dark';
+    ? 'btn btn-outline-light ms-2'
+    : 'btn btn-outline-dark ms-2';
 
   return (
     <div>

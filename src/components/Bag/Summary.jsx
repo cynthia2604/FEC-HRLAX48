@@ -66,7 +66,7 @@ export default function Summary({ basket, darkTheme }) {
           </div>
         </Col>
         <Col md={4}>
-          <div>$0.00</div>
+          <div>--</div>
         </Col>
       </Row>
       <hr className='mt-3'></hr>

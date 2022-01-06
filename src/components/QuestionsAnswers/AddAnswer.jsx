@@ -78,7 +78,7 @@ export default function AddAnswer(props) {
         await axios
           .post('https://api.imgur.com/3/image', files[i], {
             headers: {
-              Authorization: 'Client-ID 78dc8e1b5fb253b',
+              Authorization: Options.IMGUR_KEY,
             },
           })
           .then((res) => {
