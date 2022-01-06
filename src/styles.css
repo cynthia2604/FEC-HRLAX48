@@ -445,6 +445,7 @@ body {
 }
 
 .slide-button-right {
+  cursor: pointer;
   position: absolute;
   top: 50%;
   right: 0;
@@ -453,6 +454,7 @@ body {
 }
 
 .slide-button-left {
+  cursor: pointer;
   position: absolute;
   left: 0;
   top: 50%;
