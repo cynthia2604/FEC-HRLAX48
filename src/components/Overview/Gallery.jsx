@@ -12,7 +12,10 @@ export default function Gallery({ selected, handleExpand }) {
     selected.photos &&
     selected.photos.map((photo) => {
       isAvailable.push(photo.url);
-      let tempObj = { original: photo.url, thumbnail: photo.thumbnail_url };
+      let tempObj = {
+        original: photo.url,
+        thumbnail: photo.thumbnail_url?.replace('uhttps://', 'https://'),
+      };
       images.push(tempObj);
     });
 
