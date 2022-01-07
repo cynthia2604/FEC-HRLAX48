@@ -33,7 +33,10 @@ export default function RelatedItems(props) {
   }, [props.selected]);
 
   return (
-    <div className='related-products'>
+    <div
+      className='related-products'
+      onClick={(e) => props.tracker(e, 'Related Items')}
+    >
       <div className='sectionTitle'>RELATED ITEMS</div>
       <div id='related-product-list'>
         {renderTable && (

@@ -67,7 +67,7 @@ export default function QuestionsAnswers(props) {
   };
 
   return (
-    <>
+    <div onClick={(e) => props.tracker(e, 'Questions Answers')}>
       <div className='sectionTitle pt-5'>{`QUESTIONS & ANSWERS`}</div>
       <Snackbar
         open={showSnack}
@@ -110,6 +110,6 @@ export default function QuestionsAnswers(props) {
           setShowModal={setShowModal}
         />
       )}
-    </>
+    </div>
   );
 }

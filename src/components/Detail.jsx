@@ -8,6 +8,8 @@ import QuestionsAnswers from './QuestionsAnswers';
 import { useStateValue } from '../components/Overview/store/StateProvider';
 import { Box } from '@mui/system';
 import { CircularProgress } from '@mui/material';
+import Tracker from './Tracker';
+import moment from 'moment';
 
 export default function Detail(props) {
   const [rating, setRating] = React.useState();
@@ -44,6 +46,26 @@ export default function Detail(props) {
       });
   }
 
+  function handleTrack(e, module) {
+    axios
+      .post(
+        `${Options.URL}/interactions`,
+        {
+          element: e.target.innerHTML,
+          widget: module,
+          time: moment().format(),
+        },
+        {
+          headers: {
+            Authorization: Options.TOKEN,
+          },
+        }
+      )
+      .catch((err) => console.error(err));
+  }
+
+  const OverviewTracked = Tracker(Overview, 'Overview');
+
   return (
     <>
       {(!productInfo || rating === undefined) && (
@@ -63,6 +85,7 @@ export default function Detail(props) {
             setView={props.setView}
             setSaved={props.setSaved}
             saved={props.saved}
+            tracker={handleTrack}
           />
           <RelatedItems
             products={props.products}
@@ -74,10 +97,12 @@ export default function Detail(props) {
             rating={rating}
             selectedStyle={{ selected }}
             darkTheme={props.darkTheme}
+            tracker={handleTrack}
           />
           <QuestionsAnswers
             selected={props.selected}
             darkTheme={props.darkTheme}
+            tracker={handleTrack}
           />
           <RatingsAndReviews
             selected={props.selected}
@@ -85,6 +110,7 @@ export default function Detail(props) {
             productInfo={productInfo}
             refresh={fetchProductInfo}
             darkTheme={props.darkTheme}
+            tracker={handleTrack}
           />
         </div>
       )}

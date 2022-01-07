@@ -56,7 +56,7 @@ export default function RatingsAndReviews(props) {
   }
 
   return (
-    <div>
+    <div onClick={(e) => props.tracker(e, 'Ratings Reviews')}>
       <div id='reviews' className='sectionTitle pt-5'>
         {`RATINGS & REVIEWS`}
       </div>

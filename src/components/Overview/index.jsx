@@ -20,6 +20,7 @@ export default function Overview({
   setView,
   setSaved,
   saved,
+  tracker,
 }) {
   const [productDetail, setProductDetail] = React.useState({});
   const [productStyles, setProductStyles] = React.useState({});
@@ -52,7 +53,7 @@ export default function Overview({
   };
 
   return (
-    <div className='mb-3'>
+    <div className='mb-3' onClick={(e) => tracker(e, 'Overview')}>
       <div className='pd__box mb-4 pb-4'>
         <div className={isExpand ? 'pd__gallery-expand' : 'wide'}>
           {selected.productId === productDetail.id &&
