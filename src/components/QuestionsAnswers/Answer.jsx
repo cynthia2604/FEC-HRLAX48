@@ -11,11 +11,7 @@ export default function Answer(props) {
   function markAnswerHelpful() {
     if (!marked) {
       axios
-        .put(`${Options.URL}/qa/answers/${props.answer.id}/helpful`, null, {
-          headers: {
-            Authorization: Options.TOKEN,
-          },
-        })
+        .put(`${Options.QA_API}/api/qa/answers/${props.answer.id}/helpful`, null)
         .then(() => {
           setMarked(true);
           setHelpful(helpful + 1);
@@ -25,11 +21,7 @@ export default function Answer(props) {
 
   function reportAnswer() {
     axios
-      .put(`${Options.URL}/qa/answers/${props.answer.id}/report`, null, {
-        headers: {
-          Authorization: Options.TOKEN,
-        },
-      })
+      .put(`${Options.QA_API}/api/qa/answers/${props.answer.id}/report`, null)
       .then(() => {
         props.refresh();
         props.setSnackMessage(

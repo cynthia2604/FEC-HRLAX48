@@ -41,17 +41,12 @@ export default function AddAnswer(props) {
     } else {
       axios
         .post(
-          `${Options.URL}/qa/questions/${props.question.question_id}/answers`,
+          `${Options.QA_API}/api/qa/questions/${props.question.question_id}/answers`,
           {
             body: answer,
             name: nickname,
             email: email,
             photos: photos,
-          },
-          {
-            headers: {
-              Authorization: Options.TOKEN,
-            },
           }
         )
         .then(() => {

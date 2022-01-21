@@ -22,12 +22,7 @@ export default function QuestionsAnswers(props) {
   function fetchQuestions() {
     axios
       .get(
-        `${Options.URL}/qa/questions/?product_id=${props.selected.id}&count=999`,
-        {
-          headers: {
-            Authorization: Options.TOKEN,
-          },
-        }
+        `${Options.QA_API}/api/qa/questions/?product_id=${props.selected.id}&count=999`
       )
       .then((res) => setProductQuestions(res.data.results));
   }

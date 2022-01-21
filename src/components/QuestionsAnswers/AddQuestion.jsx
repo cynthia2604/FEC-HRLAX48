@@ -28,17 +28,12 @@ export default function AddQuestion(props) {
     } else {
       axios
         .post(
-          `${Options.URL}/qa/questions`,
+          `${Options.QA_API}/api/qa/questions`,
           {
             product_id: props.selected.id,
             body: question,
             name: nickname,
             email: email,
-          },
-          {
-            headers: {
-              Authorization: Options.TOKEN,
-            },
           }
         )
         .then(() => {

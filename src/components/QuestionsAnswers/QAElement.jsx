@@ -38,15 +38,10 @@ export default function QAElement(props) {
   function markHelpful() {
     if (!marked) {
       axios
-        .put(
-          `${Options.URL}/qa/questions/${props.element.question_id}/helpful`,
-          null,
-          {
-            headers: {
-              Authorization: Options.TOKEN,
-            },
-          }
-        )
+      .put(
+        `${Options.QA_API}/api/qa/questions/${props.element.question_id}/helpful`,
+        null,
+      )
         .then(() => {
           setMarked(true);
           setHelpful(helpful + 1);
@@ -56,15 +51,10 @@ export default function QAElement(props) {
 
   function reportQuestion() {
     axios
-      .put(
-        `${Options.URL}/qa/questions/${props.element.question_id}/report`,
-        null,
-        {
-          headers: {
-            Authorization: Options.TOKEN,
-          },
-        }
-      )
+    .put(
+      `${Options.QA_API}/api/qa/questions/${props.element.question_id}/report`,
+      null
+    )
       .then(() => {
         props.refresh();
         props.setSnackMessage(
